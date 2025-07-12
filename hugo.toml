@@ -2,3 +2,6 @@ baseURL = 'https://ksopyla.ai/'
 languageCode = 'en-us'
 title = 'Krzysztof Sopyla - AI Blog'
 theme = "congo" 
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
