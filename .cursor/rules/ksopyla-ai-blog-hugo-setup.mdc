@@ -1,0 +1,11 @@
+---
+description: ksopyla ai blog with gohugo setup 
+alwaysApply: false
+---
+this is a blog about ai and technology. As a publishing platform, we will use gohugo and github pages.
+
+the blog will be hosted at https://ksopyla.ai
+
+the blog will be written in markdown and will be published to github pages.
+The blog is using latex for math equations. 
+

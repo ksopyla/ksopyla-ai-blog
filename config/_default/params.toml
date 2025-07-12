@@ -1,0 +1,4 @@
+# -- Theme Parameters --
+author = "Krzysztof Sopyla"
+description = "A blog about AI and technology."
+showReadingTime = true 
