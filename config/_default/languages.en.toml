@@ -7,23 +7,23 @@ title = "Krzysztof Sopyla AI Blog"
 copyright = "Copy, Krzysztof Sopyla _right?_ :thinking_face:"
 
 [params]
-  dateFormat = "2 January 2006"
+dateFormat = "2 January 2006"
 
-  # mainSections = ["section1", "section2"]
-  # description = "My awesome website"
+# mainSections = ["section1", "section2"]
+# description = "My awesome website"
 
 [params.author]
-  name = "Krzysztof Sopyła"
-  image = "img/author.jpg"
-  headline = "I'm only human"
-  bio = "A little bit about you"
-  links = [
-    { email = "mailto:hello@your_domain.com" },
-    { github = "https://github.com/username" },
-    { google-scholar = "https://scholar.google.com/citations?user=user-id" },
-    { medium = "https://medium.com/username" },
-    { linkedin = "https://linkedin.com/in/username" },
-    { x-twitter = "https://twitter.com/username" },
+name = "Krzysztof Sopyła"
+image = "img/author.jpg"
+headline = "I'm only human"
+bio = "A little bit about you"
+links = [
+  { email = "mailto:hello@your_domain.com" },
+  { github = "https://github.com/username" },
+  { google-scholar = "https://scholar.google.com/citations?user=user-id" },
+  { medium = "https://medium.com/username" },
+  { linkedin = "https://linkedin.com/in/username" },
+  { x-twitter = "https://twitter.com/username" },
   #   { orcid = "https://orcid.org/userid" },
   #   { link = "https://link-to-some-website.com/" },
   #   { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
@@ -64,4 +64,4 @@ copyright = "Copy, Krzysztof Sopyla _right?_ :thinking_face:"
   #   { whatsapp = "https://wa.me/phone-number" },
   #   { youtube = "https://youtube.com/username" },
   #   { xing = "https://xing.com/profile/username" },
-  ]
+]
