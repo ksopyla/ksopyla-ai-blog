@@ -4,6 +4,7 @@
 theme = "congo"
 baseURL = 'https://ai.ksopyla.com/'
 defaultContentLanguage = "en"
+languageCode = "en"
 
 enableRobotsTXT = true
 summaryLength = 0
