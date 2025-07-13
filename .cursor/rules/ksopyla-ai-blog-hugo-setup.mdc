@@ -1,11 +1,23 @@
 ---
-description: ksopyla ai blog with gohugo setup 
+description: ksopyla ai blog with gohugo setup and Congo theme, defines the configuration of a theme
 alwaysApply: false
 ---
 this is a blog about ai and technology. As a publishing platform, we will use gohugo and github pages.
 
-the blog will be hosted at https://ksopyla.ai
+the blog will be hosted at https://ai.ksopyla.com
 
-the blog will be written in markdown and will be published to github pages.
+the blog is useing the GoHugo framework and will be written in markdown and will be published to github page via github actions @.github\workflows\hugo-deployment.yml 
 The blog is using latex for math equations. 
+
+The blog is using the congo theme from https://github.com/jpanther/congo the documentation is available at https://jpanther.github.io/congo/docs/ and is indexed as @Congo-Hugo-Theme
+
+The configuration of Congo Hugo Theme slightly differs from the default Hugo configuration so when changing the configuration, you should refer to the documentation of Congo Hugo Theme.
+Main configuration is in the folder @config/_default/ 
+
+
+The blog is using the following languages:
+- English
+
+
+
 

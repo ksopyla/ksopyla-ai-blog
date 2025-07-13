@@ -1,1 +1,11 @@
+baseURL = 'https://ai.ksopyla.com/'
+languageCode = 'en-us'
+title = 'Krzysztof Sopyla - AI Blog'
 theme = "congo"
+
+[params]
+  mainSections = ["blog"]
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images' 
