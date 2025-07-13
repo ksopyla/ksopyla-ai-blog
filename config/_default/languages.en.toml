@@ -13,12 +13,18 @@ title = "Congo"
   # description = "My awesome website"
 
 [params.author]
-  # name = "Your name here"
-  # image = "img/author.jpg"
-  # headline = "I'm only human"
-  # bio = "A little bit about you"
-  # links = [
-  #   { email = "mailto:hello@your_domain.com" },
+  name = "Krzysztof Sopyła"
+  image = "img/author.jpg"
+  headline = "I'm only human"
+  bio = "A little bit about you"
+  links = [
+    { email = "mailto:hello@your_domain.com" },
+    { github = "https://github.com/username" },
+    { google-scholar = "https://scholar.google.com/citations?user=user-id" },
+    { medium = "https://medium.com/username" },
+    { linkedin = "https://linkedin.com/in/username" },
+    { x-twitter = "https://twitter.com/username" },
+  #   { orcid = "https://orcid.org/userid" },
   #   { link = "https://link-to-some-website.com/" },
   #   { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
   #   { apple = "https://www.apple.com" },
@@ -30,22 +36,17 @@ title = "Congo"
   #   { facebook = "https://facebook.com/username" },
   #   { flickr = "https://www.flickr.com/photos/username/" },
   #   { foursquare = "https://foursquare.com/username" },
-  #   { github = "https://github.com/username" },
   #   { gitlab = "https://gitlab.com/username" },
   #   { google = "https://www.google.com/" },
-  #   { google-scholar = "https://scholar.google.com/citations?user=user-id" },
   #   { hashnode = "https://username.hashnode.dev" },
   #   { instagram = "https://instagram.com/username" },
   #   { keybase = "https://keybase.io/username" },
   #   { kickstarter = "https://www.kickstarter.com/profile/username" },
   #   { kofi = "https://ko-fi.com/username" },
   #   { lastfm = "https://lastfm.com/user/username" },
-  #   { linkedin = "https://linkedin.com/in/username" },
   #   { mastodon = "https://mastodon.instance/@username" },
-  #   { medium = "https://medium.com/username" },
   #   { mendeley = "https://www.mendeley.com/" },
   #   { microsoft = "https://www.microsoft.com/" },
-  #   { orcid = "https://orcid.org/userid" },
   #   { patreon = "https://www.patreon.com/username" },
   #   { pinterest = "https://pinterest.com/username" },
   #   { reddit = "https://reddit.com/user/username" },
@@ -61,7 +62,6 @@ title = "Congo"
   #   { tumblr = "https://username.tumblr.com" },
   #   { twitch = "https://twitch.tv/username" },
   #   { whatsapp = "https://wa.me/phone-number" },
-  #   { x-twitter = "https://twitter.com/username" },
   #   { youtube = "https://youtube.com/username" },
   #   { xing = "https://xing.com/profile/username" },
   # ]
