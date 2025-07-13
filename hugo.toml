@@ -1,4 +1,4 @@
-baseURL = 'https://ksopyla.ai/'
+baseURL = 'https://ai.ksopyla.com/'
 languageCode = 'en-us'
 title = 'Krzysztof Sopyla - AI Blog'
 theme = "congo" 
