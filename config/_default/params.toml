@@ -4,3 +4,6 @@
 
 description = "A blog about AI and technology."
 showReadingTime = true 
+
+[homepage]
+  showRecent = true 
