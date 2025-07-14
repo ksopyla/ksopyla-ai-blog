@@ -27,6 +27,11 @@ JS(\hat{y} || y) &= \frac{1}{2}(KL(y||\frac{y+\hat{y}}{2}) + KL(\hat{y}||\frac{y
 \end{aligned}
 \]
 
+% KaTeX block notation
+$$
+ \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
+$$
+
 
 ## 2. Pytorch Basics
 
