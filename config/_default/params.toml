@@ -32,13 +32,13 @@ showAppearanceSwitcher = false
 showScrollToTop = true
 
 [homepage]
-layout = "page"    # valid options: page, profile, custom
-showRecent = false
+layout = "profile"    # valid options: page, profile, custom
+showRecent = true
 recentLimit = 5
 
 [article]
 showDate = true
-showDateUpdated = false
+showDateUpdated = true
 showAuthor = true
 showBreadcrumbs = false
 showDraftLabel = true
@@ -49,10 +49,10 @@ showHeadingAnchors = true
 showPagination = true
 invertPagination = false
 showReadingTime = true
-showTableOfContents = false
+showTableOfContents = true
 showTaxonomies = false
-showWordCount = false
-showComments = false
+showWordCount = true
+showComments = true
 # sharingLinks = ["facebook", "x-twitter", "mastodon", "pinterest", "reddit", "linkedin", "email", "threads", "telegram", "line", "weibo", "xing", "bluesky"]
 
 [list]
