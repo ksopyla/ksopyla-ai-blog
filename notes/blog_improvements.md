@@ -1,3 +1,17 @@
+# Notes on blog improvements
+
+Not structured, just a collection of ideas to work on.
+
+## Todo
+
+- [ ] Add and test the project page - see how this works with the current theme
+- [X] Fix the latex rendering, it is not working - Date: 2025-07-15
+- [ ] 
+
+
+## Content improvements
+
+
 
 
 ## Theming

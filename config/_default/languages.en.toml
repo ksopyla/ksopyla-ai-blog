@@ -14,12 +14,12 @@ dateFormat = "2 January 2006"
 
 [params.author]
 name = "Krzysztof Sopyła"
-image = "/assets/img/ksopyla_profile.jpg"
+image = "img/ksopyla_profile.jpg"
 headline = "Live with a dream"
 bio = "I'm a AI scientist, AI R&D leader on a path to rediscover the concept architectures. GPU poor."
 links = [
   #{ email = "mailto:hello@your_domain.com" },
-  { github = "https://github.com/ksopyla" },
+  # { github = "https://github.com/ksopyla" },
   { google-scholar = "https://scholar.google.com/citations?user=oG6F91IAAAAJ" },
   { medium = "https://medium.com/@ksopyla" },
   { linkedin = "https://linkedin.com/in/krzysztofsopyla" },
