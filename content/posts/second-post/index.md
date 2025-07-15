@@ -12,6 +12,14 @@ featureAlt: "Pytorch Course by Victor von Torchenstein"
 # Pytorch Course by Victor von Torchenstein
 
 
+{{< lead >}}
+When life gives you lemons, make lemonade.
+{{< /lead >}}
+
+{{< alert  "coffee">}}
+**Warning!** I wrote this post without coffee!
+{{< /alert >}}
+
 
 https://pytorchcourse.com/
 
@@ -31,6 +39,9 @@ JS(\hat{y} || y) &= \frac{1}{2}(KL(y||\frac{y+\hat{y}}{2}) + KL(\hat{y}||\frac{y
 $$
  \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
 $$
+
+{{< katex >}}
+\\(f(a,b,c) = (a^2+b^2+c^2)^3\\)
 
 
 ## 2. Pytorch Basics
