@@ -32,7 +32,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor i
 
 $$
 \begin{aligned}
-KL(\hat{y} || y) &= \sum_{c=1}^{M}\hat{y}_c \log{\frac{\hat{y}_c}{y_c}} \\
+KL(\hat{y} || y) &= \sum_{c=1}^{M}\hat{y}_c \log{\frac{\hat{y}_c}{y_c}} \\ 
+
+<!-- latex comment -->
+
 JS(\hat{y} || y) &= \frac{1}{2}(KL(y||\frac{y+\hat{y}}{2}) + KL(\hat{y}||\frac{y+\hat{y}}{2}))
 \end{aligned}
 $$
@@ -42,8 +45,9 @@ $$
  \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
 $$
 
+Inline latex: \\(f(a,b,c) = (a^2+b^2+c^2)^3\\) end of the equation.
 
-\\(f(a,b,c) = (a^2+b^2+c^2)^3\\)
+
 
 
 ## 2. Pytorch Basics
