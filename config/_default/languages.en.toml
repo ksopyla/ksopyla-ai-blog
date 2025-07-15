@@ -14,7 +14,7 @@ dateFormat = "2 January 2006"
 
 [params.author]
 name = "Krzysztof Sopyła"
-image = "img/ksopyla_profile.jpg"
+image = "/assets/img/ksopyla_profile.jpg"
 headline = "Live with a dream"
 bio = "I'm a AI scientist, AI R&D leader on a path to rediscover the concept architectures. GPU poor."
 links = [
