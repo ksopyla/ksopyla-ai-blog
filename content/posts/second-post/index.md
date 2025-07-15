@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "Pytorch", "Pytorch Course", "Torchenstein"]
 categories: ["Pytorch Course"]
 featureAlt: "Pytorch Course by Victor von Torchenstein"
+showReadingTime: true
+keywords: ["Keyword 1", "Keyword 2", "Keyword 3"]
 ---
 
 
