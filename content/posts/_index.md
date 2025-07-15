@@ -1,23 +1,13 @@
+---
+title: "Posts"
+description: "My thoughts on AI research, experiments, tools and leading the AI products and projects."
+cascade:
+  showReadingTime: false
+---
+{{< alert >}}
+💡🤔🌊🧠🚀 Some provocative thoughts here: challenging the status quo, thinking outside the box, and swimming against the current! 🔥🦄
+{{< /alert >}}
 
-
-This is the index page for the posts section.
-
-{{< lead >}}
-This is the index page for the posts section.
-{{< /lead >}}
-
-
-{{< badge >}}
-New article!
-{{< /badge >}}
-
-
-{{< button href="#button" target="_self" >}}
-Call to action
-{{< /button >}}
-
-
-{{< profile align="center" >}}
 
 
 
