@@ -53,7 +53,7 @@ showTableOfContents = true
 showTaxonomies = true
 showWordCount = true
 showComments = true
-sharingLinks = ["facebook", "x-twitter", "mastodon", "reddit", "linkedin", "email", "threads", "telegram", "line", "weibo", "xing", "bluesky"]
+sharingLinks = ["x-twitter", "mastodon", "reddit", "linkedin", "threads", "telegram", "weibo", "xing", "bluesky"]
 
 [list]
 showBreadcrumbs = false
