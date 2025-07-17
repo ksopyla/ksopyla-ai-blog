@@ -1,10 +1,11 @@
 ---
-title: "Initial Testing Post"
+title: "🧪 Initial Testing Post"
 date: 2025-07-12
 draft: true
 tags: ["Testing", "Hugo", "Congo Theme"]
 categories: ["Testing"]
 featureAlt: "Initial testing post for Congo Hugo theme"
+icon: "flask"
 showReadingTime: true
 ---
 

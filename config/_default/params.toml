@@ -20,8 +20,8 @@ enableImageWebp = true
 fingerprintAlgorithm = "sha256"
 
 [header]
-layout = "basic"      # valid options: basic, hamburger, hybrid, custom
-logo = "img/logo.jpg"
+layout = "hybrid"      # valid options: basic, hamburger, hybrid, custom
+#logo = "img/logo.jpg"
 # logoDark = "img/dark-logo.jpg"
 showTitle = true
 
@@ -53,7 +53,7 @@ showTableOfContents = true
 showTaxonomies = true
 showWordCount = true
 showComments = true
-sharingLinks = ["x-twitter", "mastodon", "reddit", "linkedin", "threads", "telegram", "weibo", "xing", "bluesky"]
+sharingLinks = ["x-twitter", "linkedin", "reddit", "mastodon", "bluesky"]
 
 [list]
 showBreadcrumbs = false
