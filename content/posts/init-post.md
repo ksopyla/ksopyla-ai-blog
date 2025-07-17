@@ -1,11 +1,17 @@
 ---
-title: "My Init Post in posts folder"
+title: "Initial Testing Post"
 date: 2025-07-12
-draft: false
+draft: true
+tags: ["Testing", "Hugo", "Congo Theme"]
+categories: ["Testing"]
+featureAlt: "Initial testing post for Congo Hugo theme"
+showReadingTime: true
 ---
+{{< lead >}}
+This is a post lead to check the Congo Hugo theme functionality. Based on [Congo documentation](https://github.com/jpanther/congo) 
+{{< /lead >}}
 
-This is my first pos in posts folder on my new blog. Welcome! 
-
+Test the Congo Hugo theme. 
 
 ```python
 
