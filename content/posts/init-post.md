@@ -7,6 +7,7 @@ categories: ["Testing"]
 featureAlt: "Initial testing post for Congo Hugo theme"
 showReadingTime: true
 ---
+
 {{< lead >}}
 This is a post lead to check the Congo Hugo theme functionality. Based on [Congo documentation](https://github.com/jpanther/congo) 
 {{< /lead >}}

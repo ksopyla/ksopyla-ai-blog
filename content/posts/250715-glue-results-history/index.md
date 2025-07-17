@@ -1,7 +1,7 @@
 ---
 title: "GLUE benchmark results history and what we can learn from it"
 date: 2025-07-12
-draft: true
+draft: false
 description: "An exploration of the GLUE benchmark results history and the insights we can derive from it."
 
 tags: ["AI", "GLUE", "Benchmark"]
