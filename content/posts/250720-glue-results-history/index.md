@@ -1,6 +1,6 @@
 ---
 title: "📊 GLUE benchmark results history and what we can learn from it"
-date: 2025-07-17
+date: 2025-07-20
 draft: true
 description: "An exploration of the GLUE benchmark results history and the insights we can derive from it."
 icon: "chart-bar"
