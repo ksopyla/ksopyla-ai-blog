@@ -1,7 +1,7 @@
 ---
 title: "🧠 Illusion of Thinking paper by Apple ML team are we far from AGI?"
 date: 2025-08-01
-draft: false
+draft: true
 description: "An exploration of the Illusion of Thinking paper by the Apple ML team and its implications for AGI."
 icon: "brain"
 tags: ["AI", "AGI", "Paper Review"]

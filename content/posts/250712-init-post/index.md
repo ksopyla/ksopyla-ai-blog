@@ -1,7 +1,8 @@
 ---
-title: "🧪 Initial Post"
+title: "🛣️ Blog manifesto, my goals and why I started this blog"
 date: 2025-07-12
-draft: true
+draft: false
+description: "My first post in the blog, why I have started to write, my goals and values"
 tags: ["Testing", "Hugo"]
 categories: ["Columns"]
 featureAlt: "My first post in the blog, why I have started to write, my goals and values"
