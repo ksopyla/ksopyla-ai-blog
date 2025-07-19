@@ -5,7 +5,7 @@ cascade:
   showReadingTime: false
 ---
 {{< alert >}}
-💡🤔🌊🧠🚀 Some provocative thoughts here: challenging the status quo, thinking outside the box, and swimming against the current! 🔥🦄
+🤔 Sharing my personal takes on ML research interesting ideas, papers, or projects at the intersection of AI research and leading a teams and products.
 {{< /alert >}}
 
 
