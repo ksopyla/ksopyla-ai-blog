@@ -47,7 +47,7 @@ showEdit = false
 editAppendPath = true
 showHeadingAnchors = true
 showPagination = true
-invertPagination = false
+invertPagination = true
 showReadingTime = true
 showTableOfContents = true
 showTaxonomies = true
@@ -60,7 +60,7 @@ showBreadcrumbs = false
 showSummary = false
 showTableOfContents = false
 showTaxonomies = false
-groupByYear = true
+groupByYear = false
 paginationWidth = 1
 
 [sitemap]
