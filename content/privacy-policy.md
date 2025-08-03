@@ -6,13 +6,19 @@ draft: false
 
 ## Who we are
 
-Our website address is: {{ .Site.BaseURL }}
+Your privacy is important to me—I do not collect any personal data from visitors. However, some third-party services used to operate this blog may collect limited, anonymized information. Details about these services and the data they may collect are provided below.
+
+More about me and how to contact me you can find in the [About](/about) page.
+
 
 ## Analytics
 
-We use a self-hosted instance of Umami for website analytics. Umami is a privacy-focused analytics tool that does not use cookies and does not collect any personally identifiable information.
+I use Umami for website analytics. Umami is a privacy-focused analytics tool that does not use cookies and does not collect any personally identifiable information[^unami_source].
 
-All data is anonymized before it is saved. We do not track you across other websites.
+
+[^unami_source]: [Umami Analytics Docs](https://umami.is/docs)
+
+All data is anonymized before it is saved. I do not track you across other websites.
 
 The following information is collected and stored:
 
@@ -27,4 +33,4 @@ This data is used solely for the purpose of understanding how our website is use
 
 ## Contact
 
-If you have any questions about this privacy policy, you can contact us through the links available on our website.
+If you have any questions about this privacy policy, you can contact me through the links available on our website.
