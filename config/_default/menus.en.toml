@@ -15,14 +15,10 @@
   pageRef = "posts"
   weight = 10
 
-
-
 [[main]]
   name = "Projects"
   pageRef = "projects"
   weight = 30
-
-
 
 [[main]]
   identifier = "search"
@@ -54,3 +50,8 @@
   name = "About"
   pageRef = "about"
   weight = 30
+
+[[footer]]
+  name = "Privacy Policy"
+  pageRef = "privacy-policy"
+  weight = 40
