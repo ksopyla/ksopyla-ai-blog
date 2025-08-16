@@ -4,7 +4,7 @@ date: 2025-08-01
 draft: true
 description: "An exploration of the current state of AI and its implications for AGI. What is the useful Facade of Intelligence?"
 icon: "brain"
-tags: ["AI", "AGI", "Paper Review"]
+tags: ["AI", "Papers Review", "LLM"]
 categories: ["AI Research"]
 featureAlt: "The useful Facade of Intelligence,  are we far from AGI?"
 showReadingTime: true
@@ -35,6 +35,12 @@ Rather than getting lost in semantics, this post will take a more empirical appr
 ## Cracks in the Facade: Evidence of Brittle Reasoning
 
 The following sections will explore some of the methodical studies of the LLMs reasoning capabilities, we will focus on limitations and failures of the LLMs.
+Section below is a summary of a papers: 
+
+1. [The Illusion of Thinking: Understanding the Strengths and Limitations of Reasoning Models via the Lens of Problem Complexity](https://arxiv.org/abs/2506.06941) - Apple, 2025
+2. [Premise Order Matters in Reasoning with Large Language Models](https://arxiv.org/pdf/2402.08939) - DeepMind, 2024   
+3. [GSM-Symbolic: Understanding the Limitations of Mathematical Reasoning in Large Language Models](https://arxiv.org/abs/2506.06941) - Google, 2025
+4. Are Emergent Abilities of Large Language Models a Mirage? NeurIPS 2023
 
 
 ### The Complexity Cliff

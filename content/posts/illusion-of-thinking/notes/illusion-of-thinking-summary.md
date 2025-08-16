@@ -14,11 +14,22 @@ Methodical testing the LLM capabilities papers:
 2. Premise Order Matters in Reasoning with Large Language Models - DeepMind team https://arxiv.org/pdf/2402.08939
 3. GSM-Symbolic: Understanding the Limitations of Mathematical Reasoning in Large Language Models - 
    1. The GSM8K benchmark is widely used to assess the mathematical reasoning of models on grade-school-level questions. While the performance of LLMs on GSM8K has significantly improved in recent years, it remains unclear whether their mathematical reasoning capabilities have genuinely advanced, raising questions about the reliability of the reported metrics. To address these concerns, we conduct a large-scale study on several SOTA open and closed models. To overcome the limitations of existing evaluations, we introduce GSM-Symbolic, an improved benchmark created from symbolic templates that allow for the generation of a diverse set of questions. GSM-Symbolic enables more controllable evaluations, providing key insights and more reliable metrics for measuring the reasoning capabilities of models. Our findings reveal that LLMs exhibit noticeable variance when responding to different instantiations of the same question. Specifically, the performance of all models declines when only the numerical values in the question are altered in the GSM-Symbolic benchmark
+4. Assessing the Reasoning Capabilities of LLMs in the context of Evidence-based Claim Verification - https://arxiv.org/abs/2402.10735v3 2025, 
+we examine the issue of reasoning from the perspective of claim verification. We propose a framework designed to break down any claim paired with evidence into atomic reasoning types that are necessary for verification. We use this framework to create Reasoning in Evidence-based Claim Verification (RECV), the first claim verification benchmark, incorporating real-world claims, to assess the deductive and abductive reasoning capabilities of LLMs. The benchmark comprises of three datasets, covering reasoning problems of increasing complexity. We evaluate three state-of-the-art proprietary LLMs under multiple prompt settings. Our results show that while LLMs can address deductive reasoning problems, they consistently fail in cases of abductive reasoning. 
 
+5. Are Emergent Abilities of Large Language Models a Mirage? https://arxiv.org/abs/2304.15004 NeurIPS conference, Stanford University, 2023
+ Recent work claims that large language models display emergent abilities: abilities not present in smaller-scale models that are present in larger-scale models. What makes emergent abilities intriguing is two-fold: their sharpness, transitioning seemingly instantaneously from not present to present, and their unpredictability, appearing at seemingly unforeseeable model scales. Here, we present an alternative explanation for emergent abilities: for a particular task and model family, when analyzing fixed model outputs, emergent abilities appear due to the researcher’s choice of metric rather than due to fundamental changes in models with scale. Specifically, nonlinear or discontinuous metrics produce seemingly emergent abilities, whereas linear or continuous metrics produce smooth, continuous, predictable changes in model performance.  
+
+
+
+6. Missing Premise exacerbates Overthinking: Are Reasoning Models losing Critical Thinking Skill? - https://arxiv.org/abs/2504.06514v1 2025
+   We find that the response length of reasoning LLMs, whether trained by reinforcement learning or supervised learning, drastically increases for ill-posed questions with missing premises (MiP), ending up with redundant and ineffective thinking. This newly introduced scenario exacerbates the general overthinking issue to a large extent, which we name as the MiP-Overthinking. Such failures are against the ``test-time scaling law'' but have been widely observed on multiple datasets we curated with MiP, indicating the harm of cheap overthinking and a lack of critical thinking. Surprisingly, LLMs not specifically trained for reasoning exhibit much better performance on the MiP scenario, producing much shorter responses that quickly identify ill-posed queries.
+
+7. Cause and Effect: Can Large Language Models Truly Understand Causality? https://arxiv.org/abs/2402.18139v1 2024
 
 Publications that tries the other approach: 
 1. Hierarchical Reasoning Model - https://arxiv.org/abs/2506.21734
-2. Hierarchical Reasoning: A Survey of Methods and Applications - https://arxiv.org/abs/2305.10403
+2. Latent Reasoning survey - 
 
 Authors that criticisize the LLM's
 1. Gary Marcus - https://garymarcus.substack.com/
