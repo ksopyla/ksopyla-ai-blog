@@ -6,7 +6,7 @@
 
 ## Referecne materials
 
-
+Pytorch implementation: 
 https://hungyuling.com/blog/fast-mixture-of-experts-in-pytorch/
 
 
@@ -16,22 +16,23 @@ From Sebastian Raschka: https://magazine.sebastianraschka.com/p/10-ai-research-p
 * https://magazine.sebastianraschka.com/i/139848187/mixture-of-experts
 
 
-list of publications: 
+Youtube video: 
+1. https://www.youtube.com/watch?v=7yR5ScbK1qk - history of MoE
 
-If you want to learn more about MoEs, here's a reading list recommended by Sophia Yang: 
+some of the publications and repositories: 
 
-The Sparsely-Gated Mixture-of-Experts Layer (2017)
+1. The Sparsely-Gated Mixture-of-Experts Layer (2017)
 https://arxiv.org/abs/1701.06538
 
-GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding (2020) 
+2. GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding (2020) 
 https://arxiv.org/abs/2006.16668
 
-MegaBlocks: Efficient Sparse Training with Mixture-of-Experts (2022) 
+3. MegaBlocks: Efficient Sparse Training with Mixture-of-Experts (2022) 
 https://arxiv.org/abs/2211.15841
 
 
-Mixture-of-Experts Meets Instruction Tuning (2023)
+4. Mixture-of-Experts Meets Instruction Tuning (2023)
 https://arxiv.org/abs/2305.14705
 
-Furthermore, if you are interested in trying MoE LLMs, also check out the OpenMoE repository, which implemented and shared MoE LLMs earlier this year.
+5. Furthermore, if you are interested in trying MoE LLMs, also check out the OpenMoE repository, which implemented and shared MoE LLMs earlier this year.
 https://github.com/XueFuzhao/OpenMoE
