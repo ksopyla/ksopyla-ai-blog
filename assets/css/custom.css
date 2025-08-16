@@ -1,0 +1,20 @@
+/*
+*
+* CUSTOM CSS
+*
+*/
+
+/* Widen the article header and content.
+   Using a more specific selector to override theme defaults. */
+article .max-w-prose,
+article .prose {
+    max-width: 100%;
+}
+
+/* Widen the table of contents on larger screens */
+@media (min-width: 1024px) {
+    .lg\:sticky {
+        /* width: 24rem; */
+        min-width: 20rem; /* Adjust as needed */
+    }
+}
