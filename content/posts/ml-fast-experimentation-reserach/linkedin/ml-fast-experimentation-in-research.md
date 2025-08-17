@@ -8,9 +8,9 @@ I've observed three innate qualities:
 
 2.  **Rigor to Test and Harvest Truth:** They have the discipline to design clean experiments, evaluate them at scale, and then dig deep into the results to separate signal from noise. It's a relentless pursuit of genuine understanding.
 
-3.  **Vision to Connect the Dots:** They see patterns others miss, connecting ideas from seemingly unrelated fields to create something entirely new. It's a kind of creative superpower that fuels true innovation.
+3.  **Vision to Connect the Dots:** They see patterns others miss, connecting ideas from seemingly unrelated fields, papers or research to incorporate them into their own work. It's a kind of creative superpower.
 
-These are human traits, not technical skills on a resume. While tools are temporary and can be picked up on the job, this fundamental way of thinking is what drives real breakthroughs.
+These are human traits, not technical skills on a resume. While tools are temporary and can be picked up on the job, this fundamentally different way of thinking is difficult to acquire, some have them, others do not.
 
 What do you think? Are we over-indexing on specific technical skills and undervaluing these deeper, more innate qualities?
 
