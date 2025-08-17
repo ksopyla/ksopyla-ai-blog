@@ -1,5 +1,5 @@
 ---
-title: "Beyond the Tools: The Core Qualities of a Great AI/ML Scientist"
+title: "The Core Qualities of a Great AI/ML Scientist- Beyond the Tools"
 date: 2025-08-17
 draft: false
 description: "Why the most valuable skills in AI aren't about frameworks or libraries, but about a fundamental way of thinking."
