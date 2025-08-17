@@ -32,35 +32,58 @@ Before we can analyze the boundaries of the reasoning capabilities of the LLMs, 
 
 Rather than getting lost in semantics, this post will take a more empirical approach. Instead of trying to define what reasoning *is*, we will test what today's models *can't do*. By examining the specific points where their performance breaks down. We can gain a much clearer, evidence-based understanding of their true capabilities and limitations.
 
-## Cracks in the Facade: Evidence of Brittle Reasoning
+## Cracks in the Facade: Mapping the Boundaries of Reasoning
 
-The following sections will explore some of the methodical studies of the LLMs reasoning capabilities, we will focus on limitations and failures of the LLMs.
-Section below is a summary of a papers: 
+It's important to state that LLMs are powerful tools that are changing how we work. The goal here is not to dismiss their capabilities, but to understand them with scientific rigor. The research I've followed helps define their current limitations—or, perhaps more constructively, their operational boundaries.
+
+To ground our discussion, here are some of the key studies that inform this analysis:
 
 1. [The Illusion of Thinking: Understanding the Strengths and Limitations of Reasoning Models via the Lens of Problem Complexity](https://arxiv.org/abs/2506.06941) - Apple, 2025
 2. [Premise Order Matters in Reasoning with Large Language Models](https://arxiv.org/pdf/2402.08939) - DeepMind, 2024   
 3. [GSM-Symbolic: Understanding the Limitations of Mathematical Reasoning in Large Language Models](https://arxiv.org/abs/2506.06941) - Google, 2025
-4. Are Emergent Abilities of Large Language Models a Mirage? NeurIPS 2023
+4. [Are Emergent Abilities of Large Language Models a Mirage?](https://arxiv.org/abs/2304.15004) - Stanford University, NeurIPS 2023
+5. [Missing Premise exacerbates Overthinking: Are Reasoning Models losing Critical Thinking Skill?](https://arxiv.org/abs/2504.06514v1) - 2025
+6. [Cause and Effect: Can Large Language Models Truly Understand Causality?](https://arxiv.org/abs/2402.18139v1) - 2024
+
+These papers reveal several recurring themes. Instead of tackling each one individually, let's synthesize their findings into a few key areas where the facade of intelligence begins to fade.
+
+### 1. Brittle Logic and Faulty Generalization
+
+A common thread running through much of the research is that LLMs often rely on surface-level patterns and statistical correlations rather than abstract logical rules. They to not have a deep understanding of the world and the concepts they discuss.
+
+Their "reasoning" is brittle—it works well when a problem's structure resembles the training data, but shatters when the format is slightly changed, even if the underlying logic remains the same.
+
+A stark example comes from the "Premise Order Matters" study, which found that simply reordering the premises in a logical problem could cause a model's performance to plummet by over 30%. A system that truly understood the logical connections would not be affected by the presentation order. Similarly, the GSM-Symbolic benchmark showed that changing only the numerical values in a grade-school math problem (from GSM8K dataset) was enough to significantly degrade accuracy. The models had learned the pattern of the problem, not the mathematical principles.
 
 
-### The Complexity Cliff
+
+todo: Im not sure about this one, this is to strong statement, the paper clearly states that this can happen when finetuning the model but not when using Chain of Thought or other reasoning techniques.
+
+This failure to generalize is also captured by the "Reversal Curse"—the bizarre finding that a model trained on "Valentina Tereshkova was the first woman in space" cannot reliably answer "Who was the first woman in space?".
+
+
+// todo: is the illusion of thinking a good example of the brittle logic and faulty generalization? They provide the alogrithm in the prompt, but this was not enough to make the model to reason about the algorithm. so it is an evidence that the model is not able to think algorythmically.
+
+The system learns a one-way statistical association, failing to grasp the simple, symmetric nature of the fact itself. 
+
+These examples point to a fundamental limitation: the models are learning to be sophisticated parrots of their training data, not flexible, principled reasoners.
+
+### 2. Overthinking problem, when to stop thinking?
+
+This section would give some examples of the overthinking problem, when the model is not able to stop thinking and generate the correct answer.
+When to problem is ill posed the model should clearly state that it is not able to solve the problem, 
+
+Mention the examples of abduction reasoning, the model is not able to reason about the cause and effect, it is not able to distinguish correlation from causation.
+ 
+Missing premise  paper results and causality paper results.
 
 
 
-### The Order of Operations
+### 3. The Measurement Mirage: Are We Seeing True Emergence?
 
-
-
-### The Curse of Reversal
-
-
-
-### The Paradox of Overthinking
-
-
+(This section would be dedicated to the "Emergent Abilities" paper, questioning whether we are measuring real leaps in intelligence or just artifacts of our evaluation metrics.)
 
 ## Synthesizing the Evidence: What Are We Witnessing?
-
 
 
 ## Conclusion: Beyond the Facade—A Call for a New Direction
