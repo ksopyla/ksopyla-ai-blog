@@ -1,6 +1,6 @@
 ---
 title: "🧠 The useful but limited Facade of Intelligence, are we far from AGI?"
-date: 2025-08-01
+date: 2025-08-20
 draft: true
 description: "An exploration of the current state of AI and its implications for AGI. What is the useful Facade of Intelligence?"
 icon: "brain"
@@ -49,24 +49,11 @@ These papers reveal several recurring themes. Instead of tackling each one indiv
 
 ### 1. Brittle Logic and Faulty Generalization
 
-A common thread running through much of the research is that LLMs often rely on surface-level patterns and statistical correlations rather than abstract logical rules. They to not have a deep understanding of the world and the concepts they discuss.
+A common thread in the research is that LLMs rely on surface-level patterns and statistical correlations rather than abstract logical rules. They often lack a deep, grounded understanding of the concepts they discuss. Their "reasoning" is therefore brittle—it works well when a problem's structure mirrors the training data but can shatter when the format is changed, even if the underlying logic remains identical.
 
-Their "reasoning" is brittle—it works well when a problem's structure resembles the training data, but shatters when the format is slightly changed, even if the underlying logic remains the same.
+A stark example comes from the "Premise Order Matters" study. It found that simply reordering the premises in a logical problem could cause a model's performance to plummet by over 30%. This extends to distractibility, where introducing irrelevant facts can similarly derail the model's reasoning, a phenomenon explored in studies on the "Distraction Effect"[^distraction_effect_1] and cognitive biases[^distraction_effect_2]. A system that truly grasped the logical connections would be indifferent to presentation order and easily ignore such distractions. Similarly, the GSM-Symbolic benchmark showed that changing only the numerical values in a grade-school math problem was enough to significantly degrade accuracy. The models had memorized the pattern of the problem, not the mathematical principles.
 
-A stark example comes from the "Premise Order Matters" study, which found that simply reordering the premises in a logical problem could cause a model's performance to plummet by over 30%. A system that truly understood the logical connections would not be affected by the presentation order. Similarly, the GSM-Symbolic benchmark showed that changing only the numerical values in a grade-school math problem (from GSM8K dataset) was enough to significantly degrade accuracy. The models had learned the pattern of the problem, not the mathematical principles.
-
-
-
-todo: Im not sure about this one, this is to strong statement, the paper clearly states that this can happen when finetuning the model but not when using Chain of Thought or other reasoning techniques.
-
-This failure to generalize is also captured by the "Reversal Curse"—the bizarre finding that a model trained on "Valentina Tereshkova was the first woman in space" cannot reliably answer "Who was the first woman in space?".
-
-
-// todo: is the illusion of thinking a good example of the brittle logic and faulty generalization? They provide the alogrithm in the prompt, but this was not enough to make the model to reason about the algorithm. so it is an evidence that the model is not able to think algorythmically.
-
-The system learns a one-way statistical association, failing to grasp the simple, symmetric nature of the fact itself. 
-
-These examples point to a fundamental limitation: the models are learning to be sophisticated parrots of their training data, not flexible, principled reasoners.
+This failure to generalize is also captured by the "Reversal Curse."[^reversal_curse] This is the finding that a model fine-tuned on "A is B" often fails to generalize to "B is A" when queried later. It highlights a failure to learn a simple, symmetric property of facts from training data, instead learning a one-way statistical association. These examples point to a fundamental limitation: the models are learning to be sophisticated mimics, not flexible, principled reasoners.
 
 ### 2. Overthinking problem, when to stop thinking?
 
@@ -87,6 +74,15 @@ Missing premise  paper results and causality paper results.
 
 
 ## Conclusion: Beyond the Facade—A Call for a New Direction
+
+
+
+
+## References
+
+[^reversal_curse]: The Reversal Curse: LLMs trained on "A is B" fail to learn "B is A", https://arxiv.org/abs/2309.12288 (2023), L.Berglund, M.Tong, M. Kaufmann, M. Balesini, A. C. Stickland, T. Korbak, O. Evans
+[^distraction_effect_1]: Large language models can bbe easily distracted by irreleveang contex, https://arxiv.org/abs/2302.00093 (2023), F. Shi, X. Chen, K. Misra, N. Scales, D. Dohan, E. H. Chi, N Scharli, D. Zhou
+[^distraction_effect_2]: Capturing Failures of Large Language Models via Human Cognitive Biases, https://arxiv.org/abs/2202.12299 (2022), E. Jones, J. Steinhardt
 
 
 ==== Old content - do not delete I could use some parts of it later ====
@@ -112,7 +108,8 @@ I don't want to dwell on them here because there are so many. So please forgive 
 
 lets focus on the problem of understanding,reasoning and intelligence and test the limits of current LLM's.
 
-## 
+
+
 
 
 
