@@ -6,6 +6,7 @@ description: "Why the most valuable skills in AI aren't about frameworks or libr
 slug: "core-qualities-ai-scientist"
 tags: ["ai", "machine learning", "mlops", "research", "philosophy", "deep thinking"]
 featured_image: "/ml-fast-experimentation-reserach/notes/shreya_rajpal_ai_ml_resercher_tweet.jpeg"
+showReadingTime: true
 ---
 
 A recent [tweet by Shreya Rajpal sparked a great conversation about what to look for in AI/ML talent](https://x.com/ShreyaR/status/1956496920664485956), emphasizing systems for evaluation and experimentation. It’s a crucial point, especially for building teams that can iterate quickly. But it also got me thinking about the deeper qualities that I’ve seen in the truly exceptional AI/ML scientists I’ve had the privilege to work with.
