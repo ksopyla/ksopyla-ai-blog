@@ -60,7 +60,7 @@ Some lously couple thoughts:
 2. humans has world model, it activates automatically while thinking we are not aware of how many aspects we take into consideration while formulating opinions or making decisions. The ones that are the most obvious and spectacular failures are those tat violate the basic principles of physics (time and space), social order, sociate, economics etc, eg. for example you cant be at the same place at the same time so halucinated places and dates, or the famous halucinated list of presidents of USA,
 3. the non-monotonic or fuzzy reasoning failing  - abductive reasoning - Abductive reasoning involves inferring the most likely explanation for an observation, a crucial form of real-world intelligence that often involves generating hypotheses and selecting the most plausible one given incomplete information
 
-4. We could paraphrase the we beleived in "autocomplete is all you need" - LLMs are autocompletiation tools, this works suprisingly well for some well defined problems, coding is a good example, summarising, translating or transforming one modality into another (STT, TTS), generating things where precission is not needed, event we do not now exactly what we want and we accept some dose of randomness, image generation is good example, 
+4. We could paraphrase the we beleived in "autocomplete is all you need" - LLMs are autocompletiation tools, this works suprisingly well for some well defined problems, coding is a good example, summarising, translating or transforming one modality into another (STT, TTS), generating things where precission is not needed, even we do not now exactly what we want, and we accept some dose of randomness, image generation is good example, 
 
 Large Language Models operate by predicting the next token based on learned patterns and fundamentally lack a deep, inherent understanding of the environment and the concepts they discuss. This foundational limitation makes complex reasoning tasks that demand true comprehension challenging. 
 
@@ -69,8 +69,7 @@ Large Language Models operate by predicting the next token based on learned patt
 
 6. This phenomenon highlights an "overthinking paradox": models specifically trained for "reasoning" (often via Chain-of-Thought or Reinforcement Learning ) develop a pathological tendency to generate verbose, often incorrect, reasoning paths, even when they internally detect an issue. This indicates that current "reasoning" training methods might inadvertently optimize for the length and fluency of reasoning traces (i.e., simulated reasoning) rather than correctness, efficiency, critical self-assessment, or the ability to abstain.
 
-7. Analysis of the recent publications
-8. I do not wnat to go deep what might be needed for intellignece, but from my observation and intuition we need still to work on
+7. I do not wnat to go deep what might be needed for intellignece, but from my observation and intuition we need still to work on
    1. state of the mind, short term memory - to be able to act on "recent" interactions/events
    2. beating - the mind should be in a "living" state, absorbing and analysing the input from different perspective
    3. critic module or kind of router - to catehorize what kind of problem it deals, simple, hard or ill pose
