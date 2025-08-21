@@ -4,6 +4,13 @@
 # The useful Facade of Intelligence
 
 
+
+Updates 2025-08-21: https://www.linkedin.com/feed/update/urn:li:activity:7364233507746861057/
+
+OptimalThinkingBench: Evaluating Over and Underthinking in LLMs
+https://www.arxiv.org/abs/2508.13141
+
+
 Materials: 
 
 1. gemini deep reserach report: https://gemini.google.com/app/ae80bfcf6925a6f7

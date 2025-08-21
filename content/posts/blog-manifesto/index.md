@@ -24,7 +24,7 @@ But despite these valuable lessons, I have always wanted to have my space, to ex
 
 I believe deeply in **education and knowledge**. Especially, open and accessible education is one of my core values. I've experienced firsthand how education can transform lives—it allowed me to build a good life for my family, coming from humble beginnings. Thats why you see the tutorials and my understanding of AI concepts on this blog.
 
-Secondly, I find fulfillment in creativity and experimentation. Diving deep into concepts to understand how things truly work brings me joy. I enjoy exploring the nuances of ML algorithms and architectures, from the theoretical underpinnings to practical applications. 
+Secondly, I find fulfilment in creativity and experimentation. Diving deep into concepts to understand how things truly work brings me joy. I enjoy exploring the nuances of ML algorithms and architectures, from the theoretical underpinnings to practical applications. 
 
 Through my career, I have found experimentation an extremely useful tool for understanding and developing new ideas. Any simple experiment or reproduction of existing work teaches me something valuable. I will try to share my experiments and findings here, hoping they will be useful to others as well.
 
