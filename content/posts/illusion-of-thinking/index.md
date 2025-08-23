@@ -1,5 +1,5 @@
 ---
-title: "🧠 Beyond the Facade: Probing the True Limits of LLM Reasoning"
+title: "🧠 Intelligence Facade: Probing the True Limits of LLM Reasoning [research review]"
 date: 2025-08-20
 draft: false
 description: "An exploration of the current boundaries of LLM's and its implications for becoming AGI. What are the limits of LLM's reasoning abilities?"
@@ -12,7 +12,7 @@ showReadingTime: true
 
 {{< lead >}}
 
-While today's LLMs are powerful and useful, they still present a "facade of intelligence". I was curious about a growing body of methodical research that explores the boundaries of LLM's and reveals limitations in their reasoning abilities. This evidence suggests they are not simply "scaled-down" versions of AGI and achieving true machine intelligence will require moving beyond simply scaling the current paradigm.
+While today's LLMs are powerful and useful, they still present a "facade of intelligence". I was curious about a growing body of methodical research that explores the boundaries of LLM's and reveals limitations in their reasoning abilities. The evidence suggests they are not simply "scaled-down" versions of AGI and achieving true machine intelligence will require moving beyond simply scaling the current paradigm. Reserch review at 20.08.2025.
 {{< /lead >}}
 
 ## Introduction: The Dazzling—and Deceptive—Facade
