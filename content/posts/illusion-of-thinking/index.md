@@ -1,5 +1,5 @@
 ---
-title: "🧠 Intelligence Facade: Probing the True Limits of LLM Reasoning [research review]"
+title: "🧠 Intelligence Facade: Probing the True Limits of LLM Reasoning"
 date: 2025-08-20
 draft: false
 description: "An exploration of the current boundaries of LLM's and its implications for becoming AGI. What are the limits of LLM's reasoning abilities?"
@@ -80,6 +80,16 @@ This is a realistic, not pessimistic, diagnosis. Acknowledging the boundaries of
 *   **Controlled, Creative Hallucination:** While we fight against factual hallucinations, we must also recognize the need for a kind of "conceptual hallucination"—the ability to find novel analogies and forge new relationships between ideas, which could lead to new insights and discoveries.
 
 The goal isn't to diminish what LLMs have achieved, but to be honest about the journey ahead. By focusing our efforts on these deeper challenges, we can move beyond the facade and begin building the next generation of truly intelligent machines.
+
+
+## Further Reading
+
+* [LLMs are not like you and me—and never will be](https://garymarcus.substack.com/p/llms-are-not-like-you-and-meand-never) - Gary Marcus, Aug 2025
+*  [A knockout blow for LLMs?](https://garymarcus.substack.com/p/a-knockout-blow-for-llms) - Gary Marcus, Jun 2025
+*  [Yann LeCun on a vision to make AI systems learn and reason like animals and humans](https://ai.meta.com/blog/yann-lecun-advances-in-ai-research/) - Yann LeCun, Feb 2022
+
+
+
 
 
 ## References   
