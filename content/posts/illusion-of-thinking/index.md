@@ -44,6 +44,9 @@ A common thread in the research is that LLMs rely on surface-level patterns and 
 
 A stark example comes from the DeepMind "Premise Order Matters"[^premise_order_matters] study. It found that simply reordering the premises in a logical problem could cause a model's performance to plummet by over 30%, while similar test performed on humans present only slight degradation, where premises order was disturbed drastically (randomly).
 
+{{< figure src="notes/deepmind-2025-premise-order-matters.png" alt="Visualization from DeepMind's 'Premise Order Matters' study, showing how reordering premises drastically impacts LLM performance." caption="Figure: DeepMind's 'Premise Order Matters'—LLM accuracy drops sharply when the order of logical premises is randomized, unlike human performance." >}}
+
+
 This extends to distractibility, where introducing irrelevant facts can similarly derail the model's reasoning, a phenomenon explored in studies on the "Distraction Effect"[^distraction_effect_1] and cognitive biases[^distraction_effect_2]. A system that truly grasped the logical connections would be indifferent to presentation order and easily ignore such distractions. Similarly, the GSM-Symbolic benchmark showed that changing only the numerical values in a grade-school math problem was enough to significantly degrade accuracy. The models had memorized the pattern of the problem, not the mathematical principles.
 
 This failure to generalize is also captured by the "Reversal Curse."[^reversal_curse] This is the finding that a model fine-tuned on "A is B" often fails to generalize to "B is A" when queried later. It highlights a failure to learn a simple, symmetric property of facts from training data, instead learning a one-way statistical association. These examples point to a fundamental limitation: the models are learning to be sophisticated mimics, not flexible, principled reasoners.
@@ -52,11 +55,20 @@ This failure to generalize is also captured by the "Reversal Curse."[^reversal_c
 
 Beyond brittle logic, a deeper limitation emerges: a lack of critical thinking. This manifests in two opposite but related failures: models often "overthink" simple or unsolvable problems, yet "underthink" when faced with true complexity or the need for deep causal analysis.
 
-The Apple paper, "The Illusion of Thinking,"[^illusion_of_thinking] provides a clear example of both extremes. Researchers tested models on classic puzzles like the Tower of Hanoi, where complexity can be precisely scaled. For simple problems, reasoning-heavy models often overthought their way, performing no better than non-thinking counterpart models while being far more computationally expensive. But when faced with a truly complex puzzle, the models didn't just fail; they hit a "complexity cliff" and effectively gave up, revealing a fundamental inability to manage and persist through complex, structured tasks.
+The Apple paper, "The Illusion of Thinking,"[^illusion_of_thinking] provides a clear example of both extremes. Researchers tested models on classic puzzles like the Tower of Hanoi, Checker Jumping, River Crossing etc, where complexity can be precisely scaled by the number of steps. For simple problems, reasoning-heavy models often overthought their way, performing no better than non-thinking counterpart models while being far more computationally expensive. But when faced with a truly complex puzzle, the models didn't just fail; they hit a "complexity cliff" and effectively gave up, revealing a fundamental inability to manage and persist through complex, structured tasks.
+
+{{< figure src="notes/apple-2025-illusion-of-thinking-thinking-collapse.png" alt="Visualization from Apple's 'The Illusion of Thinking' study, showing how reasoning-heavy models often overthink their way, performing no better than non-thinking counterpart models while being far more computationally expensive." caption="Figure: Apple's 'The Illusion of Thinking'—LLM overthinking on simple problems, performing no better than non-thinking counterpart models while being far more computationally expensive." >}}
+
 
 This tendency to overthink is mirrored in the "Missing Premise exacerbates Overthinking"[^missing_premise] study. When given an ill-posed question with information missing, reasoning models don't recognize the problem's unsolvability. Instead, they generate long, redundant, and ultimately useless chains of thought. A truly critical system would identify the missing premise and state that an answer is not possible.
 
+This is further explored in the research that introduces OptimalThinkingBench[^optimal_thinking_bench], a benchmark that jointly evaluates overthinking on simple queries and underthinking on complex ones. The study reveals that even the most advanced models struggle to find an optimal balance, with "thinking" models wasting compute on simple tasks and "non-thinking" models failing on difficult ones. This highlights a fundamental trade-off in current architectures and the need for models that can dynamically adapt their reasoning depth to the problem at hand.
+
+{{< figure src="notes/meta-2025-overthinking-bench.png" alt="Visualization from Meta's 'Optimal Thinking Bench' study, showing how reasoning-heavy models often overthink their way, performing no better than non-thinking counterpart models while being far more computationally expensive." caption="Figure: Meta's 'Optimal Thinking Bench'—LLM overthinking on simple problems, performing no better than non-thinking counterpart models while being far more computationally expensive." >}}
+
 Finally, this lack of critical thinking extends to understanding causality. As the "Cause and Effect"[^cause_effect] paper explores, models can identify statistical correlations but struggle to grasp true causal relationships. This is a form of abductive reasoning—inferring the most likely cause—where models consistently fall short. They can tell you *what* is associated with something, but not necessarily *why*.
+
+
 
 ### 3. The Measurement Mirage: Are We Seeing True Emergence?
 
@@ -103,6 +115,7 @@ The goal isn't to diminish what LLMs have achieved, but to be honest about the j
 [^premise_order_matters]: Premise Order Matters in Reasoning with Large Language Models, https://arxiv.org/pdf/2402.08939 (2024), DeepMind
 [^gsm_symbolic]: GSM-Symbolic: Understanding the Limitations of Mathematical Reasoning in Large Language Models, https://arxiv.org/abs/2506.06941 (2025), Google
 [^emergent_abilities]: Are Emergent Abilities of Large Language Models a Mirage?, https://arxiv.org/abs/2304.15004 (2023), Stanford University, NeurIPS 2023
+[^optimal_thinking_bench]: OptimalThinkingBench: Evaluating Over and Underthinking in LLMs, https://www.arxiv.org/abs/2508.13141 (2025), Meta
 
 
 
