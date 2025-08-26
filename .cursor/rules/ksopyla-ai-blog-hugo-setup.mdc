@@ -1,11 +1,15 @@
 ---
-description: ksopyla ai blog with gohugo setup and Congo theme, defines the configuration of a theme
+description: ksopyla ai blog with go hugo setup and Congo theme, defines the configuration of a theme, content writing guidelines, content focus areas and author ksopyla profile
 alwaysApply: false
 ---
 # Copilot Rules for Krzysztof Sopyla AI Blog
 
 ## Project Context
 This is a Hugo static site blog focused on AI, machine learning, and programming topics using the Congo theme.
+Blog address: https://ai.ksopyla.com/
+Blog source code: https://github.com/ksopyla/ksopyla-ai-blog
+Blog deployment: https://github.com/ksopyla/ksopyla-ai-blog/actions workflow .github\workflows\hugo-deployment.yml
+
 
 
 
@@ -14,7 +18,7 @@ This is a Hugo static site blog focused on AI, machine learning, and programming
 - Use Hugo shortcodes like `{{< lead >}}` for special formatting
 - Code blocks should specify the language for proper syntax highlighting
 - Images should be placed in the same directory as the post's `index.md`
-- Post directories should follow the naming convention: `YYMMDD-descriptive-slug/`
+- Post directories should follow the naming convention: `descriptive-slug/`
 - Each post folder should contain an `index.md` file with the post content and has its own notes folder with additional topic realted context and materials 
 
 ## Content Focus Areas
@@ -38,7 +42,18 @@ This is a Hugo static site blog focused on AI, machine learning, and programming
 - Use Hugo's built-in syntax highlighting
 - Add alt text for images
 - Use Hugo shortcodes for enhanced functionality
-
+- propely format the frontmatter of the post, use the following format:
+```
+title: "🧠 Intelligence Facade: Probing the True Limits of LLM Reasoning"
+date: 2025-08-20
+draft: false
+description: "An exploration of the current boundaries of LLM's and its implications for becoming AGI. What are the limits of LLM's reasoning abilities?"
+icon: "brain"
+tags: ["AI", "Papers Review", "LLM"]
+categories: ["AI Research"]
+featureAlt: "An exploration of the current boundaries of LLM's and its implications for becoming AGI. What are the limits of LLM's reasoning abilities?"
+showReadingTime: true
+```
 
 ## Code Style Preferences
 - Python code examples should include proper imports and context
@@ -49,7 +64,7 @@ This is a Hugo static site blog focused on AI, machine learning, and programming
 
 ## File Structure and Conventions
 - Content files are in Markdown format in `content/` directory
-- Blog posts go in `content/posts/YYMMDD-post-slug/` format
+- Blog posts go in `content/posts/post-slug/` format
 - Configuration files are in TOML format in `config/_default/`
 - Static assets go in `assets/` and `static/` directories
 - The Congo theme is installed as a git submodule in `themes/congo/`
