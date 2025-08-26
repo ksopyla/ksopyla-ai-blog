@@ -1,0 +1,110 @@
+name: Submit to IndexNow via Sitemap
+
+on:
+  workflow_run:
+    workflows: ["Deploy Hugo site to Pages"]
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  submit-to-indexnow:
+    # Run this job only if the triggering workflow was successful
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Download artifact from build job'
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          # The artifact is downloaded from the workflow run that triggered this workflow
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: 'Checkout repo at the specific commit that triggered the deployment'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Get latest commit timestamp
+        id: commit
+        run: echo "timestamp=$(git log -1 --format=%ct)" >> $GITHUB_OUTPUT
+
+      - name: Submit new/updated URLs to IndexNow
+        env:
+          INDEXNOW_API_KEY: ${{ secrets.INDEXNOW_API_KEY }}
+          SITE_HOSTNAME: "ai.ksopyla.com"
+          LAST_COMMIT_TIMESTAMP: ${{ steps.commit.outputs.timestamp }}
+        run: |
+          # This Python script parses the sitemap, compares lastmod dates with the commit time,
+          # and writes the new/updated URLs to a file for submission.
+          python3 -c '
+          import sys, os
+          import xml.etree.ElementTree as ET
+          from datetime import datetime, timezone
+
+          sitemap_file = "sitemap.xml"
+          try:
+            last_commit_timestamp = int(os.environ["LAST_COMMIT_TIMESTAMP"])
+          except (KeyError, ValueError):
+            print("Could not get last commit timestamp. Exiting.")
+            sys.exit(0)
+
+          urls_to_submit = []
+          try:
+            namespaces = {"sitemap": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+            ET.register_namespace("", namespaces["sitemap"])
+            tree = ET.parse(sitemap_file)
+            root = tree.getroot()
+
+            for url_element in root.findall("sitemap:url", namespaces):
+              loc_element = url_element.find("sitemap:loc", namespaces)
+              lastmod_element = url_element.find("sitemap:lastmod", namespaces)
+
+              if loc_element is None or lastmod_element is None:
+                continue
+
+              loc = loc_element.text
+              lastmod_str = lastmod_element.text
+              lastmod_dt = datetime.fromisoformat(lastmod_str)
+              
+              if lastmod_dt.tzinfo is None:
+                lastmod_dt = lastmod_dt.replace(tzinfo=timezone.utc)
+              
+              lastmod_timestamp = int(lastmod_dt.timestamp())
+
+              if lastmod_timestamp >= last_commit_timestamp:
+                urls_to_submit.append(loc)
+          except ET.ParseError as e:
+            print(f"Error parsing sitemap.xml: {e}")
+            sys.exit(1)
+          except FileNotFoundError:
+            print("sitemap.xml not found.")
+            sys.exit(1)
+
+          if not urls_to_submit:
+            print("No new or updated URLs to submit based on commit time.")
+            sys.exit(0)
+
+          with open("urls.txt", "w") as f:
+            for url in urls_to_submit:
+              f.write(url + "\n")
+          '
+
+          if [ ! -f "urls.txt" ]; then
+            exit 0
+          fi
+
+          echo "Found new/updated URLs to submit:"
+          cat urls.txt
+
+          URL_LIST_JSON=$(cat urls.txt | jq -R . | jq -s .)
+          JSON_PAYLOAD=$(printf '{"host":"%s","key":"%s","urlList":%s}' "$SITE_HOSTNAME" "$INDEXNOW_API_KEY" "$URL_LIST_JSON")
+
+          echo "Submitting payload to IndexNow:"
+          echo "$JSON_PAYLOAD"
+          
+          curl --location --request POST "https://api.indexnow.org/indexnow" \
+          --header "Content-Type: application/json; charset=utf-8" \
+          --data-raw "$JSON_PAYLOAD"

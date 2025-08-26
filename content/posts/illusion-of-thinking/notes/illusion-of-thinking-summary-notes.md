@@ -9,6 +9,22 @@ Updates 2025-08-21: https://www.linkedin.com/feed/update/urn:li:activity:7364233
 
 OptimalThinkingBench: Evaluating Over and Underthinking in LLMs
 https://www.arxiv.org/abs/2508.13141
+Thinking LLMs solve complex tasks at the expense of increased compute and overthinking on simpler
+ arXiv:2508.13141v1  [cs.CL]  18 Aug 2025
+ problems, while non-thinking LLMs are faster and cheaper but underthink on harder reasoning
+ problems. This has led to the development of separate thinking and non-thinking LLM variants,
+ leaving the onus of selecting the optimal model for each query on the end user. In this work,
+ we introduce OptimalThinkingBench, a unified benchmark that jointly evaluates overthinking and
+ underthinking in LLMs and also encourages the development of optimally-thinking models that balance
+ performance and efficiency. Our benchmark comprises two sub-benchmarks: OverthinkingBench,
+ featuring simple queries in 72 domains, and UnderthinkingBench, containing 11 challenging reasoning
+ tasks. Using novel thinking-adjusted accuracy metrics, we perform extensive evaluation of 33 different
+ thinking and non-thinking models and show that no model is able to optimally think on our benchmark.
+ Thinking models often overthink for hundreds of tokens on the simplest user queries without improving
+ performance. In contrast, large non-thinking models “underthink”, often falling short of much smaller
+ thinking models. We further explore several methods to encourage optimal thinking, but find that
+ these approaches often improve on one sub-benchmark at the expense of the other, highlighting the
+ need for better unified and optimal models in the future.
 
 
 Materials: 
