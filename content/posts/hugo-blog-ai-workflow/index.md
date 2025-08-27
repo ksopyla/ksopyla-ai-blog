@@ -68,6 +68,7 @@ Beyond the core stack, I use a couple of other tools:
 
 *   **Umami:** For analytics, I chose [Umami](https://umami.is/) because it's a privacy-first tool that gives me the insights I need without collecting personal data from my visitors. Thats why my [privacy policy](/privacy-policy/) is so simple
 *   **Midjourney:** All the featured images on this blog are generated with Midjourney. I've developed a specific profile to create abstract images that maintain a consistent style across all posts.
+*   **Giscus:** For comments, I'm using [Giscus](https://giscus.app/), a system built on GitHub Discussions. It is easy to setup and was a natural fit for audience of this blog. 
 
 ## Final Thoughts and Observations
 
