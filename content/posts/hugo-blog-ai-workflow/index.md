@@ -1,7 +1,7 @@
 ---
 title: "My AI-Powered Tech Blogging Workflow: Hugo, Github pages, and Cursor.ai"
 date: 2025-08-27
-draft: true
+draft: false
 description: "A detailed guide to my personal blogging setup, from local development with Hugo and the Congo theme to automated deployment with GitHub Actions and AI-assisted content creation with Cursor."
 slug: "ai-powered-hugo-blogging-workflow"
 tags: ["Hugo", "AI", "Workflow", "Blogging", "GitHub", "Congo Theme", "Cursor"]
@@ -27,6 +27,9 @@ I considered several popular options before landing on my current stack:
 *   **Medium or Substack:** These platforms are simple, but they are "walled gardens." I wanted full ownership of my content and the using AI was not so straight forward, I could use seperate AI chats, but this was not I wanted.
 *   **MkDocs with Material Theme:** I have a soft spot for [MkDocs Material](https://squidfunk.github.io/mkdocs-material/), having used it to build the [PyTorch course website](https://pytorchcourse.com/). It's excellent and markdown-native, which is great for AI workflows. However, the performance was a sticking point. Build times of 6-9 minutes felt too slow and hindered a rapid, iterative writing process.
 *   **Hugo:** When I came across [Hugo](https://gohugo.io/), what caught my attention was its reputation for speed. I decided to give it a try, and the performance was a significant factor in my decision. Local builds are nearly instantaneous, providing a real-time feedback loop that has transformed my writing process. Paired with the clean, modern, and highly configurable [Congo theme](https://jpanther.github.io/congo/docs/), I felt I had found a setup that met my requirements.
+  
+
+{{< figure src="notes/hugo-fast-rebuilding.png" alt="Hugo fast page rebuild after edit" caption="Hugo fast page rebuild after edit" >}}
 
 ## A Closer Look at My Hugo and Congo Setup
 
@@ -51,7 +54,7 @@ The entire blog is hosted on GitHub Pages, and the deployment process is fully a
 
 ## My AI-Assisted Content Workflow
 
-My primary development environment is Cursor.ai, which puts a powerful AI assistant right inside my editor. This is the cornerstone of my content creation process.
+My primary development environment is Cursor, which puts a powerful AI assistant right inside my editor. This is the cornerstone of my content creation process.
 
 We all know that AI isn't a magic bullet. It can't read your mind or generate perfect, nuanced content from a simple prompt. It's a tool that needs guidance, context, and high-quality source material to shine. My workflow is designed around this principle.
 
