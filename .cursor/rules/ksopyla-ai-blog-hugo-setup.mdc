@@ -13,14 +13,6 @@ Blog deployment: https://github.com/ksopyla/ksopyla-ai-blog/actions workflow .gi
 
 
 
-## Content Writing Guidelines
-- All blog posts must have proper YAML frontmatter with title, date, draft status, tags, and categories
-- Use Hugo shortcodes like `{{< lead >}}` for special formatting
-- Code blocks should specify the language for proper syntax highlighting
-- Images should be placed in the same directory as the post's `index.md`
-- Post directories should follow the naming convention: `descriptive-slug/`
-- Each post folder should contain an `index.md` file with the post content and has its own notes folder with additional topic realted context and materials 
-
 ## Content Focus Areas
 - Artificial Intelligence and Machine Learning
 - PyTorch and deep learning frameworks
@@ -35,6 +27,21 @@ Blog deployment: https://github.com/ksopyla/ksopyla-ai-blog/actions workflow .gi
 - Values: "I believe in open education and sharing knowledge this could help the dig out of poverty and feel creative fulfillment. I'm against the current AI hype and the way how LLM works, train and are used, this is waste of earth resources and human potential. We need to work on efficient and effective AI systems that are available to everyone, easy to retrain. This can only happen through open science, open datasets, and open source software. I don't like the Critically assessing and diminishing the work of others, even the smallest experiment teaches us something, and let's be open to new ideas. I enjoy revisiting old concepts and architectures and rediscovering them."
 - My previous endeavors: Polish AI Blog ksopyla.com, Discor Polish AI community and meetups "Polish ML Community".
 
+## Writing Style
+- do not sound too confident, do not overuse superlatives and egsadurations I want to sound modest
+- write acording to my profile and values
+- be as much honest and transparent as possible
+- write from my perspective, my experience, my thoughts, my feelings
+- be precise, use technical terms and concepts, posts audience is technically minded, research oriented
+- 
+
+## Content Writing Guidelines
+- All blog posts must have proper YAML frontmatter with title, date, draft status, tags, and categories
+- Use Hugo shortcodes like `{{< lead >}}` for special formatting
+- Code blocks should specify the language for proper syntax highlighting
+- Images should be placed in the same directory as the post's `index.md`
+- Post directories should follow the naming convention: `descriptive-slug/`
+- Each post folder should contain an `index.md` file with the post content and has its own notes folder with additional topic realted context and materials 
 
 ## Markdown Conventions
 - Use semantic heading hierarchy (H1 for post title, H2 for main sections)
