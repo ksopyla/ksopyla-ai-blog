@@ -1,6 +1,7 @@
 ---
 title: "🧠 Intelligence Facade: Probing the True Limits of LLM Reasoning"
 date: 2025-08-20
+lastmod: 2025-08-27T21:00:00Z
 draft: false
 description: "An exploration of the current boundaries of LLM's and its implications for becoming AGI. What are the limits of LLM's reasoning abilities?"
 icon: "brain"
@@ -99,9 +100,6 @@ The goal isn't to diminish what LLMs have achieved, but to be honest about the j
 * [LLMs are not like you and me—and never will be](https://garymarcus.substack.com/p/llms-are-not-like-you-and-meand-never) - Gary Marcus, Aug 2025
 *  [A knockout blow for LLMs?](https://garymarcus.substack.com/p/a-knockout-blow-for-llms) - Gary Marcus, Jun 2025
 *  [Yann LeCun on a vision to make AI systems learn and reason like animals and humans](https://ai.meta.com/blog/yann-lecun-advances-in-ai-research/) - Yann LeCun, Feb 2022
-
-
-
 
 
 ## References   

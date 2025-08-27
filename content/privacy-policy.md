@@ -1,6 +1,7 @@
 ---
 title: "Privacy Policy"
 date: 2025-07-30T14:00:00Z
+lastmod: 2024-08-27
 draft: false
 ---
 
@@ -30,6 +31,14 @@ The following information is collected and stored:
 - **Country:** The country you are visiting from.
 
 This data is used solely for the purpose of understanding how our website is used and how we can improve it. We do not share this information with any third parties.
+
+## Comments
+
+This website uses Giscus to enable comments on blog posts. Giscus is an open-source project that is built on GitHub Discussions.
+
+To leave a comment, you will be required to authorize the Giscus app and sign in with your GitHub account. When you post a comment, your GitHub profile information (including your username and avatar) and the content of your comment will be publicly visible on this website and in the associated public [GitHub repository](https://github.com/ksopyla/ksopyla-ai-blog-comments).
+
+By using the comment system, you acknowledge that this information will be made public. All comments are subject to the terms and privacy policies of GitHub. You can review GitHub's privacy statement [here](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement).
 
 ## Contact
 
