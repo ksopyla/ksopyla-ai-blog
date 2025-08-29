@@ -1,7 +1,7 @@
 ---
-title: "🧠 Intelligence Facade: Probing the True Limits of LLM Reasoning"
+title: "🧠 2025 LLM Limitations: Research Review on the Real Boundaries of AI Reasoning"
 date: 2025-08-20
-lastmod: 2025-08-27T21:00:00Z
+lastmod: 2025-08-29T21:00:00Z
 draft: false
 description: "An exploration of the current boundaries of LLM's and its implications for becoming AGI. What are the limits of LLM's reasoning abilities?"
 icon: "brain"
