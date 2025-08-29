@@ -1,7 +1,7 @@
 ---
-title: "🛠️ My AI-Powered Tech Blogging Workflow: Hugo, Github pages, and Cursor.ai"
+title: "🛠️ 2025 modern setup for AI-powered blogging with Hugo, Github pages, and Cursor.ai"
 date: 2025-08-27
-lastmod: 2025-08-27T21:00:00Z
+lastmod: 2025-08-28T21:00:00Z
 draft: false
 description: "A detailed guide to my personal blogging setup, from local development with Hugo and the Congo theme to automated deployment with GitHub Actions and AI-assisted content creation with Cursor."
 slug: "ai-powered-hugo-blogging-workflow"
