@@ -9,8 +9,8 @@ copyright = "© Copyright 2025 Krzysztof Sopyla's AI Blog Rights Reserved 🚀"
 [params]
 dateFormat = "2 January 2006"
 
-# mainSections = ["section1", "section2"]
-# description = "My awesome website"
+mainSections = ["posts"]
+description = "AI Research & Development blog by Krzysztof Sopyła. Exploring how reasoning works, concept-based architectures, and creating AI products."
 
 [params.author]
 name = "Krzysztof Sopyła"

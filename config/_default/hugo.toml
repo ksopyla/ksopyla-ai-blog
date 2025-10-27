@@ -22,7 +22,15 @@ summaryLength = 0
     enableDNT = true
   [privacy.youTube]
     privacyEnhanced = true
+  [privacy.googleAnalytics]
+    respectDNT = true
 
 [services]
   [services.x]
     disableInlineCSS = true
+
+  # [services.googleAnalytics]
+  #   id = 'G-xxx'
+
+
+

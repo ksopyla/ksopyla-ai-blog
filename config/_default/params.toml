@@ -11,7 +11,7 @@ autoSwitchAppearance = true
 
 defaultThemeColor = "#FFFFFF"
 
-enableSearch = false
+enableSearch = true
 enableCodeCopy = true
 enableImageLazyLoading = true
 enableImageWebp = true
@@ -72,14 +72,28 @@ showTermCount = true
 [fathomAnalytics]
 # site = "ABC12345"
 
+[seo]
+  # The main 'og:image' for the site, used on the home page and as a fallback
+  # image for other pages.
+  images = ["img/ksopyla_profile_v2.jpeg"]
+
+  # Information about the author of the content.
+  [seo.author]
+    name = "Krzysztof Sopyła"
+
+  # Basic Twitter card metadata.
+  [seo.twitter]
+    # Your Twitter username, starting with @
+    username = "@ksopyla"
+
 [plausibleAnalytics]
 # domain = "blog.yoursite.com"
 # event = ""
 # script = ""
 
-#[umamiAnalytics]
-#  site = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-#  region = "eu"  # can be either "eu" or "us"
+[umamiAnalytics]
+ site = "f8361cd6-9676-44b3-aadd-3f2338bb8875"
+ region = "eu"  # can be either "eu" or "us"
 
 [verification]
 # google = ""
