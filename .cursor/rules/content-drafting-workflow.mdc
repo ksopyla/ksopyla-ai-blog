@@ -157,7 +157,8 @@ Once the user approves proceeding (explicitly or by giving feedback), refine the
 5. **Strengthen cross-disciplinary connections** — If a connection to another field was noted in the lean draft, develop it into a proper paragraph with a source or reference.
 6. **Add counter-arguments** — Ensure the piece acknowledges limitations. This is non-negotiable for credibility.
 7. **Write the takeaway** — One clear, actionable insight. Not "AI is complicated" but "If your concepts collapse, change the training objective before adding regularization."
-8. **Suggest visuals** — Identify where an image would help: WandB chart, architecture diagram, MidJourney concept art. Include the MidJourney prompt if needed.
+8. **Add a References section** — For any post that cites papers, models, or benchmarks, close with a `## References` numbered list. Format: `Author, F. et al. (Mon YYYY). [**Full paper title**](url). Institution. arXiv:XXXX`. Always fetch the exact title from arxiv or the project page — do not abbreviate. See `notes/writing-preferences.md` for the full format spec and an example.
+9. **Suggest visuals** — Identify where an image would help: WandB chart, architecture diagram, MidJourney concept art. Include the MidJourney prompt if needed.
 
 ### Refinement Loop
 

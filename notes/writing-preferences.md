@@ -32,6 +32,36 @@ This file tracks what Krzysztof likes and dislikes in AI-generated drafts, so fu
 
 ---
 
+## References & Citations
+
+### Format
+
+Every blog post that cites papers, models, or benchmarks must end with a proper `## References` section — a numbered list, one entry per line, in this format:
+
+```
+Author, F. et al. (Mon YYYY). [**Full paper title as on arxiv/venue**](url). Institution/venue. arXiv:XXXX
+```
+
+Example:
+```markdown
+## References
+
+1. Défossez, A. et al. (Sep 2024). [**Moshi: a speech-text foundation model for real-time dialogue**](https://arxiv.org/abs/2410.00037). Kyutai. arXiv:2410.00037
+2. Roy, R. et al. (Jan 2026). [**PersonaPlex: Voice and Role Control for Full Duplex Conversational Speech Models**](https://research.nvidia.com/.../personaplex_preprint.pdf). NVIDIA ADLR.
+```
+
+### Rules
+
+- **Link text = full paper title, in bold** — never just the model name or a shortened label
+- **Always fetch the real title** from arxiv.org or the project page — do not guess or abbreviate
+- **Include**: first author + "et al.", date (month + year), linked bold title, institution, arXiv ID (if applicable)
+- **Add a separate italic caveat line** below the list when numbers are self-reported or unverified (e.g. `*PersonaPlex benchmark numbers are NVIDIA-reported. Independent reproduction has not been published at time of writing.*`)
+- **Do NOT use inline dot-separated links** like `Papers: Moshi · PersonaPlex · ...` — these wrap badly on mobile and look unprofessional
+- The `## References` heading automatically appears in the Congo ToC sidebar, which is a useful navigation anchor for longer posts
+- arXiv IDs are worth keeping even when the title is linked — technical readers copy-paste them into tools like Semantic Scholar and Zotero
+
+---
+
 ## Article-Specific Feedback Log
 
 ### Voice-to-Voice Models 2026 Review (2026-02-27)

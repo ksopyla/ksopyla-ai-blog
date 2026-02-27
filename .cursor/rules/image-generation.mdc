@@ -64,65 +64,114 @@ Services like midapi.ai or imagineapi.dev wrap MidJourney's interface. They requ
 
 If the user provides a MidJourney third-party API key, it can be called via WebFetch or Shell with curl. But Z-Image via HuggingFace MCP is the recommended automated path.
 
-## Prompt Templates by Content Theme
+## Blog Visual Style
 
-### Architecture / Technical Concept
-```
-abstract visualization of [CONCEPT], neural network layers as translucent geometric planes,
-data flowing as luminous particle streams between concept nodes and sequence tokens,
-dark navy background, cyan and warm orange accent colors,
-technical illustration style, clean lines, no text, no watermark
-```
+### Established Aesthetic (from published posts)
 
-### Research / Experiment
-```
-scientist's laboratory workspace from above, glowing holographic data visualizations
-floating over a desk, training curves and scatter plots as light projections,
-warm ambient lighting, photorealistic with slight sci-fi aesthetic, no text
-```
+The blog's feature images use **vibrant, full-spectrum abstract digital art** — NOT minimal dark backgrounds.
 
-### Failure / Learning / Debugging
-```
-fractured crystal structure reforming into a new elegant pattern,
-pieces floating and reconnecting, symbolizing learning from failure,
-dark teal and gold color palette, abstract, dramatic lighting, no text
-```
+Key characteristics from real published images:
+- **Full color spectrum**: Rich saturation across warm oranges, yellows, teals, blues, greens, purples — all in one image
+- **Abstract and conceptual**: The image captures the *feeling* or *metaphor* of the topic, not a literal diagram
+- **Textured and layered**: Digital painting, glitch art, flowing organic forms, or collage-like compositions
+- **High visual density**: Complex, detailed, immersive — not sparse or minimal
+- **No text, no watermarks, no labels**
+- **16:9 aspect ratio** for blog headers (1280×720 or higher)
 
-### Efficiency / Small vs Large
+Real examples:
+- `feature_paht_to_ai_products.png` — glitch art silhouette of a person walking, rainbow horizontal streaks, cinematic
+- `feature_blogging_platform.png` — abstract digital painting, warm orange/yellow flowing into teal/green, circular organic forms like circuit boards melting into water
+- `feature_abstract_face_thinking.png` — pixelated/tiled abstract face in multi-color digital collage
+
+### Prompt Templates by Content Theme
+
+#### Architecture / Technical Concept
 ```
-tiny precise clockwork mechanism next to a massive industrial machine,
-both producing identical glowing output, metaphor for efficient AI,
-technical cross-section illustration style, warm lighting, no text
+abstract digital painting visualizing [CONCEPT], flowing data streams as luminous rivers
+of light interweaving between neural architecture layers, warm oranges and teals merging
+into deep blues, organic and geometric forms combined, rich color spectrum, textured digital art,
+high detail, no text, no watermark
 ```
 
-### Paper Review / Reading
+#### Research / Experiment
 ```
-open research paper with key diagrams lifting off the page as 3D holographic projections,
-mathematical formulas floating in soft light, scholarly atmosphere,
-warm library lighting, watercolor and ink style, no text
-```
-
-### Contrarian / Against the Grain
-```
-single small light source illuminating a different path through a dark forest
-while a crowd follows a wide bright highway, metaphor for alternative approaches,
-atmospheric, moody lighting, painterly style, no text
+abstract visualization of a scientific breakthrough, swirling data flows in warm amber
+and electric teal transforming into structured crystalline patterns, rich saturated colors,
+layered digital painting with painterly texture, full color spectrum, no text, no watermark
 ```
 
-### Prof. Torchenstein (PyTorch course character)
+#### Failure / Learning / Debugging
 ```
-eccentric scientist character with wild hair and lab coat,
-surrounded by PyTorch tensor visualizations and neural network diagrams,
-comic book illustration style, dynamic pose, colorful, no text
+abstract digital art of a system in transformation, fragmented geometric shapes in deep blues
+and purples reforming into vibrant orange and yellow organic forms, glitch aesthetic,
+rich color contrast, complex layered composition, no text, no watermark
+```
+
+#### Voice / Audio / Conversation
+```
+abstract visualization of two voices in dialogue, sound waves as flowing rivers of color
+weaving together and apart, warm orange streams and cool teal streams intertwining,
+fluid organic forms, rich saturated palette across the full spectrum, digital painting style,
+no text, no watermark
+```
+
+#### Efficiency / Small vs Large
+```
+abstract painting of a tiny precise geometric structure glowing brightly against vast
+churning organic forms, warm golden light from the small against cool vast blue-greens,
+painterly digital art, rich color spectrum, high detail texture, no text, no watermark
+```
+
+#### Paper Review / Reading / Ideas
+```
+abstract digital art of ideas emerging from structure, geometric pages dissolving into
+flowing colorful streams of thought, warm yellows and oranges blending into cool blues
+and teals, layered complex composition, painterly texture, no text, no watermark
+```
+
+#### Contrarian / Against the Grain
+```
+abstract digital painting, single vivid warm-orange path cutting through a world of
+cool blue-green conformity, glitch art elements, rich saturated color contrast,
+cinematic wide composition, complex layered texture, no text, no watermark
+```
+
+#### Prof. Torchenstein (PyTorch course character)
+```
+eccentric scientist character with wild hair and lab coat, surrounded by PyTorch tensor
+visualizations and neural network diagrams, comic book illustration style, dynamic pose,
+colorful full spectrum, no text
 ```
 
 ## Image Placement in Content
 
-### Blog Posts
-- Save images in the post's own folder: `content/posts/post-slug/feature.jpg` or `content/posts/post-slug/images/`
-- Set as featured image in frontmatter: `featureImage: "feature.jpg"`
-- Inline images: `![Alt text describing the image](image-name.png)`
-- Always include descriptive alt text for accessibility and SEO
+### Blog Posts — File Naming and Storage
+
+Feature images live in the **same directory as the post's `index.md`**.
+
+**Naming convention**: `feature_[descriptive-slug].png`
+- The filename starts with `feature_` followed by a short descriptive phrase using underscores
+- Always `.png` format
+- Never just `feature.png` — the descriptive suffix is required
+
+**Real examples from published posts:**
+```
+content/posts/illusion-of-thinking/feature_paht_to_ai_products.png
+content/posts/hugo-blog-ai-workflow/feature_blogging_platform.png
+content/posts/blog-manifesto/feature_abstract_face_thinking.png
+```
+
+**Frontmatter reference** (filename only, no path):
+```yaml
+featureImage: "feature_descriptive_slug.png"
+featureAlt: "Alt text describing what the image shows for accessibility and SEO"
+```
+
+**For drafts**: Store in `content/drafts/draft-slug/feature_descriptive_slug.png` during development. When promoting the draft to a post, the image moves with the folder.
+
+**Inline images**: `![Alt text describing the image](image-name.png)` — stored in the same post folder.
+
+Always include descriptive alt text for accessibility and SEO.
 
 ### LinkedIn Posts
 - Note the image path or MidJourney prompt in the post's `post.md` file
