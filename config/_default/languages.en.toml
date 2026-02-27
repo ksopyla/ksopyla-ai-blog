@@ -22,11 +22,11 @@ bio = "AI R&D lead on a path to rediscover the concept architectures. GPU poor."
 links = [
   #{ email = "mailto:hello@your_domain.com" },
   { github = "https://github.com/ksopyla" },
-  { google-scholar = "https://scholar.google.com/citations?user=oG6F91IAAAAJ" },
+  #{ google-scholar = "https://scholar.google.com/citations?user=oG6F91IAAAAJ" },
   { linkedin = "https://linkedin.com/in/krzysztofsopyla" },
   { x-twitter = "https://twitter.com/ksopyla" },
   # { medium = "https://medium.com/@ksopyla" },
-  { orcid = "https://orcid.org/0000-0001-5937-5649" },
+  # { orcid = "https://orcid.org/0000-0001-5937-5649" },
   #   { link = "https://link-to-some-website.com/" },
   #   { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
   #   { apple = "https://www.apple.com" },
