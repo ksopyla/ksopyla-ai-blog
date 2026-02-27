@@ -44,6 +44,15 @@ See `.cursor/rules/content-drafting-workflow.mdc` for how ideas move through the
 - **Key material**: via_decoder_eval_20260222.md
 - **Notes**: Consistent +0.65-2.3% improvement over CLS-query baseline. Shows the classification head was a secondary bottleneck. Good technical content but narrower audience than the collapse story.
 
+### Voice-to-Voice Models 2026 — LinkedIn & X derivatives
+- **Source**: Published blog post `content/posts/voice-to-voice-models-2026-review/` (published 2026-02-27)
+- **Platforms**: LinkedIn (Research Insight) + X thread
+- **Status**: Ready to write
+- **Angles**:
+  - Angle 1 (Research Insight): PersonaPlex's hybrid prompting breakthrough — text prompt + voice prompt disentanglement
+  - Angle 2 (Contrarian Take): "The cascade pipeline isn't dead — for structured agents, it still wins"
+  - Angle 3 (Lessons from the Lab): Why knowledge grounding kills duplex latency, and what to do about it
+
 ### MrCogito Research Log #1: February 2026
 - **Source**: MrCogito CHANGELOG.md (Feb 2026 entries)
 - **Scores**: Relevance=5, Timeliness=5, Uniqueness=4, Value=3, Effort=5 → **Weighted: 4.20**
@@ -66,22 +75,12 @@ See `.cursor/rules/content-drafting-workflow.mdc` for how ideas move through the
 - **Scores**: Relevance=4, Timeliness=3, Uniqueness=2, Value=3, Effort=5 → **Weighted: 3.20**
 - **Platforms**: LinkedIn ("What I'm Reading" format)
 - **Status**: Ready to write
-- **Key material**: `content/drafts/latent-reasoning-2025-sota/notes/`, `content/drafts/mixture-of-experts-explanation/notes/`, `content/drafts/voice-to-voice-models-2025-review/notes/`
+- **Key material**: `content/drafts/latent-reasoning-2025-sota/notes/`, `content/drafts/mixture-of-experts-explanation/notes/`, `content/posts/voice-to-voice-models-2026-review/notes/`
 - **Notes**: Low-effort first edition. Curate 3-5 papers from existing notes with 2-sentence commentary. Launches the series.
 
 ---
 
 ## Parked (Score < 3.0)
-
-### Voice-to-Voice Models 2026: Full-Duplex Finally Gets Persona Control
-- **Source**: Blog draft `content/drafts/voice-to-voice-models-2026-review/`
-- **Scores**: Relevance=5, Timeliness=5, Uniqueness=4, Value=5, Effort=3 → **Weighted: 4.40**
-- **Platforms**: Blog post + LinkedIn (Research Insight) + X thread
-- **Status**: Refined draft complete — ready for review, then Phase 5 (platform adaptation)
-- **Key material**: `voice2voice-2026-notes.md` (refreshed 2026-02-27)
-- **Key models**: Moshi (Kyutai), NVIDIA PersonaPlex (Jan 2026), Qwen2.5-Omni, MiniCPM-o 2.6
-- **Proposed main point**: Full-duplex voice AI reached the product-useful threshold in early 2026 — not because latency improved (that happened with Moshi in 2024), but because you can now control WHO the AI is while it's talking. PersonaPlex's hybrid persona prompting is the missing piece for conversational tutoring.
-- **Notes**: Directly relevant to Pearson conversational tutoring work. PersonaPlex (Jan 2026, NVIDIA) builds on Moshi architecture and adds voice + role prompting — a concrete inflection point to anchor the article. Strong unique angle: viewed through the lens of someone building real tutoring products, not just reviewing models.
 
 ### Mixture of Experts: An Intuitive Explanation
 - **Source**: Blog draft `content/drafts/mixture-of-experts-explanation/`

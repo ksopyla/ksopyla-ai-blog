@@ -1,7 +1,7 @@
 ---
 title: "Speech-to-Speech Models in 2026: Three Architectural Bets and What Each Actually Gives You"
 date: 2026-02-27
-draft: true
+draft: false
 description: "An honest technical comparison of Moshi, NVIDIA PersonaPlex, Qwen2.5-Omni, and OpenAI gpt-realtime. Which architecture wins on naturalness, script adherence, and knowledge grounding — and what no one tells you about deploying them."
 icon: "microphone"
 tags: ["Speech AI", "Voice Models", "Full Duplex", "Architecture", "Production AI"]
