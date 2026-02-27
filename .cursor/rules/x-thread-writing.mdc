@@ -1,0 +1,221 @@
+---
+description: X (Twitter) thread format, hook patterns, visual placement, and publishing guidelines
+alwaysApply: false
+---
+# X Thread Writing Guide
+
+## General Format
+
+- **Thread length**: 5-12 tweets. Under 5 feels incomplete, over 12 loses readers.
+- **Character limit**: 280 characters per tweet. Every character counts.
+- **Numbering**: Use "N/" format at the start of each tweet (e.g., "1/", "2/", "3/")
+- **Visuals**: Include an image on tweet 1 (hook), tweet 3-4 (data/architecture), and optionally the last tweet (summary visual)
+- **Links**: Put the blog post link in the LAST tweet only, never in tweet 1 (kills engagement)
+
+## Thread Structure
+
+```
+Tweet 1: HOOK — The surprising conclusion or finding (+ image)
+Tweet 2: CONTEXT — What you were working on, brief background
+Tweet 3-4: DATA/METHOD — The specific details, numbers, visuals (+ chart/diagram)
+Tweet 5-8: INSIGHTS — What this means, why it matters, connections
+Tweet 9-N-1: IMPLICATIONS — Broader takeaway, what to try next
+Tweet N: SUMMARY + CTA — Key point restated + link to blog/thread bookmark prompt
+```
+
+## Hook Patterns (Tweet 1)
+
+Tweet 1 determines whether anyone reads the rest. Use one of these patterns:
+
+**Lead with the result**:
+"My 128 concept tokens collapsed to 5 effective dimensions during training.
+
+Here's why that happened and what it taught me about representation learning ↓"
+
+**Lead with the problem**:
+"The biggest bottleneck in my custom encoder isn't the model architecture.
+
+It's what the training objective lets the model get away with. A thread ↓"
+
+**Lead with a number**:
+"1000x memory reduction.
+
+That's the theoretical advantage of concept-based attention over standard self-attention. Here's how it works in practice ↓"
+
+**Lead with a question**:
+"What if transformer encoders don't need self-attention between all sequence tokens?
+
+I've been testing this idea for 6 months. Results ↓"
+
+## Tweet Writing Rules
+
+- One idea per tweet. If you need two ideas, use two tweets.
+- Start each tweet with the key word or phrase (people skim)
+- Use → or • for mini-lists within a tweet
+- Numbers and metrics catch the eye — use them
+- Don't thread-reply to yourself with "Great thread!" or meta-commentary
+- Tag people/organizations ONLY when directly citing their work
+
+## Thread Templates
+
+### Template 1: Experiment Thread
+Best for: Sharing MrCogito experiment results.
+
+```
+1/ [Result/finding — surprising, specific, with number if possible]
+
+Here's what I found training [model type] and what it means for [broader topic] ↓
+
+2/ Context: I'm building [brief MrCogito description — 1 sentence].
+
+[What specific experiment you ran and why]
+
+3/ The setup:
+→ [Model config]
+→ [Training data]
+→ [Key hyperparameters]
+→ [What you measured]
+
+[attach: architecture diagram or training config screenshot]
+
+4/ Results:
+→ [Metric 1]: [value] ([comparison/context])
+→ [Metric 2]: [value]
+→ [Metric 3]: [value]
+
+[attach: WandB chart or results table]
+
+5/ The surprising part: [unexpected finding]
+
+[2-3 sentences explaining why this was unexpected]
+
+6/ What I think is happening: [your analysis]
+
+[Root cause or hypothesis — reference your diagnosis docs]
+
+7/ The broader lesson: [generalizable insight]
+
+This applies beyond my project — if you're training [general category], watch out for [this pattern].
+
+8/ What's next: [your plan]
+
+I'm trying [next experiment] to test [hypothesis].
+
+Full project (open source): github.com/ksopyla/MrCogito
+Blog post with details: [link if exists]
+```
+
+### Template 2: Paper Thread
+Best for: Sharing a paper you've read with commentary.
+
+```
+1/ I read "[Paper Title]" and it changes how I think about [topic].
+
+Key insight in this thread ↓
+
+2/ The problem they address: [1-2 sentences]
+
+3/ Their approach: [2-3 sentences on methodology]
+
+[attach: key figure from paper if available]
+
+4/ Key results:
+→ [Result 1]
+→ [Result 2]
+→ [Comparison to prior work]
+
+5/ What makes this interesting: [your unique perspective]
+
+This connects to [your work/MrCogito] because [reason].
+
+6/ What I'd push back on: [honest critique]
+
+[1-2 sentences on limitations or disagreements]
+
+7/ Bottom line: [your verdict]
+
+Paper: [link]
+```
+
+### Template 3: Tool/Model Demo Thread
+Best for: Showing something you tested.
+
+```
+1/ I tested [tool/model name] and here's what happened.
+
+[1-sentence verdict] ↓
+
+[attach: screenshot or result]
+
+2/ What it is: [brief explanation]
+
+3/ What I tried: [your experiment]
+
+[attach: code screenshot or notebook output]
+
+4/ Results:
+→ [What worked]
+→ [What didn't]
+→ [Performance/quality]
+
+5/ Verdict: [honest assessment]
+
+Worth using for [use case]. Not great for [other use case].
+
+Link: [tool/model link]
+```
+
+## Tone on X
+
+- More informal than LinkedIn, but still technical
+- Contractions are fine ("didn't", "it's", "here's")
+- Humor is okay when natural — don't force it
+- Same anti-hype rules apply: no "mind-blowing", "game-changing"
+- Prof. Torchenstein character can make occasional cameos for personality
+
+## Visual Placement
+
+| Tweet Position | Visual Type | Purpose |
+|----------------|-------------|---------|
+| Tweet 1 | MidJourney concept art or result screenshot | Stop the scroll |
+| Tweet 3-4 | Chart, diagram, code screenshot | Show evidence |
+| Last tweet | Summary graphic or project logo | Memorable close |
+
+## MidJourney Visual Prompts for X
+
+- **Thread header**: "abstract visualization of [topic], single focal point, bold colors on dark background, square composition, technical art --ar 1:1 --v 6"
+- **Result visual**: "data visualization metaphor, [concept], glowing nodes and connections, minimal, dark background --ar 16:9 --v 6"
+
+Recommended aspect ratios: 1:1 (square, best for feed) or 16:9 (landscape)
+
+## Output Format
+
+Save X threads as:
+```
+content/x-threads/YYYY-MM-topic-slug/thread.md
+```
+
+File structure:
+```markdown
+---
+title: "Thread title for internal reference"
+date: YYYY-MM-DD
+platform: x-twitter
+status: draft | ready | published
+content_score: X.X
+related_blog_post: ""
+---
+
+**1/**
+[Tweet 1 text]
+[IMAGE: description of image to attach]
+
+**2/**
+[Tweet 2 text]
+
+**3/**
+[Tweet 3 text]
+[IMAGE: description of image to attach]
+
+...
+```

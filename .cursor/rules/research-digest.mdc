@@ -1,0 +1,173 @@
+---
+description: How to research, review, and write about AI papers and tools, including HuggingFace MCP integration
+alwaysApply: false
+---
+# Research Digest — Paper & Tool Review Guide
+
+## Purpose
+
+This rule defines how to discover, research, and write about AI papers and tools. It covers the full flow from discovery to published review, using HuggingFace MCP tools for automated paper/model discovery.
+
+## Paper Reviews
+
+### Discovery Process
+
+1. **From MrCogito context**: Check what topics are active in MrCogito research tracks. Use these as search seeds:
+   - Track A (Concept Quality): "concept encoder", "representation collapse", "VICReg regularization", "TSDAE denoising"
+   - Track B (Data Scaling): "pretraining data scaling", "OpenWebText", "efficient pretraining"
+   - Track C (Architecture): "recursive transformer", "test-time compute", "perceiver architecture"
+   - Track D (Long Context): "long context encoder", "efficient attention"
+   - Track E (Audio): "speech encoder", "audio tokenization", "concept-based speech"
+
+2. **HuggingFace paper_search**: Use the MCP tool with queries like:
+   ```
+   paper_search(query="masked diffusion language model", results_limit=5)
+   paper_search(query="concept learning cross attention encoder", results_limit=5)
+   paper_search(query="representation collapse regularization", results_limit=5)
+   ```
+
+3. **From reading notes**: Check `content/drafts/*/notes/` folders for papers already bookmarked but not yet reviewed.
+
+4. **From web research**: Search for recent arXiv papers, blog posts, and conference proceedings on relevant topics.
+
+### Paper Review Structure (Blog Post)
+
+For a full blog post paper review, use this structure:
+
+```markdown
+## The Problem
+[What problem does this paper address? Why does it matter?
+Frame it in terms the target persona cares about.]
+
+## Their Approach
+[High-level explanation of the methodology.
+Include a key diagram if the paper has one.
+Explain the core innovation in plain language.]
+
+## Key Results
+[Specific metrics and comparisons to prior work.
+Use a table if comparing multiple baselines.
+Highlight what's genuinely impressive and what's incremental.]
+
+## My Take
+[Your honest opinion. This is the most valuable section.
+Where do you agree? Where do you push back?
+What questions remain unanswered?
+Connect to your own experience — "In my ConceptEncoder experiments, I've seen similar/different behavior because..."]
+
+## How This Relates to MrCogito
+[Specific connections to your research.
+Could you apply their technique?
+Does it validate or challenge your approach?
+What experiment would you run next based on this paper?]
+
+## References
+[Link to the paper, any associated code/models on HuggingFace]
+```
+
+### Paper Spotlight Structure (LinkedIn)
+
+For a LinkedIn Paper Spotlight post, distill to the essentials:
+- One paper, one key insight, your opinion
+- Follow the Paper Spotlight template in `linkedin-post-writing.mdc`
+- Always link to the full blog review if one exists
+
+## Tool & Model Reviews
+
+### Discovery Process
+
+1. **HuggingFace hub_repo_search**: Find trending and new models:
+   ```
+   hub_repo_search(repo_types=["model"], sort="trendingScore", limit=10)
+   hub_repo_search(query="concept encoder", repo_types=["model"], limit=10)
+   hub_repo_search(query="efficient text encoder", repo_types=["model", "dataset"], limit=10)
+   ```
+
+2. **HuggingFace space_search**: Find interactive demos:
+   ```
+   space_search(query="text encoder comparison", limit=5)
+   space_search(query="model evaluation benchmark", limit=5)
+   ```
+
+3. **Web research**: Search for tools mentioned in AI communities (OpenClaw, new training frameworks, evaluation tools).
+
+### Tool Review Structure (Blog Post)
+
+```markdown
+## What It Is
+[Brief description of the tool/model. Who made it? What problem does it solve?]
+
+## Why I Tested It
+[Connection to your work. What motivated the evaluation?]
+
+## Setup & Experiment
+[How you set it up. Any gotchas or setup issues.
+Include key code snippets that show actual usage.
+Note: for reproducible experiments, use the ksopyla-ai-lab repo.]
+
+## Results
+[What you found. Specific metrics, performance numbers, quality assessment.
+Compare to alternatives if relevant.
+Include screenshots, outputs, charts.]
+
+## Verdict
+[Honest assessment. When would you use this? When wouldn't you?
+Who would benefit most?
+Star rating is optional but can be useful: ★★★★☆]
+
+## Links
+[Tool/model link, your experiment notebook link, related resources]
+```
+
+### Tool Review for LinkedIn
+
+Condense to the Research Insight template:
+- Hook: "I tested [tool] — here's the honest verdict"
+- Key finding in 3-5 lines with specific results
+- Recommendation: who should/shouldn't use it
+- Link to full review
+
+## Cross-Referencing with MrCogito
+
+Every paper review and tool review should include a "relevance to my work" angle. This is what differentiates your reviews from generic summaries. Ask:
+
+1. Does this paper's technique apply to ConceptEncoder training?
+2. Could this tool accelerate my experiment workflow?
+3. Does this model serve as a baseline or comparison point?
+4. Does this challenge or validate my architectural choices?
+5. Would I change my roadmap based on this?
+
+## "What I'm Reading" Series (LinkedIn)
+
+Monthly curated post with 3-5 papers. Low-effort, high-value format:
+
+```
+What I'm reading this month — [Month Year]
+
+Five papers that caught my attention:
+
+📄 "[Paper 1 Title]"
+→ [1-2 sentence summary + why it matters to you]
+
+📄 "[Paper 2 Title]"
+→ [1-2 sentence summary + your take]
+
+📄 "[Paper 3 Title]"
+→ [1-2 sentence summary]
+
+[... up to 5 papers]
+
+Links in comments ↓
+
+Which of these are you most curious about?
+
+#AIResearch #PaperReview #WhatImReading
+```
+
+## Output Locations
+
+- Blog paper reviews: `content/posts/paper-review-short-name/index.md` or `content/drafts/...` if not ready
+- Blog tool reviews: `content/posts/tool-review-short-name/index.md`
+- LinkedIn paper spotlights: `content/linkedin/YYYY-MM-paper-name/post.md`
+- LinkedIn "What I'm Reading": `content/linkedin/YYYY-MM-reading-list/post.md`
+- X paper threads: `content/x-threads/YYYY-MM-paper-name/thread.md`

@@ -19,6 +19,8 @@ Blog deployment: https://github.com/ksopyla/ksopyla-ai-blog/actions workflow .gi
 - Research paper reviews and analysis
 - Programming tutorials and best practices
 - AI benchmark analysis (like GLUE)
+- MrCogito ConceptEncoder experiment reports and architecture deep dives
+- Tool and model reviews (HuggingFace models, AI tools)
 
 ## Author Profile
 - Name: Krzysztof Sopyła
@@ -26,6 +28,10 @@ Blog deployment: https://github.com/ksopyla/ksopyla-ai-blog/actions workflow .gi
 - Headline: "AI Researcher curious how reasoning works"
 - Values: "I believe in open education and sharing knowledge this could help the dig out of poverty and feel creative fulfillment. I'm against the current AI hype and the way how LLM works, train and are used, this is waste of earth resources and human potential. We need to work on efficient and effective AI systems that are available to everyone, easy to retrain. This can only happen through open science, open datasets, and open source software. I don't like the Critically assessing and diminishing the work of others, even the smallest experiment teaches us something, and let's be open to new ideas. I enjoy revisiting old concepts and architectures and rediscovering them."
 - My previous endeavors: Polish AI Blog ksopyla.com, Discor Polish AI community and meetups "Polish ML Community".
+- Linkedin: https://linkedin.com/in/krzysztofsopyla
+- twitter: https://twitter.com/ksopyla
+- google scholar: https://scholar.google.com/citations?user=oG6F91IAAAAJ
+- 
 
 ## Writing Style
 - do not sound too confident, do not overuse superlatives and egsadurations I want to sound modest
@@ -72,9 +78,27 @@ showReadingTime: true
 ## File Structure and Conventions
 - Content files are in Markdown format in `content/` directory
 - Blog posts go in `content/posts/post-slug/` format
+- Blog drafts go in `content/drafts/draft-slug/` format
+- LinkedIn post drafts go in `content/linkedin/YYYY-MM-topic-slug/post.md`
+- X thread drafts go in `content/x-threads/YYYY-MM-topic-slug/thread.md`
 - Configuration files are in TOML format in `config/_default/`
 - Static assets go in `assets/` and `static/` directories
 - The Congo theme is installed as a git submodule in `themes/congo/`
+
+### `notes/` Folder (Workspace Root)
+The `notes/` folder is the meta layer of the blog — everything that helps organize, plan, and improve content but isn't content itself:
+- `notes/content-backlog.md` — Scored content ideas queue, raw idea sketches, series tracker, inspiration blogs
+- `notes/blog_improvements.md` — Blog infrastructure TODOs (theme, features, fixes)
+- Add any other planning or meta files here (e.g., publishing calendar, analytics notes)
+
+### Draft Promotion Workflow
+When a draft in `content/drafts/` is polished and ready to publish:
+1. Move the entire folder from `content/drafts/post-slug/` to `content/posts/post-slug/`
+2. In the frontmatter, set `draft: false` and update the `date:` to the publish date
+3. Verify the post renders correctly with `hugo server --buildDrafts`
+4. Commit and push to `main` — GitHub Actions will auto-deploy
+5. Update `notes/content-backlog.md` to mark the item as Published
+6. Create derivative LinkedIn/X content if not already done
 
 ## Hugo Configuration
 - Site uses Congo theme with profile layout for homepage
@@ -85,18 +109,106 @@ showReadingTime: true
 - Congo theme is used for layout and styling, documentation is available at [Congo documentation](https://jpanther.github.io/congo/docs/) use it for reference
 
 ## Development Workflow
-- Use `hugo server --buildDrafts --buildFuture` for local development
+
+### Running Hugo Locally (Windows)
+```powershell
+# Start dev server with drafts visible
+hugo server --buildDrafts --buildFuture
+
+# Start with a specific port
+hugo server --buildDrafts --buildFuture --port 1313
+
+# Build the site without serving (check for errors)
+hugo --gc --minify
+```
+The dev server runs at `http://localhost:1313/` with live reload.
+
+### Running Hugo in Cloud/CI Environment (Linux)
+```bash
+# Install Hugo Extended (required for Congo theme SCSS)
+wget -O /tmp/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.148.0/hugo_extended_0.148.0_linux-amd64.deb
+sudo dpkg -i /tmp/hugo.deb
+
+# Clone with submodules (required for Congo theme)
+git clone --recurse-submodules https://github.com/ksopyla/ksopyla-ai-blog.git
+
+# Build
+hugo --gc --minify
+```
+Hugo Extended is required because the Congo theme uses SCSS.
+
+### Previewing Content Before Publishing
+After creating or editing content, always preview locally:
+1. Run `hugo server --buildDrafts --buildFuture`
+2. Check the post renders correctly (images load, code blocks highlight, shortcodes work)
+3. Check mobile responsiveness (Congo is responsive but custom content might break)
+4. Verify the frontmatter produces correct metadata (title, description, tags show up)
+
+### Key Development Notes
 - The `public/` directory is gitignored (build output)
-- Git submodules are used for theme management
+- Git submodules are used for theme management — always clone with `--recurse-submodules`
 - SSH configuration uses separate keys for personal vs enterprise GitHub accounts
 
-
-
 ## Git and Deployment
-- Commit only source files, not generated content
-- Use conventional commit messages
-- The site deploys to https://ai.ksopyla.com/
 
+### Commit and Push Workflow
+1. Stage content changes: `git add content/ notes/`
+2. Use conventional commit messages:
+   - `content: add post on concept collapse` (new post)
+   - `content: update draft for MoE explanation` (draft changes)
+   - `content(linkedin): add research log #1` (social content)
+   - `chore: update theme submodule` (infrastructure)
+   - `fix: correct image paths in pytorch course post` (fixes)
+3. Push to `main`: `git push origin main`
+
+### GitHub Actions Auto-Deployment
+On push to `main`, the workflow `.github/workflows/hugo-deployment.yml` automatically:
+1. Installs Hugo Extended 0.148.0 + Dart Sass 1.89.2
+2. Checks out repo with submodules
+3. Builds with `hugo --gc --minify`
+4. Deploys to GitHub Pages at https://ai.ksopyla.com/
+
+The deploy takes ~1-2 minutes. Monitor at: https://github.com/ksopyla/ksopyla-ai-blog/actions
+
+### Manual Deployment Trigger
+If needed, trigger a deploy without pushing code:
+- Go to https://github.com/ksopyla/ksopyla-ai-blog/actions
+- Select "Deploy Hugo site to Pages" workflow
+- Click "Run workflow"
+
+### What Gets Deployed
+Only content in `content/posts/` with `draft: false` is deployed. Content in `content/drafts/`, `content/linkedin/`, `content/x-threads/`, and `notes/` is NOT deployed (drafts are excluded by Hugo, social content folders have `_build: render: never`).
+
+
+## Multi-Platform Publishing System
+
+This blog is part of a multi-platform content system. Related cursor rules:
+
+- `content-drafting-workflow.mdc` — **Start here.** End-to-end workflow: intake → research → lean draft → score → refine → adapt
+- `persona-and-audience.mdc` — Target persona, author positioning, voice principles
+- `content-scoring.mdc` — Impact assessment framework (score the lean draft)
+- `content-discovery.mdc` — How to scan MrCogito project and external sources for content ideas
+- `linkedin-post-writing.mdc` — LinkedIn post format, templates, tone
+- `x-thread-writing.mdc` — X thread format, hook patterns, visual placement
+- `research-digest.mdc` — Paper and tool review format with HuggingFace MCP integration
+- `image-generation.mdc` — Image generation tools (HF Z-Image, MidJourney), prompt templates, placement guidelines
+
+### Content Repurposing Chain
+
+Every blog post should generate derivative content for other platforms:
+- 1 blog post → 2-3 LinkedIn posts (different angles from the same material)
+- 1 blog post → 1 X thread (condensed version with hook)
+- LinkedIn posts can also be standalone (not derived from a blog post)
+
+When writing a blog post, consider what LinkedIn posts and X threads can be derived from it and note them in the content backlog.
+
+### MrCogito Integration
+
+The MrCogito project (C:\Users\krzys\Dev Projects\MrCogito) is a primary content source:
+- Experiment reports from `docs/2_Experiments_Registry/run_reports/` → blog posts
+- CHANGELOG entries → LinkedIn Research Log posts
+- Research notes from `docs/4_Research_Notes/` → blog deep dives
+- Failure analyses → "Failed Experiments" series content
 
 ## When suggesting code or content:
 1. Always consider the Hugo static site context
@@ -105,6 +217,8 @@ showReadingTime: true
 4. Include proper frontmatter for new posts
 5. Consider SEO and social sharing implications
 6. Maintain consistency with existing content style
+7. Score content ideas using content-scoring.mdc before writing
+8. Consider multi-platform derivatives (blog → LinkedIn → X)
 
 
 

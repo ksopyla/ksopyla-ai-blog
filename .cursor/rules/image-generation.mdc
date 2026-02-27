@@ -1,0 +1,143 @@
+---
+description: How to generate images for blog posts, LinkedIn, and X threads using available tools (HF MCP Z-Image, Cursor GenerateImage, MidJourney)
+alwaysApply: false
+---
+# Image Generation for Content
+
+## When to Generate Images
+
+Every piece of content benefits from a visual. Priority order:
+1. **Real data first** — WandB charts, training curves, architecture diagrams, code screenshots. These are the most credible visuals.
+2. **Generated concept art second** — When no real data visual exists, generate an artistic/conceptual image that captures the theme.
+3. **No image is better than a bad image** — Skip if nothing fits naturally.
+
+## Available Tools (in preference order)
+
+### Tool 1: HuggingFace MCP Z-Image (Recommended for automation)
+
+Fully automated — works directly from Cursor without any additional setup. Uses your HuggingFace authentication.
+
+**How to use:**
+```
+CallMcpTool(
+  server: "user-hf-mcp-server",
+  toolName: "gr1_z_image_turbo_generate",
+  arguments: {
+    "prompt": "your image description",
+    "resolution": "1280x720 ( 16:9 )",
+    "random_seed": true,
+    "steps": 8
+  }
+)
+```
+
+**Resolutions to use by platform:**
+- Blog header: `"1280x720 ( 16:9 )"` or `"1248x832 ( 3:2 )"`
+- LinkedIn: `"1248x832 ( 3:2 )"` (approximately 1.91:1)
+- X/Twitter: `"1024x1024 ( 1:1 )"` (square for feed) or `"1280x720 ( 16:9 )"`
+
+**Quality tips:**
+- Use 8 steps for fast drafts, increase to 12-16 for final quality
+- Add style keywords: "technical illustration", "minimal", "dark background", "no text"
+- Specify what NOT to include: "no text, no watermark, no borders"
+
+### Tool 2: Cursor Built-in GenerateImage
+
+Also available directly in Cursor. Use when the user explicitly asks for an image or when Z-Image doesn't produce the right style.
+
+**How to use:** Call the GenerateImage tool with a detailed description.
+
+### Tool 3: MidJourney (Manual or via Third-Party API)
+
+MidJourney has no official API. Two options:
+
+**Option A: Manual (current workflow)**
+1. Generate a MidJourney prompt (see templates below)
+2. User pastes it into MidJourney Discord or web interface
+3. User saves the result to the post's folder
+
+**Option B: Third-party API (requires setup)**
+Services like midapi.ai or imagineapi.dev wrap MidJourney's interface. They require:
+- A separate API key and subscription (not free)
+- MidJourney subscription (still needed)
+- These are unofficial — reliability varies
+
+If the user provides a MidJourney third-party API key, it can be called via WebFetch or Shell with curl. But Z-Image via HuggingFace MCP is the recommended automated path.
+
+## Prompt Templates by Content Theme
+
+### Architecture / Technical Concept
+```
+abstract visualization of [CONCEPT], neural network layers as translucent geometric planes,
+data flowing as luminous particle streams between concept nodes and sequence tokens,
+dark navy background, cyan and warm orange accent colors,
+technical illustration style, clean lines, no text, no watermark
+```
+
+### Research / Experiment
+```
+scientist's laboratory workspace from above, glowing holographic data visualizations
+floating over a desk, training curves and scatter plots as light projections,
+warm ambient lighting, photorealistic with slight sci-fi aesthetic, no text
+```
+
+### Failure / Learning / Debugging
+```
+fractured crystal structure reforming into a new elegant pattern,
+pieces floating and reconnecting, symbolizing learning from failure,
+dark teal and gold color palette, abstract, dramatic lighting, no text
+```
+
+### Efficiency / Small vs Large
+```
+tiny precise clockwork mechanism next to a massive industrial machine,
+both producing identical glowing output, metaphor for efficient AI,
+technical cross-section illustration style, warm lighting, no text
+```
+
+### Paper Review / Reading
+```
+open research paper with key diagrams lifting off the page as 3D holographic projections,
+mathematical formulas floating in soft light, scholarly atmosphere,
+warm library lighting, watercolor and ink style, no text
+```
+
+### Contrarian / Against the Grain
+```
+single small light source illuminating a different path through a dark forest
+while a crowd follows a wide bright highway, metaphor for alternative approaches,
+atmospheric, moody lighting, painterly style, no text
+```
+
+### Prof. Torchenstein (PyTorch course character)
+```
+eccentric scientist character with wild hair and lab coat,
+surrounded by PyTorch tensor visualizations and neural network diagrams,
+comic book illustration style, dynamic pose, colorful, no text
+```
+
+## Image Placement in Content
+
+### Blog Posts
+- Save images in the post's own folder: `content/posts/post-slug/feature.jpg` or `content/posts/post-slug/images/`
+- Set as featured image in frontmatter: `featureImage: "feature.jpg"`
+- Inline images: `![Alt text describing the image](image-name.png)`
+- Always include descriptive alt text for accessibility and SEO
+
+### LinkedIn Posts
+- Note the image path or MidJourney prompt in the post's `post.md` file
+- Mark with `[IMAGE: description]` placeholder if image needs to be generated
+- Optimal size: 1200x627px
+
+### X Threads
+- Mark with `[IMAGE: description]` on specific tweets (tweet 1, tweet 3-4, last tweet)
+- Square (1:1) works best in the feed
+
+## Workflow Integration
+
+When drafting content (see `content-drafting-workflow.mdc`):
+1. During Phase 4 (Refinement), identify where visuals would help
+2. If real data exists (WandB chart, code output), use that
+3. If not, generate with Z-Image MCP tool or prepare a MidJourney prompt
+4. Save generated images to the content folder
+5. If using MidJourney manually, note the prompt in the draft for the user to generate
