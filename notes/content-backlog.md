@@ -60,13 +60,6 @@ See `.cursor/rules/content-drafting-workflow.mdc` for how ideas move through the
 - **Key material**: MrCogito README, ConceptEncoder architecture description, model size configs (Micro-2 = 21M params)
 - **Notes**: Strong positioning piece. "Everyone is scaling up. I'm scaling differently." Connects to values about efficiency and sustainability. Could be a flagship LinkedIn post. Tie to 1000x memory reduction claim from cross-attention approach.
 
-### GLUE Benchmark: What the History Tells Us About Encoder Progress
-- **Source**: Blog draft `content/drafts/glue-results-history/`, MrCogito evaluation results
-- **Scores**: Relevance=4, Timeliness=2, Uniqueness=3, Value=4, Effort=3 → **Weighted: 3.25**
-- **Platforms**: Blog post
-- **Status**: Draft exists (frontmatter + lead section)
-- **Key material**: Existing draft, MrCogito GLUE evaluation scripts and results
-- **Notes**: Evergreen content. Could be enhanced with MrCogito ConceptEncoder results as a "where does my model stand" comparison. Revive this stalled draft.
 
 ### What I'm Reading: February 2026
 - **Source**: Blog draft notes (latent reasoning, MoE, voice-to-voice papers)
@@ -80,13 +73,15 @@ See `.cursor/rules/content-drafting-workflow.mdc` for how ideas move through the
 
 ## Parked (Score < 3.0)
 
-### Voice-to-Voice Models 2025 Review
-- **Source**: Blog draft `content/drafts/voice-to-voice-models-2025-review/`
-- **Scores**: Relevance=3, Timeliness=2, Uniqueness=2, Value=3, Effort=2 → **Weighted: 2.45**
-- **Platforms**: Blog post
-- **Status**: Notes collected, needs significant writing
-- **Key material**: voice2voice-2025-notes.md
-- **Notes**: Good research but lower relevance to current MrCogito focus. Park until Track E (Audio) becomes active. Would score higher once audio experiments begin.
+### Voice-to-Voice Models 2026: Full-Duplex Finally Gets Persona Control
+- **Source**: Blog draft `content/drafts/voice-to-voice-models-2026-review/`
+- **Scores**: Relevance=5, Timeliness=5, Uniqueness=4, Value=5, Effort=3 → **Weighted: 4.40**
+- **Platforms**: Blog post + LinkedIn (Research Insight) + X thread
+- **Status**: Refined draft complete — ready for review, then Phase 5 (platform adaptation)
+- **Key material**: `voice2voice-2026-notes.md` (refreshed 2026-02-27)
+- **Key models**: Moshi (Kyutai), NVIDIA PersonaPlex (Jan 2026), Qwen2.5-Omni, MiniCPM-o 2.6
+- **Proposed main point**: Full-duplex voice AI reached the product-useful threshold in early 2026 — not because latency improved (that happened with Moshi in 2024), but because you can now control WHO the AI is while it's talking. PersonaPlex's hybrid persona prompting is the missing piece for conversational tutoring.
+- **Notes**: Directly relevant to Pearson conversational tutoring work. PersonaPlex (Jan 2026, NVIDIA) builds on Moshi architecture and adds voice + role prompting — a concrete inflection point to anchor the article. Strong unique angle: viewed through the lens of someone building real tutoring products, not just reviewing models.
 
 ### Mixture of Experts: An Intuitive Explanation
 - **Source**: Blog draft `content/drafts/mixture-of-experts-explanation/`

@@ -200,6 +200,40 @@ When creating multiple LinkedIn posts from one blog post, use different angles:
 - **Angle 2**: A lesson learned or failure (Lessons from the Lab template)
 - **Angle 3**: Connection to a broader trend or contrarian take (Contrarian Take template)
 
+## Backlog Maintenance — Keeping `notes/content-backlog.md` Clean
+
+The backlog is the single source of truth for what's in the pipeline. It must stay in sync with reality. Apply these rules whenever the content state changes.
+
+### When to Update the Backlog
+
+| Event | Action |
+|-------|--------|
+| New idea scored | Add entry to the correct section (Queued / Pipeline / Parked / Raw Ideas) |
+| Draft folder created | Update Status field in backlog entry to reflect draft path |
+| Draft published | Remove entry from backlog (or move to an "Archive" note if needed) |
+| Draft abandoned / folder deleted | **Remove entry from backlog immediately** |
+| Idea deprioritized | Move entry to Parked section, update score rationale |
+| Score changes (new data, new angle) | Update Scores and Weighted fields in-place |
+| Platform adaptation created | Add derivative entries (LinkedIn, X) with cross-reference to parent |
+
+### Backlog Sync Rules
+
+1. **Draft folder exists ↔ Backlog entry exists**: If you delete a draft folder, delete its backlog entry. If you add an entry referencing a draft path, that path must exist.
+2. **No orphan entries**: Do not leave entries pointing to non-existent files or folders. Check the referenced paths when updating entries.
+3. **Raw Ideas → Lean Draft**: When a Raw Idea gets a lean draft written, move it to the scored sections (Queued / Pipeline / Parked) with a proper score. Remove it from Raw Ideas.
+4. **After every cleanup session**: Verify that all `content/drafts/` folders have a matching backlog entry, and all backlog entries referencing draft folders point to folders that actually exist.
+
+### Backlog Sync Check (run when in doubt)
+
+```
+1. List content/drafts/ folders
+2. List all backlog entries referencing content/drafts/
+3. Flag any entry whose referenced path no longer exists → remove it
+4. Flag any draft folder with no backlog entry → add it or confirm intentional omission
+```
+
+---
+
 ## Quick Reference: Workflow by Intake Mode
 
 | Mode | Phase 1 (Research) | Phase 2 (Lean Draft) | Phase 3 (Score) | Phase 4 (Refine) | Phase 5 (Adapt) |

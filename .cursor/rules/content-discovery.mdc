@@ -47,14 +47,7 @@ Scan `content/drafts/` in the blog project for:
 - Stalled drafts that could be revived given recent MrCogito progress
 - Cross-reference draft topics with recent MrCogito work — has new data made an old draft timely?
 
-Current draft inventory to check:
-- `latent-reasoning-2025-sota/` — relates to MrCogito Track D
-- `mixture-of-experts-explanation/` — architecture explainer
-- `ultrascale-playbook-llm-training/` — training at scale
-- `creating-ai-products/` — R&D management angle
-- `glue-results-history/` — directly relevant to MrCogito evaluation
-- `how-to-build-resoning-model/` — relates to MrCogito goals
-- `voice-to-voice-models-2025-review/` — has research notes ready
+> **Note**: Keep this list in sync with actual `content/drafts/` folders. Remove entries when draft folders are deleted.
 
 ## Source 3: HuggingFace (via MCP Tools)
 
