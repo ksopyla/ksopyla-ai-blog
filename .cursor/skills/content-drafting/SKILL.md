@@ -1,12 +1,12 @@
 ---
-description: End-to-end workflow for drafting content — from initial idea intake through research, lean draft, scoring, refinement, and platform adaptation. Apply whenever creating new content.
-alwaysApply: false
+name: content-drafting
+description: End-to-end content drafting workflow (intake, lean draft, scoring, refinement, platform adaptation) and content scoring framework. Use when creating new blog posts, drafting content from ideas/papers/experiments, scoring content ideas, or refining existing drafts.
 ---
 # Content Drafting Workflow
 
 ## Overview
 
-This rule governs the entire lifecycle of a piece of content, from the moment an idea enters the system to a polished, scored draft ready for publishing. It connects the discovery, scoring, and platform-specific writing rules into a coherent process.
+This skill governs the entire lifecycle of a piece of content, from the moment an idea enters the system to a polished, scored draft ready for publishing.
 
 The core principle: **build a lean draft first, score it, then refine.** Don't write a full polished piece before knowing if it's worth publishing.
 
@@ -132,7 +132,7 @@ A lean draft is NOT READY when:
 
 ## Phase 3: Score the Draft
 
-Apply the scoring framework from `content-scoring.mdc` to the lean draft.
+Apply the scoring framework below to the lean draft.
 
 Important: you need the lean draft to score properly. A one-line idea can't be reliably scored on Audience Value or Uniqueness — you need to see the angle and evidence.
 
@@ -150,15 +150,15 @@ Once the user approves proceeding (explicitly or by giving feedback), refine the
 
 ### Refinement Checklist
 
-1. **Tighten the hook** — Rewrite the opening using patterns from the platform-specific rules (linkedin-post-writing.mdc, x-thread-writing.mdc). Test: would YOU stop scrolling for this?
+1. **Tighten the hook** — Rewrite the opening using patterns from the platform-specific skills (linkedin-post, x-thread). Test: would YOU stop scrolling for this?
 2. **Sharpen the main point** — Cut anything that doesn't serve the central argument. If a paragraph could be removed without losing the thread, remove it.
 3. **Add specificity** — Replace vague statements with numbers, names, metric values. "The model performed poorly" → "STS-B correlation was 0.138, essentially random."
-4. **Apply voice principles** — Check against `persona-and-audience.mdc`. Is the tone modest? Honest? Technical but accessible? Remove any hype language.
+4. **Apply voice principles** — Check against persona-and-audience rule. Is the tone modest? Honest? Technical but accessible? Remove any hype language.
 5. **Strengthen cross-disciplinary connections** — If a connection to another field was noted in the lean draft, develop it into a proper paragraph with a source or reference.
 6. **Add counter-arguments** — Ensure the piece acknowledges limitations. This is non-negotiable for credibility.
 7. **Write the takeaway** — One clear, actionable insight. Not "AI is complicated" but "If your concepts collapse, change the training objective before adding regularization."
 8. **Add a References section** — For any post that cites papers, models, or benchmarks, close with a `## References` numbered list. Format: `Author, F. et al. (Mon YYYY). [**Full paper title**](url). Institution. arXiv:XXXX`. Always fetch the exact title from arxiv or the project page — do not abbreviate. See `notes/writing-preferences.md` for the full format spec and an example.
-9. **Suggest visuals** — Identify where an image would help: WandB chart, architecture diagram, MidJourney concept art. Include the MidJourney prompt if needed.
+9. **Suggest visuals** — Identify where an image would help: WandB chart, architecture diagram, concept art. Use the image-generation skill if needed.
 
 ### Refinement Loop
 
@@ -167,7 +167,7 @@ The user may provide feedback at any point. Common feedback types:
 - "Not technical enough" → Add formulas, code, architecture details
 - "Too technical" → Add more context, analogies, plain-language explanations
 - "Missing X" → Add the requested angle or data
-- "Wrong tone" → Re-read persona-and-audience.mdc and adjust
+- "Wrong tone" → Re-read persona-and-audience rule and adjust
 - "I don't agree with Y" → Rewrite to reflect the user's actual view, not what you inferred
 
 Continue refining until the user says it's ready or explicitly approves.
@@ -186,12 +186,9 @@ Once the refined draft is approved, produce platform-specific versions:
 
 ### Adaptation Process
 
-1. **Blog post** — Expand the refined draft into full blog format following `ksopyla-ai-blog-hugo-setup.mdc`. Add frontmatter, structure with H2/H3, include code blocks and images. Save to `content/drafts/topic-slug/index.md`.
-
-2. **LinkedIn post** — Extract the single strongest insight from the draft. Apply the appropriate template from `linkedin-post-writing.mdc`. Strip markdown, add line breaks, add hashtags. Save to `content/linkedin/YYYY-MM-topic-slug/post.md`.
-
-3. **X thread** — Break the argument into tweet-sized chunks following `x-thread-writing.mdc`. Ensure tweet 1 is a strong hook. Save to `content/x-threads/YYYY-MM-topic-slug/thread.md`.
-
+1. **Blog post** — Expand the refined draft into full blog format following the blog-setup rule. Add frontmatter, structure with H2/H3, include code blocks and images. Save to `content/drafts/topic-slug/index.md`.
+2. **LinkedIn post** — Extract the single strongest insight from the draft. Apply the appropriate template from the linkedin-post skill. Strip markdown, add line breaks, add hashtags. Save to `content/linkedin/YYYY-MM-topic-slug/post.md`.
+3. **X thread** — Break the argument into tweet-sized chunks following the x-thread skill. Ensure tweet 1 is a strong hook. Save to `content/x-threads/YYYY-MM-topic-slug/thread.md`.
 4. **Note derivatives in backlog** — If a blog post was created, add entries for the derivative LinkedIn/X content in `notes/content-backlog.md` with cross-references.
 
 ### Derivative Angles
@@ -243,3 +240,126 @@ The backlog is the single source of truth for what's in the pipeline. It must st
 | B: Experiment results | Gather data from MrCogito, find external context | Draft using Experiment Report angle | Score lean draft | Refine with user feedback | Blog post + LinkedIn insight + X thread |
 | C: Tool discovery | Research tool, check HF, find reviews | Draft using Tool Review structure | Score lean draft | Refine with user feedback | Blog review + LinkedIn verdict + X thread |
 | D: Bullet sketch | Verify, check originality, add depth | Expand skeleton into lean draft | Score lean draft | Refine with user feedback | Depends on depth |
+
+---
+
+# Content Scoring Framework
+
+## Purpose
+
+Every content idea MUST be scored using this framework before committing to a polished draft. The score determines priority and whether the content is worth producing. Scores are recorded in `notes/content-backlog.md`.
+
+**When to score**: After a lean draft exists (see Phase 2 above). A lean draft has a clear main point, a hook angle, core argument paragraphs, and at least one piece of evidence. You cannot reliably score a one-line idea — you need to see the angle and evidence to assess Uniqueness and Audience Value.
+
+**If you don't have enough material**: Call it out as "Not enough material to score" and specify what's missing (e.g., "need experiment numbers" or "need to check if this angle has been covered elsewhere").
+
+## Scoring Rubric (1-5 Scale)
+
+Rate each dimension from 1 (lowest) to 5 (highest):
+
+### 1. Relevance (Weight: 25%)
+How closely does this tie to Krzysztof's MrCogito work, expertise, or stated values?
+
+| Score | Criteria |
+|-------|----------|
+| 5 | Directly from MrCogito experiments, your own training runs, your own architecture decisions |
+| 4 | Closely related to your research area (concept learning, efficient encoders, attention alternatives) |
+| 3 | Adjacent to your expertise (general ML training, NLP, transformer architectures) |
+| 2 | Broadly AI-related but outside your active research |
+| 1 | Tangentially related or purely trending topic with no personal connection |
+
+### 2. Timeliness (Weight: 20%)
+Is this relevant right now? Will it be stale soon?
+
+| Score | Criteria |
+|-------|----------|
+| 5 | Paper/tool released this week, you have immediate commentary or results |
+| 4 | Recent development (last 2-4 weeks) with ongoing community discussion |
+| 3 | Evergreen topic but with a timely hook (new paper references your area) |
+| 2 | Evergreen with no particular urgency |
+| 1 | Already well-covered by others, discussion has moved on |
+
+### 3. Uniqueness (Weight: 25%)
+Do you have a perspective others don't?
+
+| Score | Criteria |
+|-------|----------|
+| 5 | You have original experiment data nobody else has (MrCogito results, failure analyses) |
+| 4 | You've tested/implemented the thing you're writing about and can share first-hand experience |
+| 3 | You have a distinctive opinion backed by your research background |
+| 2 | You're synthesizing others' work with modest personal commentary |
+| 1 | Pure summary of existing content without novel perspective |
+
+### 4. Audience Value (Weight: 20%)
+Will the target persona learn something actionable?
+
+| Score | Criteria |
+|-------|----------|
+| 5 | Reader can apply this insight to their own models/research immediately |
+| 4 | Reader gains a mental model or framework they'll reference repeatedly |
+| 3 | Reader learns something interesting that deepens understanding |
+| 2 | Reader finds it mildly interesting but won't change their behavior |
+| 1 | Only relevant to a very narrow audience or purely navel-gazing |
+
+### 5. Effort-to-Impact (Weight: 10%)
+Can this be produced quickly relative to its potential reach?
+
+| Score | Criteria |
+|-------|----------|
+| 5 | Content nearly writes itself (CHANGELOG entry → LinkedIn post, notes already exist) |
+| 4 | 1-2 hours of work, material is mostly ready |
+| 3 | Half-day of work, needs some research or writing |
+| 2 | Full day+ of work, significant research or experimentation needed |
+| 1 | Multi-day effort with uncertain payoff |
+
+## Weighted Score Calculation
+
+```
+Score = (Relevance × 0.25) + (Timeliness × 0.20) + (Uniqueness × 0.25) + (Audience Value × 0.20) + (Effort-to-Impact × 0.10)
+```
+
+## Decision Thresholds
+
+| Score Range | Action |
+|-------------|--------|
+| **4.0 - 5.0** | Write immediately. High priority. Schedule for next publishing slot. |
+| **3.0 - 3.9** | Queue for next available slot. Good content worth producing when time allows. |
+| **2.0 - 2.9** | Park for later. Revisit when circumstances change or combine with other ideas. |
+| **Below 2.0** | Skip. Not worth the effort given current positioning and audience. |
+
+## Platform Minimum Thresholds
+
+- **Blog post**: Minimum score 3.5 (high effort, needs strong justification)
+- **LinkedIn post**: Minimum score 3.0 (moderate effort, broader reach)
+- **X thread**: Minimum score 2.5 (low effort, can test ideas)
+
+## Score Block Format
+
+When recording in `notes/content-backlog.md`, use this format:
+
+```markdown
+### [Content Title]
+- **Source**: Where the idea came from (MrCogito experiment, paper, trending topic)
+- **Scores**: Relevance=X, Timeliness=X, Uniqueness=X, Value=X, Effort=X → **Weighted: X.X**
+- **Platforms**: Blog / LinkedIn / X thread (which platforms this suits)
+- **Status**: Idea / Ready to write / In progress / Published
+- **Key material**: Links to source files, experiment logs, papers
+- **Notes**: Any additional context or angle to take
+```
+
+## Example Scores
+
+### High-scoring example (4.5):
+**"Concept Collapse: Why My 128 Concepts Collapsed to 5"**
+- Relevance=5 (direct MrCogito experiment), Timeliness=4 (active research), Uniqueness=5 (original data nobody else has), Value=4 (generalizable insight about representation learning), Effort=4 (experiment log already written)
+- → (5×0.25)+(4×0.20)+(5×0.25)+(4×0.20)+(4×0.10) = 1.25+0.80+1.25+0.80+0.40 = **4.50**
+
+### Medium-scoring example (3.2):
+**"What I'm Reading: 5 Papers on Latent Reasoning"**
+- Relevance=4 (related to research interests), Timeliness=3 (papers are a few weeks old), Uniqueness=2 (curated list, modest commentary), Value=3 (useful for discovery), Effort=5 (notes already exist)
+- → (4×0.25)+(3×0.20)+(2×0.25)+(3×0.20)+(5×0.10) = 1.00+0.60+0.50+0.60+0.50 = **3.20**
+
+### Low-scoring example (2.25):
+**"Overview of Recent LLM Releases"**
+- Relevance=2 (not your research area), Timeliness=4 (current topic), Uniqueness=1 (everyone covers this), Value=2 (no unique angle), Effort=3 (needs research)
+- → (2×0.25)+(4×0.20)+(1×0.25)+(2×0.20)+(3×0.10) = 0.50+0.80+0.25+0.40+0.30 = **2.25**

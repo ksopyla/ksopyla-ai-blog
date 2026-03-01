@@ -1,16 +1,16 @@
 ---
-description: How to scan MrCogito project, blog drafts, and external sources to discover publishable content ideas
-alwaysApply: false
+name: content-discovery
+description: Discover publishable content ideas by scanning MrCogito project, blog drafts, HuggingFace, and web sources. Use when asked to find content ideas, suggest what to write about, or scan for new topics.
 ---
 # Content Discovery — Source Scanning
 
 ## Purpose
 
-This rule defines how to autonomously discover content ideas by scanning multiple sources. When asked to find content to publish or to suggest what to write about, follow this systematic process.
+This skill defines how to autonomously discover content ideas by scanning multiple sources. When asked to find content to publish or to suggest what to write about, follow this systematic process.
 
 ## Source 1: MrCogito Project Activity
 
-The MrCogito project lives at local windows machine `C:\Users\krzys\Dev Projects\MrCogito`. 
+The MrCogito project lives at local windows machine `C:\Users\krzys\Dev Projects\MrCogito`.
 The github repository is available at https://github.com/ksopyla/MrCogito you can review the code and the documentation there if local path is not available.
 
 Scan these local machine locations:
@@ -70,16 +70,15 @@ Use `hub_repo_search` MCP tool with `sort: trendingScore` to find:
 - Novel training approaches relevant to MrCogito
 - Models in areas you're working on (text understanding, efficient attention)
 
-
 ## Source 4: Web Research
 
 Use `WebSearch` for:
 - Recent blog posts or Twitter threads on topics you're working on
 - Conference announcements (NeurIPS, ICML, ACL) with papers in your area
 - Industry news about efficient AI, open science initiatives
-- New tools (OpenClaw, etc.) worth reviewing
+- New tools worth reviewing
 - arxiv papers on topics you're working on
-- check the links that are already in the notes/ folders within blog drafts for accumulated reading materials
+- Check the links that are already in the notes/ folders within blog drafts for accumulated reading materials
 
 ## Source 5: Reading List
 
@@ -102,7 +101,7 @@ After scanning, produce a list of 3-8 content ideas. For each idea provide:
 - **Estimated effort**: Quick (< 1 hour) / Moderate (1-3 hours) / Deep (3+ hours)
 ```
 
-Then score each idea using the framework defined in `content-scoring.mdc` and update `notes/content-backlog.md`.
+Then score each idea using the content-drafting skill's scoring framework and update `notes/content-backlog.md`.
 
 ## Discovery Cadence
 

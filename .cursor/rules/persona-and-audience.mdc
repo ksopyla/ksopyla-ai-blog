@@ -1,6 +1,6 @@
 ---
 description: Target persona, author positioning, and voice principles for all content across blog, LinkedIn, and X
-alwaysApply: false
+alwaysApply: true
 ---
 # Persona, Audience & Positioning
 
@@ -8,7 +8,7 @@ alwaysApply: false
 
 Krzysztof Sopyła is an **AI R&D manager who actually trains models and reads papers, sharing honest results from the lab**.
 
-Core differentiators that set him apart from typical AI influencers:
+Core differentiators:
 - Shares failures and negative results openly, not just wins
 - Challenges the LLM scaling orthodoxy with evidence from his own experiments
 - Values efficiency over brute-force scale
@@ -19,61 +19,44 @@ Core differentiators that set him apart from typical AI influencers:
 
 ## Target Persona (Ideal Reader)
 
-Write for this person:
-
 **Primary**: Senior ML tech leads (3-8 years experience) who:
-- That want to build AI empowered products and services
-- Want honest and transparent insights from the lab
+- Want to build AI empowered products and services
+- Want honest, transparent insights from the lab
 - Want to learn from the mistakes of others
-- Want to see what training models actually looks like day-to-day
 - Care about reproducibility and efficiency
 - Want practical insights they can apply to their own work
 
-**Secondary**: 
-- Researchers transitioning from academia to industry R&D
-- AI engineers who build and train models as part of their job and explore novel architectures beyond the mainstream
-- Engineering managers building or leading AI teams who want to stay technically sharp
-- Directors of AI or R&D departments
+**Secondary**: Researchers transitioning to industry R&D, AI engineers exploring novel architectures, engineering managers staying technically sharp, directors of AI/R&D departments.
 
-
-**What they value**: couriosity, technical leadership, honesty over hype, open science, contrarian but evidence-backed opinions, 
-
-**Pain points**: gain knowledge how navigating and leading AI teams is done in practice, unsure which trends matter, want to see what training models actually looks like day-to-day,
+**What they value**: curiosity, technical leadership, honesty over hype, open science, contrarian but evidence-backed opinions.
 
 ## Voice Principles
 
-When writing any content (blog, LinkedIn, X), follow these principles:
-
 1. **Modest, never boastful**: "I ran an experiment and found something interesting" not "I'm thrilled to announce a breakthrough"
-2. **Precise and technical**: Use proper terminology. The audience understands attention mechanisms, loss functions, and benchmark metrics
-3. **Honest and transparent**: Share what didn't work. Acknowledge limitations. Say "I don't know" when appropriate
-4. **First-person experiential**: Write from personal experience. "In my experiments..." or "When I tried..." — not abstract generalizations
-5. **Curious, not dismissive**: Even when critiquing approaches (like current LLM training inefficiency), frame it as curiosity about better alternatives rather than dismissal
-6. **Anti-hype**: Never use phrases like "game-changing", "revolutionary", "mind-blowing", "the future of AI". Prefer measured language: "promising", "worth investigating", "showed improvement"
-7. **Educational**: Explain complex concepts clearly without being condescending. Assume the reader is smart but may not know this specific topic
+2. **Precise and technical**: Use proper terminology. The audience understands attention mechanisms, loss functions, and benchmark metrics.
+3. **Honest and transparent**: Share what didn't work. Acknowledge limitations. Say "I don't know" when appropriate.
+4. **First-person experiential**: "In my experiments..." or "When I tried..." — not abstract generalizations.
+5. **Curious, not dismissive**: Even when critiquing, frame it as curiosity about better alternatives rather than dismissal.
+6. **Anti-hype**: Never use "game-changing", "revolutionary", "mind-blowing". Prefer: "promising", "worth investigating", "showed improvement".
+7. **Educational**: Explain complex concepts clearly without being condescending.
 
 ## Topics to Lean Into
-
-- Architecture innovation (especially attention alternatives, concept learning, efficient encoders)
-- Voice and language models for conversational tutoring systems, speach 2 speach models,
+- Architecture innovation (attention alternatives, concept learning, efficient encoders)
+- Voice and language models for conversational tutoring, speech-to-speech models
 - Training insights and experiment reports (what worked, what failed, why)
 - Paper analysis with personal commentary and connection to own research
 - Efficiency and sustainability in AI (compute-aware research)
-- Open science and reproducibility
-- Research methodology and experiment design
-- The craft of being an AI researcher / R&D manager
+- Open science, reproducibility, research methodology
 
 ## Topics to Avoid
-
 - Generic AI hype or "AI will replace X" takes
-- Listicles without substance ("10 AI tools that will change your life")
+- Listicles without substance
 - Prompt engineering tips (unless deeply technical)
 - Content without personal experience or data backing it
 - Hot takes on AI safety/alignment without technical grounding
 - Anything that sounds like marketing copy
 
-## Platform-Specific Persona Adjustments
-
-- **Blog**: Most technical, longest form. Can include code, formulas, detailed analysis. The "lab notebook made public."
-- **LinkedIn**: Professional but personal. Show the human behind the research. Connect insights to broader industry trends. The "thoughtful colleague sharing over coffee."
-- **X**: Most concise and punchy. Lead with the surprising finding. Use data points and visuals. The "researcher at a conference poster session."
+## Platform-Specific Persona
+- **Blog**: Most technical, longest form. The "lab notebook made public."
+- **LinkedIn**: Professional but personal. The "thoughtful colleague sharing over coffee."
+- **X**: Most concise and punchy. The "researcher at a conference poster session."

@@ -1,6 +1,6 @@
 ---
-description: X (Twitter) thread format, hook patterns, visual placement, and publishing guidelines
-alwaysApply: false
+name: x-thread
+description: Writing X (Twitter) threads from blog/research content. Use when creating, drafting, editing, or adapting content for X/Twitter threads.
 ---
 # X Thread Writing Guide
 
@@ -177,16 +177,9 @@ Link: [tool/model link]
 
 | Tweet Position | Visual Type | Purpose |
 |----------------|-------------|---------|
-| Tweet 1 | MidJourney concept art or result screenshot | Stop the scroll |
+| Tweet 1 | Concept art or result screenshot | Stop the scroll |
 | Tweet 3-4 | Chart, diagram, code screenshot | Show evidence |
 | Last tweet | Summary graphic or project logo | Memorable close |
-
-## MidJourney Visual Prompts for X
-
-- **Thread header**: "abstract visualization of [topic], single focal point, bold colors on dark background, square composition, technical art --ar 1:1 --v 6"
-- **Result visual**: "data visualization metaphor, [concept], glowing nodes and connections, minimal, dark background --ar 16:9 --v 6"
-
-Recommended aspect ratios: 1:1 (square, best for feed) or 16:9 (landscape)
 
 ## Output Format
 
@@ -219,3 +212,7 @@ related_blog_post: ""
 
 ...
 ```
+
+## Visuals for X
+
+When a tweet needs a visual and no chart/screenshot is available, use the image-generation skill to generate one. Recommended aspect ratios: 1:1 (square, best for feed) or 16:9 (landscape).

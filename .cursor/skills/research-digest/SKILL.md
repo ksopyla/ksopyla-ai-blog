@@ -1,12 +1,12 @@
 ---
-description: How to research, review, and write about AI papers and tools, including HuggingFace MCP integration
-alwaysApply: false
+name: research-digest
+description: Researching, reviewing, and writing about AI papers and tools with HuggingFace MCP integration. Use when reviewing papers, writing paper spotlights, doing tool reviews, or creating "What I'm Reading" posts.
 ---
 # Research Digest — Paper & Tool Review Guide
 
 ## Purpose
 
-This rule defines how to discover, research, and write about AI papers and tools. It covers the full flow from discovery to published review, using HuggingFace MCP tools for automated paper/model discovery.
+This skill defines how to discover, research, and write about AI papers and tools. It covers the full flow from discovery to published review, using HuggingFace MCP tools for automated paper/model discovery.
 
 ## Paper Reviews
 
@@ -69,7 +69,7 @@ What experiment would you run next based on this paper?]
 
 For a LinkedIn Paper Spotlight post, distill to the essentials:
 - One paper, one key insight, your opinion
-- Follow the Paper Spotlight template in `linkedin-post-writing.mdc`
+- Follow the Paper Spotlight template in the linkedin-post skill
 - Always link to the full blog review if one exists
 
 ## Tool & Model Reviews

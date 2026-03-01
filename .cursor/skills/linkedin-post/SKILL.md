@@ -1,6 +1,6 @@
 ---
-description: LinkedIn post format, tone, templates, and publishing guidelines. Apply when writing LinkedIn content.
-alwaysApply: false
+name: linkedin-post
+description: Writing and publishing LinkedIn posts from blog/research content. Use when creating, drafting, editing, or adapting content for LinkedIn.
 ---
 # LinkedIn Post Writing Guide
 
@@ -10,7 +10,7 @@ alwaysApply: false
 - **Line breaks**: Use single blank lines between paragraphs. LinkedIn renders these as visual breaks. Short paragraphs (1-3 sentences) read best on mobile.
 - **No markdown**: LinkedIn doesn't render markdown. Use plain text, Unicode symbols (→, •, ↓) for structure.
 - **Hashtags**: 3-5 relevant hashtags at the bottom, separated by spaces. Core set: #AIResearch #MachineLearning. Add topic-specific ones per post.
-- **Visuals**: Always include an image when possible — chart from WandB, architecture sketch, MidJourney concept art, or screenshot. Posts with images get 2x engagement.
+- **Visuals**: Always include an image when possible — chart from WandB, architecture sketch, concept art, or screenshot. Posts with images get 2x engagement.
 
 ## Post Structure
 
@@ -41,7 +41,6 @@ What NOT to use as hooks:
 - "I'm excited to share..."
 - "Thrilled to announce..."
 - "Big news!"
-- "🚀 Just launched..."
 - Any hook that could come from a corporate PR account
 
 ### Context
@@ -214,19 +213,12 @@ date: YYYY-MM-DD
 platform: linkedin
 status: draft | ready | published
 content_score: X.X
-related_blog_post: "" # path to blog post if this is a repurposed piece
+related_blog_post: ""
 ---
 
 [Post content here, exactly as it should appear on LinkedIn]
 ```
 
-## MidJourney Visual Prompts for LinkedIn
+## Visual Prompts for LinkedIn
 
-When a post needs a visual and no chart/screenshot is available, generate a MidJourney prompt:
-
-- **Architecture concept**: "abstract neural network architecture, concept tokens connecting to sequence tokens via cross-attention bridges, dark background, cyan and orange data flows, technical illustration, minimal, no text --ar 1200:627 --v 6"
-- **Research mood**: "solitary researcher at a desk surrounded by floating mathematical formulas and neural network diagrams, warm ambient lighting, watercolor and ink style, contemplative --ar 1200:627 --v 6"
-- **Failure/learning theme**: "cracked mirror reflecting neural network topology, pieces rearranging into new pattern, abstract, dark teal and gold palette --ar 1200:627 --v 6"
-- **Efficiency theme**: "massive industrial machine next to a tiny elegant clockwork mechanism producing the same output, metaphor for efficient AI, technical illustration --ar 1200:627 --v 6"
-
-Recommended aspect ratio for LinkedIn: 1200:627 (approximately 1.91:1)
+When a post needs a visual and no chart/screenshot is available, use the image-generation skill to generate one. Recommended aspect ratio for LinkedIn: 1200:627 (approximately 1.91:1).
