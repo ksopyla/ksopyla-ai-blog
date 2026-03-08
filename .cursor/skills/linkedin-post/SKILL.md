@@ -9,6 +9,7 @@ description: Writing and publishing LinkedIn posts from blog/research content. U
 - **Length**: 800-1800 characters (the engagement sweet spot). LinkedIn truncates at ~210 characters with "...see more" — make those first lines count.
 - **Line breaks**: Use single blank lines between paragraphs. LinkedIn renders these as visual breaks. Short paragraphs (1-3 sentences) read best on mobile.
 - **No markdown**: LinkedIn doesn't render markdown. Use plain text, Unicode symbols (→, •, ↓) for structure.
+- Emojis are allowed, but only if natural and not overused.
 - **Hashtags**: 3-5 relevant hashtags at the bottom, separated by spaces. Core set: #AIResearch #MachineLearning. Add topic-specific ones per post.
 - **Visuals**: Always include an image when possible — chart from WandB, architecture sketch, concept art, or screenshot. Posts with images get 2x engagement.
 
