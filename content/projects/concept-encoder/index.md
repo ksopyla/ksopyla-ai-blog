@@ -14,7 +14,7 @@ showReadingTime: true
 What if a transformer did not attend over every token, but instead compressed long sequences into a small number of dense "concept tokens" and reasoned from there?
 {{< /lead >}}
 
-MrCogito is my open research project exploring this question. It is a solo effort, done alongside a full-time job, and I document the process honestly — including the failures.
+MrCogito is my open research project exploring this question. It is a solo effort, hobby project done alongside a full-time job, and I document the process honestly — including the failures.
 
 The name comes from the poem *"Mr. Cogito"* by Zbigniew Herbert, a figure who thinks carefully, doubts patiently, and keeps going. That felt right for this kind of work.
 
