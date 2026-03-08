@@ -8,11 +8,11 @@ See `.cursor/rules/content-drafting-workflow.mdc` for how ideas move through the
 
 ## Recently Published
 
-### Concept Encoder Research Update: Why Self-Reconstruction Failed and Prefix Conditioning Still Looks Promising
-- **Published**: `content/posts/concept-encoder-research-update/` on 2026-03-08
+### Better Failures, Better Questions: How AI Helped Me Steer MrCogito Forward
+- **Published**: `content/posts/better-failures-better-questions/` on 2026-03-08
 - **Source**: MrCogito research notes spanning MLM, diffusion, `BiXT`, and prefix-conditioned generation
 - **Folded ideas**: "Concept Collapse: Why My 128 Concepts Collapsed to 5 Effective Dimensions" and "The SODA Principle: Why Your Decoder Must See Different Content Than Your Encoder"
-- **Derivative opportunities**: LinkedIn research insight, X thread, follow-up post on the research workflow in `Cursor`
+- **Derivative opportunities**: LinkedIn process reflection, X thread, follow-up post on the research workflow in `Cursor`
 
 ---
 
