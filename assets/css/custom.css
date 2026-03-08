@@ -18,3 +18,10 @@ article .prose {
         min-width: 20rem; /* Adjust as needed */
     }
 }
+
+/* Hide the inline TOC on smaller screens so it doesn't squeeze the article body. */
+@media (max-width: 1023px) {
+    article .toc {
+        display: none;
+    }
+}

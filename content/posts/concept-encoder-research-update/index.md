@@ -1,24 +1,26 @@
 ---
 title: "Concept Encoder Research Update: Better Failures, Better Questions"
 date: 2026-03-08
-draft: true
+draft: false
 description: "A research update from MrCogito: why the MLM path stalled, what diffusion clarified, why prefix conditioning is still promising, and how much of research is really about asking better questions."
 tags: ["AI", "Concept Encoder", "Representation Learning", "Diffusion", "BiXT", "MrCogito"]
 categories: ["AI Research"]
+featureImage: "feature_concept_encoder_research_update.png"
+featureAlt: "Abstract colorful streams compressing through a narrow concept bottleneck and expanding into richer geometric structure"
 showReadingTime: true
 ---
 
 {{< lead >}}
-Sometimes the most useful research update is not a new best model. It is a sharper explanation of why the last few ideas failed, what they actually taught me, and which questions are now worth asking next.
+Sometimes the most useful research update is not a new best model. It is a clearer account of why the last few ideas failed, what they actually taught me, and which questions are now worth asking next.
 {{< /lead >}}
 
 For the last few weeks I have been deep in the concept-encoding part of the [`MrCogito`](/projects/concept-encoder/) project.
 
-This is the part I care about most right now. Before I think seriously about generation, reasoning, or speech-to-speech systems, I want a compact representation that actually carries meaning. If I cannot reliably compress text into a small bank of useful concepts, the rest of the stack will be built on sand.
+This is the part I care about most right now. Before I spend serious time on generation, latent reasoning, or speech-to-speech systems, I want a compact representation that actually carries meaning. If I cannot reliably compress text into a small bank of useful concepts, the rest of the stack will be built on sand.
 
 So this post is not a victory lap. It is a lab note in public: what I tried, what broke, what got better for the wrong reasons, and why I recently shifted attention from MLM-style training toward diffusion and prefix-conditioned objectives.
 
-## The Goal
+## The Goal: A Compact Semantic State
 
 The working idea behind `MrCogito` is simple to state and annoyingly hard to make work:
 
@@ -39,7 +41,7 @@ If this works, it could become a good foundation for long-context systems, contr
 
 The first serious line was a Perceiver-style MLM setup: text goes into a concept encoder, then a lightweight decoder reconstructs masked tokens.
 
-Numerically, that line was not a complete disaster. The canonical only 6 layers MLM baseline reached decent downstream numbers, including `MRPC = 81.3%` and `STS-B = 0.627`.
+Numerically, that line was not a complete disaster. The six-layer canonical MLM baseline reached decent downstream numbers, including `MRPC = 81.3%` and `STS-B = 0.627`.
 
 But the internal geometry told a different story.
 
@@ -66,11 +68,11 @@ So instead of six rounds of increasingly contextual token representations, the c
 
 That is a bad setup if you want semantic concepts. The model can compress surface statistics surprisingly well without learning richer structure.
 
-## How I Found BiXT
+## Why BiXT Became A Necessary Fix
 
 One of the most useful architectural clues came from `BiXT` ([Hiller et al., 2024](https://arxiv.org/abs/2402.12138)), which updates token-side and latent-side representations together instead of treating tokens as mostly static memory.
 
-What is mildly funny is that I did not discover this in a cinematic research epiphany while staring at a whiteboard. I found it during one of those long Cursor sessions where I kept asking "why?" often enough that the agent probably deserved hazard pay. I had already set up a small research workflow in Cursor, including custom rules and my `research-digest` skill, so once the question became precise, I could move quickly between code, notes, experiment logs, and papers without losing the thread.
+What is mildly funny is that I did not discover this in a cinematic research epiphany while staring at a whiteboard. I found it during one of those quick Cursor sessions where I kept asking "why?" often enough that the agent probably deserved hazard pay. Once the question became precise, I could move quickly between code, notes, experiment logs, and papers without losing the thread.
 
 The key question was simple: why does the encoder keep collapsing even when the downstream numbers look respectable? Following that trail kept pointing back to the same weakness: the token side of the model was too static, so the concepts were compressing weak source representations.
 
@@ -96,7 +98,6 @@ Masked diffusion looked attractive for that reason. At higher noise levels, the 
 
 The first win was engineering, not semantics.
 
-
 After redesigning the diffusion decoder to remove token self-attention, switching to cross-attention-only decoding, and stabilizing timestep conditioning with `AdaLN-Zero`, I got a stable training path. That alone was progress. The original diffusion run had blown up badly. The new one trained cleanly.
 
 But the semantic result was still disappointing.
@@ -118,7 +119,7 @@ That was the point where I stopped asking, "Which regularizer should I try next?
 
 **What if self-reconstruction through this bottleneck is optimizing the wrong solution?**
 
-## The Main Diffusion Lesson
+## The Main Diffusion Lesson: Self-Reconstruction Learns The Wrong Code
 
 The best current explanation is not that diffusion is bad. It is that **self-reconstruction diffusion lets the model learn a low-dimensional retrieval code instead of semantic abstraction**.
 
@@ -135,15 +136,13 @@ Once I phrased it that way, several confusing results became less confusing:
 
 This was one of those annoying research moments where the model is not failing randomly. It is succeeding at the wrong game.
 
-## The Next Step: A SODA-Inspired Pivot
+## The Next Step: Prefix Conditioning Instead Of Self-Reconstruction
 
 Another good outcome from those deep review sessions was that they pushed me toward a much cleaner analogy from vision: `SODA` ([Hudson et al., 2023](https://arxiv.org/abs/2311.17901)).
 
 The useful idea was not "copy this paper into text and profit." Research is rarely that polite. The useful idea was narrower: if the decoder has to generate content the encoder never saw, the bottleneck has a much better chance of carrying semantics instead of a compressed cheat sheet.
 
 I had been circling around prefix conditioning for a while, but the design still felt vague: how should the split work, how weak would the task be, and how should I evaluate it fairly? Cursor helped a lot here. Once the question was sharp, going from "this might be the right direction" to "the code is implemented and the job is on the cluster" was very fast. The implementation took minutes. Convincing myself it was worth implementing took considerably longer, which is a more honest summary of research anyway.
-
-
 
 `SODA` showed in vision that bottleneck diffusion learns better representations when the decoder has to generate *different* content than the encoder saw. I wanted the text analogue of that: encode a prefix, generate a suffix.
 
@@ -207,7 +206,7 @@ That habit already changed a few conclusions for me:
 
 That may not sound dramatic, but in research these are expensive distinctions.
 
-## What I Think Now
+## What I Believe Now
 
 My current view is roughly this:
 

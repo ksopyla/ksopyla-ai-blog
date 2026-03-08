@@ -1,28 +1,22 @@
 # Content Backlog
 
-Scored content ideas for blog, LinkedIn, and X. Updated: 2026-02-27.
+Scored content ideas for blog, LinkedIn, and X. Updated: 2026-03-08.
 See `.cursor/rules/content-scoring.mdc` for the scoring framework.
 See `.cursor/rules/content-drafting-workflow.mdc` for how ideas move through the pipeline.
 
 ---
 
+## Recently Published
+
+### Concept Encoder Research Update: Why Self-Reconstruction Failed and Prefix Conditioning Still Looks Promising
+- **Published**: `content/posts/concept-encoder-research-update/` on 2026-03-08
+- **Source**: MrCogito research notes spanning MLM, diffusion, `BiXT`, and prefix-conditioned generation
+- **Folded ideas**: "Concept Collapse: Why My 128 Concepts Collapsed to 5 Effective Dimensions" and "The SODA Principle: Why Your Decoder Must See Different Content Than Your Encoder"
+- **Derivative opportunities**: LinkedIn research insight, X thread, follow-up post on the research workflow in `Cursor`
+
+---
+
 ## Queued (Score 4.0+)
-
-### Concept Collapse: Why My 128 Concepts Collapsed to 5 Effective Dimensions
-- **Source**: MrCogito diffusion experiments (Feb 2026), `docs/4_Research_Notes/diffusion_diagnosis_20260226.md`
-- **Scores**: Relevance=5, Timeliness=4, Uniqueness=5, Value=5, Effort=4 → **Weighted: 4.70**
-- **Platforms**: Blog post + LinkedIn (Research Insight) + X thread
-- **Status**: Ready to write
-- **Key material**: diffusion_diagnosis_20260226.md, concept_analysis_diffusion_L6_step20k.json, WandB training curves
-- **Notes**: Original data nobody else has. Concept collapse (effective rank 5.45/128) is a general problem in representation learning. The root cause analysis identifies 5 structural causes. Strong "Failed Experiments" angle — what went wrong and what it teaches about training objectives. Include VICReg + t_regs_mst warmup fix attempted on 2026-02-27.
-
-### The SODA Principle: Why Your Decoder Must See Different Content Than Your Encoder
-- **Source**: MrCogito diagnosis across MLM, diffusion, and TSDAE approaches, `docs/4_Research_Notes/mlm_perceiver_diagnosis_20260221.md`
-- **Scores**: Relevance=5, Timeliness=4, Uniqueness=5, Value=5, Effort=3 → **Weighted: 4.55**
-- **Platforms**: Blog post + LinkedIn (Contrarian Take) + X thread
-- **Status**: Ready to write
-- **Key material**: mlm_perceiver_diagnosis_20260221.md, diffusion_diagnosis_20260226.md
-- **Notes**: Key insight across all experiments: self-reconstruction permits surface-level hashing. The decoder must generate different content than the encoder saw (prefix generation, TSDAE denoising). This is a deep architectural lesson applicable to anyone building encoders. High uniqueness — this synthesizes findings across multiple failed approaches.
 
 ### Diffusion vs MLM for Concept Encoders: A Head-to-Head Comparison
 - **Source**: MrCogito experiment results, `docs/2_Experiments_Registry/run_reports/diffusion_L2_eval_20260225.md`
@@ -122,7 +116,7 @@ These ideas need a lean draft before scoring. See `content-drafting-workflow.mdc
 |-------------|--------|---------|-------------------|----------|
 | MrCogito Research Log | LinkedIn | Biweekly | 0 | March 2026 |
 | What I'm Reading | LinkedIn | Monthly | 0 | March 2026 |
-| Failed Experiments | Blog + LinkedIn | As available | 0 | TBD |
+| Failed Experiments | Blog + LinkedIn | As available | 1 | TBD |
 | Paper Bites | LinkedIn | Weekly | 0 | TBD |
 | Behind the Architecture | Blog | Monthly | 0 | TBD |
 
