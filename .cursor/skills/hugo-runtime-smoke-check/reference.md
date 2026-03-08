@@ -7,6 +7,7 @@
 - CI/runtime reference from `.github/workflows/hugo-deployment.yml`: Hugo `0.148.0`
 - Local browser target for smoke checks: `http://localhost:1313/`
 - Do not use `127.0.0.1` for browser validation in this repo because asset URLs can resolve against `localhost` and trigger SRI or CORS issues
+- If the page looks badly broken or unstyled in Cursor browser, suspect blocked core assets before suspecting the article content or theme templates
 
 ## Do You Need Go?
 
@@ -86,6 +87,8 @@ Why:
 - `--buildDrafts --buildFuture` allows draft review workflows
 - `--disableFastRender` reduces confusing partial refresh behavior during validation
 
+If you omit the `--baseURL` override and the site falls back to `https://ai.ksopyla.com/`, the local page may request CSS/JS from the production domain. In Cursor browser that can trigger Subresource Integrity or CORS enforcement and block the main stylesheet or appearance script, producing a page that looks half-rendered, unstyled, or full of large black placeholder shapes.
+
 ## Mapping Content Paths To Preview URLs
 
 Translate edited content bundle paths directly:
@@ -128,6 +131,20 @@ Check:
 - title length does not dominate the viewport
 - at least one body paragraph is visible without broken spacing
 - metadata and taxonomies do not collide with the main column
+- if a feature image exists, it is visible in the article header area and does not collapse the layout
+- inline paper links, references, and TOC links look like normal styled links rather than raw fallback browser styling
+
+Before judging page aesthetics, inspect:
+
+- browser console messages
+- browser network requests
+- whether `main.bundle.min.css` and `appearance.min.js` load from `http://localhost:1313/...`
+
+Treat these as blockers:
+
+- core stylesheet blocked
+- core JS blocked
+- core assets loaded from `https://ai.ksopyla.com/...` during local preview
 
 ### Desktop Layout
 
@@ -136,6 +153,7 @@ Use a wide viewport and check:
 - no horizontal overflow
 - feature image feels consistent with the site's visual style
 - feature image does not overpower the title block
+- feature image has natural aspect ratio and is not visibly stretched, cropped badly, or blurry
 - TOC is clearly visible for long articles
 - TOC does not overlap or cover article text
 - inline article images stay inside the content column
@@ -146,6 +164,7 @@ Suggested desktop blockers:
 - title wraps so aggressively that it harms scanning
 - TOC hides text or consumes too much of the reading column
 - feature image is visibly stretched, blurry, or stylistically jarring
+- feature image is missing when expected, or replaced by a broken placeholder / empty gap
 - inline images overflow or force horizontal scrolling
 
 ### Mobile Layout
@@ -157,6 +176,7 @@ Resize to a narrow viewport such as `390x844` and check:
 - no horizontal scrolling
 - title remains readable
 - feature image scales cleanly
+- feature image does not push the start of the article too far below the fold
 - body text width is comfortable
 - TOC stacks cleanly and does not sit on top of article text
 - inline images do not push content outside the viewport
@@ -166,6 +186,7 @@ Suggested mobile blockers:
 - title takes too many lines and buries the start of the article
 - sticky or floating elements cover text
 - images extend beyond viewport width
+- feature image dominates the first screen or becomes awkwardly cropped
 - the search UI cannot be opened or used
 
 ## Extra Usability Checks
@@ -176,6 +197,7 @@ Suggested mobile blockers:
 - A feature image may be subjective, but flag it if it feels off-brand, low-quality, or inconsistent with neighboring posts.
 - If an article contains multiple images, verify they have enough spacing and do not create abrupt layout jumps.
 - Prefer concrete browser evidence: console messages, failed requests, screenshots, and snapshots.
+- When possible, take a full-page screenshot after confirming local CSS is loaded correctly. A screenshot taken before core assets load is evidence of a runtime problem, not of the final article appearance.
 
 ## Known Non-Blocking Behavior
 

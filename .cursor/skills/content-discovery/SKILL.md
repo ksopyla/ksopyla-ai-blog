@@ -1,110 +1,138 @@
 ---
 name: content-discovery
-description: Discover publishable content ideas by scanning MrCogito project, blog drafts, HuggingFace, and web sources. Use when asked to find content ideas, suggest what to write about, or scan for new topics.
+description: Discover and triage raw content opportunities by scanning MrCogito activity, existing drafts, Hugging Face, and the web. Use when asked to find new topics, refresh the backlog, or suggest what to write about next.
 ---
-# Content Discovery — Source Scanning
+# Content Discovery
 
 ## Purpose
 
-This skill defines how to autonomously discover content ideas by scanning multiple sources. When asked to find content to publish or to suggest what to write about, follow this systematic process.
+Discovery is the sourcing stage of the workflow.
+
+Use it to find promising ideas, explain why they matter now, and identify what material already exists. Do not use this skill to write a full draft, run the formal weighted scoring rubric, or publish content.
+
+## Stage Boundary
+
+- Discovery ends with a shortlist of candidate ideas and a recommendation for what should move into drafting.
+- Drafting begins only after one idea is selected for a lean draft.
+- Publishing begins only after a draft is approved and ready to go live.
 
 ## Source 1: MrCogito Project Activity
 
-The MrCogito project lives at local windows machine `C:\Users\krzys\Dev Projects\MrCogito`.
-The github repository is available at https://github.com/ksopyla/MrCogito you can review the code and the documentation there if local path is not available.
+The MrCogito project lives at `C:\Users\krzys\Dev Projects\MrCogito`.
+If the local path is unavailable, review `https://github.com/ksopyla/MrCogito`.
 
-Scan these local machine locations:
+Check these sources in descending order of signal:
 
-### Recent Changes (highest signal)
-1. **CHANGELOG.md** — Read the last 2-4 weeks of entries. Each significant entry is a potential LinkedIn post or blog topic. Look for:
-   - New architecture implementations
-   - Training run results (both successes and failures)
-   - Bug fixes that reveal interesting insights
-   - Performance improvements with numbers
+1. `CHANGELOG.md`
+Look at the last 2-4 weeks for architecture changes, training results, failed experiments, bug fixes with lessons, and concrete performance improvements.
 
-2. **Git log** — Run `git log --oneline -20` in the MrCogito directory to see recent commit messages. Clusters of commits around a theme = a story worth telling.
+2. Git history
+Run `git log --oneline -20` in the MrCogito directory. A cluster of commits around one theme usually means there is a story worth telling.
 
-### Experiment Reports (richest material)
-3. **docs/2_Experiments_Registry/run_reports/** — Each file is a detailed experiment writeup. These are nearly ready-made blog posts. Check for reports not yet published as content.
+3. `docs/2_Experiments_Registry/run_reports/`
+These reports are often one step away from a publishable experiment post.
 
-4. **docs/2_Experiments_Registry/master_experiment_log.md** — The master log of all experiments with results. Cross-reference with published content to find unpublished experiments.
+4. `docs/2_Experiments_Registry/master_experiment_log.md`
+Use this to spot unpublished experiments or results that now have enough context to explain well.
 
-### Research Context
-5. **docs/1_Strategy_and_Plans/roadmap.md** — Current research roadmap with tracks A-E. Upcoming work can be previewed as "here's what I'm exploring next" content.
+5. `docs/1_Strategy_and_Plans/roadmap.md`
+Good source for "what I'm exploring next" or strategy posts.
 
-6. **docs/1_Strategy_and_Plans/active_todos.md** — Prioritized experiment queue. Items about to be worked on = future content opportunities.
+6. `docs/1_Strategy_and_Plans/active_todos.md`
+Useful for preview-style content and upcoming experiment narratives.
 
-7. **docs/4_Research_Notes/** — Deep analyses and diagnoses. Files like `diffusion_diagnosis_20260226.md` contain publishable insights about why things failed.
+7. `docs/4_Research_Notes/`
+High-signal failures, diagnoses, and lessons learned often live here.
 
-### Analysis Results
-8. **analysis/** — Concept analysis tools and their outputs. Quantitative results (effective rank, similarity matrices) make compelling visual content.
+8. `analysis/`
+Quantitative outputs such as rank plots, similarity matrices, or ablation summaries can anchor strong visual-first content.
 
-## Source 2: Blog Drafts
+## Source 2: Blog Drafts And Notes
 
-Scan `content/drafts/` in the blog project for:
-- Drafts with only frontmatter (need content — can they be written now?)
-- Drafts with notes but no post body (notes can bootstrap writing)
-- Stalled drafts that could be revived given recent MrCogito progress
-- Cross-reference draft topics with recent MrCogito work — has new data made an old draft timely?
+Scan `content/drafts/` and each draft's `notes/` material for:
 
-> **Note**: Keep this list in sync with actual `content/drafts/` folders. Remove entries when draft folders are deleted.
+- drafts with good frontmatter but weak body text
+- stalled drafts that became timely again because of new MrCogito results
+- reading lists, saved links, and paper notes that could become a review or digest
+- duplicate ideas that should be merged instead of drafted twice
 
-## Source 3: HuggingFace (via MCP Tools)
+Keep this stage grounded in what actually exists on disk. If a draft folder was deleted, treat any stale backlog reference as invalid.
 
-Use the HuggingFace MCP tools to discover external content opportunities:
+## Source 3: Hugging Face
 
-### Paper Discovery
-Use `paper_search` MCP tool with queries derived from current MrCogito research:
-- "concept encoder cross attention"
-- "masked diffusion language model"
-- "efficient transformer encoder"
-- "representation collapse regularization"
-- "latent reasoning"
-- "concept learning transformer"
+Use the Hugging Face MCP tools for external discovery that connects back to current work.
 
-For each interesting paper found, assess if it warrants a Paper Spotlight (LinkedIn) or Paper Review (blog).
+Good `paper_search` queries:
 
-### Trending Models
-Use `hub_repo_search` MCP tool with `sort: trendingScore` to find:
-- New encoder models that could be compared to ConceptEncoder
-- Novel training approaches relevant to MrCogito
-- Models in areas you're working on (text understanding, efficient attention)
+- `concept encoder cross attention`
+- `masked diffusion language model`
+- `efficient transformer encoder`
+- `representation collapse regularization`
+- `latent reasoning`
+- `concept learning transformer`
+
+Good `hub_repo_search` targets:
+
+- encoder models comparable to ConceptEncoder
+- training recipes relevant to efficient text understanding
+- tools, datasets, or demos aligned with current research tracks
+
+The discovery question is not "is this trending?" but "does this create a worthwhile angle for Krzysztof's audience?"
 
 ## Source 4: Web Research
 
 Use `WebSearch` for:
-- Recent blog posts or Twitter threads on topics you're working on
-- Conference announcements (NeurIPS, ICML, ACL) with papers in your area
-- Industry news about efficient AI, open science initiatives
-- New tools worth reviewing
-- arxiv papers on topics you're working on
-- Check the links that are already in the notes/ folders within blog drafts for accumulated reading materials
 
-## Source 5: Reading List
+- recent commentary on topics already active in MrCogito work
+- conference announcements and freshly released papers
+- industry or tooling updates related to efficient AI, open science, and reproducible research
+- blog posts or threads you can respond to with a sharper, more experience-backed angle
 
-Check the notes/ folders within blog drafts for accumulated reading materials:
-- Papers listed but not yet reviewed
-- Links collected but not yet analyzed
-- These are low-effort "What I'm Reading" post candidates
+Also check links already collected in draft `notes/` folders before broadening the search.
+
+## Discovery Workflow
+
+1. Start with high-signal internal sources before external research.
+2. Cross-reference recent findings against `content/drafts/`, published posts, and saved notes to avoid duplicate topics.
+3. Cluster related signals into 3-8 candidate ideas instead of returning a flat list of unrelated links.
+4. Prefer ideas backed by first-hand experiments, specific failures, or concrete implementation lessons.
+5. Mark what is already available and what evidence is still missing.
 
 ## Discovery Output
 
-After scanning, produce a list of 3-8 content ideas. For each idea provide:
+For each candidate idea, provide:
 
 ```markdown
 ### [Idea Title]
-- **Source**: Which source it came from and specific file/link
-- **Content type**: Blog post / LinkedIn post / X thread / Research Log entry
-- **Why now**: What makes this timely
-- **Unique angle**: What perspective only you can offer
-- **Key material**: Files, links, data that would go into the content
-- **Estimated effort**: Quick (< 1 hour) / Moderate (1-3 hours) / Deep (3+ hours)
+- **Source**: specific file, folder, commit theme, paper, or link
+- **Why now**: why this is timely or newly useful
+- **Unique angle**: what perspective only Krzysztof can add
+- **Best first format**: blog post / LinkedIn post / X thread / research log
+- **Key material**: files, links, numbers, screenshots, notes
+- **Missing material**: evidence or context still needed
+- **Suggested next step**: draft now / wait for more data / park
 ```
 
-Then score each idea using the content-drafting skill's scoring framework and update `notes/content-backlog.md`.
+## Backlog Rules
+
+- During discovery, add items to the backlog only as raw ideas, pipeline notes, or candidate topics.
+- Do not assign the formal weighted score here unless a lean draft already exists.
+- If the user asks for prioritization at discovery time, give a light qualitative ranking such as high / medium / low signal rather than forcing a numeric score too early.
+- Remove stale references to draft folders that no longer exist.
+
+## Handoff To Drafting
+
+Once the user picks an idea, pass the following into `content-drafting`:
+
+- working title
+- likely slug
+- one-sentence thesis
+- source files and links
+- what makes the angle distinctive
+- what evidence is still missing
 
 ## Discovery Cadence
 
-- **Weekly**: Quick scan of MrCogito CHANGELOG + git log. Takes 5 minutes.
-- **Biweekly**: Full scan of all sources including HuggingFace MCP and web research.
-- **On-demand**: Whenever the user asks "what should I write about" or "find content ideas."
+- Weekly: quick scan of `CHANGELOG.md` and recent git history
+- Biweekly: full scan including Hugging Face and web research
+- On-demand: whenever the user asks what to write next or wants backlog refresh

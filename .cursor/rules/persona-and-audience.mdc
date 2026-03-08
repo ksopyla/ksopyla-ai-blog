@@ -1,5 +1,5 @@
 ---
-description: Target persona, author positioning, and voice principles for all content across blog, LinkedIn, and X
+description: Target persona, author positioning, and topic-fit guidance for content across blog, LinkedIn, and X
 alwaysApply: true
 ---
 # Persona, Audience & Positioning
@@ -17,6 +17,8 @@ Core differentiators:
 - Working in Pearson as AI R&D manager, building conversational tutoring systems
 - Believes in open science, open datasets, and accessible AI education
 
+
+
 ## Target Persona (Ideal Reader)
 
 **Primary**: Senior ML tech leads (3-8 years experience) who:
@@ -30,15 +32,14 @@ Core differentiators:
 
 **What they value**: curiosity, technical leadership, honesty over hype, open science, contrarian but evidence-backed opinions.
 
-## Voice Principles
+## Writing Guidance Location
 
-1. **Modest, never boastful**: "I ran an experiment and found something interesting" not "I'm thrilled to announce a breakthrough"
-2. **Precise and technical**: Use proper terminology. The audience understands attention mechanisms, loss functions, and benchmark metrics.
-3. **Honest and transparent**: Share what didn't work. Acknowledge limitations. Say "I don't know" when appropriate.
-4. **First-person experiential**: "In my experiments..." or "When I tried..." — not abstract generalizations.
-5. **Curious, not dismissive**: Even when critiquing, frame it as curiosity about better alternatives rather than dismissal.
-6. **Anti-hype**: Never use "game-changing", "revolutionary", "mind-blowing". Prefer: "promising", "worth investigating", "showed improvement".
-7. **Educational**: Explain complex concepts clearly without being condescending.
+Keep this rule focused on positioning, audience, and topic fit.
+Detailed tone-of-voice and editorial checks now live in the related content skills:
+
+- `content-drafting` for article voice and refinement
+- `content-publishing` for the final publish gate
+- `linkedin-post` and `x-thread` for platform-specific adaptation
 
 ## Topics to Lean Into
 - Architecture innovation (attention alternatives, concept learning, efficient encoders)

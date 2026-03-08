@@ -13,6 +13,8 @@ Use this skill when the task involves any of:
 - building the site for published-only or draft-inclusive output
 - starting a predictable local preview server
 - using Cursor browser tools to review homepage or article rendering
+- review and assess the visual aspect of the site when run in browser, take a screenshot and assess the visual aspect of the site
+- checking that a feature image renders correctly and fits the article visually
 
 ## Current Repo Defaults
 
@@ -21,6 +23,7 @@ Use this skill when the task involves any of:
 - `config/_default/module.toml` requires Hugo `>= 0.87.0`.
 - CI currently installs Hugo `0.148.0`.
 - Use `http://localhost:1313/` for browser checks, not `127.0.0.1`.
+- If the preview looks broken or unstyled, check the browser console and network first. In this repo that often means the local preview was started with the wrong `baseURL`, so CSS/JS are being requested from `https://ai.ksopyla.com/...` and blocked by SRI or CORS inside the Cursor browser.
 
 ## Runtime Setup
 
@@ -46,6 +49,8 @@ hugo --gc --minify --buildDrafts --buildFuture
 hugo server --bind 127.0.0.1 --baseURL http://localhost:1313/ -p 1313 --disableFastRender --buildDrafts --buildFuture
 ```
 
+Do not rely on the production `baseURL` from site config during local preview validation. Always override it explicitly with `--baseURL http://localhost:1313/`.
+
 ## Browser Workflow
 
 1. Build the site with or without drafts, depending on the task.
@@ -56,7 +61,9 @@ hugo server --bind 127.0.0.1 --baseURL http://localhost:1313/ -p 1313 --disableF
    - `content/drafts/<slug>/index.md` -> `/drafts/<slug>/`
 5. If no content bundle was edited directly, choose the main article the task focused on or the most recently relevant post/draft from the conversation context.
 6. Inspect console and network traffic after each page load.
-7. Run both desktop and mobile layout checks before finishing.
+7. If page styling looks wrong, verify that the core CSS and JS are loaded from `http://localhost:1313/...` and not from the production domain.
+8. If the article has a feature image, confirm that it loads, is visible near the title block, and does not look stretched, clipped, blurry, or disproportionately dominant.
+9. Run both desktop and mobile layout checks before finishing.
 
 ## High-Value Browser Targets
 
@@ -64,11 +71,13 @@ hugo server --bind 127.0.0.1 --baseURL http://localhost:1313/ -p 1313 --disableF
 - After opening search, the input is typically exposed as a searchbox named `Search`.
 - Homepage article discovery usually happens under the `Recent` heading.
 - Article pages should expose a clear `h1`, a readable main column, visible taxonomies, and a visible table of contents for long posts.
+- Feature images should load without layout breakage and feel consistent with the rest of the article header.
 
 ## Review Priorities
 
 - Verify layout and usability before cosmetic polish.
 - Treat critical console errors, failed core assets, horizontal overflow, unreadable text, hidden TOC, or broken image sizing as real issues.
+- Treat blocked local CSS/JS caused by a bad preview `baseURL` as a blocker before making any visual judgment about the page.
 - Treat subjective visual mismatch in feature art as a suggestion unless it clearly harms consistency or credibility.
 - Giscus `Discussion not found` on new or draft posts is non-blocking unless the task is about comments.
 
