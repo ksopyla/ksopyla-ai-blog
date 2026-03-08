@@ -13,7 +13,7 @@ MrCogito is a **separate repository** from this blog. It lives at a different pa
 | What | Where |
 |---|---|
 | Local repo | `C:/Users/krzys/Dev Projects/MrCogito` |
-| GitHub | `https://github.com/ksopyla/MrCogito` (private, repo owner: ksopyla) |
+| GitHub | `https://github.com/ksopyla/MrCogito` (public, repo owner: ksopyla) |
 | Remote | `git@github.com:ksopyla/MrCogito.git` |
 | Blog project page | `https://ai.ksopyla.com/projects/concept-encoder` |
 | WandB project | `MrCogito` at `https://wandb.ai/ksopyla/MrCogito` |

@@ -254,6 +254,18 @@ That habit already changed several conclusions for me:
 
 That may not sound dramatic, but in research these are expensive distinctions.
 
+## Open Source
+
+The entire [`MrCogito`](https://github.com/ksopyla/MrCogito) project is open source. The [`dev` branch](https://github.com/ksopyla/MrCogito/tree/dev) contains training scripts, model code, experiment reports, and the custom `Cursor` skills that power the research workflow I described above:
+
+- [**experiment-tracking**](https://github.com/ksopyla/MrCogito/tree/dev/.cursor/skills/experiment-tracking) — structured logging of runs, metrics, and comparisons
+- [**research-methodology**](https://github.com/ksopyla/MrCogito/tree/dev/.cursor/skills/research-methodology) — hypothesis formulation, ablation design, failure analysis
+- [**pytorch-architecture**](https://github.com/ksopyla/MrCogito/tree/dev/.cursor/skills/pytorch-architecture) — model building conventions and architecture templates
+- [**engineering-change-tracking**](https://github.com/ksopyla/MrCogito/tree/dev/.cursor/skills/engineering-change-tracking) — tracking code and config changes across experiment iterations
+- [**huggingface-project**](https://github.com/ksopyla/MrCogito/tree/dev/.cursor/skills/huggingface-project) — dataset and model management on HuggingFace Hub
+
+Feel free to check them out, try them in your own `Cursor` setup, and adapt them to your workflow.
+
 ## What I Believe Now
 
 My current view is roughly this:
