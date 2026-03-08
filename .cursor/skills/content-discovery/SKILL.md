@@ -18,34 +18,9 @@ Use it to find promising ideas, explain why they matter now, and identify what m
 
 ## Source 1: MrCogito Project Activity
 
-The MrCogito project lives at `C:\Users\krzys\Dev Projects\MrCogito`.
-If the local path is unavailable, review `https://github.com/ksopyla/MrCogito`.
+MrCogito is a separate repository. For project context (location, architecture, research phases, results, repo structure), read the `mrcogito-project` skill first.
 
-Check these sources in descending order of signal:
-
-1. `CHANGELOG.md`
-Look at the last 2-4 weeks for architecture changes, training results, failed experiments, bug fixes with lessons, and concrete performance improvements.
-
-2. Git history
-Run `git log --oneline -20` in the MrCogito directory. A cluster of commits around one theme usually means there is a story worth telling.
-
-3. `docs/2_Experiments_Registry/run_reports/`
-These reports are often one step away from a publishable experiment post.
-
-4. `docs/2_Experiments_Registry/master_experiment_log.md`
-Use this to spot unpublished experiments or results that now have enough context to explain well.
-
-5. `docs/1_Strategy_and_Plans/roadmap.md`
-Good source for "what I'm exploring next" or strategy posts.
-
-6. `docs/1_Strategy_and_Plans/active_todos.md`
-Useful for preview-style content and upcoming experiment narratives.
-
-7. `docs/4_Research_Notes/`
-High-signal failures, diagnoses, and lessons learned often live here.
-
-8. `analysis/`
-Quantitative outputs such as rank plots, similarity matrices, or ablation summaries can anchor strong visual-first content.
+Follow the "Content Discovery in MrCogito" section of that skill for the ordered list of high-signal sources to scan (CHANGELOG, git history, run reports, experiment log, roadmap, research notes, analysis outputs).
 
 ## Source 2: Blog Drafts And Notes
 
