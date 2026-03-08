@@ -40,10 +40,15 @@ showReadingTime: true
 - Heading hierarchy: H2 for main sections, H3 for subsections
 
 ## Dev Workflow
+
+Windows Powershell commands:
 ```powershell
 hugo server --buildDrafts --buildFuture          # local dev with live reload
 hugo --gc --minify                                # production build check
 ```
+Local server command:
+- use localhost insted of 127.0.0.1:1313 -  http://localhost:1313/
+
 
 ## Draft Promotion
 1. Move folder from `content/drafts/slug/` to `content/posts/slug/`
@@ -61,4 +66,5 @@ hugo --gc --minify                                # production build check
 On push to `main`, `.github/workflows/hugo-deployment.yml` builds with Hugo Extended + Dart Sass and deploys to GitHub Pages. Only `content/posts/` with `draft: false` is deployed.
 
 ## Related Skills
-For procedural workflows (drafting, scoring, platform writing, image generation), see the `.cursor/skills/` directory — those load on demand when the task calls for them.
+For procedural workflows (drafting, scoring, platform writing, image generation, Hugo runtime, browser smoke checks), see the `.cursor/skills/` directory — those load on demand when the task calls for them.
+- Use the `hugo-runtime-smoke-check` skill when the task involves Hugo setup, Congo installation, preview server startup, or browser validation of homepage/article rendering.
