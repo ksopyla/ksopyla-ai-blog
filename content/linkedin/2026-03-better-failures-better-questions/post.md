@@ -1,4 +1,4 @@
-🧪 Better failures come from better questions.
+🧪 Quicker failures lead to better questions.
 
 That is probably the biggest thing AI tools changed in my research workflow.
 

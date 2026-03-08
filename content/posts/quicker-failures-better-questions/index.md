@@ -1,5 +1,5 @@
 ---
-title: "Better Failures, Better Questions: How AI Helped Me Steer MrCogito Forward"
+title: "Quicker Failures lead to better questions: How AI Helped Me Steer my research forward"
 date: 2026-03-08
 draft: false
 description: "How AI, Cursor skills, and agents helped me ask better questions in MrCogito research, understand model failures more deeply, and steer the concept-encoder work toward better solutions."
