@@ -10,28 +10,26 @@ featureAlt: "Abstract digital art showing a central control plane connected to m
 showReadingTime: true
 ---
 
-## Main Point
+Recently, one of my leaders showed me a single slide. The vision was simple: *set the problem and let it go. Reuse other agents to solve it.*
 
-Recently, one of my leaders challenged me with a vision of fully autonomous agentic systems.
+My first reaction was defensive. We were already building agentic workflows. We had agents, orchestration, tools, and multi-step automation. So why did it feel like he was describing something we still did not have?
 
- Firstly, I was a little bit offended, we already build agentic systmes why he didn't see it, but then I realized that he is right, we aren't building agentic system, we were building **REST style facade on top of agent workflow**.
- This is the mismatch.
+After sitting with it for a while, I realized the uncomfortable part: he was right. We were not really building agentic systems. We were building a **REST-shaped facade around agent workflows**.
 
+That realization forced me to change the questions I was asking. I stopped asking:
+- what should the input look like?
+- which endpoints do we need?
+- where should the orchestration layer live?
 
- I realized that I need to change my way of thinking about the AI agentic systems, and stopped asking questions: 
- - how the input should look like
- - what enpoints we need
- - how to build the orchestration layer
+And I started asking harder questions instead:
+- what is an agent's actual interface?
+- how should agents communicate?
+- what capabilities, identity, and budget boundaries do they need?
+- what kind of engineering architecture would actually make this work inside a company?
 
-I decided to educate myself and started to think about how we should change our way of thinking about the AI systems? I started with first principles and definitions, what is an agent? How he communicate? Why he/she/it exists? 
+Honestly, the realization was liberating. I had been stuck optimizing the wrong abstraction, and once I saw it, I found new energy for the problem.
 
-This led me to the following conclusion:
- 
-  What stayed with me was a different question: **what kind of engineering practices and architecture would actually make that possible in a company?**
-
-Many teams are already building agents. Some are even building multi-agent systems. But in my experience, they still think about them with an old software mindset. The agent sits behind a request-response facade, usually shaped like another API, and the surrounding system is still designed like a microservice pipeline with better prompts.
-
-That is the mismatch.
+That is the mismatch I keep seeing now. Many teams are already building agents. Some are even building multi-agent systems. But in my experience, they still approach them with an old software mindset. The agent sits behind a request-response facade, usually shaped like another API, and the surrounding system is still designed like a microservice pipeline with better prompts.
 
 The useful interface of an agent is not only an endpoint. It is also a capability surface, a delegation surface, and a policy boundary. This is why protocols such as `MCP` and `A2A` matter. They are not implementation details. They are early signs that agents need a different systems model than classic service decomposition.
 
@@ -47,11 +45,17 @@ The problem is not that teams are ignoring agents. The problem is that even when
 - permissions are attached to fixed services
 - failures are handled like ordinary retries
 
-This works for narrow workflows. It breaks down when agents need to discover each other, delegate work, wait for approvals, resume later, or operate under explicit cost and time limits.
+I see this in our own work. We add a new agentic solution, but we still treat it as a tool behind `MCP`, where the entire responsibility of preprocessing the agent's response and extracting the right information stays on the caller. The agent does something interesting inside, but from the outside it still looks and behaves like an API call. That is the old model leaking through.
 
-So the real question is not "how do I add agents to my stack?" It is "what changes when software components are no longer passive services, but active specialists that collaborate under uncertainty?"
+It works for narrow workflows. It breaks down when agents need to discover each other, delegate work, wait for approvals, resume later, or operate under explicit cost and time limits.
+
+So the real question is not "how do I add agents to my stack?" It is "what changes when software components are no longer passive services, but **active specialists** that collaborate under uncertainty?"
 
 ## From Service Graphs to Dynamic Teams
+
+I started educating myself the old-fashioned way: books, talks, papers. Then I started drawing doodles in my notebook. What if each service had its own identity? I drew services with faces and gave them names: Tom, Caroline, Mark. What if they could speak? How would I talk to them? How would they talk to each other?
+
+It sounds silly, but it worked. The moment I stopped thinking about services as boxes with inputs and outputs and started thinking about collaborators, the architecture questions changed completely.
 
 The most useful mental model I have found is to stop thinking about agent systems as static pipelines and start thinking about them as **dynamic teams assembled around a problem**.
 
@@ -109,9 +113,11 @@ That is a more interesting shift than "agents can call APIs." We are moving towa
 
 The second shift is that orchestration stops being only a prompt or graph design problem.
 
-If an agent can pause, wait for a human, recover from failure, resume the next day, or retry only one expensive step, then we are already in workflow-runtime territory. Durable execution, checkpoints, replay, idempotent side effects, and structured traces stop being optional.
+In microservices, we developers define every route and handoff. We control which service calls which, in what order, with what data. That makes us the architects of every interaction. We trust it because we built it.
 
-This is why I find systems like Temporal and LangGraph interesting. Not because they make agents more intelligent, but because they admit an uncomfortable truth: useful agent systems are long-running distributed processes.
+With agents, that control disappears. And I will be honest: my first instinct was fear. What if the agent does its own thing? What if it calls the wrong tool, spends too much, or takes a path I did not anticipate? Letting go of explicit orchestration felt like giving up the thing that made the system predictable.
+
+But that is exactly the shift. If an agent can pause, wait for a human, recover from failure, resume the next day, or retry only one expensive step, then we are already in workflow-runtime territory. Durable execution, checkpoints, replay, idempotent side effects, and structured traces stop being optional. They become the new foundation of trust, replacing the static routes we used to rely on.
 
 By contrast, model serving itself is becoming a commodity. I can buy inference from a cloud provider. I cannot yet buy a clean answer to cross-agent identity, replayable execution, and organization-wide policy control.
 
@@ -124,10 +130,11 @@ In a serious multi-agent environment, every agent should answer questions like:
 - what tasks should be routed to me?
 - what is my cost profile?
 - what is my success history?
+- how can I evolve?
 
 This is not a documentation problem. It is part of the execution model.
 
-I increasingly suspect that enterprise agent platforms will compete less on prompts and more on the quality of their capability registry, routing, and trace data.
+Enterprise agent platforms will compete less on individual agent prompts and more on the quality of their capability registry, routing, and trace data. The best system will not be the one with the strongest base model or tool-calling capabilities. It will be the one where agents can find each other and negotiate work efficiently.
 
 ## A Small Internal Agent Economy
 
@@ -143,11 +150,11 @@ Every non-trivial system will have to decide:
 - when to stop because the budget is no longer justified
 - how to route work based on expected value, not only raw quality
 
-This is why I wanted to keep the idea of an **agent economy** in the article, even after trimming it. A temporary team should not be allowed to consume unlimited time and money just because it can keep thinking.
+A temporary team should not be allowed to consume unlimited time and money just because it can keep thinking.
 
 The recent paper **Self-Resource Allocation in Multi-Agent LLM Systems** is useful here because it treats coordination as a resource-allocation problem. And **The Agentic Economy** makes a broader point that I also find relevant inside companies: when communication becomes cheaper, the structure of the system changes, not only its speed.
 
-My version of this idea is simpler and more practical. Inside the enterprise, agent systems will need explicit budget policies, routing rules, and escalation thresholds. Otherwise "autonomy" just becomes an expensive form of drift.
+This is the double-edged part. On one hand, you need to trust agents and give them freedom to act. On the other hand, you need hard limits to prevent them from drifting in ways that are not in the best interest of the company. Otherwise "autonomy" just becomes an expensive form of drift. Inside the enterprise, agent systems will need explicit budget policies, routing rules, and escalation thresholds.
 
 ## The Hardest Unsolved Layer
 
@@ -163,23 +170,17 @@ This problem is much more difficult than the standard enterprise `RBAC` model we
 
 This is why I think the control plane matters so much. Without an explicit layer for identity, delegation, budget, and auditability, the rest of the architecture is fragile no matter how smart the model is.
 
-The most interesting research question for me is no longer "can agents collaborate?" It is "how do we govern collaboration when the collaborators are dynamic software entities whose behavior can shift faster than our permission models?"
+The most interesting question for me is no longer "can agents collaborate?" It is "how do we govern collaboration when the collaborators are dynamic software entities whose behavior can shift faster than our permission models?" Right after discoverability and orchestration, this is the problem I think will define whether enterprise agent systems actually work at scale.
 
-## Where I Think This Is Going
+## Where This Started, And Where I Am Now
 
-I do not think the winning enterprise pattern will be a giant autonomous swarm.
+I keep thinking about that single slide. *Set the problem and let it go.*
 
-I expect something more structured:
+At the time, I thought we were already doing that. Now I realize we were doing something much more modest: wrapping careful, hand-wired workflows in agent-shaped packaging.
 
-- agents as specialists, not magical general workers
-- dynamic teams assembled around goals
-- protocol-native communication
-- durable workflow runtimes
-- budget-aware routing
-- explicit policy and identity layers
-- evaluation loops that improve the system over time
+I am at the beginning of this shift, not the end. But a few things are already clear to me: agents need real protocols, not REST facades. They need budgets, not unlimited autonomy. They need identity and policy layers that can keep up with how fast they change. And the engineering teams building them, myself included, need to accept that the old intuitions about service design will not carry us through.
 
-That is why I keep coming back to the same conclusion: the main challenge is not agent orchestration in the narrow sense. It is learning to design a new operating model for machine collaborators.
+The first step is not a new framework. It is a willingness to rethink the assumptions that got us here.
 
 ## Selected References
 
