@@ -179,8 +179,7 @@ Rules:
 - one idea per slide
 - short titles
 - each slide should be understandable in under 5 seconds
-- favor contrast, diagrams, checklists, or simple matrices
-- write the carousel so a designer can build it directly
+
 
 ## Two-Week Posting Sequence
 
