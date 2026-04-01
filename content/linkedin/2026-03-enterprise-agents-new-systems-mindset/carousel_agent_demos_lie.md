@@ -13,11 +13,8 @@ Template: purple cover + purple slides (Torchenstein brand)
 
 ## Slide 1 — cover
 
-Headline: Agent demos work. Production is a
+Headline: Agent demos work. Production is a different sport.
 
-Highlighted keyword: different sport.
-
-Designer note: White bold headline, yellow highlighted "different sport." Cover template with Torchenstein.
 
 ## Slide 2
 
@@ -25,7 +22,7 @@ Headline: In the demo, the agent is the star.
 
 Supporting copy: It reasons. It calls tools. It solves the task. The audience applauds.
 
-Designer note: Yellow text. Set up the contrast — this is the seductive illusion.
+
 
 ## Slide 3
 
@@ -34,48 +31,28 @@ Headline: In production, the agent is 20% of the problem.
 Supporting copy: The other 80%:
 - durable execution and checkpoints
 - replay after partial failure
-- human-in-the-loop pauses
 - structured traces and audit
 - service discovery across teams
 
-Designer note: White text with bullet list. This is the reality check slide — hit hard with specifics.
 
 ## Slide 4
 
-Headline: Agent systems are long-running distributed processes.
+Headline: Agent systems should be designed as long-running distributed processes.
 
-Supporting copy: Not request-response functions. If your agent can pause, wait for approval, resume tomorrow, or retry one expensive step — you are already in workflow-runtime territory.
+Supporting copy: If you design your agent with those principles in mind, you are will start think differently, start to solve the right problems, and start to build the right system.
 
-Designer note: Yellow headline, white copy. The reframe — boring but true.
 
-## Slide 5
+## Slide 5,6,7
 
-Headline: Before building the next agent, answer this.
+Headline: Before building the next agent, think about this.
 
 Supporting copy: Can your system:
-→ Resume after a crash without repeating expensive calls?
-→ Replay a failed step without re-running the whole chain?
-→ Pause for human approval and pick up later?
+- Resume after a crash without repeating expensive calls?
+- How fixed is the communication between the agents? Did you introduce any assumptions about the communication between the agents? Queues, endpoints to call, even MCP to communicate between the agents?
+- Agent user authorization and authentication? How you are going to handle it?
 
-If not, start here.
 
-Designer note: Yellow headline, white arrows. Practical checklist to start with.
 
-## Slide 6
-
-Headline: Model serving is a commodity. Durable execution is not.
-
-Supporting copy: You can buy inference from any cloud provider. You cannot yet buy clean cross-agent identity, replayable execution, and org-wide policy control.
-
-Designer note: Yellow headline, white copy. The "where the real value is" slide.
-
-## Slide 7
-
-Headline: What breaks first when your agent system goes to production?
-
-Supporting copy: Retries? State management? Observability? Permissions? That answer tells you where to invest next.
-
-Designer note: White headline, yellow highlight on key words — closing CTA for discussion.
 
 ---
 Companion post copy (text to accompany the carousel in LinkedIn feed):
@@ -84,18 +61,17 @@ Agent demos are dangerously convincing.
 
 The agent reasons, calls tools, solves the task. Everyone applauds. Then you try to ship it.
 
-Suddenly the hard part is not the model. It is everything around it:
+Suddenly the hard part is not the graph and agent prompts. It is everything around it:
 → What happens when the agent crashes mid-task?
 → Can it resume without re-running expensive tool calls?
-→ Can it pause for human approval and pick up the next day?
-→ Can you replay a single failed step without restarting the chain?
+→ Communication between the agents?
+→ Can you handle agent user authorization and authentication?
 
 These are not AI problems. They are distributed systems problems. Durable execution, checkpoints, replay, idempotent side effects, structured traces.
 
-The uncomfortable realization: model serving is becoming a commodity. I can buy inference from any provider. I cannot yet buy clean answers to cross-agent identity, replayable execution, and organization-wide policy control.
+The uncomfortable realization: agent graph or chain design is not enough. You need to have a good agentic engineering mindset to build a successful agentic system.
 
 The best agent systems will not win on model quality alone. They will win on infrastructure nobody finds exciting to build.
 
-What breaks first when your agent system moves from demo to production?
 
 #AIEngineering #AIAgents #MultiAgentSystems
