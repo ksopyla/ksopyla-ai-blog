@@ -139,9 +139,6 @@ async def research_crypto_project(crypto_project_research_query: str) -> str:
     """
 ```
 
-## A Note on Security
-
-Tool pollution is a quality problem. Tool *poisoning* — where malicious instructions hide in tool descriptions to manipulate agent behavior — is a security problem. Both are real, both matter, but they're different articles. If you're evaluating third-party MCP servers for enterprise use, the security angle (prompt injection via tool metadata, rug pulls, cross-server shadowing) deserves serious attention. I'll cover that separately.
 
 ## References
 
