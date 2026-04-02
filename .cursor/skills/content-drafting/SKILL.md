@@ -288,6 +288,62 @@ Typical refinement responses:
 - `Wrong tone`: rerun the voice checklist line by line
 - `Missing angle`: strengthen the core claim, not just add more text
 
+### Writing Quality Rules (learned from MCP best practices drafting session)
+
+These rules were extracted from a multi-round drafting session and capture recurring patterns in how Krzysztof writes and what he rejects.
+
+#### 1. Never write shallow summaries — extract specific details from sources
+
+Do not paraphrase a blog post as "Phil Schmid says design for outcomes." Instead, extract the concrete example: "A bad MCP server exposes `get_user_by_email()`, `list_orders(user_id)`, `get_order_status(order_id)` — three tools, three round-trips. A good one exposes `track_latest_order(email)` — one call, one answer."
+
+Before writing any claim backed by a source, re-read the actual source article (not just notes about it). Pull: specific numbers, named examples, before/after comparisons, version histories (e.g. Block's Linear MCP v1→v2→v3 evolution), and real tool/function names.
+
+#### 2. Every factual claim needs a linked reference
+
+If you write "accuracy degrades as tool count increases," the next sentence must have a link with specific numbers: "Grok 4.1 Fast dropped from 86.7% to 76.7% across 25→150 tools." Unlinked claims get flagged with `??` and waste a revision round.
+
+#### 3. Write from the builder's point of view, not the user's
+
+If the article is advice for people building MCP servers, do not open with "You install some MCP servers in Claude Code..." That is the user's perspective. Open with: "If you're building an MCP server for enterprise use, your design choices shape every agent that integrates with you." Match the POV to the audience being advised.
+
+#### 4. Merge sections that say the same thing
+
+If two sections make the same argument from slightly different angles, merge them. Krzysztof flagged a "Design for Others" section as duplicating "Tool Pollution" — they were the same claim (too many tools hurt quality) from designer vs consumer POV. One section with both perspectives is stronger.
+
+#### 5. Kill AI-sounding filler phrases
+
+Krzysztof flags phrases like "Here's the part most MCP tutorials skip" as AI slop. Other phrases to avoid:
+
+- "Let's dive in"
+- "In this article, we'll explore"
+- "It's worth noting that"
+- "Here's the thing"
+- "Without further ado"
+- "At the end of the day"
+- Any sentence that could open any article on any topic
+
+Replace with a specific, concrete statement that only works for this article.
+
+#### 6. Preserve Krzysztof's rewrites exactly
+
+When Krzysztof edits code examples, variable names, function signatures, or inline prose, those edits are final. Do not reformat, rename, or "improve" them. If he changed `query` to `crypto_project_research_query`, keep it exactly. His phrasing in edited sections is the target voice.
+
+#### 7. Add a TL;DR section for AI discoverability
+
+For opinionated or best-practices articles, add a structured TL;DR near the top with do/don't lists. This helps both human scanners and AI systems that summarize web pages. Keep each bullet to one actionable sentence.
+
+#### 8. Use analogies from the sources, not invented ones
+
+If Docker calls MCP tools "macros" or Phil Schmid calls MCP "a User Interface for AI agents," use those framings with attribution. Do not invent new metaphors when the sources already have good ones. Attributed analogies are more credible and more interesting than generic ones.
+
+#### 9. Opinionated claims need to be labeled as opinions
+
+"A great MCP server has 2-4 tools, max" is an opinion. Label it: "My controversial take:" or "My opinion:". This keeps the article honest and signals to the reader that this is a judgment call, not a protocol rule.
+
+#### 10. Research notes are a starting point, not a sufficient source
+
+Notes files (`notes.md`) contain summaries and pointers. They are not deep enough to write strong prose from. Before writing any section, go back to the actual source URL and re-read it. The difference between a weak draft and a strong one is whether the writer read the summary or the original.
+
 ## Backlog Sync During Drafting
 
 When drafting changes the status of an idea:
