@@ -67,10 +67,6 @@ graph TD
 
     Pipeline --> hidden
     Compiler -->|"Structured report"| MCP
-
-    style hidden fill:#1a1a2e,stroke:#e94560,stroke-width:2px
-    style MCP fill:#0f3460,stroke:#e94560,stroke-width:2px
-    style Client fill:#16213e,stroke:#0f3460,stroke-width:1px
 {{< /mermaid >}}
 
 This is from my [agent-patterns-lab](https://github.com/ksopyla/agent-patterns-lab/tree/main/examples/02-mcp-tool-integration), where the same pipeline also serves a REST endpoint. The MCP server just wraps the capability in a protocol any AI client can discover. CoinGecko, DuckDuckGo, LLM calls — all internal implementation details, invisible to the caller.
