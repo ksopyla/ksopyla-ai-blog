@@ -41,13 +41,10 @@ showReadingTime: true
 
 ## Dev Workflow
 
-Windows Powershell commands:
-```powershell
-hugo server --buildDrafts --buildFuture          # local dev with live reload
-hugo --gc --minify                                # production build check
-```
-Local server command:
-- use localhost insted of 127.0.0.1:1313 -  http://localhost:1313/
+Local development enironment for Windows, all terminal commands should be run in Powershell
+
+If you want to run the local server, you should use instruction from the `hugo-runtime-smoke-check` skill.
+[hugo-runtime-smoke-check](../skills/hugo-runtime-smoke-check/SKILL.md)
 
 
 ## Draft Promotion

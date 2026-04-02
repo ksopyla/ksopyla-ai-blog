@@ -1,86 +1,94 @@
 ---
 name: hugo-runtime-smoke-check
-description: Run and review Hugo plus Congo sites in local or Cursor Cloud Agent environments. Use when setting up Hugo or the Congo theme, building published or draft content, starting a preview server, or smoke-checking homepage and article rendering with Cursor browser tools on desktop and mobile.
+description: Run Hugo preview server and visually verify pages using Cursor browser tools. Use when starting a preview server, smoke-checking article rendering, or verifying feature images, diagrams, and code blocks locally.
 ---
-# Hugo Runtime Smoke Check
+
+# Hugo Local Preview Smoke Check
 
 ## When To Use
 
-Use this skill when the task involves any of:
+- Starting Hugo preview server for local development
+- Visually checking how a post or draft renders (layout, images, diagrams, code blocks)
+- Verifying a feature image loads and looks correct
+- Checking desktop and mobile layout after publishing or editing
 
-- installing or updating Hugo runtime prerequisites
-- setting up the Congo theme
-- building the site for published-only or draft-inclusive output
-- starting a predictable local preview server
-- using Cursor browser tools to review homepage or article rendering
-- review and assess the visual aspect of the site when run in browser, take a screenshot and assess the visual aspect of the site
-- checking that a feature image renders correctly and fits the article visually
+## Hard Rules
 
-## Current Repo Defaults
+1. **NEVER fall back to production** (`ai.ksopyla.com`). If local preview is broken, diagnose and fix the local issue. Production checks prove nothing about the dev workflow.
+2. **Always override baseURL** — the config has the production URL. Every `hugo server` invocation must include `--baseURL http://localhost:1313/`.
+3. **Check console and network BEFORE any visual judgment** — if CSS/JS is blocked, every screenshot is evidence of a runtime problem, not of the article.
+4. **Use `http://localhost:1313/`** for all browser URLs, never `127.0.0.1`.
+5. **Resize the browser to desktop (1280x800) BEFORE the first navigation** — Cursor browser may default to a tiny viewport that makes the page unreadable.
 
-- This repo uses the Congo theme as a git submodule in `themes/congo`.
-- Hugo Extended is required.
-- `config/_default/module.toml` requires Hugo `>= 0.87.0`.
-- CI currently installs Hugo `0.148.0`.
-- Use `http://localhost:1313/` for browser checks, not `127.0.0.1`.
-- If the preview looks broken or unstyled, check the browser console and network first. In this repo that often means the local preview was started with the wrong `baseURL`, so CSS/JS are being requested from `https://ai.ksopyla.com/...` and blocked by SRI or CORS inside the Cursor browser.
+## Starting the Server
 
-## Runtime Setup
+### The SRI/CORS Problem
 
-For this repo's current submodule-based setup:
+Congo generates SRI integrity hashes on all assets (`fingerprintAlgorithm = "sha256"` in `params.toml`). Hugo's dev server uses an internal livereload port (e.g. 54707) separate from the main port (1313). Cursor browser blocks cross-port SRI resources because CORS headers are missing.
 
-- Go is not required just to run the existing site.
-- You need Hugo Extended and recursive git submodules.
-- Clone or update with submodules before building.
+**Symptoms**: page shows unstyled text, large black bars (dark-styled elements with no CSS), Mermaid diagrams don't render, code blocks have no highlighting.
 
-For Congo installed as a Hugo Module instead of a submodule:
+**Console evidence**: `Subresource Integrity: The resource 'http://localhost:54707/...' has an integrity attribute, but the resource requires the request to be CORS enabled...`
 
-- Go is required.
-- Congo's `go.mod` declares `go 1.16`, so treat Go `1.16+` as the minimum.
-- Use Hugo Modules only if the repo is intentionally switching away from the current submodule setup.
+### Server Command (use this exact form)
 
-## Preferred Commands
-
-Use direct `hugo` CLI commands:
+Disable livereload to prevent the port split:
 
 ```bash
-hugo --gc --minify
-hugo --gc --minify --buildDrafts --buildFuture
-hugo server --bind 127.0.0.1 --baseURL http://localhost:1313/ -p 1313 --disableFastRender --buildDrafts --buildFuture
+hugo server --bind 127.0.0.1 --baseURL http://localhost:1313/ -p 1313 --disableFastRender --disableLiveReload --buildDrafts --buildFuture
 ```
 
-Do not rely on the production `baseURL` from site config during local preview validation. Always override it explicitly with `--baseURL http://localhost:1313/`.
+If assets are still blocked, also add `--renderToDisk`:
+
+```bash
+hugo server --bind 127.0.0.1 --baseURL http://localhost:1313/ -p 1313 --disableFastRender --disableLiveReload --renderToDisk --buildDrafts --buildFuture
+```
+
+Drop `--buildDrafts --buildFuture` when checking only published content.
+
+### Verify the Fix Before Proceeding
+
+After navigating to the page, **immediately** check console messages:
+- SRI / `Subresource Integrity` errors → assets still blocked, try the next server command variant
+- Assets loaded from `https://ai.ksopyla.com/...` → baseURL override not working, check the command
+- No SRI errors and `main.bundle.min.css` loads from `http://localhost:1313/...` → preview is working, proceed to visual checks
 
 ## Browser Workflow
 
-1. Build the site with or without drafts, depending on the task.
-2. Start the preview server on `http://localhost:1313/`.
-3. Open the homepage first.
-4. Open the changed article or draft next. Derive its URL from the edited content path:
-   - `content/posts/<slug>/index.md` -> `/posts/<slug>/`
-   - `content/drafts/<slug>/index.md` -> `/drafts/<slug>/`
-5. If no content bundle was edited directly, choose the main article the task focused on or the most recently relevant post/draft from the conversation context.
-6. Inspect console and network traffic after each page load.
-7. If page styling looks wrong, verify that the core CSS and JS are loaded from `http://localhost:1313/...` and not from the production domain.
-8. If the article has a feature image, confirm that it loads, is visible near the title block, and does not look stretched, clipped, blurry, or disproportionately dominant.
-9. Run both desktop and mobile layout checks before finishing.
+Check in the light and dark mode, check the fonts colors and contrast, check the diagrams, images, tables, code blocks, etc. - use the recommended usability checks
 
-## High-Value Browser Targets
+1. **Resize to desktop** (1280x800).
+2. **Navigate to homepage** (`http://localhost:1313/`). Confirm it loads styled (site title, nav links, article cards visible).
+3. **Check console and network.** This is a BLOCKER — do not proceed if core CSS or JS is missing.
+4. **Navigate to the target article:**
+   - `content/posts/<slug>/index.md` → `http://localhost:1313/posts/<slug>/`
+   - `content/drafts/<slug>/index.md` → `http://localhost:1313/drafts/<slug>/`
+5. **Take a desktop screenshot** and verify:
+   - H1 title renders
+   - Feature image loads, not stretched/clipped/blurry
+   - TOC visible in sidebar for long posts
+   - Tags and categories display
+   - Code blocks have syntax highlighting
+   - Mermaid diagrams render with readable labels (scroll to them)
+   - Inline images stay inside the content column
+   - No horizontal overflow
+6. **Resize to mobile** (390x844), reload page, take screenshot:
+   - No horizontal scrolling
+   - Title readable
+   - Feature image scales, doesn't dominate the viewport
+   - Body text is comfortable width
+   - TOC collapses cleanly
 
-- Homepage search trigger is typically exposed as a button named `Search (/)`.
-- After opening search, the input is typically exposed as a searchbox named `Search`.
-- Homepage article discovery usually happens under the `Recent` heading.
-- Article pages should expose a clear `h1`, a readable main column, visible taxonomies, and a visible table of contents for long posts.
-- Feature images should load without layout breakage and feel consistent with the rest of the article header.
 
-## Review Priorities
 
-- Verify layout and usability before cosmetic polish.
-- Treat critical console errors, failed core assets, horizontal overflow, unreadable text, hidden TOC, or broken image sizing as real issues.
-- Treat blocked local CSS/JS caused by a bad preview `baseURL` as a blocker before making any visual judgment about the page.
-- Treat subjective visual mismatch in feature art as a suggestion unless it clearly harms consistency or credibility.
-- Giscus `Discussion not found` on new or draft posts is non-blocking unless the task is about comments.
+## Non-Blocking Issues
 
-## Additional Resources
+- Giscus `Discussion not found` — expected for new or draft posts, ignore
+- `[CursorBrowser] Native dialog overrides` warnings — internal to Cursor, ignore
 
-- For exact setup commands, Congo installation modes, and browser/layout heuristics, read [reference.md](reference.md).
+## Repo Facts
+
+- Theme: Congo via git submodule in `themes/congo`
+- Hugo Extended required (minimum `0.87.0`, CI uses `0.148.0`)
+- `fingerprintAlgorithm = "sha256"` in `config/_default/params.toml` — generates SRI hashes
+- `baseURL = 'https://ai.ksopyla.com/'` in `config/_default/hugo.toml` — must be overridden for local preview
