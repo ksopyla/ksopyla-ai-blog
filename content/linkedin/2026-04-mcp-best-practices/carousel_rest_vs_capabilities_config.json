@@ -1,0 +1,41 @@
+{
+  "cover": {
+    "title_lines": ["MCP Is Not", "Your REST API"],
+    "character_image": "torchenstein_empty_background.png",
+    "character_position": "bottom-center",
+    "title_font_size": 120,
+    "title_y_start": 130
+  },
+  "slides": [
+    {
+      "heading": "The Problem: Tool Pollution",
+      "body": "Every tool you expose competes for context in the agent's prompt. Benchmarks show accuracy drops from 87% to 77% as tools grow from 25 to 150. More tools = dumber agents.",
+      "scene_image": "prof-torchenstein-empty-lab-servers-racks.png"
+    },
+    {
+      "heading": "The Old Model: 1 Endpoint = 1 Tool",
+      "body": "get_user, list_orders, get_shipment -- three tools, three round-trips. The agent figures out chaining. This is REST thinking applied to MCP. It does not work.",
+      "scene_image": "prof-torchenstein-coding.png"
+    },
+    {
+      "heading": "The Better Model: 1 Capability = 1 Tool",
+      "body": "track_latest_order(email) -- one call. User lookup, order fetch, status check all happen behind the facade. Think macros, not endpoints.",
+      "scene_image": "prof-torchenstein-assembling.png"
+    },
+    {
+      "heading": "The Evidence",
+      "body": "GitHub's 40-tool server needed an escape hatch (60-90% context reduction when trimmed). Block collapsed 30+ tools into 2. Docker recommends macros after building 100+ servers.",
+      "scene_image": "prof-torchenstein-in-lab.png"
+    },
+    {
+      "heading": "The Rule: 2-4 Tools Per Server",
+      "body": "If you need more surface, split by domain. crypto-intelligence: research, compare. crypto-trading: timing, risk. Two servers, two trust boundaries, four focused capabilities.",
+      "scene_image": "prof-torchenstein-crossed-hands-in-front-window_v2.png"
+    },
+    {
+      "heading": "How Many Tools Does Your MCP Server Expose?",
+      "body": "The answer matters more than which model you picked.",
+      "scene_image": "prof-torchenstein-sitting-thinking.png"
+    }
+  ]
+}

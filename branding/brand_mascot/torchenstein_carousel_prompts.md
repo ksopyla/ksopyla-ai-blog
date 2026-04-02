@@ -85,7 +85,7 @@ A little mad but friendly scientist with gravity-defying white-gray hair, a shor
 ### 2B — Computer (facepalm or frustrated look at screen)
 
 ```
-A little mad but friendly scientist with gravity-defying white-gray hair, a short beard and a prominent moustache, wearing goggles on his forehead. He is wearing a purple lab coat jacket with sleeves rolled up and a green shirt underneath. He sits at a computer desk, leaning back in his chair with a skeptical, unimpressed expression, arms folded. The monitor in front of him shows a glowing error or a tangled mess of connections. Red and orange warning lights reflect on his face. The top third of the image is dark for headline text. Background is a dimly lit lab workspace. dramatic cartoon animation style, bold graphic novel linework, high contrast chiaroscuro lighting, gothic tech aesthetic --ar 4:5 --cref [CREF_URL] --cw 70 --sref [SREF_URL] --sw 120 --s 300 --v 6.1
+A little mad but friendly scientist with gravity-defying white-gray hair, a short beard and a prominent moustache, wearing goggles on his forehead. He is wearing a purple lab coat jacket with sleeves rolled up and a green shirt underneath. He sits at a computer desk, leaning back in his chair with a skeptical, unimpressed expression, arms folded. The monitor in front of him shows a glowing error or a tangled mess of connections. Red and orange warning lights reflect on his face. The top third of the image is dark for headline text. Background is a dimly lit lab workspace. dramatic cartoon animation style, bold graphic novel linework, high contrast chiaroscuro lighting, gothic tech aesthetic
 ```
 
 ### 2C — Blackboard (crossing out wrong idea)

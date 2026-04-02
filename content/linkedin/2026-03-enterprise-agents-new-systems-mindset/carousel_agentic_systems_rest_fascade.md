@@ -5,8 +5,8 @@ This is a  content for linkedin carousel, it is a presentation of the new mental
 ## The template for the carousel, what we want to present
 
 ### Slide 1
-Headline: Most enterprise agent systems are just REST APIs wearing agent costumes
-Supporting copy: They look agentic from the outside, but the architecture still assumes fixed endpoints, fixed ownership, and request-response control.
+Headline: Most enterprise agent systems are still rigid, just REST APIs calling the agent graph under the hood
+Supporting copy: You can all it agentic but the architecture still assumes fixed endpoints, fixed communication, and request-response control.
 
 ### Slide 2
 Headline: The old mental model: agent = smarter API
