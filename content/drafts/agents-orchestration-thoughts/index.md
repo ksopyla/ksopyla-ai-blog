@@ -49,7 +49,7 @@ In that model:
 
 This is much closer to how real organizations operate. Teams form around goals, not around permanent RPC chains.
 
-```mermaid
+{{< mermaid >}}
 flowchart TD
     P[Problem / Business Objective]
     B[Team Builder / Planner]
@@ -70,7 +70,7 @@ flowchart TD
     A --> E
     E --> R
     E --> B
-```
+{{< /mermaid >}}
 
 What I like about this model is that it makes the hidden components visible. In most demos, the only thing you see is the agent. In production, the more important part may be everything around it: registry, communication layer, evaluation loop, policy, and budget control.
 
