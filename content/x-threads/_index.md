@@ -2,7 +2,7 @@
 title: "X Threads"
 date: 2026-02-27
 draft: true
-_build:
+build:
   render: never
   list: never
 ---

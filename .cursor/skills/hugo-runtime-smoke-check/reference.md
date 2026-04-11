@@ -6,7 +6,7 @@ Setup and installation facts. For the smoke-check workflow, see [SKILL.md](SKILL
 
 For this repo's git-submodule setup:
 
-- Hugo Extended (minimum `0.87.0`, CI uses `0.148.0`)
+- Hugo Extended (minimum `0.87.0`, CI uses `0.160.1`)
 - git with recursive submodule checkout
 - Go is **not** needed
 
