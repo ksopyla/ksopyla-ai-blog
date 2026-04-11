@@ -6,45 +6,68 @@ alwaysApply: true
 
 ## Author Positioning
 
-Krzysztof Sopyła is an **AI R&D manager who actually trains models and reads papers, sharing honest results from the lab**.
+Krzysztof Sopyła is an **AI R&D manager, researcher, AI architect, team leader who leads the AI team and actually trains models and reads papers, building agentic products for enterprises**.
 
-Core differentiators:
-- Shares failures and negative results openly, not just wins
-- Challenges the LLM scaling orthodoxy with evidence from his own experiments
-- Values efficiency over brute-force scale
-- Has real experiment data from his ConceptEncoder research (MrCogito project)
-- PhD background + industry R&D leadership + hands-on coding — a rare combination
-- Working in Pearson as AI R&D manager, building conversational tutoring systems
+Goal: to be a thought leader in the field of AI architecture, agentic systems, and AI for enterprises. Share my insights, experiences, and knowledge with the community. Helping the stakeholders to build teams, products and services that are AI powered.
+
+Core beliefs:
+- Sharing failures and negative results openly, not just wins
+- Challenges the hype, finding the right balance between hype and reality (vibe coding, AI engineering, AI architecture)
+- Team collaboration, communication and culture
+- Clear and concise communication, no fluff, no BS
+- Focus on the technical details, not the hype
 - Believes in open science, open datasets, and accessible AI education
 
+My strengths and expertise:
+- Building the effective AI native teams
+- Understanding the deep technical details, strong engineering background, architecture design
+- Deep understanding of the AI architectures, models, and algorithms
+- Experience in enterprise environments, building products and services that are AI powered
+
+Krzysztofs social media presence:
+- LinkedIn: https://www.linkedin.com/in/ksopyla/
+- X: https://x.com/ksopyla
+- GitHub: https://github.com/ksopyla
+- Expierience and positions: AI R&D manager at Pearson, CTO in AI startups, Chief AI architect and CEO in own software house Ermlab, team leader, researcher, PhD in computer science AI, etc.
+
+Past and current projects:
+- MrCogito project, Concept Encoder, etc. https://github.com/ksopyla/MrCogito
+- Agent Patterns Lab - https://github.com/ksopyla/agent-patterns-lab 
+
+My expertise: 
+- PyTorch - MrCogito project, Concept Encoder, etc.
+- Agentic systems, multi-agent systems, MCP, LLM engineering, Voice AI, Concept Encoder, etc.
+- Classic ML systems, SVM, online learning, GPU-accelerated algorithms, etc.
+- 
 
 
 ## Target Persona (Ideal Reader)
 
-**Primary**: Senior ML tech leads (3-8 years experience) who:
-- Want to build AI empowered products and services
-- Want honest, transparent insights from the lab
-- Want to learn from the mistakes of others
-- Care about reproducibility and efficiency
-- Want practical insights they can apply to their own work
+**Primary**: Senior AI tech leads (3-8 years experience) who:
+- are building AI empowered products and services, want to learn from the best practices and mistakes
+- are seeking the guidance and advice from the experts, wanted some blueprint to follow
+- are managing and leading AI engineers native teams, want to improve their leadership skills
+- are looking for practical insights they can apply to their own work
+- they understand the AI and engineering,
+- who connects the engineering with business needs
+- works in enterprise environments, knows the problems and challenges in those environments: bureaucracy, politics, culture, etc.
+- CTO, VP of Engineering, Director of AI, Head of AI, etc.
 
-**Secondary**: Researchers transitioning to industry R&D, AI engineers exploring novel architectures, engineering managers staying technically sharp, directors of AI/R&D departments.
+**Secondary**: AI engineers, AI product mangerer who works with AI tech leaders, who: 
+- are challendbed by the stakeholders expectations,
+- who have enough the unrealistic deadlines and requirements,
+- who belive that AI could help, but at the same time they understand that we all needs to  learn, make mistakes and improve.
+- who want to hear the honest and transparent insights from the the field, not just the wins, but also the failures and negative results.
+- who seek some assurance that they are on the right track, and they are not alone in this journey.
+
 
 **What they value**: curiosity, technical leadership, honesty over hype, open science, contrarian but evidence-backed opinions.
 
-## Writing Guidance Location
-
-Keep this rule focused on positioning, audience, and topic fit.
-Detailed tone-of-voice and editorial checks now live in the related content skills:
-
-- `content-drafting` for article voice and refinement
-- `content-publishing` for the final publish gate
-- `linkedin-post` and `x-thread` for platform-specific adaptation
 
 ## Topics to Lean Into
+- Agentic systems, multi-agent systems, MCP, LLM engineering, Voice AI, Concept Encoder, etc.
 - Architecture innovation (attention alternatives, concept learning, efficient encoders)
 - Voice and language models for conversational tutoring, speech-to-speech models
-- Training insights and experiment reports (what worked, what failed, why)
 - Paper analysis with personal commentary and connection to own research
 - Efficiency and sustainability in AI (compute-aware research)
 - Open science, reproducibility, research methodology

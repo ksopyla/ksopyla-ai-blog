@@ -1,67 +1,24 @@
 ---
-description: Hugo blog project conventions — directory structure, frontmatter, dev workflow, deployment
+description: Hugo blog project — directory map and structure, deployment
 alwaysApply: true
 ---
-# Krzysztof Sopyla AI Blog — Hugo + Congo Setup
+# Krzysztof Sopyla AI Blog — GO Hugo + Congo theme
 
-## Project
-- Hugo static site with Congo theme. Blog: https://ai.ksopyla.com/
-- Source: https://github.com/ksopyla/ksopyla-ai-blog
-- Congo theme docs: https://jpanther.github.io/congo/docs/
+- Hugo static site with Congo theme: https://ai.ksopyla.com/
+- Repo: https://github.com/ksopyla/ksopyla-ai-blog
+- Congo docs: https://jpanther.github.io/congo/docs/
+- Local dev on Windows — all terminal commands run in PowerShell
 
 ## Directory Structure
-- `content/posts/post-slug/index.md` — published posts
-- `content/drafts/draft-slug/index.md` — work-in-progress drafts
-- `content/linkedin/YYYY-MM-topic-slug/post.md` — LinkedIn post drafts
-- `content/x-threads/YYYY-MM-topic-slug/thread.md` — X thread drafts
-- `config/_default/` — Hugo TOML config files
-- `themes/congo/` — theme git submodule
-- `notes/content-backlog.md` — scored content ideas queue
-- `notes/blog_improvements.md` — infrastructure TODOs
-
-## Frontmatter Format
-```yaml
-title: "Post Title"
-date: 2025-08-20
-draft: false
-description: "Short description for SEO and social cards"
-tags: ["AI", "Papers Review", "LLM"]
-categories: ["AI Research"]
-featureImage: "feature_descriptive_slug.png"
-featureAlt: "Accessible description of the feature image"
-showReadingTime: true
-```
-
-## Content Conventions
-- Images go in the same directory as the post's `index.md`
-- Feature images: `feature_descriptive-slug.png` (always prefixed with `feature_`)
-- Use Hugo shortcodes (`{{< lead >}}`, etc.) for special formatting
-- Code blocks must specify the language for syntax highlighting
-- Heading hierarchy: H2 for main sections, H3 for subsections
-
-## Dev Workflow
-
-Local development enironment for Windows, all terminal commands should be run in Powershell
-
-If you want to run the local server, you should use instruction from the `hugo-runtime-smoke-check` skill.
-[hugo-runtime-smoke-check](../skills/hugo-runtime-smoke-check/SKILL.md)
+- `content/posts/<slug>/index.md` — published posts
+- `content/drafts/<slug>/index.md` — work-in-progress drafts
+- `content/linkedin/YYYY-MM-<slug>/post.md` — LinkedIn drafts
+- `content/x-threads/YYYY-MM-<slug>/thread.md` — X thread drafts
+- `config/_default/` — Hugo TOML config
+- `themes/congo/` — theme submodule
+- `notes/content-backlog.md` — scored ideas queue
 
 
-## Draft Promotion
-1. Move folder from `content/drafts/slug/` to `content/posts/slug/`
-2. Set `draft: false`, update `date:` to publish date
-3. Push to `main` — GitHub Actions auto-deploys to https://ai.ksopyla.com/
-
-## Git Commit Conventions
-- `content: add post on concept collapse` (new post)
-- `content: update draft for MoE explanation` (draft changes)
-- `content(linkedin): add research log #1` (social content)
-- `chore: update theme submodule` (infrastructure)
-- `fix: correct image paths in pytorch course post` (fixes)
 
 ## Deployment
-On push to `main`, `.github/workflows/hugo-deployment.yml` builds with Hugo Extended + Dart Sass and deploys to GitHub Pages. Only `content/posts/` with `draft: false` is deployed.
-
-## Related Skills
-For procedural workflows (drafting, scoring, platform writing, image generation, Hugo runtime, browser smoke checks), see the `.cursor/skills/` directory — those load on demand when the task calls for them.
-- Use the `hugo-runtime-smoke-check` skill when the task involves Hugo setup, Congo installation, preview server startup, or browser validation of homepage/article rendering.
+Push to `main` triggers `.github/workflows/hugo-deployment.yml` (Hugo Extended + Dart Sass) deploying to GitHub Pages. Only `content/posts/` with `draft: false` goes live.
