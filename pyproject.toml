@@ -1,0 +1,8 @@
+[project]
+name = "ksopyla-ai-blog"
+version = "0.1.0"
+description = "Utility scripts for Krzysztof Sopyla's AI blog"
+requires-python = ">=3.14"
+dependencies = [
+    "openpyxl>=3.1.5",
+]

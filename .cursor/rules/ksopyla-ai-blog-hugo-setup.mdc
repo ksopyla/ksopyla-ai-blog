@@ -23,10 +23,21 @@ alwaysApply: true
 ## GitHub Integration
 Use `gh` CLI (authenticated as `ksopyla`) for all GitHub operations: PRs, issues, releases, CI checks.
 
-## Run Python code
-The tools: 
-- `uv` is installed via homebrew
- 
+## Run Python Code
+
+**Always use `uv` (installed via Homebrew) to run Python scripts. Never use raw `python3` or `pip3 install`.**
+
+- Run a script with inline dependencies: `uv run --with Pillow script.py`
+- Run a script with multiple deps: `uv run --with Pillow --with requests script.py`
+- One-off commands: `uv run --with Pillow python -c "from PIL import Image; ..."`
+
+`uv run --with` creates an ephemeral virtual environment with the specified packages — no global installs, no permission issues, no cleanup needed.
+
+### Branding / Image Generation
+- Banner build script: `branding/linkedin/build_banner.py` (uses Pillow)
+- Run it: `uv run --with Pillow branding/linkedin/build_banner.py`
+- Character assets with transparency: `branding/linkedin/torchenstein_empty_background.png`
+- Carousel brand assets and fonts: `.cursor/skills/linkedin-carousel/assets/`
 
 
 ## Deployment

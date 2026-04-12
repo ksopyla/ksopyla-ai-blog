@@ -31,3 +31,11 @@ node_modules/
 .env
 .env.local
 .env.production
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# LinkedIn analytics data (local-only)
+data/
