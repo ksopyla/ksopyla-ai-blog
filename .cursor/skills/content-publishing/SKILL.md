@@ -1,6 +1,6 @@
 ---
 name: content-publishing
-description: Finalize and publish an approved blog draft by sharpening the title, doing a last editorial pass, moving it from content/drafts to content/posts, generating missing feature art, running Hugo and browser smoke checks, and asking whether to generate a LinkedIn post.
+description: Finalize and publish an approved blog draft by moving it from content/drafts to content/posts, checking the tone and story generating missing feature art, running Hugo and browser smoke checks, and asking whether to generate a LinkedIn post.
 ---
 # Content Publishing
 
@@ -16,6 +16,7 @@ This skill owns:
 - feature image fallback
 - moving the bundle from `content/drafts/` to `content/posts/`
 - Hugo and browser validation
+- check the story teling narrative by running the `story-review` skill
 - post-publish prompt for LinkedIn
 
 ## Stage Boundary

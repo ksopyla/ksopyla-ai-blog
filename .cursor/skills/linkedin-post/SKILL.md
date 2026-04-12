@@ -4,6 +4,10 @@ description: Write and repurpose LinkedIn content from blog posts, research note
 ---
 # LinkedIn Content Packaging Guide
 
+## LinkedIn Growth Goal
+
+Grow to 10,000 followers and become a recognized voice in AI engineering leadership. Current state: ~3,600 followers, ~50% Polish developers and CTOs. Content is English-only. Growth target is the global English-speaking AI leadership community. Leverage blog content, GitHub projects (agent-patterns-lab, MrCogito), and enterprise experience to create native LinkedIn value.
+
 ## Core Idea
 
 Do not treat LinkedIn as a place to announce that a blog post exists.

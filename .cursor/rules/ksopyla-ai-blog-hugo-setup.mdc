@@ -7,7 +7,7 @@ alwaysApply: true
 - Hugo static site with Congo theme: https://ai.ksopyla.com/
 - Repo: https://github.com/ksopyla/ksopyla-ai-blog
 - Congo docs: https://jpanther.github.io/congo/docs/
-- Local dev on Windows — all terminal commands run in PowerShell
+- Local dev on macOS — terminal commands run in zsh
 
 ## Directory Structure
 - `content/posts/<slug>/index.md` — published posts
@@ -18,6 +18,15 @@ alwaysApply: true
 - `themes/congo/` — theme submodule
 - `notes/content-backlog.md` — scored ideas queue
 
+
+
+## GitHub Integration
+Use `gh` CLI (authenticated as `ksopyla`) for all GitHub operations: PRs, issues, releases, CI checks.
+
+## Run Python code
+The tools: 
+- `uv` is installed via homebrew
+ 
 
 
 ## Deployment

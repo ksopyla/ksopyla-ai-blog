@@ -89,6 +89,6 @@ Check in the light and dark mode, check the fonts colors and contrast, check the
 ## Repo Facts
 
 - Theme: Congo via git submodule in `themes/congo`
-- Hugo Extended required (minimum `0.87.0`, CI uses `0.148.0`)
+- Hugo Extended required (minimum `0.87.0`, CI uses `0.160.1`)
 - `fingerprintAlgorithm = "sha256"` in `config/_default/params.toml` — generates SRI hashes
 - `baseURL = 'https://ai.ksopyla.com/'` in `config/_default/hugo.toml` — must be overridden for local preview
