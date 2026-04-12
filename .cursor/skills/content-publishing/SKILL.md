@@ -1,186 +1,111 @@
 ---
 name: content-publishing
-description: Finalize and publish an approved blog draft by moving it from content/drafts to content/posts, checking the tone and story generating missing feature art, running Hugo and browser smoke checks, and asking whether to generate a LinkedIn post.
+description: Publish an approved blog draft — editorial pass, title check, feature image, move to content/posts, Hugo smoke check, LinkedIn prompt.
 ---
 # Content Publishing
 
 ## Purpose
 
-Publishing is the final stage of the workflow. It starts only after a blog draft is approved and ready to go live.
+Final stage of the content workflow. Starts only after a draft is approved and ready to go live.
 
-This skill owns:
+This skill owns: editorial pass, title assessment, tone check, story review, feature image, moving the bundle to `content/posts/`, Hugo/browser validation, and the LinkedIn prompt.
 
-- final editorial pass
-- title assessment
-- tone and clarity check
-- feature image fallback
-- moving the bundle from `content/drafts/` to `content/posts/`
-- Hugo and browser validation
-- check the story teling narrative by running the `story-review` skill
-- post-publish prompt for LinkedIn
-
-## Stage Boundary
-
-- `content-discovery` finds ideas.
-- `content-drafting` creates and refines the draft.
-- `content-publishing` makes the article publish-ready and validates the live result.
-
-Do not use this skill to discover topics or build a draft from scratch.
+It does not discover topics or build drafts — those belong to `content-discovery` and `content-drafting`.
 
 ## Preconditions
 
-Before using this skill, confirm:
+- Article exists at `content/drafts/<slug>/index.md`
+- Core facts and references are in place
+- User wants to publish or wants a publish-readiness pass
 
-- the article exists as `content/drafts/<slug>/index.md`
-- the core facts and references are already in place
-- the user wants to publish now, or explicitly wants a publish-readiness pass
-
-If the article still needs major structural rewriting, return to `content-drafting`.
+If the article needs major rewriting, return to `content-drafting`.
 
 ## Publish Workflow
 
-### 1. Read The Whole Article
+### 1. Editorial Review
 
-Read the full draft before changing anything.
+Read the full draft, then polish for clarity and flow:
 
-Check:
+- Does the article deliver what the title promises?
+- Tighten the opening paragraph
+- Cut repetition, smooth transitions
+- Make headings scannable and informative
+- Check grammar and readability
+- Ensure `## References` is complete when claims cite outside sources
 
-- does the article deliver what the title promises
-- is the opening strong enough for the target reader
-- are the H2 and H3 sections easy to scan
-- does the argument build cleanly from setup to takeaway
-- are limitations and uncertainty stated honestly
+### 2. Assess The Title
 
-### 2. Do The Final Editorial Pass
+A strong title should describe the topic clearly, create curiosity without clickbait, carry technical signal for the target audience, and match the article's actual claim.
 
-Polish the article for clarity and flow:
+If weak, generate 3-5 alternatives. Pick the best if intent is obvious, or ask the user to choose.
 
-- tighten the opening paragraph
-- cut repetition
-- smooth transitions between sections
-- make headings more informative
-- check grammar, phrasing, and readability
-- ensure the `## References` section is complete when claims depend on outside sources
+### 3. Tone Gate
 
-### 3. Assess The Title
+Quick sanity check against the voice defined in the persona-and-audience rule: first person, modest, precise, honest about failure, anti-hype, educational. If the article drifts into summary-without-insight, flag it.
 
-Review the title before publishing. A strong title should:
+### 4. Story Review
 
-- describe the real topic clearly
-- create curiosity without sounding like clickbait
-- contain enough technical signal for the target audience
-- match the article's actual claim
-- avoid hype and vague corporate phrasing
+Run the `story-review` skill if the article would benefit from narrative quality feedback — especially for experience-driven or failure-report pieces.
 
-If the title is weak, generate 3-5 stronger options and either:
+### 5. Validate Frontmatter And Bundle
 
-- pick the best one if the intent is obvious, or
-- ask the user to choose if the options imply meaningfully different positioning
-
-### 4. Run The Tone Gate
-
-Check the article against the writing voice:
-
-- first person when sharing experience or judgment
-- modest, not boastful
-- precise and technical
-- honest about failures and uncertainty
-- curious rather than dismissive
-- anti-hype
-- educational and readable
-
-If the article drifts into summary-without-insight, add more first-hand judgment or clearer lessons.
-
-### 5. Validate Frontmatter And Bundle Assets
-
-Before moving the post, verify:
+Verify before moving:
 
 - `title` is final
 - `date` is set for publication
-- `draft: false` will be applied at publish time
-- `description` is accurate and useful for SEO/share cards
+- `description` is accurate (SEO/share cards)
 - `tags` and `categories` are appropriate
-- `featureImage` and `featureAlt` are present, or clearly marked as missing
+- `featureImage` and `featureAlt` are present or clearly marked as missing
 
-Keep images and related assets inside the same content bundle.
+Keep all assets inside the content bundle.
 
-### 6. Generate The Feature Image If Missing
+### 6. Generate Feature Image If Missing
 
-If the article lacks a credible feature image:
-
-1. Prefer real visuals first: charts, screenshots, diagrams, architecture art.
-2. If none exist, use the `image-generation` skill to create concept art aligned with the blog's visual style.
-3. Save the asset in the article bundle and update `featureImage` and `featureAlt`.
-
-If an image already exists, keep it unless it is obviously off-theme, low quality, or visually harmful during browser review.
+1. Prefer real visuals: charts, screenshots, diagrams, architecture art.
+2. If none exist, use the `image-generation` skill.
+3. Save in the bundle and update `featureImage` and `featureAlt`.
 
 ### 7. Move Draft To Published
 
-When the article is ready:
+1. Move bundle from `content/drafts/<slug>/` to `content/posts/<slug>/`.
+2. Set `draft: false` and the final publish `date`.
+3. Preserve the bundle structure.
 
-1. Move the content bundle from `content/drafts/<slug>/` to `content/posts/<slug>/`.
-2. Update frontmatter:
-   - set `draft: false`
-   - set the final publish `date`
-   - keep the rest of the metadata consistent
-3. Preserve the bundle structure, including images and notes that should stay with the post.
+### 8. Update Backlog
 
-### 8. Update Backlog And Pipeline State
+- Remove or update the entry in `notes/content-backlog.md`
+- Clear stale references to the old draft path
 
-After moving the post:
+### 9. Hugo And Browser Smoke Check
 
-- remove or update the draft entry in `notes/content-backlog.md`
-- make sure there are no stale references to the old draft path
-- record derivative opportunities only if they are still relevant
+Use `hugo-runtime-smoke-check`. Minimum:
 
-### 9. Run Hugo And Browser Smoke Checks
+- Successful build
+- Homepage renders
+- Article page at `/posts/<slug>/` renders correctly
+- Feature image, layout, TOC, typography look correct
+- Desktop and mobile layouts checked
 
-Use `hugo-runtime-smoke-check` after the post move.
-
-Minimum checks:
-
-- build the site successfully
-- run the local preview on `http://localhost:1313/`
-- open the homepage
-- open the published article URL under `/posts/<slug>/`
-- confirm CSS and JS load from localhost
-- confirm the feature image renders well
-- confirm the article layout, TOC, and typography look correct
-- check both desktop and mobile layouts
-
-If the browser smoke check fails, fix the issue before considering the article published successfully.
+Fix any issue before considering the article published.
 
 ### 10. Ask About LinkedIn
 
-After the blog post is published and smoke-checked, ask the user whether they want a LinkedIn post generated from the article.
+After smoke check passes, ask if the user wants a LinkedIn post via the `linkedin-post` skill. Do not auto-generate.
 
-- If yes, use the `linkedin-post` skill.
-- Do not auto-generate the LinkedIn post unless the user confirms.
-
-## Default Publish Checklist
-
-Use this checklist during execution:
+## Publish Checklist
 
 ```text
-[ ] Read the full draft
-[ ] Final editorial polish done
-[ ] Title assessed and improved if needed
-[ ] Tone and voice checked
+[ ] Editorial review done
+[ ] Title assessed
+[ ] Tone gate passed
 [ ] Frontmatter validated
 [ ] Feature image present or generated
-[ ] Bundle moved from drafts to posts
+[ ] Bundle moved to posts
 [ ] Backlog updated
 [ ] Hugo/browser smoke check passed
-[ ] Asked about LinkedIn follow-up
+[ ] Asked about LinkedIn
 ```
 
-## Output To The User
+## Output
 
-When the workflow completes, report:
-
-- final post path
-- final title
-- whether the feature image was generated or reused
-- whether Hugo and browser checks passed
-- any remaining low-risk follow-ups
-- the LinkedIn prompt
+Report: final post path, final title, feature image status, smoke check result, remaining follow-ups, LinkedIn prompt.
