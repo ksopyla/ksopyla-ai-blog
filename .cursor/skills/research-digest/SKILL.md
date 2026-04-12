@@ -55,7 +55,7 @@ Where do you agree? Where do you push back?
 What questions remain unanswered?
 Connect to your own experience — "In my ConceptEncoder experiments, I've seen similar/different behavior because..."]
 
-## How This Relates to MrCogito
+## How This Relates to my github projects or experties
 [Specific connections to your research.
 Could you apply their technique?
 Does it validate or challenge your approach?
@@ -119,55 +119,6 @@ Star rating is optional but can be useful: ★★★★☆]
 [Tool/model link, your experiment notebook link, related resources]
 ```
 
-### Tool Review for LinkedIn
 
-Condense to the Research Insight template:
-- Hook: "I tested [tool] — here's the honest verdict"
-- Key finding in 3-5 lines with specific results
-- Recommendation: who should/shouldn't use it
-- Link to full review
 
-## Cross-Referencing with MrCogito
 
-Every paper review and tool review should include a "relevance to my work" angle. This is what differentiates your reviews from generic summaries. Ask:
-
-1. Does this paper's technique apply to ConceptEncoder training?
-2. Could this tool accelerate my experiment workflow?
-3. Does this model serve as a baseline or comparison point?
-4. Does this challenge or validate my architectural choices?
-5. Would I change my roadmap based on this?
-
-## "What I'm Reading" Series (LinkedIn)
-
-Monthly curated post with 3-5 papers. Low-effort, high-value format:
-
-```
-What I'm reading this month — [Month Year]
-
-Five papers that caught my attention:
-
-📄 "[Paper 1 Title]"
-→ [1-2 sentence summary + why it matters to you]
-
-📄 "[Paper 2 Title]"
-→ [1-2 sentence summary + your take]
-
-📄 "[Paper 3 Title]"
-→ [1-2 sentence summary]
-
-[... up to 5 papers]
-
-Links in comments ↓
-
-Which of these are you most curious about?
-
-#AIResearch #PaperReview #WhatImReading
-```
-
-## Output Locations
-
-- Blog paper reviews: `content/posts/paper-review-short-name/index.md` or `content/drafts/...` if not ready
-- Blog tool reviews: `content/posts/tool-review-short-name/index.md`
-- LinkedIn paper spotlights: `content/linkedin/YYYY-MM-paper-name/post.md`
-- LinkedIn "What I'm Reading": `content/linkedin/YYYY-MM-reading-list/post.md`
-- X paper threads: `content/x-threads/YYYY-MM-paper-name/thread.md`
