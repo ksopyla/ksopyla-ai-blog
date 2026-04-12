@@ -116,3 +116,12 @@ The human side: aligning stakeholders, managing expectations, building team cult
 - **Blog**: Most technical, longest form. The "lab notebook made public."
 - **LinkedIn**: Professional but personal. The "thoughtful colleague sharing over coffee."
 - **X**: Most concise and punchy. The "researcher at a conference poster session."
+
+## Deep Context — Writing Craft
+
+The content-drafting skill owns the detailed writing context. These files live in `.cursor/skills/content-drafting/` and are loaded by that skill's Context Loading step:
+
+- `author-profile.md` — full identity, credentials, project details, historical expertise, Torchenstein usage
+- `writing-preferences.md` — voice rules, editorial standards, writing quality rules, citation format, and article-specific feedback log
+
+Other content skills (linkedin-post, x-thread, content-publishing, story-review) are self-contained — they get enough context from this rule and their own skill-specific instructions. They do not need to read the drafting reference files.

@@ -23,5 +23,11 @@ alwaysApply: true
 ## GitHub Integration
 Use `gh` CLI (authenticated as `ksopyla`) for all GitHub operations: PRs, issues, releases, CI checks.
 
+## Run Python code
+The tools: 
+- `uv` is installed via homebrew
+ 
+
+
 ## Deployment
 Push to `main` triggers `.github/workflows/hugo-deployment.yml` (Hugo Extended + Dart Sass) deploying to GitHub Pages. Only `content/posts/` with `draft: false` goes live.

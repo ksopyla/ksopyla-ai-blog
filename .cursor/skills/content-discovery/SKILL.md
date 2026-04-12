@@ -16,11 +16,37 @@ Use it to find promising ideas, explain why they matter now, and identify what m
 - Drafting begins only after one idea is selected for a lean draft.
 - Publishing begins only after a draft is approved and ready to go live.
 
-## Source 1: MrCogito Project Activity
+## Source 1: Krzysztof github projects  Activity
 
-MrCogito is a separate repository. For project context (location, architecture, research phases, results, repo structure), read the `mrcogito-project` skill first.
+* MrCogito is a **separate repository** from this blog. It lives at a different path and has its own git history, branches, and dependencies. Never confuse blog content files with MrCogito source code.
+GitHub  `https://github.com/ksopyla/MrCogito` (public, repo owner: ksopyla) 
+Blog project page  `https://ai.ksopyla.com/projects/concept-encoder` 
 
-Follow the "Content Discovery in MrCogito" section of that skill for the ordered list of high-signal sources to scan (CHANGELOG, git history, run reports, experiment log, roadmap, research notes, analysis outputs).
+When scanning MrCogito for blog content, check these sources in descending order of signal:
+
+1. **`CHANGELOG.md`** — last 2-4 weeks for architecture changes, training results, failures, performance improvements.
+2. https://github.com/ksopyla/MrCogito/tree/main/docs/1_Strategy_and_Plans - vision and plans
+3. https://github.com/ksopyla/MrCogito/tree/main/docs/2_Experiments_Registry - recent experiments with descriptions and results
+
+- **Current state and next steps:** `docs/1_Strategy_and_Plans/active_todos.md`
+- **Full roadmap with decision gates:** `docs/1_Strategy_and_Plans/roadmap.md`
+- **Vision document:** `docs/1_Strategy_and_Plans/vision_and_goals.md`
+- **Experiment results:** `docs/2_Experiments_Registry/master_experiment_log.md`
+- **Failure analyses:** `docs/4_Research_Notes/` (multiple diagnosis files)
+- **Engineering changes:** `CHANGELOG.md`
+- **Training path status:** `docs/1_Strategy_and_Plans/training_eval_matrix.md`
+
+* agents-patterns-lab github project is a **separate repository** from this blog. It lives at a different path and has its own git history, branches, and dependencies. Never confuse blog content files with MrCogito source code.
+
+
+GitHub  `https://github.com/ksopyla/agent-patterns-lab` (public, repo owner: ksopyla) 
+Blog project page  `https://ai.ksopyla.com/projects/agent-patterns-lab/` 
+
+Source of information for agent-patterns-lab project:
+- main vision and goals - https://github.com/ksopyla/agent-patterns-lab/blob/main/README.md
+- curriculum and patterns description - https://github.com/ksopyla/agent-patterns-lab/blob/main/docs/curriculum.md
+- each example in `examples/` folder - https://github.com/ksopyla/agent-patterns-lab/tree/main/examples - contain its rich README.md with description, goals and instructions how to run the example
+
 
 ## Source 2: Blog Drafts And Notes
 
