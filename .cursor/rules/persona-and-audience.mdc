@@ -6,71 +6,101 @@ alwaysApply: true
 
 ## Author Positioning
 
-Krzysztof Sopyła is an **AI R&D manager, researcher, AI architect, team leader who leads the AI team and actually trains models and reads papers, building agentic products for enterprises**.
+Krzysztof Sopyla is an **AI engineering leader who builds enterprise agent systems by day and trains his own models by night**.
 
-Goal: to be a thought leader in the field of AI architecture, agentic systems, and AI for enterprises. Share my insights, experiences, and knowledge with the community. Helping the stakeholders to build teams, products and services that are AI powered.
+He manages AI teams at Pearson, where he bridges the gap between what stakeholders expect and what's technically feasible. In his spare time, he runs MrCogito — a solo research project on concept-bottleneck architectures (currently paused while he focuses on agent patterns). He documents both journeys honestly: the enterprise alignment struggles and the research dead ends.
+
+**One-line positioning**: The AI leader who manages teams, architects agent systems, and still gets his hands dirty training models — then writes about what actually works and what doesn't.
+
+Goal: to be a recognized voice in AI architecture, enterprise agent systems, and honest AI leadership. Share insights from both the enterprise boardroom and the solo research lab.
 
 Core beliefs:
 - Sharing failures and negative results openly, not just wins
 - Challenges the hype, finding the right balance between hype and reality (vibe coding, AI engineering, AI architecture)
-- Team collaboration, communication and culture
+- Architecture-first thinking: care about *why* something works, not just *that* it works
+- Team collaboration, communication and culture matter as much as technical skills
 - Clear and concise communication, no fluff, no BS
-- Focus on the technical details, not the hype
-- Believes in open science, open datasets, and accessible AI education
+- Open science, open datasets, and accessible AI education
 
-My strengths and expertise:
-- Building the effective AI native teams
-- Understanding the deep technical details, strong engineering background, architecture design
-- Deep understanding of the AI architectures, models, and algorithms
-- Experience in enterprise environments, building products and services that are AI powered
+## The Differentiator
 
-Krzysztofs social media presence:
+What makes Krzysztof's perspective rare:
+- **Dual existence**: Leads enterprise AI teams AND does solo deep-learning research. Most people do one or the other.
+- **Honest about failure**: Publishes failed experiments. Talks about stakeholder misalignment. Doesn't pretend everything works.
+- **Architecture-first**: Whether agents (MCP, A2A) or models (concept encoders), he cares about structural choices and trade-offs.
+- **Anti-hype, pro-evidence**: Backs opinions with code, experiments, or real enterprise experience.
+
+## Strengths and Expertise (ordered by current relevance)
+
+1. Agentic systems: MCP, A2A protocol, multi-agent architecture, LangGraph, enterprise agent deployment
+2. AI team leadership: building AI-native teams, stakeholder alignment, enterprise product development
+3. Deep learning research: concept encoders, bottleneck architectures, efficient representations, PyTorch
+4. Architecture design: system design for AI products, production ML systems, cloud deployment
+5. Paper analysis: reading and connecting papers to real engineering work
+
+## Social Presence
+
 - LinkedIn: https://www.linkedin.com/in/ksopyla/
 - X: https://x.com/ksopyla
 - GitHub: https://github.com/ksopyla
-- Expierience and positions: AI R&D manager at Pearson, CTO in AI startups, Chief AI architect and CEO in own software house Ermlab, team leader, researcher, PhD in computer science AI, etc.
+- Blog: https://ai.ksopyla.com/
+- Current role: AI Engineering Manager / Tech Lead at Pearson
+- Background: CTO in AI startups, Chief AI architect and CEO at own software house Ermlab, PhD in computer science (AI)
 
-Past and current projects:
-- MrCogito project, Concept Encoder, etc. https://github.com/ksopyla/MrCogito
-- Agent Patterns Lab - https://github.com/ksopyla/agent-patterns-lab 
+## Active Projects
 
-My expertise: 
-- PyTorch - MrCogito project, Concept Encoder, etc.
-- Agentic systems, multi-agent systems, MCP, LLM engineering, Voice AI, Concept Encoder, etc.
-- Classic ML systems, SVM, online learning, GPU-accelerated algorithms, etc.
-- 
+### Agent Patterns Lab (primary focus)
+- 9 design patterns for production multi-agent systems
+- https://github.com/ksopyla/agent-patterns-lab
+- Status: Active, growing
 
+### MrCogito / Concept Encoder (paused, not abandoned)
+- Solo research on concept-bottleneck transformers
+- https://github.com/ksopyla/MrCogito
+- Status: Paused. Phase 1 experiments hit concept collapse. Plans to return with agentic auto-research.
+
+### PyTorch Course / Prof. Torchenstein (abandoned as course)
+- Course abandoned due to lack of interest
+- Torchenstein mascot and visual assets remain available for LinkedIn branding only
+- Do NOT promote the course as active
+
+## Content Pillars (strict — 3 max)
+
+### Pillar 1: Enterprise Agent Architecture
+The *how* of building agent systems that work in real organizations. MCP design, A2A protocol, multi-agent patterns, the gap between framework demos and production reality.
+
+### Pillar 2: AI Research in the Open
+Honest documentation of solo research: MrCogito experiments, concept collapse, what failed and why. The process of doing research with limited compute and time.
+
+### Pillar 3: Leading AI Teams in Enterprise
+The human side: aligning stakeholders, managing expectations, building team culture, navigating the tension between innovation pressure and realistic delivery.
 
 ## Target Persona (Ideal Reader)
 
-**Primary**: Senior AI tech leads (3-8 years experience) who:
-- are building AI empowered products and services, want to learn from the best practices and mistakes
-- are seeking the guidance and advice from the experts, wanted some blueprint to follow
-- are managing and leading AI engineers native teams, want to improve their leadership skills
-- are looking for practical insights they can apply to their own work
-- they understand the AI and engineering,
-- who connects the engineering with business needs
-- works in enterprise environments, knows the problems and challenges in those environments: bureaucracy, politics, culture, etc.
-- CTO, VP of Engineering, Director of AI, Head of AI, etc.
+**Primary**: Senior AI tech leads, Heads of AI, CTOs (3-8 years experience) who:
+- are building AI-powered products and services in enterprise environments
+- manage or lead AI engineering teams and want practical leadership insights
+- seek honest blueprints and patterns from someone doing the same work
+- value technical depth and connect engineering with business needs
+- know the enterprise challenges: bureaucracy, politics, culture, stakeholder alignment
 
-**Secondary**: AI engineers, AI product mangerer who works with AI tech leaders, who: 
-- are challendbed by the stakeholders expectations,
-- who have enough the unrealistic deadlines and requirements,
-- who belive that AI could help, but at the same time they understand that we all needs to  learn, make mistakes and improve.
-- who want to hear the honest and transparent insights from the the field, not just the wins, but also the failures and negative results.
-- who seek some assurance that they are on the right track, and they are not alone in this journey.
-
+**Secondary**: AI engineers and product managers who:
+- feel the gap between stakeholder expectations and technical reality
+- want honest, transparent field notes — failures included, not just wins
+- seek reassurance they're on the right track and are not alone in this journey
+- are building with agents, MCP, or multi-agent systems
 
 **What they value**: curiosity, technical leadership, honesty over hype, open science, contrarian but evidence-backed opinions.
 
-
 ## Topics to Lean Into
-- Agentic systems, multi-agent systems, MCP, LLM engineering, Voice AI, Concept Encoder, etc.
-- Architecture innovation (attention alternatives, concept learning, efficient encoders)
-- Voice and language models for conversational tutoring, speech-to-speech models
-- Paper analysis with personal commentary and connection to own research
+- Agentic systems, multi-agent systems, MCP, A2A, LLM engineering
+- Enterprise agent architecture and deployment patterns
+- AI team leadership, stakeholder alignment, product development reality
+- Architecture innovation (concept learning, efficient encoders, bottleneck models)
+- Paper analysis with personal commentary and connection to own work
 - Efficiency and sustainability in AI (compute-aware research)
 - Open science, reproducibility, research methodology
+- Honest failure documentation and lessons learned
 
 ## Topics to Avoid
 - Generic AI hype or "AI will replace X" takes
@@ -79,6 +109,8 @@ My expertise:
 - Content without personal experience or data backing it
 - Hot takes on AI safety/alignment without technical grounding
 - Anything that sounds like marketing copy
+- PyTorch course promotion (abandoned)
+- Voice AI as a primary topic (secondary interest only)
 
 ## Platform-Specific Persona
 - **Blog**: Most technical, longest form. The "lab notebook made public."

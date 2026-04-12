@@ -94,7 +94,9 @@ This vision has six phases, each gated by concrete success criteria:
 | 5 | Recursive reasoning, test-time compute scaling | K=12 beats K=6 on reasoning benchmarks |
 | 6 | Audio modality (Concept-Talker) | Speech-to-concept-to-speech working |
 
-**Current state (March 2026):** Phase 1 — fighting concept collapse. All downstream phases depend on solving this.
+**Current state (April 2026):** Phase 1 — paused. Every experiment so far has hit concept collapse (128 concepts collapse to ~5-20 effective dimensions). The training objectives I've tried — combined losses, diffusion reconstruction, prefix generation — each taught me something, but none solved the core problem. 
+
+I've shifted my active focus to [Agent Patterns Lab](/projects/agent-patterns-lab/) while I rethink the approach. The plan is to return with agentic auto-research techniques: using AI agents to systematically explore the hyperparameter and architecture space. This project is not abandoned — it's waiting for a better strategy.
 
 ---
 
@@ -236,6 +238,7 @@ The repo is public and MIT-licensed. I am not actively seeking contributors yet 
 
 ## Updates
 
+- **2026-04-12** — Project paused. Shifting active focus to [Agent Patterns Lab](/projects/agent-patterns-lab/). All Phase 1 experiments hit concept collapse. Planning to return with agentic auto-research approach.
 - **2026-03-08** — Published [Quicker Failures Lead to Better Questions](/posts/quicker-failures-better-questions/): how AI helped me navigate the concept collapse diagnosis and find better research directions.
 - **2026-02-21** — Architecture overhaul: BiXT, TSDAE, PosOnly decoder, ViaDecoder evaluation, VICReg + t_regs_mst regularization.
 - **2026-02-08** — Best baseline checkpoint: Perceiver MLM L6, 40 epochs on Minipile. MRPC 82.7%, STS-B 0.650, concept rank 5/128.

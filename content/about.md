@@ -1,21 +1,35 @@
 ---
 title: "About me - Krzysztof Sopyła, PhD"
-date: 2025-07-12
+date: 2026-04-12
 layout: "about"
 ---
 
-I am Krzysztof Sopyła, an AI R&D lead and researcher with a deep curiosity about how reasoning works, how intelligence emerges in computer systems. My work primarily revolves around efficient and effective ML systems that can learn and reason with drastically less data and compute. I don't believe that the current way of training LLM and LRM is the optimal one. It worries me that we are wasting the earth's resources, blindly building AGI using brute force, there should be a better way.
+I am Krzysztof Sopyła — an AI engineering leader who builds enterprise agent systems by day and trains his own models by night.
 
-Over the years, I've had the opportunity to work on various projects involving natural language processing and neural networks training. During my PhD I was working on online learning methods and GPU-accelerated algorithms (especially SVM). After my university years I have decided use my skills more practically and I have worked as AI lead in a few startups and companies: woking on Goodwrite a polish writing assistant, were in 2018 we started using the brand new Transformer architecture, then I've contributed to the development of one of the first Polish BERT models. I and my team try to understand the book content and we were working on extending the context of BERT models, as well as LSTM for for book recommendation engines. Currently, I'm exploring conversational tutoring systems at Pearson.    
+During the day, I manage AI teams at Pearson. I work closely with product owners, bridge the gap between what stakeholders expect and what's technically feasible, and try to build a team culture where experimentation is safe and honest communication is the default. Over the years I've held roles from AI researcher through CTO in startups to Chief AI Architect at my own software house (Ermlab). Each taught me something different: academia showed me rigorous thinking, startups taught me speed, and enterprise taught me that aligning people is harder than aligning models.
 
-I like revisiting old methods, ideas and concepts, mixing them with modern enginnering practice and architectures. I believe in experimentation and reproducibility of reserach. Even small well design experiment could lead us in proper direction. 
+In the evenings, I do my own research. I believe that leading AI teams without staying hands-on is a recipe for losing touch with reality.
 
-One of my core beliefs is education and knowledge sharing. Teaching and learning was always important to me, it gives me purpuse and make me feel fulfilled. Sharing code, data and ideas, having the oportuninty to discuss them in respectfull manner lightens me up. 
-I'm working on a [PyTorch course](/posts/pytorch-course/) where my Prof. Torchenstein (mad scientist) will teach you how to use PyTorch. The goal is to make Pytorch learning fun as reading a comic book.
+## What I'm Building
 
+**[Agent Patterns Lab](/projects/agent-patterns-lab/)** is my current primary project — a collection of 9 design patterns for production multi-agent systems. Each pattern solves a real architectural problem with running code. The progression takes you from a single agent pipeline to a cloud-deployed, authenticated, multi-team agent system. I built this because the gap between framework demos and enterprise-grade agent architecture is enormous, and almost nobody writes about the structural decisions that matter.
 
-I'm always eager to learn, collaborate, and revisit old concepts with fresh perspectives. If you share an interest in AI research or efficient system design, feel free to reach out! 
+**[MrCogito — Concept Encoder](/projects/concept-encoder/)** is my solo research project exploring concept-bottleneck transformers: compressing sequences into a small number of dense concept tokens and reasoning from there. The vision is an efficient reasoning model at 21M parameters — proving that architecture matters more than scale. Currently paused: after many experiments, all hitting concept collapse (128 concepts collapsing to ~5 effective dimensions), I've shifted focus to agents. I plan to return with agentic auto-research techniques. The project is not abandoned — it's waiting for a better approach. I've documented the failures openly because I think they're as instructive as successes.
 
-You can find me on [GitHub](https://github.com/ksopyla), [LinkedIn](https://linkedin.com/in/krzysztofsopyla), [Google Scholar](https://scholar.google.com/citations?user=oG6F91IAAAAJ), [Twitter](https://twitter.com/ksopyla). 
-I used to write about AI in Polish on my blog at [ksopyla.com](https://ksopyla.com), where I've documented many of my earlier explorations.
+## What I Write About
 
+This blog covers three things:
+
+1. **Enterprise agent architecture** — MCP design, A2A protocol, multi-agent patterns, the gap between what agent frameworks promise and what production requires.
+2. **AI research in the open** — Honest documentation of my solo research process, including the experiments that failed and why.
+3. **Leading AI teams** — Stakeholder alignment, team culture, the tension between innovation pressure and realistic delivery.
+
+I don't write hype. I don't write marketing copy. I write about what I've tried, what I've built, what broke, and what I think it means.
+
+## Background
+
+My path through AI: PhD in computer science (AI focus, GPU-accelerated SVM and online learning), then building one of the first Polish BERT models, working on context-extended transformers for book understanding, recommendation engines with LSTMs, and a Polish writing assistant that started using Transformers back in 2018. I like revisiting old ideas with modern engineering — sometimes the future lies in better understanding the past.
+
+I believe in open science, open source, and accessible education. I believe that even small, well-designed experiments can point you in the right direction. And I believe that sharing negative results is more valuable than pretending everything works on the first try.
+
+You can find me on [GitHub](https://github.com/ksopyla), [LinkedIn](https://linkedin.com/in/ksopyla), [X](https://twitter.com/ksopyla), and [Google Scholar](https://scholar.google.com/citations?user=oG6F91IAAAAJ). I used to write about AI in Polish on [ksopyla.com](https://ksopyla.com).

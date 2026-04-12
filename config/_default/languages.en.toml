@@ -10,14 +10,14 @@ copyright = "© Copyright 2025 Krzysztof Sopyla's AI Blog Rights Reserved 🚀"
 dateFormat = "2 January 2006"
 
 mainSections = ["posts"]
-description = "AI Research & Development blog by Krzysztof Sopyła. Exploring how reasoning works, concept-based architectures, and creating AI products."
+description = "AI engineering leadership, enterprise agent architecture, and honest research by Krzysztof Sopyła. Building agent systems by day, training models by night."
 
 [params.author]
 name = "Krzysztof Sopyła"
 image = "img/ksopyla_profile_v2.jpeg"
-headline = "AI Researcher curious how reasoning works"
+headline = "AI Engineering Leader | Agents, Architecture & Honest Research"
 
-bio = "AI R&D lead on a path to rediscover the concept architectures. GPU poor."
+bio = "I lead AI team at Pearson and build agent systems in the open. I document what works, what fails, and why the gap between demos and production is wider than anyone admits."
 
 links = [
   #{ email = "mailto:hello@your_domain.com" },
