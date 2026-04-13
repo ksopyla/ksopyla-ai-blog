@@ -2,7 +2,7 @@
 title: "Your 20-tool MCP server is making agents dumber"
 date: 2026-04-02
 platform: linkedin
-status: draft
+status: published
 content_score: 0
 related_blog_post: "posts/mcp_best_practices"
 ---

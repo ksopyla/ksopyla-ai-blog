@@ -1,0 +1,41 @@
+{
+  "cover": {
+    "title_lines": ["Agent Identity", "& Authorization:", "The Unsolved Layer"],
+    "character_image": "torchenstein_empty_background.png",
+    "character_position": "bottom-center",
+    "title_font_size": 110,
+    "title_y_start": 100
+  },
+  "slides": [
+    {
+      "heading": "Everyone Is Optimizing for Smarter Agents",
+      "body": "Better planning. Stronger reasoning. More tools. Fancier orchestration graphs. That is where all the attention goes.",
+      "scene_image": "prof-torchenstein-coding.png"
+    },
+    {
+      "heading": "But Identity and Authorization Are Extremely Hard",
+      "body": "Who is the agent acting for? What scopes were delegated? Which tools can it call transitively? What data can cross tenant boundaries? Who is accountable when it acts wrong?",
+      "scene_image": "prof-torchenstein-crossed-hands-in-front-window_v2.png"
+    },
+    {
+      "heading": "Classic RBAC Was Built for Humans",
+      "body": "Agents break every assumption: created dynamically, responsibilities shift via prompt changes, same agent with different delegations, permissions valid yesterday but unsafe today.",
+      "scene_image": "prof-torchenstein-empty-lab-servers-racks.png"
+    },
+    {
+      "heading": "Protocols Are Just Emerging",
+      "body": "MCP and A2A are starting to address this, but the patterns for delegation, scoped permissions, and audit in dynamic agent teams are still being figured out. We are in the early days.",
+      "scene_image": "prof-torchenstein-assembling.png"
+    },
+    {
+      "heading": "Start With One Question",
+      "body": "If this agent acts under a different delegation tomorrow, do our permissions still hold? If you cannot answer that, your agent system is fragile -- no matter how smart the model.",
+      "scene_image": "prof-torchenstein-sitting-thinking.png"
+    },
+    {
+      "heading": "How Are You Thinking About Agent Identity?",
+      "body": "Static roles? Per-request tokens? OAuth delegation? Nothing yet? This is the layer that will define which agent systems survive production.",
+      "scene_image": "prof-torchenstein-night-constellation.png"
+    }
+  ]
+}

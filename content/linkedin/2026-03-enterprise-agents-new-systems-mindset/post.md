@@ -2,7 +2,7 @@
 title: "Enterprise agents need a new systems mindset"
 date: 2026-03-21
 platform: linkedin
-status: ready
+status: published
 content_score: 9.3
 related_blog_post: "posts/enterprise-agents-new-systems-mindset"
 ---

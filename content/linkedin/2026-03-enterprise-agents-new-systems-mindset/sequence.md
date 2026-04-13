@@ -3,7 +3,7 @@ title: "2-week LinkedIn sequence for enterprise agents article"
 date: 2026-03-21
 platform: linkedin
 asset_type: sequence
-status: ready
+status: published
 related_blog_post: "posts/enterprise-agents-new-systems-mindset"
 ---
 

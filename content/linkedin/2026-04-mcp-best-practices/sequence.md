@@ -3,7 +3,7 @@ title: "2-week LinkedIn sequence for MCP best practices article"
 date: 2026-04-02
 platform: linkedin
 asset_type: sequence
-status: draft
+status: published
 related_blog_post: "posts/mcp_best_practices"
 ---
 

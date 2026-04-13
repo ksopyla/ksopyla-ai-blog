@@ -2,7 +2,7 @@
 title: "Speech-to-Speech Architectures — Latency Is the Wrong Metric"
 date: 2026-03-04
 platform: linkedin
-status: draft
+status: published
 content_score: 0
 related_blog_post: "posts/voice-to-voice-models-2026-review"
 ---
