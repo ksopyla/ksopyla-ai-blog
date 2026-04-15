@@ -7,6 +7,7 @@ defaultContentLanguage = "en"
 languageCode = "en"
 
 enableRobotsTXT = true
+ignoreFiles = ['\.xlsx$', '\.jsonl$']
 summaryLength = 0
 
 [pagination]

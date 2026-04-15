@@ -62,19 +62,15 @@ If two sections make the same argument from slightly different angles, merge the
 
 When Krzysztof edits code examples, variable names, function signatures, or inline prose, those edits are final. Do not reformat, rename, or "improve" them. His phrasing in edited sections is the target voice.
 
-### 6. Add a TL;DR section for AI discoverability
-
-For opinionated or best-practices articles, add a structured TL;DR near the top with do/don't lists. This helps both human scanners and AI systems that summarize web pages. Keep each bullet to one actionable sentence.
-
-### 7. Use analogies from the sources, not invented ones
+### 6. Use analogies from the sources, not invented ones
 
 If a source uses a good framing or metaphor, use it with attribution. Attributed analogies are more credible and more interesting than generic invented ones.
 
-### 8. Opinionated claims need to be labeled as opinions
+### 7. Opinionated claims need to be labeled as opinions
 
 "A great MCP server has 2-4 tools, max" is an opinion. Label it: "My controversial take:" or "My opinion:". This keeps the article honest and signals that it's a judgment call, not a rule.
 
-### 9. Research notes are a starting point, not a sufficient source
+### 8. Research notes are a starting point, not a sufficient source
 
 Notes files contain summaries and pointers. They are not deep enough to write strong prose from. Before writing any section, go back to the actual source URL and re-read it. The difference between a weak draft and a strong one is whether the writer read the summary or the original.
 

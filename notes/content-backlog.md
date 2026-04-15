@@ -8,6 +8,11 @@ See `.cursor/rules/content-drafting-workflow.mdc` for how ideas move through the
 
 ## Recently Published
 
+### How I Built an Engineering Manager Mission Control with Cursor, MCP, and AI Skills
+- **Published**: `content/posts/engineering-manager-mission-control/` on 2026-04-14
+- **Source**: Personal experience managing AI teams with Cursor, MCP servers, and custom AI skills
+- **Derivative opportunities**: LinkedIn post exists at `content/linkedin/2026-04-engineering-mission-control/post.md`
+
 ### Better Failures, Better Questions: How AI Helped Me Steer MrCogito Forward
 - **Published**: `content/posts/better-failures-better-questions/` on 2026-03-08
 - **Source**: MrCogito research notes spanning MLM, diffusion, `BiXT`, and prefix-conditioned generation

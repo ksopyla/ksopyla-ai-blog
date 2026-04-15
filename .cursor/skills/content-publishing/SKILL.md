@@ -33,21 +33,64 @@ Read the full draft, then polish for clarity and flow:
 - Check grammar and readability
 - Ensure `## References` is complete when claims cite outside sources
 
-### 2. Assess The Title
+### 2. Generate TL;DR
+
+Every published article gets a TL;DR section. It serves two purposes: it helps readers quickly understand what the article is about and what value they will get from reading it, and it improves AI-generated summaries when search engines or LLMs process the page.
+
+**Structure** (must follow this exact order):
+
+1. **`{{< lead >}}` shortcode** — placed immediately after the frontmatter, before anything else. Contains a 1–2 sentence hook that summarizes what the article is about and what the reader gets. Renders in muted/lighter text as a visual intro.
+2. **`## TL;DR` heading** — placed immediately after the lead shortcode, before the first content section.
+3. **Bullet list** under the TL;DR heading with the format appropriate for the article type.
+
+Example layout:
+
+```markdown
+---
+frontmatter here
+---
+
+{{< lead >}}
+One or two sentences summarizing what this article covers and why it matters.
+{{< /lead >}}
+
+## TL;DR
+
+**What you will learn:** (or **Do:** / **Don't:** for prescriptive articles)
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## First Content Section
+```
+
+**Format depends on the article type**:
+- **Best-practices or opinionated articles**: use **Do / Don't** bullets
+- **Technical how-to or process articles**: use **Key takeaways** or **What you will learn** bullets
+- **Experience or narrative articles**: use **What you will learn** bullets summarizing the key sections
+
+**Rules**:
+- Keep each bullet to one actionable sentence
+- The TL;DR should be useful on its own — a reader who stops here should still walk away with something
+- Do not just repeat the `description` from frontmatter — the TL;DR should be more specific and structured
+- Any opening paragraphs that were before the TL;DR should move into the first content section
+
+### 3. Assess The Title
 
 A strong title should describe the topic clearly, create curiosity without clickbait, carry technical signal for the target audience, and match the article's actual claim.
 
 If weak, generate 3-5 alternatives. Pick the best if intent is obvious, or ask the user to choose.
 
-### 3. Tone Gate
+### 4. Tone Gate
 
 Quick sanity check against the voice defined in the persona-and-audience rule: first person, modest, precise, honest about failure, anti-hype, educational. If the article drifts into summary-without-insight, flag it.
 
-### 4. Story Review
+### 5. Story Review
 
 Run the `story-review` skill if the article would benefit from narrative quality feedback — especially for experience-driven or failure-report pieces.
 
-### 5. Validate Frontmatter And Bundle
+### 6. Validate Frontmatter And Bundle
 
 Verify before moving:
 
@@ -59,24 +102,24 @@ Verify before moving:
 
 Keep all assets inside the content bundle.
 
-### 6. Generate Feature Image If Missing
+### 7. Generate Feature Image If Missing
 
 1. Prefer real visuals: charts, screenshots, diagrams, architecture art.
 2. If none exist, use the `image-generation` skill.
 3. Save in the bundle and update `featureImage` and `featureAlt`.
 
-### 7. Move Draft To Published
+### 8. Move Draft To Published
 
 1. Move bundle from `content/drafts/<slug>/` to `content/posts/<slug>/`.
 2. Set `draft: false` and the final publish `date`.
 3. Preserve the bundle structure.
 
-### 8. Update Backlog
+### 9. Update Backlog
 
 - Remove or update the entry in `notes/content-backlog.md`
 - Clear stale references to the old draft path
 
-### 9. Hugo And Browser Smoke Check
+### 10. Hugo And Browser Smoke Check
 
 Use `hugo-runtime-smoke-check`. Minimum:
 
@@ -88,7 +131,7 @@ Use `hugo-runtime-smoke-check`. Minimum:
 
 Fix any issue before considering the article published.
 
-### 10. Ask About LinkedIn
+### 11. Ask About LinkedIn
 
 After smoke check passes, ask if the user wants a LinkedIn post via the `linkedin-post` skill. Do not auto-generate.
 
@@ -96,6 +139,7 @@ After smoke check passes, ask if the user wants a LinkedIn post via the `linkedi
 
 ```text
 [ ] Editorial review done
+[ ] TL;DR generated
 [ ] Title assessed
 [ ] Tone gate passed
 [ ] Frontmatter validated
