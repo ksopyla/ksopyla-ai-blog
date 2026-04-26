@@ -1,13 +1,18 @@
 ---
-title: "MrCogito — Concept Encoder" 
-description: "An open research project exploring concept bottleneck transformers: compressing sequences into dense concept tokens, reasoning in concept space, and eventually generating speech from concepts." 
+title: "MrCogito — Concept Reasoning Model"
+description: "An open research project on concept-bottleneck models: compressing sequences into dense concept embeddings, reasoning in concept space, and — eventually — generating speech from those same concepts."
+summary: "Open research on concept-bottleneck transformers. ~21M parameters, deliberate. Phase 2 runs through an agentic auto-research loop."
 date: 2026-02-15
+lastmod: 2026-04-26
+weight: 10
 draft: false
-tags: ["AI research", "AI R&D", "Concept Encoder", "MrCogito"]
+tags: ["AI research", "Concept Reasoning", "Concept Encoder", "MrCogito", "Latent Reasoning"]
 categories: ["AI research"]
-featureAlt: "Concept Encoder architecture diagram showing input tokens compressed into concept tokens via cross-attention"
+featureAlt: "Concept reasoning architecture diagram showing input tokens compressed into concept tokens via cross-attention, then refined through recursive reasoning"
 icon: "🧠"
 showReadingTime: true
+aliases:
+  - /projects/concept-encoder/
 ---
 
 {{< lead >}}
@@ -94,9 +99,9 @@ This vision has six phases, each gated by concrete success criteria:
 | 5 | Recursive reasoning, test-time compute scaling | K=12 beats K=6 on reasoning benchmarks |
 | 6 | Audio modality (Concept-Talker) | Speech-to-concept-to-speech working |
 
-**Current state (April 2026):** Phase 1 — paused. Every experiment so far has hit concept collapse (128 concepts collapse to ~5-20 effective dimensions). The training objectives I've tried — combined losses, diffusion reconstruction, prefix generation — each taught me something, but none solved the core problem. 
+**Current state (April 2026):** Phase 1 ran into concept collapse (128 concepts collapsing to ~5-20 effective dimensions) across every objective I tried — combined losses, diffusion reconstruction, prefix generation. None of them solved the core problem alone, but each one taught me something specific about *why* collapse happens.
 
-I've shifted my active focus to [Agent Patterns Lab](/projects/agent-patterns-lab/) while I rethink the approach. The plan is to return with agentic auto-research techniques: using AI agents to systematically explore the hyperparameter and architecture space. This project is not abandoned — it's waiting for a better strategy.
+Phase 2 changes the operating model rather than the goal: **agentic auto-research**. Instead of running experiments by hand, I am building agents that read the experiment log, propose the next ablation, kick off the training run on the GPU clusters, write up the results, and update the research log. The bet is that a solo researcher with limited evening hours can cover more of the architecture and hyperparameter space if the boring parts of the loop run while they sleep.
 
 ---
 
@@ -238,7 +243,8 @@ The repo is public and MIT-licensed. I am not actively seeking contributors yet 
 
 ## Updates
 
-- **2026-04-12** — Project paused. Shifting active focus to [Agent Patterns Lab](/projects/agent-patterns-lab/). All Phase 1 experiments hit concept collapse. Planning to return with agentic auto-research approach.
+- **2026-04-26** — Renamed to **Concept Reasoning Model**. The encoder is one component of the larger reasoning architecture, and "reasoning" — not "encoding" — is what I am ultimately trying to make work. Phase 2 begins under an agentic auto-research operating model.
+- **2026-04-12** — Phase 1 closed out. All experiments hit concept collapse; the diagnostic work pointed at the training objective rather than the architecture.
 - **2026-03-08** — Published [Quicker Failures Lead to Better Questions](/posts/quicker-failures-better-questions/): how AI helped me navigate the concept collapse diagnosis and find better research directions.
 - **2026-02-21** — Architecture overhaul: BiXT, TSDAE, PosOnly decoder, ViaDecoder evaluation, VICReg + t_regs_mst regularization.
 - **2026-02-08** — Best baseline checkpoint: Perceiver MLM L6, 40 epochs on Minipile. MRPC 82.7%, STS-B 0.650, concept rank 5/128.

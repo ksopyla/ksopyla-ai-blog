@@ -303,17 +303,6 @@ Follow all 9 writing quality rules documented in `writing-preferences.md` (in th
 3. Kill AI-sounding filler phrases (see kill list in writing-preferences)
 4. Research notes are a starting point, not a sufficient source — re-read originals
 
-## Backlog Sync During Drafting
-
-When drafting changes the status of an idea:
-
-- create or update the backlog entry when a draft folder exists
-- store the weighted score after scoring
-- keep file paths in sync with the real draft folder
-- remove stale entries if a draft folder is intentionally deleted
-
-Do not mark the piece as published here. Publishing status changes belong to `content-publishing`.
-
 ## Handoff To Publishing
 
 This skill is complete when there is an approved draft plus a short publish handoff package.

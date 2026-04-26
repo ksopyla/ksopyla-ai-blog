@@ -1,6 +1,6 @@
 # Krzysztof Sopyla — Author Profile
 
-Last updated: 2026-04-12
+Last updated: 2026-04-26
 
 This is the single source of truth for who Krzysztof is, what he builds, and how he communicates. Every bio, headline, about page, and content piece should be consistent with this profile.
 
@@ -8,9 +8,11 @@ This is the single source of truth for who Krzysztof is, what he builds, and how
 
 ## Identity Statement
 
-Krzysztof Sopyla is an **AI engineering leader who builds enterprise agent systems by day and trains his own models by night**.
+Krzysztof Sopyla is an **AI tech lead, agent systems architect, and concept-reasoning researcher**.
 
-He manages AI teams at Pearson, where he navigates the gap between what stakeholders expect and what's technically feasible. In his spare time, he runs MrCogito — a solo research project exploring concept-bottleneck architectures for efficient reasoning.
+**Motto**: *Build agents by day, train models by night, publish the mess.*
+
+He leads AI teams at Pearson, where he architects enterprise agent systems and navigates the gap between what stakeholders expect and what is technically feasible. In the evenings he runs MrCogito — Concept Reasoning Model, a solo ML research project on concept-bottleneck transformers. Phase 1 hit concept collapse and produced honest postmortems. Phase 2 is now active, built around an agentic auto-research loop where the agents he builds by day plan and run the experiments he cannot run by hand at night.
 
 He documents both journeys honestly: the enterprise alignment struggles and the research dead ends.
 
@@ -29,8 +31,8 @@ What makes Krzysztof's perspective rare:
 
 ## Current Role
 
-- **Title**: AI Engineering Manager / Tech Lead at Pearson
-- **What he does**: Leads AI teams, works closely with product owners, bridges technical feasibility with business needs
+- **Title**: AI Tech Lead at Pearson (internal title: AI Engineering Manager)
+- **What he does**: Leads AI teams, architects agent systems, works closely with product owners, bridges technical feasibility with business needs
 - **What he can share publicly**: Generic lessons, patterns, and principles from enterprise AI development. Not specific products, data, or internal details.
 
 ---
@@ -44,12 +46,13 @@ What makes Krzysztof's perspective rare:
 - **Blog page**: https://ai.ksopyla.com/projects/agent-patterns-lab/
 - **Content value**: Hot topic (agents, MCP, A2A), backed by running code, enterprise-grounded patterns
 
-### MrCogito / Concept Encoder (paused, not abandoned)
-- **What**: Solo research project exploring concept-bottleneck transformers — compressing sequences into dense concept tokens for efficient reasoning
-- **Status**: Paused. All Phase 1 experiments hit concept collapse (128 concepts collapse to ~5 effective dimensions). Shifting focus to agents for now, with plans to return using agentic auto-research techniques.
+### MrCogito — Concept Reasoning Model (active)
+- **What**: Solo ML research on concept-bottleneck transformers — compressing sequences into a small bank of dense concept tokens and reasoning over them
+- **Status**: Active. Phase 1 hit concept collapse (128 concepts collapse to ~5 effective dimensions) and produced honest postmortems. Phase 2 begins now with an agentic auto-research loop — agents propose ablations, run training, and write up the results.
 - **Repo**: https://github.com/ksopyla/MrCogito
-- **Blog page**: https://ai.ksopyla.com/projects/concept-encoder/
-- **Content value**: Unique failure documentation, honest research process, "GPU poor" solo researcher narrative
+- **Blog page**: https://ai.ksopyla.com/projects/concept-reasoning/
+- **Naming note**: Project was renamed from "Concept Encoder" to "Concept Reasoning Model" in April 2026. The encoder is one component; reasoning is the actual goal.
+- **Content value**: Unique failure documentation, honest research process, "GPU poor" solo researcher narrative, agentic auto-research as a research method
 
 ### PyTorch Course / pytorchcourse.com (abandoned)
 - **What**: A PyTorch course featuring Prof. Torchenstein mascot

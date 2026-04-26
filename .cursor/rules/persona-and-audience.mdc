@@ -8,11 +8,15 @@ alwaysApply: true
 
 Krzysztof Sopyla is an **AI engineering leader who builds enterprise agent systems by day and trains his own models by night**.
 
-He manages AI teams at Pearson, where he bridges the gap between what stakeholders expect and what's technically feasible. In his spare time, he runs MrCogito — a solo research project on concept-bottleneck architectures (currently paused while he focuses on agent patterns). He documents both journeys honestly: the enterprise alignment struggles and the research dead ends.
+**Motto**: *Build agents by day, train models by night, publish the mess.*
 
-**One-line positioning**: The AI leader who manages teams, architects agent systems, and still gets his hands dirty training models — then writes about what actually works and what doesn't.
+He leads AI teams at Pearson, where he architects enterprise agent systems and bridges the gap between what stakeholders expect and what's technically feasible. In the evenings he runs **MrCogito — Concept Reasoning Model**, a solo ML research project on concept-bottleneck reasoning models. After Phase 1 hit concept collapse, the project is now active again with an agentic auto-research approach: the agents he builds by day plan and run the experiments he cannot run by hand at night.
 
-Goal: to be a recognized voice in AI architecture, enterprise agent systems, and honest AI leadership. Share insights from both the enterprise boardroom and the solo research lab.
+He documents both journeys honestly — the enterprise alignment struggles and the research dead ends.
+
+**One-line positioning**: The AI tech lead who architects agent systems, leads teams, and trains his own concept-reasoning models — then writes about what works, what fails, and why the gap between demos and production is wider than anyone admits.
+
+Goal: to be a recognized voice in three specific things — **enterprise agent architecture**, **concept-bottleneck / concept-reasoning research**, and **honest AI leadership**. Share insights from both the enterprise boardroom and the solo research lab, with running code and real experiment logs to back them up.
 
 Core beliefs:
 - Sharing failures and negative results openly, not just wins
@@ -40,12 +44,12 @@ What makes Krzysztof's perspective rare:
 
 ## Social Presence
 
-- LinkedIn: https://www.linkedin.com/in/ksopyla/
+- LinkedIn: https://www.linkedin.com/in/ksopyla/ (LinkedIn headline mirrors the blog motto)
 - X: https://x.com/ksopyla
 - GitHub: https://github.com/ksopyla
 - Blog: https://ai.ksopyla.com/
-- Current role: AI Engineering Manager / Tech Lead at Pearson
-- Background: CTO in AI startups, Chief AI architect and CEO at own software house Ermlab, PhD in computer science (AI)
+- Current role: AI Tech Lead at Pearson (AI R&D Engineering Manager title internally)
+- Background: CTO in AI startups, Chief AI architect and CEO at own software house Ermlab, PhD in computer science (AI focus, GPU-accelerated SVM and online learning), co-author of one of the first Polish BERT models
 
 ## Active Projects
 
@@ -54,10 +58,12 @@ What makes Krzysztof's perspective rare:
 - https://github.com/ksopyla/agent-patterns-lab
 - Status: Active, growing
 
-### MrCogito / Concept Encoder (paused, not abandoned)
-- Solo research on concept-bottleneck transformers
+### MrCogito / Concept Reasoning Model (active)
+- Solo ML research on concept formation and concept-space reasoning
 - https://github.com/ksopyla/MrCogito
-- Status: Paused. Phase 1 experiments hit concept collapse. Plans to return with agentic auto-research.
+- Blog page: https://ai.ksopyla.com/projects/concept-reasoning/
+- Status: Active. Phase 1 hit concept collapse and produced honest postmortems. 
+- Project name was renamed from "Concept Encoder" → "Concept Reasoning Model" in April 2026, because the reasoning module is the locus of the bet, not the encoder.
 
 ### PyTorch Course / Prof. Torchenstein (abandoned as course)
 - Course abandoned due to lack of interest

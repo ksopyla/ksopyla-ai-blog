@@ -2,11 +2,8 @@
 title: "Welcome to my AI Blog"
 ---
 
+**Build agents by day, train models by night, publish the mess.**
 
+Notes on agentic systems, concept-reasoning architectures, and leading AI teams. I share what I try, what breaks, and what I think it means.
 
-> I learned very early the difference between knowing the name of something and knowing something.  
-> — Richard Feynman
-
- {{< alert >}}
-🤔 Sharing my personal takes on AI engineering, building agentic producs and ai research for knowledge compression. Intersection of AI research and leading a AI teams and products. [Blog manifesto](/posts/blog-manifesto/) explains my goals and values in more details.
-{{< /alert >}}
+[Read the manifesto](/posts/blog-manifesto/) · [Browse projects](/projects/)

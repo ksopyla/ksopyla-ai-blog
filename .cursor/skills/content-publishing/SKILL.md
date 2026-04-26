@@ -114,14 +114,9 @@ Keep all assets inside the content bundle.
 2. Set `draft: false` and the final publish `date`.
 3. Preserve the bundle structure.
 
-### 9. Update Backlog
+### 9. Hugo And Browser Smoke Check
 
-- Remove or update the entry in `notes/content-backlog.md`
-- Clear stale references to the old draft path
-
-### 10. Hugo And Browser Smoke Check
-
-Use `hugo-runtime-smoke-check`. Minimum:
+Use `blog-preview`. Minimum:
 
 - Successful build
 - Homepage renders
@@ -131,7 +126,7 @@ Use `hugo-runtime-smoke-check`. Minimum:
 
 Fix any issue before considering the article published.
 
-### 11. Ask About LinkedIn
+### 10. Ask About LinkedIn
 
 After smoke check passes, ask if the user wants a LinkedIn post via the `linkedin-post` skill. Do not auto-generate.
 
@@ -145,7 +140,6 @@ After smoke check passes, ask if the user wants a LinkedIn post via the `linkedi
 [ ] Frontmatter validated
 [ ] Feature image present or generated
 [ ] Bundle moved to posts
-[ ] Backlog updated
 [ ] Hugo/browser smoke check passed
 [ ] Asked about LinkedIn
 ```

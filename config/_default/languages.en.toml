@@ -3,21 +3,21 @@ languageName = "English"
 languageDirection = "ltr"
 weight = 1
 
-title = "Krzysztof Sopyla AI Blog"
-copyright = "© Copyright 2025 Krzysztof Sopyla's AI Blog Rights Reserved 🚀"
+title = "Krzysztof Sopyła AI Blog"
+copyright = "© Copyright 2025–2026 Krzysztof Sopyła's AI Blog · All rights reserved 🚀"
 
 [params]
 dateFormat = "2 January 2006"
 
 mainSections = ["posts"]
-description = "AI engineering leadership, enterprise agent architecture, and honest research by Krzysztof Sopyła. Building agent systems by day, training models by night."
+description = "I write about agentic systems, concept-reasoning architectures, and leading AI teams — what I try, what breaks, and what I think it means."
 
 [params.author]
-name = "Krzysztof Sopyła"
+name = "Krzysztof Sopyła, PhD"
 image = "img/ksopyla_profile_v2.jpeg"
-headline = "AI Engineering Leader | Agents, Architecture & Honest Research"
+headline = "AI Tech Lead, Agent Builder, ML Researcher"
 
-bio = "I lead AI team at Pearson and build agent systems in the open. I document what works, what fails, and why the gap between demos and production is wider than anyone admits."
+bio = "Build agents by day, train models by night, publish the mess. I architect enterprise agent systems, lead AI teams, and run my own ML research on the side."
 
 links = [
   #{ email = "mailto:hello@your_domain.com" },

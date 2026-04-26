@@ -74,6 +74,20 @@ If a source uses a good framing or metaphor, use it with attribution. Attributed
 
 Notes files contain summaries and pointers. They are not deep enough to write strong prose from. Before writing any section, go back to the actual source URL and re-read it. The difference between a weak draft and a strong one is whether the writer read the summary or the original.
 
+### 9. Public-facing surfaces stay humble, topic-first, and reader-friendly
+
+Homepage, about page, projects index, post-list descriptions, RSS/SEO descriptions, and any first-touch surface follow stricter rules than a long-form article:
+
+- **Lead with topics, not project brand names.** Readers landing on the homepage do not know what `MrCogito`, `Concept Reasoning Model`, or `Agent Patterns Lab` are. Say `agentic systems`, `concept-reasoning architectures`, `multi-agent patterns`, `AI team leadership`. Brand names belong on project pages and inside posts where context exists, not in the first sentence a stranger reads.
+- **Be humble in framing, not promotional.** Prefer `Notes on…` to `This blog is where I write up…`. Prefer `I share what I try, what breaks, and what I think it means` to `the definitive guide to…` or `everything you need to know about…`. The motto and content carry the authority — the framing should not also try to.
+- **One sentence is usually enough.** Public surfaces are not the place for three-clause architectural arguments. If a sentence has three "and" connectors and an em-dash, it is too long for a homepage alert.
+- **Soft verbs over assertive ones.** `browse`, `read`, `share` over `jump into`, `dive into`, `master`. The motto `Build agents by day, train models by night, publish the mess` already does the assertive work — the rest of the surface should not compete with it.
+- **Reader's goal first, author's identity second.** A homepage sentence should answer "what will I find here?" not "who is the author?". The bio and headline already handle identity.
+
+This rule applies to: `content/_index.md`, `content/about.md`, `content/posts/_index.md`, `content/projects/_index.md`, frontmatter `description` fields, `config/_default/languages.en.toml` `bio` and `description`, and any RSS / OpenGraph / Twitter card copy.
+
+It does *not* apply to: long-form blog posts, project pages, LinkedIn posts, X threads, or anywhere the reader has already opted into reading more from Krzysztof.
+
 ---
 
 ## Content-Specific Preferences
@@ -153,3 +167,22 @@ Example:
 6. **Open Source vs Closed: Biased toward open source** — Was too pushy for open source without acknowledging: (a) even open source on "edge" still has network latency, (b) OpenAI has many regional deployments especially via Azure, (c) there is no clear winner. Present both sides fairly.
 7. **Too shallow on architectures** — Needed more depth on Moshi's Inner Monologue, Qwen's Thinker-Talker, what exactly PersonaPlex adds on top of Moshi (hybrid prompting, Fisher data disentanglement, voice conditioning). The reader wants to understand the mechanism.
 8. **Weak conclusions** — Ended with a one-line takeaway. Needs deeper analysis: product implications, architectural trade-off matrix, what to choose when.
+
+### Homepage Tagline And Public Surfaces (2026-04-26)
+
+Round of edits on `content/_index.md`, `content/about.md`, `content/projects/_index.md`, `content/posts/_index.md`, the Hugo `bio`, and the blog manifesto. The persona was correct, but the public-facing copy leaned too positional and used internal brand names readers do not recognize. See Writing Quality Rule 9 for the full rule.
+
+#### What got rewritten
+
+**Homepage alert (`content/_index.md`)**
+
+- Before: *"This blog is where I write up enterprise agent architecture, MrCogito research notes, and the occasional honest leadership lesson — what I tried, what broke, and what I think it means. Start with the blog manifesto or jump straight into the projects."*
+- After: *"Notes on agentic systems, concept-reasoning architectures, and leading AI teams. I share what I try, what breaks, and what I think it means. Start with the blog manifesto or browse the projects."*
+
+#### What changed and why
+
+1. **Drop unknown brand names from first-touch surfaces.** `MrCogito` is meaningless to a stranger landing on the homepage. Replace with the topic the brand sits inside — `concept-reasoning architectures`. The brand name only helps once the reader has clicked through.
+2. **Lead with topics, not the act of writing.** `Notes on X, Y, Z` is humble and reader-first. `This blog is where I write up X, Y, Z` puts the author and the act in the foreground.
+3. **Compress to one sentence per idea.** The before-version had three clauses joined by an em-dash and a parenthetical aside. One topic sentence + one process sentence + one navigation sentence is enough on a homepage.
+4. **Soften verbs.** `browse the projects` over `jump straight into the projects`. The motto already does the loud, confident work — the explanatory line should not compete with it.
+5. **Apply the same rule consistently across surfaces.** Once the homepage was simplified, the about page, projects index, and posts index were checked for the same anti-patterns (insider brand names, three-clause sentences, promotional verbs).

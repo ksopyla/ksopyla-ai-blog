@@ -20,7 +20,7 @@ Use it to find promising ideas, explain why they matter now, and identify what m
 
 * MrCogito is a **separate repository** from this blog. It lives at a different path and has its own git history, branches, and dependencies. Never confuse blog content files with MrCogito source code.
 GitHub  `https://github.com/ksopyla/MrCogito` (public, repo owner: ksopyla) 
-Blog project page  `https://ai.ksopyla.com/projects/concept-encoder` 
+Blog project page  `https://ai.ksopyla.com/projects/concept-reasoning` 
 
 When scanning MrCogito for blog content, check these sources in descending order of signal:
 
@@ -57,7 +57,7 @@ Scan `content/drafts/` and each draft's `notes/` material for:
 - reading lists, saved links, and paper notes that could become a review or digest
 - duplicate ideas that should be merged instead of drafted twice
 
-Keep this stage grounded in what actually exists on disk. If a draft folder was deleted, treat any stale backlog reference as invalid.
+Keep this stage grounded in what actually exists on disk. If a draft folder was deleted, treat any stale reference as invalid.
 
 ## Source 3: Hugging Face
 
@@ -114,12 +114,10 @@ For each candidate idea, provide:
 - **Suggested next step**: draft now / wait for more data / park
 ```
 
-## Backlog Rules
+## Prioritization Rules
 
-- During discovery, add items to the backlog only as raw ideas, pipeline notes, or candidate topics.
 - Do not assign the formal weighted score here unless a lean draft already exists.
 - If the user asks for prioritization at discovery time, give a light qualitative ranking such as high / medium / low signal rather than forcing a numeric score too early.
-- Remove stale references to draft folders that no longer exist.
 
 ## Handoff To Drafting
 
@@ -136,4 +134,4 @@ Once the user picks an idea, pass the following into `content-drafting`:
 
 - Weekly: quick scan of `CHANGELOG.md` and recent git history
 - Biweekly: full scan including Hugging Face and web research
-- On-demand: whenever the user asks what to write next or wants backlog refresh
+- On-demand: whenever the user asks what to write next

@@ -16,7 +16,6 @@ alwaysApply: true
 - `content/x-threads/YYYY-MM-<slug>/thread.md` — X thread drafts
 - `config/_default/` — Hugo TOML config
 - `themes/congo/` — theme submodule
-- `notes/content-backlog.md` — scored ideas queue
 
 
 

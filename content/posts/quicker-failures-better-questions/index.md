@@ -16,7 +16,7 @@ aliases:
 Sometimes the most useful research update is not a better metric. It is the moment when better questions finally expose what the model is really doing, and the next experiment stops being random motion.
 {{< /lead >}}
 
-For the last few weeks I have been deep in the concept-encoding part of the [`MrCogito`](/projects/concept-encoder/) project.
+For the last few weeks I have been deep in the concept-encoding part of the [`MrCogito`](/projects/concept-reasoning/) project.
 
 This is the part I care about most right now. Before I spend serious time on generation, latent reasoning, or speech-to-speech systems, I want a compact representation that actually carries meaning. If I cannot reliably compress text into a small bank of useful concepts, the rest of the stack will be built on sand.
 

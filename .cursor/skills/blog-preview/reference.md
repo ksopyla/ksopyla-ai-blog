@@ -1,6 +1,6 @@
 # Hugo Setup Reference
 
-Setup and installation facts. For the smoke-check workflow, see [SKILL.md](SKILL.md).
+Setup and installation facts. For the local-preview workflow, see [SKILL.md](SKILL.md).
 
 ## Runtime Requirements
 

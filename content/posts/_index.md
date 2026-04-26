@@ -1,15 +1,8 @@
 ---
 title: "Posts"
-description: "My thoughts on AI research, experiments, tools and leading the AI products and projects."
+description: "Field notes on agentic systems, concept-reasoning architectures, and leading AI teams — what I tried, what broke, and what I think it means."
 cascade:
   showReadingTime: false
 ---
-{{< alert >}}
-🤔 Sharing my personal takes on ML research interesting ideas, papers, or projects at the intersection of AI research and leading a teams and products.
-{{< /alert >}}
 
-
-
-
-
-
+Field notes on agentic systems, concept-reasoning architectures, and leading AI teams.

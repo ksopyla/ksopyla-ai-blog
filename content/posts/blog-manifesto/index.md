@@ -1,23 +1,35 @@
 ---
 title: "🛣️ Blog manifesto, my goals and why I started this blog"
 date: 2025-07-12
+lastmod: 2026-04-26
 draft: false
-description: "My first post in the blog, why I have started to write, my goals and values"
+description: "Why I write here: build agents by day, train models by night, publish the mess. AI tech lead, agent systems builder, concept-reasoning researcher."
 tags: ["Manifesto", "Core beliefs"]
 categories: ["Columns"]
-featureAlt: "My first post in the blog, why I have started to write, my goals and values"
+featureAlt: "Manifesto: build agents by day, train models by night, publish the mess"
 icon: "flask"
 showReadingTime: true
 ---
 
-# Why I Started This AI Blog: A Personal Manifesto
+> **Build agents by day, train models by night, publish the mess.**
+
+That is the working agreement I have with myself, and the operating principle of this blog.
+
+## What This Blog Is
+
+I am an AI tech lead at Pearson, an agent systems builder, and a solo ML researcher. I write here about three things, and only three things:
+
+1. **Enterprise agent architecture** — MCP, A2A, multi-agent patterns, and the gap between agent-framework demos and what actually ships inside a company. See [Agent Patterns Lab](/projects/agent-patterns-lab/) for the running code.
+2. **AI research in the open** — concept-bottleneck transformers, training experiments, and the honest postmortems. See [MrCogito — Concept Reasoning Model](/projects/concept-reasoning/) for the project.
+3. **Leading AI teams** — stakeholder alignment, team culture, and the human side of building AI products under real constraints.
+
+I do not write hype. I do not write marketing copy. I do not write listicles. I write up what I tried, what I built, what broke, and what I think it means.
 
 ## A Journey Through AI Landscapes
 
-Let me start by sharing a bit about my journey through the life and work in AI. My path through AI has been incredibly enriching—from academic research to startups to big tech—each experience taught me something valuable. Academia showed me the beauty of deep thinking and rigorous methodology. Startups taught me to move fast and focus on real problems. Corporations revealed the challenges of scaling innovation and building sustainable systems.
+My path through AI has been enriching — from academic research to startups to enterprise — and each step taught me something different. Academia showed me the beauty of deep thinking and rigorous methodology. Startups taught me to move fast and focus on real problems. Enterprise revealed the harder game: scaling innovation and aligning humans, not just models.
 
-But despite these valuable lessons, I have always wanted to have my space, to express my feelings, my thoughts and point of view. 
- I always believed that taking from our experiences, mixing them and conflicting will help us form new ideas and perspectives. So I hope this space will be useful to someone, spark meaningful conversations or help formulate new ideas. 
+But despite these valuable lessons, I have always wanted my own space — somewhere to express my thinking and point of view in long form. I believe that taking from our experiences, mixing them, and putting them in productive conflict is how new ideas show up. I hope this space is useful to someone, sparks meaningful conversations, or helps formulate better questions. 
 
 
 ## My Core Beliefs and values that I want to share
@@ -43,15 +55,10 @@ Unlike the tendency to dismiss others' work, I believe even the smallest experim
 
 Here, you'll find:
 
-- **🤔 Personal takes** on ML research, interesting ideas, papers, and projects
-- **🧠 Critical analysis** of AI trends without falling for hype
-- **🔧 Practical insights** from someone who's led R&D teams and built real products
-- **📚 Educational content** that makes complex concepts accessible
-- **🌱 Open science advocacy** and discussions on AI's ethical implications
+- **🤖 Enterprise agent architecture** — MCP, A2A, multi-agent patterns, MCP server design, what production actually requires
+- **🧠 MrCogito research notes** — concept-bottleneck transformers, training experiments, ablation studies, honest postmortems on what failed
+- **👥 Leading AI teams** — stakeholder alignment, team culture, building AI products under real constraints
+- **📰 Critical analysis** of AI trends, papers, and tools — without falling for the hype
+- **🌱 Open science advocacy** — and the conviction that even small, well-designed experiments can teach us something
 
-I treat it as a  space for honest reflection on where AI is heading and where it should go. Whether you're a researcher, engineer, or simply curious about AI's impact on our world, I hope you'll find value in these explorations.
-
-
----
-
-*P.S. You might occasionally meet Professor Victor Torchenstein, my PyTorch course character who embodies the struggle between commercial interests and genuine learning. His story is, in many ways, our collective story in AI.*
+I treat this blog as a space for honest reflection on where AI is heading and where it should go. Whether you are an AI tech lead, an engineer building with agents, or a researcher curious about concept-bottleneck architectures, I hope you find something useful here.

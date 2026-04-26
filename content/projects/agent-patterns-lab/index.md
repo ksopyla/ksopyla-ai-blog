@@ -1,7 +1,9 @@
 ---
 title: "Agent Patterns Lab"
 description: "Practical design patterns, protocols, and architectures for building production multi-agent systems — from a single LangGraph pipeline to enterprise-grade, cloud-deployed agent architectures."
+summary: "Nine design patterns for production multi-agent systems, with running code. From a single LangGraph pipeline to a cloud-deployed multi-team agent system using MCP and A2A."
 date: 2026-04-10
+weight: 20
 draft: false
 tags: ["agentic systems", "multi-agent", "A2A", "MCP", "LangGraph", "design patterns"]
 categories: ["AI engineering"]

@@ -1,10 +1,9 @@
 ---
 title: "Projects"
-description: "Learn about some of my projects."
+description: "Open-source AI projects — what I'm building in public."
 cascade:
   showReadingTime: false
+  showSummary: true
 ---
 
-{{< alert >}}
-💡 Project that I'm working on. 🚀
-{{< /alert >}}
+Open-source AI projects — what I'm building in public.
