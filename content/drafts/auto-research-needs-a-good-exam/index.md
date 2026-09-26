@@ -1,224 +1,213 @@
 ---
-title: "Auto-Research Is Only as Good as Its Exam"
+title: "Auto-Research Can Run the Experiments. It Cannot Have the Idea."
 date: 2026-09-26
 draft: true
-description: "Agents now design, run and log most of my model experiments overnight. What made that loop useful was not more autonomy but a good exam: a fixed benchmark that tells the agents, and me, what better actually means."
+description: "What a month of letting agents run my model research taught me: they are excellent at implementation, optimisation and building test harnesses, but the unusual ideas still came from me. Two things kept us aligned: a fixed exam that defines what better means, and an interactive diagram of what was actually built before every launch."
 tags: ["AI", "MrCogito", "Auto-Research", "Agents", "Evaluation", "Long Context", "Research Methodology"]
 categories: ["AI Research"]
 showReadingTime: true
 ---
 
 {{< lead >}}
-My research agents can now design an experiment, write the code, train the model on my GPU servers and log the result while I sleep. The part they cannot do for me is decide what "better" means. When I tried to explore new model architectures without a good exam, the loop just produced confident mistakes faster.
+For the last month, agents have run most of my model research: they implement my designs, build the test harness, tune the training and run experiments on my GPU servers while I sleep. They are very good at it. But every idea that actually moved the project came from me, and at least once the agents quietly built a more ordinary version of the idea than the one I asked for. This is what I learned about dividing the work between a researcher and a research loop.
 {{< /lead >}}
 
 ## TL;DR
 
 **What you will learn:**
 
-- How my auto-research loop works: agents design, implement, run and record experiments on two GPU servers, and I decide the direction
-- Why the standard training metric (next-token loss) was the wrong goal for exploring new memory architectures, and how it fooled me once in public
-- How a synthetic exam with an exact score in bits turned vague progress into numbers the agents and I could trust
-- What that exam revealed about three memory designs, including one that was not the model I thought I had built
-- Six rules I now follow before letting agents explore on their own
+- Why I am building MrCogito: models that compress long text into dense concepts and reason over them, instead of attending to every token
+- Where auto-research helped most (implementation, optimisation, test harnesses, running experiments around the clock) and where it did not (original ideas)
+- Why next-token loss is the wrong goal for testing new memory architectures, and what a better exam looks like
+- The habit that kept me aligned with the agents: an interactive diagram of what was actually built, reviewed before every launch
+- What the loop found: a memory design that holds a fact at 128K tokens after training on books of at most 16K, and a control experiment that showed me which part of my own idea mattered
 
-## The loop works. That was never the hard part.
+## Why I am doing this
 
-Look at the commit history of my research repo for September. Most commits were not written by me. Cursor agents made 176 of them; I made fewer than a hundred. Over three days in the middle of the month, agents ran one exam campaign almost around the clock and made 115 commits to its log, many of them between midnight and six in the morning, while my two GPU servers (seven RTX 3090 cards in total) stayed busy.
+Most of today's progress in language models comes from scale: more parameters, more data, longer context windows paid for with more GPUs. I think this is only part of the answer. A standard transformer lets every token look at every earlier token, so its cost grows with the square of the text length. At a million tokens, that becomes expensive even for large labs. At ten million, it is out of reach.
 
-This is the auto-research approach I described when [MrCogito](/projects/concept-reasoning/) entered its second phase. I build agents during the day at work. At night the same kind of agents run my own research. They read the experiment log, propose the next test, write the code, launch the training over SSH, watch the logs, evaluate the result and write it up. I pick the direction, approve the plans and read the reports.
+[MrCogito](/projects/concept-reasoning/) is my open research project exploring a different path. The model compresses a long input into a much smaller set of **concepts** (dense vectors), reasons over those concepts, and only then decodes the answer. Three things follow if that works:
 
-Andrej Karpathy's [autoresearch](https://github.com/karpathy/autoresearch) shows the same idea in its simplest form: an agent edits one training script, trains for exactly five minutes, checks whether validation bits per byte went down, and keeps or reverts the change. About a hundred experiments while you sleep.
+- **Long context becomes a question of compression, not brute force.** Attention between N tokens and C concepts costs O(C·N) instead of O(N²). With the number of concepts growing with the text, one million tokens becomes tractable on hardware I can actually afford.
+- **Reasoning gets a wider channel.** A text token carries roughly 15 bits. A 2,048-dimensional concept vector can carry thousands of times more. Reasoning in concept space, instead of writing every thought as text, is a higher-bandwidth way to think.
+- **Models could exchange concepts, not text.** Eventually, cooperating agents could pass concept vectors to each other directly, which is the kind of agent communication I care about in my day job.
 
-Two design choices in that repo matter more than the agent. The metric is fixed (`val_bpb`). And the evaluation code is explicitly off limits: the agent may change anything in the training file, but never the data preparation or the evaluation.
+I also believe AI has to become much more efficient to be widely useful, and that small, well-designed experiments still matter. That is why this is a project run on evenings and weekends, on two servers with seven RTX 3090 GPUs, with models between 5M and 50M parameters. I build agent systems by day; at night I train my own models.
 
-It took me a few weeks, and one public correction, to understand why those two choices are the whole game.
+The hard part of this vision is memory. If the model compresses a long book into a small notebook of concepts, **does the notebook actually keep the facts needed later?** Every design in this post is a different answer to that question.
 
-## What I am trying to build
+## My auto-research setup
 
-The research question behind MrCogito is about efficiency. A standard transformer lets every token look at every earlier token. That is powerful, and its cost grows with the square of the text length. At a million tokens it gets very expensive.
+In the second phase of the project I stopped running experiments by hand. The loop is a set of agent skills in the [MrCogito repo](https://github.com/ksopyla/MrCogito/tree/dev/.cursor/skills), each owning one step:
 
-I am exploring models that work more like a student preparing for an exam with a long book. The student cannot keep the whole book in view, so they write a **notebook** while reading: a small set of dense vectors (I call them concepts) that summarise what they have read. Later, when a question comes, they look things up in the notebook instead of rereading every page. If the notebook holds the right things, the model can handle much longer texts at a fraction of the cost, and the notebook becomes a natural place to reason.
+1. **Design:** turn my idea into one falsifiable experiment spec, with success and kill criteria written before any code.
+2. **Plan and implement:** map the spec onto the existing codebase and write the model, with tests.
+3. **Run:** sync the code to the servers, launch training in persistent sessions, watch the logs, recover from crashes.
+4. **Evaluate and record:** score the result, update the experiment log and write a short report.
+5. **Communicate:** explain the result to me in plain language, with every number explained.
 
-The opposite student is the one allowed to reread any page at any moment. That is a normal transformer with full attention. It is expensive, it loses nothing, and it is the student I have to match more cheaply.
+Helper agents check server health, read training curves from Weights & Biases and search for papers. Andrej Karpathy's [autoresearch](https://github.com/karpathy/autoresearch) shows the same idea in its simplest form: an agent edits one training script, trains for five minutes, keeps the change if validation loss improved, and runs about a hundred experiments overnight.
 
-So every new design I try is a different way of **writing the notebook**. And the only question that matters is simple to say and hard to measure:
+It works. In September, agents made 176 commits to the research repo and I made fewer than a hundred. Over three days in the middle of the month, one exam campaign ran almost around the clock, with 115 commits to its log, many between midnight and six in the morning.
 
-**Does the notebook actually hold the facts the model needs later?**
+## What agents did well, and what they did not
 
-## The metric my agents were optimising was the wrong one
+These are my observations from a month of working this way, not a benchmark of agents.
 
-The natural goal for a language model is next-token loss: how surprised the model is by the next word. It is what autoresearch optimises. It is what I used for months.
+**Implementation.** When I approved a new design one evening, the agents had the model written, tested and the previous design's bugs fixed within hours. That includes a causality test that perturbs future tokens and checks that earlier predictions do not change, which I would have skipped when tired.
 
-For my question, it is almost blind.
+**Optimisation.** The agents found the training settings that make small models learn at long lengths: step sizes that change with text length, budgets large enough for late takeoff, when to extend a run instead of killing it. Tedious work, done thoroughly.
 
-In July I published [a promising result](/posts/gemma-with-concepts/): a concept notebook grafted into Google's Gemma-3 model seemed to take over the long-range work. When I scrambled the notebook, the loss on distant tokens got much worse. A few weeks later, an audit of my own code found a leak. In that design, later layers could read notebook entries written from the current stretch of text, including a little of what came next. The loss signal was real, but part of it was not memory. When the model had to generate text on its own, it fell into repetition loops.
+**Harness.** The test suite described below (a ladder of exams, four model sizes, scoring rules, a scorecard) was built by agents in about a day. When its first real run exposed a budget that was too small, they fixed it overnight, twice.
 
-Then two experiments measured how much the objective cares about memory at all. In one, I trained a 125M model with a single long-range lookup and a copy of it with that lookup removed. Their final losses were 4.090 and 4.091. In another, I measured what the notebook's distant entries were worth on ordinary text: about **0.05 nats**, the same at 1,000 tokens and at 32,000.
+**Persistence.** Agents do not get bored of running the same exam at eight lengths with three seeds.
 
-That number explains a lot. On natural text, at the scale I can afford, predicting the next word needs almost nothing from far away. Nearby words carry most of the signal. A model can reach a good loss while its notebook is decoration, and an agent optimising that loss will happily report progress.
+What they did not do was produce the ideas that changed direction. My opinion after this month: **agents are strong at the moves that already exist in the literature, and weak at the move that does not.** When an early design failed, the repairs they queued were the textbook ones: add a reconstruction loss, keep key tokens uncompressed. Each was a reasonable choice, and each failed.
+
+The more surprising failure went the other way. I wrote an idea note for a new memory design, in my own words. Two of its lines (typos fixed):
+
+> "slots where r token vectors are averaged is not a good idea, we want something which picks the signal from noise in each window"
+>
+> "TinyHashed Embeddings: I didn't see much difference ... by default do not implement that, keep it simple"
+
+The agents built it, tests passed, runs started, results came in. A few days later I found that each memory slot was, in effect, **a weighted average of token vectors**, and the hashed embeddings were switched on. The implementation had drifted back towards the common pattern, the one the note explicitly rejected. Nothing crashed. The model trained and scored reasonably. It just was not my idea.
+
+This is the risk of auto-research that I did not expect: not wrong code, but **ordinary code**. An unusual idea is, by definition, far from the patterns an agent has seen most often, and it gets pulled back towards them one reasonable decision at a time.
+
+## The goal problem: next-token loss is nearly blind to memory
+
+Before I could trust any of this, I had to fix the loop's goal.
+
+Karpathy's autoresearch optimises validation loss, and the agent may not touch the evaluation code. For improving a training recipe, that is exactly right. For testing a new memory architecture, the standard loss is almost blind.
+
+Two experiments showed me why. I trained a 125M model whose only long-range path was a single lookup into earlier text, and an identical model with that lookup removed. Their final losses: **4.090** and **4.091**. In another experiment, the notebook's distant entries were worth about **0.05 nats** of loss on ordinary text, the same at 1,000 tokens as at 32,000. At the scale I can afford, predicting the next word needs almost nothing from far away. A model can reach a good loss while its memory is decoration, and an agent optimising that loss will happily report progress.
+
+It had already fooled me once in public. In July I reported that a concept memory grafted into Gemma-3 [seemed to take over long-range work](/posts/gemma-with-concepts/). A later audit of my code found that later layers could read memory written from the current stretch of text, including a little of what came next. The loss signal was real, but part of it was not memory.
 
 **An agent optimises whatever you measure, faster than you can check it. If the measure does not reward memory, the loop will not find memory.**
 
-## Giving the loop a real goal: an exam with an exact price
+## Giving the loop a real goal: an exam with an exact score
 
-So I stopped asking agents to make the loss go down, and built an exam instead.
-
-The idea comes from a 2025 paper by Schnabel et al. that treats a transformer's view of earlier text as a narrow communication channel, and asks which tasks need more bandwidth through that channel. I rebuilt its task families in the simplest possible form:
+So I built an exam where "better" cannot be argued about, based on a 2025 framework by Schnabel et al. that treats a transformer's view of earlier text as a narrow communication channel:
 
 - The "book" is a long string of random letters from a four-letter alphabet, like DNA.
-- Somewhere far back, the generator plants a fact: a marker, a two-letter key and a 32-letter value.
-- At the end comes a question, and the model has to produce the value.
+- Somewhere far back, a fact is planted: a marker, a two-letter key and a 32-letter value.
+- At the end comes a question, and the model has to write the value.
 
-Because the value is random, it cannot be guessed. Each letter is worth exactly 2 bits, so a 32-letter value is a **64-bit prize**. A model that recovers 40 bits has carried 40 bits of real information across the book. Zero means chance. No language priors, no tokenizer effects, no arguing about what a score means.
+The value is random, so it cannot be guessed. Each letter is worth exactly 2 bits, so the full answer is a **64-bit prize**. A model that recovers 40 bits has carried 40 bits across the book. Zero means chance. No language priors, no tokenizer effects.
 
-That one change gave the agents something they never had before: a goal where "better" is unambiguous.
-
-Every exam trains four models side by side, on identical data:
+Every exam trains four models on identical data:
 
 | model | why it is there |
 |---|---|
-| **full-attention model** (rereads any page) | if it cannot reach 75% accuracy, the exam is not learnable at this size and budget, and nothing else on it counts |
-| **uncompressed notebook** | the same architecture without compression, to show what compression costs |
-| **no notebook** (only the nearby text) | if this model beats chance, the answer leaks through local context and the exam is broken |
-| **the candidate** | the new design being tested |
+| **full attention** (rereads any page) | if it cannot reach 75%, the exam is not learnable at this budget, and nothing else counts |
+| **uncompressed memory** | shows what compression costs |
+| **no memory** | if it beats chance, the answer leaks and the exam is broken |
+| **the candidate** | the new design |
 
-The exams form a ladder, from easy to hard:
+The exams form a ladder: learn at all, carry a whole fact, ignore a decoy that looks like the fact, reach 1,000–2,000 tokens back, follow a four-step chain of facts, and do all of that when the filler looks like plausible text. Every design runs at four sizes, from 5M to 50M parameters, and gets a verdict from rules written in advance: **scale up**, **promising, fix first**, or **not ready**. The exam is versioned, every cell carries its expected prize in bits, and a test fails if anyone, human or agent, changes it by accident. That last rule exists because it happened once: a saved configuration quietly turned a 64-bit exam into a 16-bit one.
 
-| level | the question it asks |
-|---|---|
-| 0 · learns at all | can it copy or look something up in a short text? |
-| 1 · carries a fact | does a whole fact survive the notebook at 256–512 tokens? |
-| 2 · ignores a lookalike | can it pick the real fact when a decoy of the same shape is planted too? |
-| 3 · long reach | can it look up a fact 1,000–2,000 tokens back? |
-| 4 · multi-step reasoning | can it follow a chain of four facts, each pointing to the next? |
-| 5 · language-like noise | same skills when the filler looks like plausible text |
-| 6 · hard stretch | tasks a narrow channel should not solve easily (reported, never gating) |
+The exam gave the agents a goal worth optimising. It did not stop them from building the wrong model. For that I needed something else.
 
-Every design runs this ladder at four model sizes, from 5M to 50M parameters, and gets a verdict from written rules: **scale up**, **promising, fix first**, or **not ready**. Scaling up requires, among other things, passing levels 0–2 at 30M parameters or more, matching or beating the best earlier design on at least one long-reach or reasoning exam, and not getting worse as the model grows.
+## The habit that kept me in line with the agents: diagram before launch
 
-{{< mermaid >}}
-flowchart TB
-  I["Idea"] --> S["Frozen spec:<br/>pass and kill criteria"]
-  S --> R["Agents implement<br/>and train overnight"]
-  R --> E["Fixed exam ladder,<br/>full-attention ceiling in every run"]
-  E --> V["One-page scorecard<br/>and verdict"]
-  V --> H{"I read, question<br/>and decide"}
-  H -->|next idea| I
-{{< /mermaid >}}
+After implementation, and before any run or harness launch, I now ask the agents for one more thing: **an interactive diagram of what the code actually implements.** Not the design I described. The forward pass that will run, step by step, with tensor shapes, and with a toggle to compare it against the previous design.
 
-The agents do everything except the two boxes that matter most: the exam stays fixed, and the decision stays mine.
+I started this by accident. After the second memory design's runs (described below), I asked for an interactive page showing how information flows through it. Clicking through it, I could see that each note was a weighted pick of tokens, written by a note-taker that could only see 16 tokens back. That became a full review the same day, and the review explained a number that had been puzzling me for days.
 
-## What the exam showed about three notebook designs
+Every run of that design had stopped near **26 bits out of 64**: at different model sizes, different lengths, different exams. A note-taker that sees 16 tokens back can only recognise a value letter as part of the fact if the fact's marker is within view. After the marker and the two-letter key, that covers the first 13 letters of the value. The other 19 look like random filler. Thirteen letters at 2 bits each is **26 bits**.
 
-Here is what happened when three ways of writing the notebook went through the exam. The details are in the [open repo](https://github.com/ksopyla/MrCogito); the numbers below are what matters.
+For the next design I did it on purpose. Before launch, the agents produced two pages: an architecture page with a checklist of open design decisions that were not part of the experiment until I confirmed them, and a wiring page where I can click any cell and see everything it depends on, down to the token embeddings.
 
-### Design 1: the averaged notebook
+![Interactive wiring page generated before launch: every layer and token of a small example, showing the memory path, the main path, and where the answer prediction gets its information from.](interactive_wiring_page.png "The wiring page the agents generated before launch. Clicking the answer prediction (top row) highlights its full route: through the global read, into the memory slots, down to the fact's tokens. A toggle switches to the previous design, where most of the value letters never see the fact's marker.")
 
-The simplest notebook: average every 16 tokens into one note. At a million tokens, that shrinks the memory to around 64 MB.
+Why this works better than reading the code:
 
-The exam gave a sharp, two-sided answer. Copying a span from far back survived the averaging well: **54 of 64 bits** at 1,024 tokens. Looking up a fact by its key did not. With finer notes (one per 8 tokens) the lookup got **60 bits** at 1,024 tokens and then **0 bits** at 1,280, while the uncompressed notebook still got all 64.
+- **It shows what is built, not what was intended.** The agent has to trace the real forward pass to draw it, so the drift from the idea note becomes visible.
+- **It is fast to review.** Fifteen minutes of clicking beats reading a thousand lines of diff at 11 pm.
+- **It is a shared language.** When I say "this latent should not see the answer side", we are both looking at the same picture.
+- **It catches leaks.** A dependency line from the answer back into the memory is hard to miss when it is drawn in orange.
 
-An average keeps what a page is *about*. It loses the one detail you will be asked about later. The agents then worked through a queue of repairs: an extra loss to reconstruct each page from its note, and keeping the key tokens uncompressed next to the average. They recovered **1 and 3 bits** where the uncompressed notebook got about 47. Each repair had its kill criterion written in advance, so each one ended in a day instead of dragging on.
+My rule now: **no launch until I have clicked through the diagram and it matches my idea.**
 
-### Design 2: a learned note-taker
+## What the exam and the loop found
 
-The second design replaced the average with learned attention. The book is covered by overlapping windows of 256 tokens, and each window has 32 learned "questions" that pick what to write into its notes.
+With a real goal and a way to check the build, the loop started producing results I trust.
 
-This was the first design that looked genuinely better on hard exams. At 31M parameters:
+### An average cannot hold a key
 
-- On a four-step chain across 1,024 tokens, it recovered **40 bits**. The averaged notebook recovered 4.
-- On a lookup 1,024 tokens back, it got **26 bits**. Every other model, the full-attention one included, stayed at zero at that budget.
+The first memory design averaged every 16 tokens into one note. At a million tokens that would shrink the memory to about 64 MB. Copying a far span survived the averaging (54 of 64 bits at 1,024 tokens). Looking up a fact by its key did not: with one note per 8 tokens, lookup got 60 bits at 1,024 tokens and **0 bits** at 1,280, while the uncompressed memory still got all 64. An average keeps what a page is about. It loses the one detail you will be asked about.
 
-Then I noticed a pattern. The lookup at 31M parameters: 25.7 bits. At 50M: 24.3. At 2,048 tokens with finer windows: 25. The lookalike exam: 25.9. Different sizes, lengths and tasks, and all of them stopped near **26 bits out of 64**.
+### Learned notes beat averages, and hit a wall I could explain
 
-That was not a result. It was a fingerprint.
+The second design used overlapping windows with 32 learned "questions" each, choosing what to write. It followed a four-step chain across 1,024 tokens (40 bits, against 4 for the average) and was the only model above zero on a lookup at that length. Then it stopped at 26 bits everywhere, the salience wall from the diagram.
 
-### The model I tested was not the model I designed
+### Real memory cells passed the whole exam
 
-The regularity sent me back to the code, reading it line by line against my original design notes. The design called for real memory cells that read their window and keep what matters. The implementation wrote something much narrower: each note was a weighted average of token vectors, chosen by fixed learned queries that could only see **16 tokens back**.
+The third design is the one the idea note asked for: 32 memory vectors per window, each with its own state, width and address, reading the whole window in both directions before writing. At 30M parameters it passed every gating level of the exam, including the level with language-like noise, and got the verdict **scale up**. On the 1,024-token lookup it recovered **94%** of the answer letters, up from 54%, and accuracy was flat across all 32 letters. The 13-letter wall was gone, which also confirmed the diagnosis.
 
-That limit explains the fingerprint. A note-taker looking at a letter can only tell it belongs to the fact if the fact's marker is within its 16-token view. After the marker and the two-letter key, that covers the first 13 letters of the value. The other 19 look like random filler. Thirteen letters at 2 bits each is **26 bits**.
+### The control told me which part of my idea mattered
 
-The review also found a latent leak, similar in spirit to the one from July: in some configurations the notebook could include tokens from the answer side. It never triggered on the recorded exams, but it would have in language training.
+Here is the humbling part. The spec included a cheap control: the old note-taker with only one change, a wider 64-token view. It was there to separate "more context" from "better memory".
 
-On a loss curve, this flaw would have looked like "a bit worse than I hoped". On the exam, it was a number that repeated itself until I asked why. I still have to confirm the explanation: the next run measures accuracy for each answer letter, and the 13-versus-19 split should be visible directly.
+On the short exams, the control **matched or beat** my memory cells: 99% against 94% on the lookup with a decoy, 99% against 89% on the 2,048-token lookup. Most of the gain came from context, not from my elegant latent design. Without that control, I would have credited the wrong idea.
 
-### Design 3: real memory cells, running now
+### Then the length test separated them
 
-The third design builds what the notes asked for in the first place. Each window is written by 32 memory vectors with their own state, their own width and an address saying where in the book they read from. They read the window in both directions, so a note-taker sees the whole fact in context. There are two variants of how that context is built, and a control that only widens the 16-token view, to separate "more context" from "better memory".
+Short exams check whether a memory works. They do not check whether it keeps working when the book grows. So the next test trained on 2,048-token books and evaluated on books up to 128K tokens.
 
-The pass marks were written before the first run: at least 40 of 64 bits on the 1,024-token lookup (the previous design stopped at 26), and at least 75% of the full-attention model's score on the lookalike and the four-step chain. If both variants stay below 32 bits after a doubled training budget, I record that the idea did not break the plateau and move on.
+![Line charts of accuracy versus book length from 2K to 128K tokens. The content-addressed memory with a short curriculum stays above 95% up to 64K and reaches 80% at 128K on lookup and 82% on a 4-step chain; position-addressed memory, the wider-context note-taker and full attention fall to chance.](memory_length_generalization.png "Train short, test long. The memories that read by position fall to chance within 8× of their training length; the content-addressed memory holds.")
 
-It started training this week. I do not have results yet.
+The picture changed completely:
 
-## Six rules before letting agents explore
+- The memory design as first built, and the wider-context control, both fell to chance by 16K tokens. Both had learned **where** facts sit, not **what** they are: trained at length L, they reach roughly 2L and fail on the far facts first.
+- A variant of the memory without an absolute address, where slots are matched by content rather than by their position in the book, held **98%** at 32K and **80%** at 128K after two short extra stages at 8K and 16K. A second seed replicated it (81% at 128K).
+- On the four-step chain, full attention trained on 2K books dropped to chance at 4K. The content-addressed memory, starting from its lookup weights, held **82%** at 128K after one extra stage at 8K. Trained from scratch on the chain, it did not take off in two attempts: it has to learn lookup before it can learn to follow a chain.
+- Evaluating a 128K-token book costs 1.35 seconds and 3.4 GB on one RTX 3090. The cost grows linearly with length.
 
-Most of what I learned in the last six weeks did not come from any one architecture. It came from the exam catching mistakes, many of them in the loop itself.
+This is the first result in the project that points directly at the long-context goal from the beginning of this post. It is also a result the short exams alone would have hidden: at 2K tokens, the position-reading models looked just as good.
 
-### 1. Write the goal and the kill criteria before the run
+## What I would tell another researcher using agents
 
-Every experiment starts as a frozen spec: the hypothesis, the one thing that changes, what counts as success, what counts as failure. An agent will always find a reason to extend a run or add one more tweak. The written criteria are what let a failed idea die in a day. The repairs to the averaged notebook each ended within a day or two, instead of dragging on for weeks.
+1. **Keep the idea yours, and write it down in your own words.** An idea note with explicit "do not do this" lines is the reference you will need when the implementation drifts.
+2. **Give the loop an exam, not a loss.** Exact scores, a full-attention ceiling and a no-memory leak check in every run, criteria written before the run, and an exam the agents cannot edit.
+3. **Ask for an interactive diagram of what was built, before every launch.** Review it against the idea note. It is the cheapest alignment check I have found.
+4. **Always include the boring control.** The cheapest alternative explanation, run in the same job, told me which part of my own idea mattered.
+5. **Train short, test long.** Position shortcuts look perfect at the training length. Length generalisation is where memory designs actually differ.
+6. **Most failed ideas are failed training runs.** Step size, budget and late takeoff killed more designs in my logs than bad architecture did. Let the agents handle this, and keep the rules in the exam.
 
-### 2. Train the "can this be learned at all?" model next to every candidate
+## What this does not prove
 
-When the new design's first exam run came back this week, the full-attention model had failed some of the long exams too. Because it trains next to every candidate, the scorecard marked those cells as "not learnable at this budget", not as a failure of the new design. The fix took less than a day: the training budget gave about 38,000 examples at 1,024 tokens and 19,000 at 2,048, fewer than every model needs before it starts learning at that length. Without the ceiling in the same run, I would have killed a design because my exam was underfed.
-
-### 3. Freeze and version the exam, and keep agents out of it
-
-A saved configuration for the long exams once quietly became a **16-bit** exam instead of the recorded **64-bit** one: an override shortened the planted value from 32 letters to 8. Nothing crashed. The numbers would just have meant something else. Now every exam carries its expected prize in bits, a test fails if a configuration changes it, and any change to the exam bumps its version so old and new scores are never mixed. This is the same reason autoresearch forbids the agent to touch the evaluation code.
-
-### 4. Most "failed" ideas are failed training runs
-
-Training settings do not carry over across text lengths at this scale. The step size that trains 128-token exams kills the longer ones. At 1,024 tokens, a step three times larger made **every** architecture score zero on two exams. At 50M parameters, the uncompressed notebook "collapsed" on the chain exam; with a smaller step and more patience it scored 99%. Small models also often sit at chance for a long time and then jump. So the exam now fixes the step size per model size and length, and extends a run once if the loss is still falling, instead of letting an impatient schedule kill an idea.
-
-### 5. A strange regularity means read the code
-
-Twenty-six bits across every setting was the most useful number of the month, because it was too regular to be a coincidence. An exact score makes that kind of pattern visible. Next-token loss would have smeared it into noise.
-
-### 6. The output of the loop should be one page
-
-The exam produces a scorecard: bits per exam, the highest level passed, the comparison with every earlier design at the same size, and the verdict. My job in the morning is to read one page, ask why, and decide the next direction, not to scroll through forty training logs. That is the division of labour that makes auto-research work for me: agents are fast and tireless, and I am the one who has to stay suspicious.
-
-## What the exam does not prove
-
-- **It is not language.** Random letters with an exact score are a controlled test of the mechanism. My earlier experiments showed that natural text pays far less for memory. The next rung plants facts in real prose, and the exam will not call a design ready until it passes there.
-- **It is small.** Everything here is 50M parameters or less, and the gating exams stop at 2,048 tokens. At 4,096 tokens none of the notebooks I tried, including the uncompressed one, found the fact. A million tokens is still an ambition, not a result.
-- **It can be gamed.** A fixed exam invites designs that are good at the exam. The language-like noise level and the hard stretch exams, which never gate, are my guard against that, not a guarantee.
-- **The rules are judgment calls.** A 75% pass mark and "no loss of more than 2 bits with size" are choices. I made them before seeing the new design's results, so at least they cannot bend toward it.
-- **My results can still change.** The July result changed after an audit. Anything here can too. The log keeps old numbers next to their corrections.
+- **It is not language yet.** Random letters with an exact score are a controlled test of the mechanism. The next rung plants facts in real prose and adds a next-token test where the memory has to earn its place.
+- **It is small.** 30M parameters, training books up to 16K tokens. 128K is evaluation only.
+- **Seeds vary.** One of three seeds reached only 65% even at 2K tokens. The chain needs a lookup-first curriculum.
+- **One level of memory is not enough for a million tokens.** A coarser version (512-token windows, 8 slots each) dropped from 93% to 39% on the 2K lookup, so the 1M design will need a two-level memory: coarse notes to find the right pages, fine notes to read them.
+- **My view of agents is one month, one project.** Other people will see different strengths and failure modes.
 
 ## What I believe now
 
-Auto-research is real, and for a solo researcher with evenings and seven GPUs it changes what is possible. Most of this month's experiments ran while I was asleep or at work.
+Auto-research is real. For a solo researcher with evenings and seven GPUs, it changes what is possible: most of this month's experiments ran while I was asleep or at work, and the harness they run on was built by agents.
 
-But autonomy is the cheap part. The expensive part is the goal. Karpathy's loop works because validation loss is the right measure for his question. For mine, it was nearly blind, and a tireless loop pointed at a blind metric just produces well-documented noise.
+But the loop amplifies what you give it. Give it a blind metric and it produces well-documented noise. Give it an unusual idea without a way to check the build, and it returns a more common idea. Give it a good exam, a frozen spec, a diagram to review and a boring control, and it becomes the best research assistant I have had.
 
-If you want agents to explore new architectures for you, build the exam first:
-
-- an exact score, so "better" is not a matter of opinion
-- a ceiling model and a leak check trained in every run
-- pass and kill criteria written before the run
-- a frozen, versioned exam that the agents cannot touch
-- a verdict that fits on one page
-
-Then let them run all night.
+The ideas, the questions and the suspicion are still the researcher's job. I do not think that is a temporary limitation to wait out. It is the division of labour I want.
 
 ## What comes next
 
-1. Finish the first full exam run of the memory-cell design and publish the scorecard, whatever it says.
-2. Check the 26-bit explanation directly with per-letter accuracy.
-3. Add the language rung: facts planted in real prose, plus a short next-token test where the notebook has to earn its place.
-4. Only if a design passes those, spend the compute on longer texts and bigger models.
+1. Facts planted in real prose, and a next-token test where the memory has to lower the loss on tokens whose evidence is far away.
+2. A two-level memory for the million-token setting.
+3. Reasoning loops over the concepts, the part of the vision this memory was built to support.
 
 ## References
 
 1. Karpathy, A. (2026). [**autoresearch**](https://github.com/karpathy/autoresearch). GitHub repository.
 2. Schnabel, T. et al. (May 2025). [**Lost in Transmission: When and Why LLMs Fail to Reason Globally**](https://arxiv.org/abs/2505.08140). Microsoft Research. NeurIPS 2025. arXiv:2505.08140
-3. Hsieh, C.-P. et al. (Apr 2024). [**RULER: What's the Real Context Size of Your Long-Context Language Models?**](https://arxiv.org/abs/2404.06654). NVIDIA. COLM 2024. arXiv:2404.06654
-4. Kuratov, Y. et al. (Jun 2024). [**BABILong: Testing the Limits of LLMs with Long Context Reasoning-in-a-Haystack**](https://arxiv.org/abs/2406.10149). NeurIPS 2024. arXiv:2406.10149
-5. Sopyla, K. (Jul 2026). [**Replacing Gemma-3 Global Attention with Concepts (Toward Longer Context)**](https://ai.ksopyla.com/posts/gemma-with-concepts/). ai.ksopyla.com
-6. Sopyla, K. (Mar 2026). [**Quicker Failures lead to better questions: How AI Helped Me Steer my research forward**](https://ai.ksopyla.com/posts/quicker-failures-better-questions/). ai.ksopyla.com
-7. MrCogito sources: [the exam ladder spec](https://github.com/ksopyla/MrCogito/blob/dev/docs/engineering_specs/capability_suite.md) · [training rules for small models](https://github.com/ksopyla/MrCogito/blob/dev/docs/engineering_specs/small_model_capability_protocol.md) · [averaged notebook report](https://github.com/ksopyla/MrCogito/blob/dev/docs/2_Experiments_Registry/run_reports/e25_e21_dna_capability_report_20260916.md) · [learned note-taker and its code review](https://github.com/ksopyla/MrCogito/blob/dev/docs/experiments_specs/ahead/E30_sliding_window_perceiver.md) · [memory-cell design](https://github.com/ksopyla/MrCogito/blob/dev/docs/experiments_specs/ahead/E31_sliding_window_latent_memory.md) · [agent skills](https://github.com/ksopyla/MrCogito/tree/dev/.cursor/skills) · [experiment log](https://github.com/ksopyla/MrCogito/blob/dev/docs/2_Experiments_Registry/master_experiment_log.md)
+3. Tishby, N., Pereira, F. C., Bialek, W. (Apr 2000). [**The information bottleneck method**](https://arxiv.org/abs/physics/0004057). arXiv:physics/0004057
+4. Hsieh, C.-P. et al. (Apr 2024). [**RULER: What's the Real Context Size of Your Long-Context Language Models?**](https://arxiv.org/abs/2404.06654). NVIDIA. COLM 2024. arXiv:2404.06654
+5. Kuratov, Y. et al. (Jun 2024). [**BABILong: Testing the Limits of LLMs with Long Context Reasoning-in-a-Haystack**](https://arxiv.org/abs/2406.10149). NeurIPS 2024. arXiv:2406.10149
+6. Jaegle, A. et al. (Mar 2021). [**Perceiver: General Perception with Iterative Attention**](https://arxiv.org/abs/2103.03206). ICML 2021. arXiv:2103.03206
+7. Sopyla, K. (Jul 2026). [**Replacing Gemma-3 Global Attention with Concepts (Toward Longer Context)**](https://ai.ksopyla.com/posts/gemma-with-concepts/). ai.ksopyla.com
+8. Sopyla, K. (Mar 2026). [**Quicker Failures lead to better questions: How AI Helped Me Steer my research forward**](https://ai.ksopyla.com/posts/quicker-failures-better-questions/). ai.ksopyla.com
+9. MrCogito sources: [project vision](https://github.com/ksopyla/MrCogito/blob/dev/docs/1_Strategy_and_Plans/vision_and_goals.md) · [the exam ladder](https://github.com/ksopyla/MrCogito/blob/dev/docs/engineering_specs/capability_suite.md) · [agent skills](https://github.com/ksopyla/MrCogito/tree/dev/.cursor/skills) · [memory-cell design and results](https://github.com/ksopyla/MrCogito/blob/e31-latent-memory/docs/experiments_specs/ahead/E31_sliding_window_latent_memory.md) · [experiment log](https://github.com/ksopyla/MrCogito/blob/dev/docs/2_Experiments_Registry/master_experiment_log.md)
 
-*All numbers are from my own runs on two servers with 3 and 4 RTX 3090 GPUs. Models are discarded after each exam. The memory-cell results are pending. Independent reproduction has not been published.*
+*All numbers are from my own runs on two servers with 3 and 4 RTX 3090 GPUs. Models are discarded after each exam. Independent reproduction has not been published.*
