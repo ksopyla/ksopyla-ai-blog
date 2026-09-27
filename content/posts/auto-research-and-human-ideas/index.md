@@ -35,9 +35,9 @@ A number that refuses to move is not a result. It is a fingerprint. To see whose
 
 [MrCogito](/projects/concept-reasoning/) is my open research project on models that compress a long input into a small set of dense **concepts** and reason over those, instead of attending to every token. If it works, a million-token input becomes affordable on hardware like mine. The architecture story is in a separate post: [A Memory That Reads by Content](/posts/memory-that-reads-by-content/).
 
-I build agent systems by day. I only have evenings for this project, plus seven RTX 3090 GPUs that sit idle while I sleep. So the same kind of agents now run the research at night, with [agent skills](https://github.com/ksopyla/MrCogito/tree/dev/.cursor/skills) for each step: design, implement, run, evaluate, record, report. Andrej Karpathy's [autoresearch](https://github.com/karpathy/autoresearch) is the simplest version of this loop: edit a training script, train for five minutes, keep the change if validation loss improved.
+My motto is *build agents by day, train models by night*: the day belongs to my job, so open-source research happens in the evenings. Around 8–9 pm I read what the agents produced, discuss the next step with them, and schedule their work for the next 24 hours. [Agent skills](https://github.com/ksopyla/MrCogito/tree/dev/.cursor/skills) own each step: design, implement, run, evaluate, record, report. Andrej Karpathy's [autoresearch](https://github.com/karpathy/autoresearch) is the simplest version of this loop: edit a training script, train for five minutes, keep the change if validation loss improved.
 
-It works, and it produces a flood. In September, agents made 176 commits to the research repo and I made fewer than a hundred, many of theirs between midnight and six in the morning.
+It works, and it produces a flood: more than 170 agent commits in September alone.
 
 I could not read it. At one point I wrote to the agents: *"most of your work and outputs I can't read and process (too much)"*. An audit of one session counted 8,544 words from the agents against 676 from me. That overload is where the drift hides.
 
