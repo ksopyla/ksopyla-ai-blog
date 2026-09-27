@@ -1,10 +1,12 @@
 ---
 title: "Auto-Research Can Run the Experiments. It Cannot Have the Idea."
-date: 2026-09-26
-draft: true
-description: "What a month of letting agents run my model research taught me: they are excellent at implementation, optimisation and building test harnesses, but the unusual ideas still came from me. Two things kept us aligned: a fixed exam that defines what better means, and an interactive diagram of what was actually built before every launch."
+date: 2026-09-27
+draft: false
+description: "Notes from a month of letting agents run my model research: strong at implementation, optimisation and test harnesses, but the unusual ideas still came from me."
 tags: ["AI", "MrCogito", "Auto-Research", "Agents", "Evaluation", "Long Context", "Research Methodology"]
 categories: ["AI Research"]
+featureImage: "feature_auto_research_human_ideas.png"
+featureAlt: "Abstract digital art of a lone human silhouette raising a glowing spark at night; a warm stream of text particles compresses into it from the left while cool blue streams of agents weave through a grid of glowing experiment cells on the right"
 showReadingTime: true
 ---
 
