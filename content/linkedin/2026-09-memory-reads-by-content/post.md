@@ -6,7 +6,7 @@ status: draft
 content_score: 4.4
 related_blog_post: "https://ai.ksopyla.com/posts/memory-that-reads-by-content/"
 visual: "memory_length_generalization.png (the length chart)"
-first_comment: "Full write-up with the three attempts, the chart and the caveats: https://ai.ksopyla.com/posts/memory-that-reads-by-content/"
+link_strategy: "No link in the post or in an immediate first comment. After the first hour, reply to a comment that asks for details with the blog link, or add it then as a comment: https://ai.ksopyla.com/posts/memory-that-reads-by-content/"
 sequence: "Post 2 of 2. Post 1 (auto-research) goes first."
 ---
 
