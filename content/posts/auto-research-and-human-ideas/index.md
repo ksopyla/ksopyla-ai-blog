@@ -5,8 +5,8 @@ draft: false
 description: "Notes from a month of letting agents run my model research: strong at implementation, optimisation and test harnesses, but the unusual ideas still came from me."
 tags: ["AI", "MrCogito", "Auto-Research", "Agents", "Evaluation", "Long Context", "Research Methodology"]
 categories: ["AI Research"]
-featureImage: "feature_auto_research_human_ideas.png"
-featureAlt: "Abstract digital art of a lone human silhouette raising a glowing spark at night; a warm stream of text particles compresses into it from the left while cool blue streams of agents weave through a grid of glowing experiment cells on the right"
+featureImage: "feature_auto_research_human_ideas.jpg"
+featureAlt: "Abstract digital painting at night: a lone person raises a glowing spark that lights a constellation of concept nodes; a warm stream of particles pours into it from the left, while blue rivers of light wind through a city where small robots tend glowing glass cubes of experiments"
 showReadingTime: true
 ---
 
