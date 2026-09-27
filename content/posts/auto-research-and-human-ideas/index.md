@@ -11,7 +11,14 @@ showReadingTime: true
 ---
 
 {{< lead >}}
-For the last month, agents have run most of my model research: they implement my designs, build the test harness, tune the training and run experiments on my GPU servers while I sleep. They are very good at it. But every idea that actually moved the project came from me, and at least once the agents quietly built a more ordinary version of the idea than the one I asked for. This is what I learned about dividing the work between a researcher and a research loop.
+For the last month, agents have run most of my model research: they implement my designs, build the test harness, tune the training and run experiments on my GPU servers while I sleep. They are very good at it. 
+
+?? Make it bolder, more direct, one thing that I have learnd is that agents drift to something they know, they goes to ordinary that they were trained to, it is good for software but not for research where you want to find the unusual.
+But every idea that actually moved the project came from me, and at least once the agents quietly built a more ordinary version of the idea than the one I asked for. 
+?? this post aim is to explain how to not default to mundane or already known ideas, mediocre ideas -> good harness, good testing framework, having a way to easily review is my idea implement properly 
+?? this do not make sense, you never explain what I learned, there is a list below, butn not above
+This is what I learned about dividing the work between a researcher and a research loop.
+??STORY VOICE: This sentence points at a lesson the lead never states. Write the lesson itself, in one direct line: agents drift toward the ordinary patterns they were trained on, which helps when the job is known software and damages research whose point is the unusual idea. Then name the two counters this post actually teaches — an exam built alongside the idea, and a picture of the code that will run — so the reader knows they are getting a method.
 {{< /lead >}}
 
 ## TL;DR
@@ -19,11 +26,19 @@ For the last month, agents have run most of my model research: they implement my
 **What you will learn:**
 
 - Where auto-research helped most (implementation, optimisation, test harnesses, running experiments around the clock) and where it did not (original ideas)
+?? make it bolder
 - How an unusual idea drifts back into an ordinary one, one reasonable decision at a time, without anything crashing
+
+?? I'm not sure is this valuable, I would rephrease this, to more general that you need to define real testing framework to optimize, that I did, the one measure is not engough, but this should be deterministic and reproducible, and really aligned with your goals, you need to work on the validation frameowrk at the same time as the idea, this will help you to understand and improve your idea
 - Why next-token loss is the wrong goal for a research loop that explores new architectures, and what a better exam looks like
+?? this is good point, maybe it sounds too simple, but it is needed, the grill-me skill is not enough, this collects the inormation on experiment desing phase, but after the implementaiton and during the experiments agents change code and need to have a reference to check
 - The habit that kept me aligned with the agents: an interactive diagram of what was actually built, reviewed before every launch
+?? how to overcome the overwhelm of informations, using reserch communication skills that generates plots and diagrams, information bandwitch is much higher than text, interactive plots and digarams, short summaries in tables
+- I feel overwhelemd by the amout of inforamtion that agent generates, 
 - Six rules I now follow before letting agents explore on their own
 
+
+?? Is this good opening paragraph? Are the reader know what is about before explanation? asses and change if needed
 ## Twenty-six bits, every time
 
 The number was 26.
@@ -35,12 +50,17 @@ Different sizes, different lengths, different exams. The same number.
 The reports recorded it faithfully, run after run. Nothing had crashed, the training curves looked healthy, and the design did beat the previous one. By every signal the loop was built to check, things were fine.
 
 A number that refuses to move across every setting is not a result. It is a fingerprint. It took me a few days, and one habit I did not have yet, to find out whose fingerprint it was.
+??STORY TENSION: The reader does not yet know that these "bits" are letters recovered on a synthetic exam, or that the fingerprint belongs to the code. Add one clause that the next sections exist to make this number intelligible — first the exam, then the implementation — so the long rewind feels chosen for them.
 
 ## Why I let agents run my research
 
 [MrCogito](/projects/concept-reasoning/) is my open research project on models that compress a long input into a small set of dense vectors, which I call **concepts**, and reason over those instead of attending to every token. If it works, long context becomes a question of compression rather than brute force, and a million-token input becomes affordable on hardware like mine. I explain the architecture side in a separate post: [A Memory That Reads by Content](/posts/memory-that-reads-by-content/).
 
-It is an evenings-and-weekends project, run on two servers with seven RTX 3090 GPUs. I build agent systems by day. For the second phase of the project I decided to let the same kind of agents run the research at night.
+It is an evenings-and-weekends project, run on two servers with seven RTX 3090 GPUs. 
+?? is this sentence make sence? what it's purpose? 
+??STORY CUT: This sentence, "I build agent systems by day," and the decision that follows are one motive split into three facts. Fuse them: limited nights and seven GPUs are why the agents you build by day run the research at night. Alone, the GPU count is a spec sheet, and the day-job sentence is a credential that never changes what happens next.
+I build agent systems by day. For the second phase of the project I decided to let the same kind of agents run the research at night.
+
 
 The loop is a set of agent skills in the [MrCogito repo](https://github.com/ksopyla/MrCogito/tree/dev/.cursor/skills), each owning one step:
 
@@ -53,6 +73,7 @@ The loop is a set of agent skills in the [MrCogito repo](https://github.com/ksop
 Helper agents check server health, read training curves from Weights & Biases and search for papers. Andrej Karpathy's [autoresearch](https://github.com/karpathy/autoresearch) shows the same idea in its simplest form: an agent edits one training script, trains for five minutes, keeps the change if validation loss improved, and runs about a hundred experiments overnight.
 
 It works. In September, agents made 176 commits to the research repo and I made fewer than a hundred. Over three days in the middle of the month, one exam campaign ran almost around the clock, with 115 commits to its log, many between midnight and six in the morning.
+??STORY FEEL: These numbers are a flood. Your notes say you were overwhelmed, and that plots, diagrams and short tables were how you could still see the work. Put that here, in one or two sentences: what you could not read, and what you asked the agents to draw. The diagram habit later then answers a pressure the reader has already felt.
 
 ## What agents are good at
 
@@ -98,6 +119,7 @@ Every exam trains four models on identical data:
 | **the candidate** | the new design |
 
 The exams form a ladder: learn at all, carry a whole fact, ignore a decoy that looks like the fact, reach 1,000–2,000 tokens back, follow a four-step chain of facts, and do all of that when the filler looks like plausible text. Every design runs at four sizes, from 5M to 50M parameters, and gets a verdict from rules written in advance: **scale up**, **promising, fix first**, or **not ready**. The exam is versioned, every cell carries its expected prize in bits, and a test fails if anyone, human or agent, changes it by accident. That last rule exists because it happened once: a saved configuration quietly turned a 64-bit exam into a 16-bit one.
+??STORY DETAIL: A reader sees a feature list. Add one sentence on why the ladder grew while the idea was still moving: one score was not enough, each new claim needed a check you could reproduce, and writing the next rung showed you what the idea actually was. That is the lesson your notes ask this section to carry.
 
 The exam gave the agents a goal worth optimising. It is also the exam that kept returning 26 bits.
 
@@ -116,6 +138,7 @@ The design came from an idea note I had written in my own words. Two of its line
 In the code, each memory slot was, in effect, **a weighted average of token vectors**, and the hashed embeddings were switched on. Each slot was written by a note-taker that could only see **16 tokens back**.
 
 That last detail explained the fingerprint. A note-taker looking at a letter can only tell it belongs to the fact if the fact's marker is within its 16-token view. After the marker and the two-letter key, that covers the first 13 letters of the value. The other 19 look like random filler. Thirteen letters at 2 bits each is **26 bits**.
+??STORY FEEL: This is the click. Before the explanation below, one sentence of gut reaction — the moment the healthy curves became "this was never my model." The arithmetic is already clear; the feeling is what makes a reader trust that you were fooled too.
 
 The implementation had drifted back towards the common pattern, the one my note explicitly rejected. Nothing crashed. The model trained and scored reasonably. It just was not my idea.
 
@@ -124,6 +147,7 @@ This is the risk of auto-research that I did not expect: not wrong code, but **o
 ## The habit: no launch without a diagram
 
 Since then, after implementation and before any run or harness launch, I ask the agents for **an interactive diagram of what the code actually implements.** Not the design I described. The forward pass that will run, step by step, with tensor shapes, and with a toggle to compare it against the previous design.
+??STORY DETAIL: Say why the idea note and the design-phase spec were not enough. After you approve a design, the agents keep editing the code during implementation and during the runs, so the reference has to be a picture of the code about to execute. Without that sentence, the habit reads as a preference for pictures over diffs.
 
 For the next design, the agents produced two pages before launch: an architecture page with a checklist of open design decisions that were not part of the experiment until I confirmed them, and a wiring page where I can click any cell and see everything it depends on, down to the token embeddings.
 
@@ -158,6 +182,7 @@ Without that boring control, I would have credited the wrong idea. It is an easy
 4. **Always include the boring control.** The cheapest alternative explanation, run in the same job, tells you which part of your idea matters.
 5. **Treat a number that never moves as a question, not a result.** Regularity across settings usually points at the implementation, not at the idea.
 6. **Most failed ideas are failed training runs.** Step size, budget and late takeoff killed more designs in my logs than bad architecture did. Let the agents handle this, and keep the rules in the exam.
+??STORY DETAIL: This rule arrives as a second thesis. The body mentions step size and late takeoff once, inside the optimisation list. Give one run where a design you liked died from the training budget and a duller one survived, or label the rule as a log observation this story does not walk through.
 
 ## What this does not prove
 
@@ -174,6 +199,7 @@ But the loop amplifies what you give it. Give it a blind metric and it produces 
 The ideas, the questions and the suspicion are still the researcher's job. I do not think that is a temporary limitation to wait out. It is the division of labour I want.
 
 ## What comes next
+??STORY CUT: "What I believe now" already closed on the division of labour. This section opens a trailer after the ending. Move the real-prose exam rung up into the "exam is synthetic" caveat, and let the belief section be the last word. The companion post is already linked where the control result needs it.
 
 The research result this loop produced, a memory that keeps finding facts at 128K tokens after training on much shorter books, has its own write-up: [A Memory That Reads by Content](/posts/memory-that-reads-by-content/). Next for the loop itself: an exam rung with facts planted in real prose, so the agents optimise against language and not only against letters.
 
