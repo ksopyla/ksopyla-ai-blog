@@ -1,5 +1,5 @@
 ---
-title: "Auto-research: the 26-bit fingerprint"
+title: "Agents built the ordinary version of my idea"
 date: 2026-09-27
 platform: linkedin
 status: draft
@@ -10,26 +10,26 @@ first_comment: "The full story, with the exam and the diagrams: https://ai.ksopy
 sequence: "Post 1 of 2. Post 2 (memory result) 3-4 days later."
 ---
 
-The number was 26. Every single time.
+I gave my AI agents an unusual idea. They built me a common one.
 
-My AI agents had built a new memory design for my research model, trained it on my GPUs and scored it on an exam worth 64 bits. At 31M parameters: 25.7. At 50M: 24.3. On longer texts: 25. On a harder exam: 25.9.
+Nothing crashed. Tests passed. The model trained fine and scored reasonably.
 
-Nothing crashed. Tests passed. Every report looked fine.
+My design note said, in plain words: don't average the tokens, pick the signal.
+The code averaged the tokens.
 
-In September my agents made 176 commits to my research repo. I made fewer than 100. They are great at the work: implementing a design in hours, tuning training, running the same exam at 8 lengths and 3 seeds at 3 am.
+I only noticed because the results looked strange. Every run stopped at the same score, whatever I changed. So I asked the agents to draw an interactive diagram of what the code actually does, step by step.
 
-So I asked them for one more thing: an interactive diagram of what the code actually does.
+One screen of that diagram showed me what days of passing tests had not.
 
-My idea note said "don't average the tokens". The code built a weighted average of the tokens, written by a note-taker that could only see 16 tokens back. That covers the first 13 letters of the answer. 13 letters × 2 bits = 26.
+This is the risk of agent-written research code that nobody warned me about:
+not wrong code. Ordinary code.
 
-Not wrong code. Ordinary code.
+An unusual idea is far from the patterns an agent has seen most often. It gets pulled back to the familiar one, one reasonable decision at a time. Tests don't catch it, because tests check the code, not your idea.
 
-An unusual idea drifts back to the common pattern one reasonable decision at a time. Tests don't catch it, because tests check the code, not your idea.
+My rule now: no training run until I've clicked through a diagram of what was actually built.
 
-Now I have one rule: no launch until I've clicked through a diagram of what was actually built.
+Agents write most of my research code now. The idea, and the suspicion, still have to be mine.
 
-Agents run my experiments. The ideas, the questions and the suspicion are still my job.
+Has an agent ever quietly built you the "normal" version of what you asked for?
 
-What is the most "ordinary" thing an agent built for you instead of what you asked for?
-
-#AIResearch #AIAgents #MachineLearning
+#AIAgents #AIResearch #MachineLearning
