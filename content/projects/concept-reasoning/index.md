@@ -25,6 +25,7 @@ The name comes from the poem *"Mr. Cogito"* by Zbigniew Herbert, a figure who th
 
 **Repository:** [github.com/ksopyla/MrCogito](https://github.com/ksopyla/MrCogito)
 **Experiment tracking:** [wandb.ai/ksopyla/MrCogito](https://wandb.ai/ksopyla/MrCogito)
+**Evaluation datasets:** [Cogito Capability Datasets](/projects/cogito-capability-datasets/), long-context tests for small models
 
 ---
 
