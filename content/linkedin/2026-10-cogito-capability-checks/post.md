@@ -6,20 +6,22 @@ status: draft
 related_blog_post: "https://ai.ksopyla.com/projects/cogito-capability-datasets/"
 visual: "Optional. A simple sketch of one test: a short story with a planted fact, a long stretch of filler, one question at the end. Or no image."
 link_strategy: "Hugging Face links go in the first comment (text below the post). Project page in the same comment."
-audience: "Research peers, potential hires, Pearson leaders and colleagues who read silently. Goal: show the ongoing journey honestly, framed as an evening hobby, no bragging."
+audience: "Research peers, potential investors, Pearson leaders and colleagues who read silently. Goal: show a serious research bet (small models, done right) and first-principles rigour, with a nerdy wink; no hype."
 ---
 
-I gave my tiny models the exams the big labs use. They scored zero, night after night.
+Big labs scale up. I'm scaling down, on purpose: reasoning models with 10M–200M parameters, trained from scratch on 3–4 GPUs. If an idea is right, it should work small first.
 
-Some context: I'm over 40, and instead of a sports car I went back to my academic roots. In the evenings I train small memory-based reasoning models, 10M to 200M parameters, from scratch on 3–4 GPUs. Cheaper than the sports car, louder than woodworking 🙂
+(Some people over 40 buy a sports car. I went back to my PhD roots 🙂)
 
-I've always believed evaluation comes first. So I went straight for real text and well-known long-context benchmarks. But those are made for big pretrained models, and mine learned nothing useful from them. Worse, the loss looked healthy while the model quietly ignored the memory I'd built for it.
+The idea: a small model that writes what matters into memory and reasons over it, instead of re-reading a whole book for every question.
 
-My mistake: I was aiming at the finish line before checking that my models could take the first step.
+But how do you know a tiny model is actually learning that? I started where everyone starts: real text and well-known long-context benchmarks. My models scored zero, night after night. Worse, the loss looked healthy while the model quietly ignored the memory I'd built for it.
 
-So I went back to basics. Can it hold one fact? Does it read its memory at all? How far back can it reach?
+Those benchmarks are made for big pretrained models. They told me my model failed, but not where.
 
-I built a ladder of simple checks:
+So I stepped back to first principles. Before a model can reason, it must hold one fact. Before it can hold a fact, it must read its memory at all.
+
+That became a ladder of simple checks:
 
 Step 1: no language. Random symbols, almost like DNA: "key alice val red", thousands of tokens of filler, then "what was alice?"
 
@@ -27,9 +29,9 @@ Step 2: children's stories with planted facts, and questions that slowly get har
 
 I know every right answer, so a score finally means something. (Even the tests needed testing: my first version could be passed without reading the facts.)
 
-Still early, and most experiments fail. But now I can see which step on the ladder fails.
+Most experiments still fail. But now I see exactly which rung they fail on, and that tells me what to fix next.
 
-That's why I'm sharing these checks. Most long-context benchmarks assume a big pretrained model. If you train small models from scratch, test a new memory or attention design, or do research on a few GPUs, you need tests your model can actually pass.
+I'm sharing the ladder because most long-context benchmarks assume a big pretrained model. If you train small models from scratch, test a new memory or attention design, or do research on a few GPUs, you need tests your model can actually pass.
 
 What you get: open datasets on Hugging Face, lengths from 1K to 128K tokens, a known answer for every question, and a built-in check that a model can't pass by guessing.
 
