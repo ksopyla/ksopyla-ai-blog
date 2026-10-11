@@ -1,0 +1,42 @@
+{
+  "title": "Cogito Capability Checks: a ladder of simple exams for tiny models",
+  "size": [1080, 1350],
+  "fps": 30,
+  "scenes": [
+    {
+      "id": "s1_scale_down",
+      "visual": "journey",
+      "narration": "Big labs scale up. I'm scaling down, on purpose: tiny reasoning models, trained from scratch on a few GPUs."
+    },
+    {
+      "id": "s2_idea",
+      "visual": "idea",
+      "narration": "The idea: a small model that writes what matters into memory, and reasons over it, instead of re-reading the whole book for every question."
+    },
+    {
+      "id": "s3_problem",
+      "visual": "problem",
+      "narration": "On real long-context benchmarks, my models scored zero. And the loss looked healthy, while the model quietly ignored its memory."
+    },
+    {
+      "id": "s4_symbols",
+      "visual": "symbols",
+      "narration": "So I went back to first principles. Step one, no language: a key, a value, thousands of tokens of noise, and one question."
+    },
+    {
+      "id": "s5_stories",
+      "visual": "ladder",
+      "narration": "Step two, children's stories with planted facts. Find where someone lives. Pick them among look-alikes. Track where they live now. Follow two hops. Count. Deduce."
+    },
+    {
+      "id": "s6_board",
+      "visual": "board",
+      "narration": "I know every right answer, so a score finally means something. Now I see exactly which rung a model fails on."
+    },
+    {
+      "id": "s7_open",
+      "visual": "end",
+      "narration": "The whole ladder is open on Hugging Face, as Cogito Capability Checks. If you train small models, try it, and send me the shortcuts you find."
+    }
+  ]
+}
