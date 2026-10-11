@@ -32,6 +32,7 @@ Read the full draft, then polish for clarity and flow:
 - Make headings scannable and informative
 - Check grammar and readability
 - Ensure `## References` is complete when claims cite outside sources
+- Check length: under 2,500 words, ideally under 10 minutes of Hugo reading time (11 is fine). Trim or split before publishing if longer.
 
 ### 2. Generate TL;DR
 
@@ -137,6 +138,7 @@ After smoke check passes, ask if the user wants a LinkedIn post via the `linkedi
 [ ] TL;DR generated
 [ ] Title assessed
 [ ] Tone gate passed
+[ ] Length under 2,500 words (reading time ≤10 min ideal, 11 max)
 [ ] Frontmatter validated
 [ ] Feature image present or generated
 [ ] Bundle moved to posts

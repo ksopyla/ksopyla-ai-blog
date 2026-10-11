@@ -268,6 +268,7 @@ Once the lean draft passes the threshold or the user still wants to continue, re
 6. Add a `## References` section for papers, models, or benchmark claims.
 7. Mark any unresolved fact checks clearly instead of hiding uncertainty.
 8. Suggest where visuals would help, but do not block drafting on missing art.
+9. Keep the post under **2,500 words** (hard limit). Aim for **under 10 minutes** of reading as shown by Hugo (about 2,100 words at Hugo's ~213 words per minute); 11 minutes is acceptable. If a draft runs longer, cut or split it into two posts with one story each.
 
 ### Voice And Editorial Checklist
 

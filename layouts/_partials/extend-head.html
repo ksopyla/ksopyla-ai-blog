@@ -1,0 +1,38 @@
+{{/* schema.org Dataset metadata for pages that describe published datasets.
+     Set `datasetFamily` (name, description, license, keywords) and `datasets`
+     (list of {name, url, description, license}) in a page's frontmatter. */}}
+{{ with .Params.datasetFamily }}
+  {{ $page := $ }}
+  {{ $author := dict "@type" "Person" "name" site.Params.seo.author.name "url" "https://ai.ksopyla.com/" "sameAs" (slice "https://huggingface.co/ksopyla" "https://github.com/ksopyla") }}
+  {{ $parts := slice }}
+  {{ range $page.Params.datasets }}
+    {{ $parts = $parts | append (dict
+      "@type" "Dataset"
+      "name" .name
+      "description" .description
+      "url" .url
+      "sameAs" .url
+      "license" .license
+      "isAccessibleForFree" true
+      "creator" $author
+      "isPartOf" $page.Permalink
+    ) }}
+  {{ end }}
+  {{ $family := dict
+    "@context" "https://schema.org"
+    "@type" "Dataset"
+    "name" .name
+    "alternateName" .alternateName
+    "description" .description
+    "url" $page.Permalink
+    "license" .license
+    "keywords" .keywords
+    "isAccessibleForFree" true
+    "creator" $author
+    "datePublished" ($page.Date.Format "2006-01-02")
+    "dateModified" ($page.Lastmod.Format "2006-01-02")
+    "citation" .citation
+    "hasPart" $parts
+  }}
+  <script type="application/ld+json">{{ $family | jsonify | safeJS }}</script>
+{{ end }}

@@ -36,3 +36,7 @@ combined, rich color spectrum, textured digital art, high detail, no text, no wa
 1. **Real data first** — WandB charts, training curves, architecture diagrams. Most credible.
 2. **Generated concept art second** — When no real data visual exists.
 3. **No image is better than a bad image** — Skip if nothing fits naturally.
+
+## When No Image Tool Is Available
+
+Claude Code has no image-generation tool. Write the final prompt to `feature_prompt.txt` in the post bundle, tell the author, and leave `featureImage` unset until they add the file. Never ship a placeholder image.

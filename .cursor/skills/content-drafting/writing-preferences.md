@@ -113,6 +113,7 @@ It does *not* apply to: long-form blog posts, project pages, LinkedIn posts, X t
 - **Include product-specific implications.** What does an architectural choice mean for someone deploying this in production? Not just latency numbers — context window limits, knowledge injection feasibility, infrastructure costs, fine-tuning requirements.
 
 ### Structure
+- **Length.** Every blog post stays under 2,500 words. Ideal is under 10 minutes of reading (Hugo shows it next to the date); 11 minutes is fine. One post tells one story; if there are two, split them.
 - **Conclusions matter.** Don't end with a summary. End with implications, predictions, and actionable insights. What should the reader do differently after reading this?
 - **Technical deep-dives earn trust.** The audience values understanding the mechanism, not just the result.
 
