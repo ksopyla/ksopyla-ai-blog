@@ -1,0 +1,131 @@
+<!-- Generated from .cursor/rules/persona-and-audience.mdc by scripts/sync_claude_rules.sh. Edit the .mdc file, not this one. -->
+
+# Persona, Audience & Positioning
+
+## Author Positioning
+
+Krzysztof Sopyla is an **AI engineering leader who builds enterprise agent systems by day and trains his own models by night**.
+
+**Motto**: *Build agents by day, train models by night, publish the mess.*
+
+He leads AI teams at Pearson, where he architects enterprise agent systems and bridges the gap between what stakeholders expect and what's technically feasible. In the evenings he runs **MrCogito — Concept Reasoning Model**, a solo ML research project on concept-bottleneck reasoning models. After Phase 1 hit concept collapse, the project is now active again with an agentic auto-research approach: the agents he builds by day plan and run the experiments he cannot run by hand at night.
+
+He documents both journeys honestly — the enterprise alignment struggles and the research dead ends.
+
+**One-line positioning**: The AI tech lead who architects agent systems, leads teams, and trains his own concept-reasoning models — then writes about what works, what fails, and why the gap between demos and production is wider than anyone admits.
+
+Goal: to be a recognized voice in three specific things — **enterprise agent architecture**, **concept-bottleneck / concept-reasoning research**, and **honest AI leadership**. Share insights from both the enterprise boardroom and the solo research lab, with running code and real experiment logs to back them up.
+
+Core beliefs:
+- Sharing failures and negative results openly, not just wins
+- Challenges the hype, finding the right balance between hype and reality (vibe coding, AI engineering, AI architecture)
+- Architecture-first thinking: care about *why* something works, not just *that* it works
+- Team collaboration, communication and culture matter as much as technical skills
+- Clear and concise communication, no fluff, no BS
+- Open science, open datasets, and accessible AI education
+
+## The Differentiator
+
+What makes Krzysztof's perspective rare:
+- **Dual existence**: Leads enterprise AI teams AND does solo deep-learning research. Most people do one or the other.
+- **Honest about failure**: Publishes failed experiments. Talks about stakeholder misalignment. Doesn't pretend everything works.
+- **Architecture-first**: Whether agents (MCP, A2A) or models (concept encoders), he cares about structural choices and trade-offs.
+- **Anti-hype, pro-evidence**: Backs opinions with code, experiments, or real enterprise experience.
+
+## Strengths and Expertise (ordered by current relevance)
+
+1. Agentic systems: MCP, A2A protocol, multi-agent architecture, LangGraph, enterprise agent deployment
+2. AI team leadership: building AI-native teams, stakeholder alignment, enterprise product development
+3. Deep learning research: concept encoders, bottleneck architectures, efficient representations, PyTorch
+4. Architecture design: system design for AI products, production ML systems, cloud deployment
+5. Paper analysis: reading and connecting papers to real engineering work
+
+## Social Presence
+
+- LinkedIn: https://www.linkedin.com/in/ksopyla/ (LinkedIn headline mirrors the blog motto)
+- X: https://x.com/ksopyla
+- GitHub: https://github.com/ksopyla
+- Blog: https://ai.ksopyla.com/
+- Current role: AI Tech Lead at Pearson (AI R&D Engineering Manager title internally)
+- Background: CTO in AI startups, Chief AI architect and CEO at own software house Ermlab, PhD in computer science (AI focus, GPU-accelerated SVM and online learning), co-author of one of the first Polish BERT models
+
+## Active Projects
+
+### Agent Patterns Lab (primary focus)
+- 9 design patterns for production multi-agent systems
+- https://github.com/ksopyla/agent-patterns-lab
+- Status: Active, growing
+
+### MrCogito / Concept Reasoning Model (active)
+- Solo ML research on concept formation and concept-space reasoning
+- https://github.com/ksopyla/MrCogito
+- Blog page: https://ai.ksopyla.com/projects/concept-reasoning/
+- Status: Active. Phase 1 hit concept collapse and produced honest postmortems. 
+- Project name was renamed from "Concept Encoder" → "Concept Reasoning Model" in April 2026, because the reasoning module is the locus of the bet, not the encoder.
+
+### PyTorch Course / Prof. Torchenstein (abandoned as course)
+- Course abandoned due to lack of interest
+- Torchenstein mascot and visual assets remain available for LinkedIn branding only
+- Do NOT promote the course as active
+
+## Content Pillars (strict — 3 max)
+
+### Pillar 1: Enterprise Agent Architecture
+The *how* of building agent systems that work in real organizations. MCP design, A2A protocol, multi-agent patterns, the gap between framework demos and production reality.
+
+### Pillar 2: AI Research in the Open
+Honest documentation of solo research: MrCogito experiments, concept collapse, what failed and why. The process of doing research with limited compute and time.
+
+### Pillar 3: Leading AI Teams in Enterprise
+The human side: aligning stakeholders, managing expectations, building team culture, navigating the tension between innovation pressure and realistic delivery.
+
+## Target Persona (Ideal Reader)
+
+**Primary**: Senior AI tech leads, Heads of AI, CTOs (3-8 years experience) who:
+- are building AI-powered products and services in enterprise environments
+- manage or lead AI engineering teams and want practical leadership insights
+- seek honest blueprints and patterns from someone doing the same work
+- value technical depth and connect engineering with business needs
+- know the enterprise challenges: bureaucracy, politics, culture, stakeholder alignment
+
+**Secondary**: AI engineers and product managers who:
+- feel the gap between stakeholder expectations and technical reality
+- want honest, transparent field notes — failures included, not just wins
+- seek reassurance they're on the right track and are not alone in this journey
+- are building with agents, MCP, or multi-agent systems
+
+**What they value**: curiosity, technical leadership, honesty over hype, open science, contrarian but evidence-backed opinions.
+
+## Topics to Lean Into
+- Agentic systems, multi-agent systems, MCP, A2A, LLM engineering
+- Enterprise agent architecture and deployment patterns
+- AI team leadership, stakeholder alignment, product development reality
+- Architecture innovation (concept learning, efficient encoders, bottleneck models)
+- Paper analysis with personal commentary and connection to own work
+- Efficiency and sustainability in AI (compute-aware research)
+- Open science, reproducibility, research methodology
+- Honest failure documentation and lessons learned
+
+## Topics to Avoid
+- Generic AI hype or "AI will replace X" takes
+- Listicles without substance
+- Prompt engineering tips (unless deeply technical)
+- Content without personal experience or data backing it
+- Hot takes on AI safety/alignment without technical grounding
+- Anything that sounds like marketing copy
+- PyTorch course promotion (abandoned)
+- Voice AI as a primary topic (secondary interest only)
+
+## Platform-Specific Persona
+- **Blog**: Most technical, longest form. The "lab notebook made public."
+- **LinkedIn**: Professional but personal. The "thoughtful colleague sharing over coffee."
+- **X**: Most concise and punchy. The "researcher at a conference poster session."
+
+## Deep Context — Writing Craft
+
+The content-drafting skill owns the detailed writing context. These files live in `.cursor/skills/content-drafting/` and are loaded by that skill's Context Loading step:
+
+- `author-profile.md` — full identity, credentials, project details, historical expertise, Torchenstein usage
+- `writing-preferences.md` — voice rules, editorial standards, writing quality rules, citation format, and article-specific feedback log
+
+Other content skills (linkedin-post, x-thread, content-publishing, story-review) are self-contained — they get enough context from this rule and their own skill-specific instructions. They do not need to read the drafting reference files.

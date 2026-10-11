@@ -5,13 +5,13 @@ description: REQUIRED workflow for any local Hugo page check. MUST be read befor
 
 # Blog Preview
 
-Local Hugo preview + Cursor browser verification for the `ksopyla-ai-blog`. This is how you look at a rendered page before claiming anything about how it appears.
+Local Hugo preview + browser verification for the `ksopyla-ai-blog` (Cursor browser in Cursor; headless Playwright in Claude Code — see "Claude Code Route"). This is how you look at a rendered page before claiming anything about how it appears.
 
 ## First Action
 
 Before doing **any** of the following, write one short line in your response: *"Using `blog-preview` skill."*
 
-- Calling any `browser_*` tool against `localhost` or the blog
+- Calling any browser tool (Cursor `browser_*`, Playwright) against `localhost` or the blog
 - Running `hugo server`
 - Giving visual or design judgment about a rendered page
 
@@ -35,6 +35,22 @@ If the task is "see how this looks on the actual blog," this skill applies — e
 3. **Check console and network BEFORE any visual judgment** — if CSS/JS is blocked, every screenshot is evidence of a runtime problem, not of the article.
 4. **Use `http://localhost:1313/`** for all browser URLs, never `127.0.0.1`.
 5. **Resize the browser to desktop (1280x800) BEFORE the first navigation** — Cursor browser may default to a tiny viewport that makes the page unreadable.
+
+## Claude Code Route
+
+Claude Code has no Cursor browser. Use headless Chromium through Playwright instead:
+
+1. Start the server in the background with the command below. If Hugo is missing (cloud sessions), download Hugo Extended at the CI version into the scratchpad and run `git submodule update --init --depth 1` first.
+2. Run the check script. It prints, for desktop, desktop-dark and mobile, the H1, horizontal overflow, tables wider than the column, CSS responses and console errors, and saves screenshots:
+
+   ```bash
+   NODE_PATH=$(npm root -g) node .cursor/skills/blog-preview/scripts/preview_check.js \
+     http://localhost:1313/<section>/<slug>/ <scratch_dir>/shots
+   ```
+
+   In Claude cloud sessions Chromium is preinstalled; if a project pins another Playwright, set `CHROMIUM_PATH=/opt/pw-browsers/chromium`.
+3. Open the screenshots with the Read tool and judge them as in the Browser Workflow below. For a section further down the page, scroll it into view (`element.scrollIntoView()`) and screenshot again.
+4. Stop the server with `pkill -f "[h]ugo server"` in its **own** command. Inside a longer command line the pattern also matches that shell and kills it (exit code 144).
 
 ## Starting the Server
 
