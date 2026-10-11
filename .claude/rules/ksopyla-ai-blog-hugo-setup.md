@@ -1,0 +1,41 @@
+<!-- Generated from .cursor/rules/ksopyla-ai-blog-hugo-setup.mdc by scripts/sync_claude_rules.sh. Edit the .mdc file, not this one. -->
+
+# Krzysztof Sopyla AI Blog — GO Hugo + Congo theme
+
+- Hugo static site with Congo theme: https://ai.ksopyla.com/
+- Repo: https://github.com/ksopyla/ksopyla-ai-blog
+- Congo docs: https://jpanther.github.io/congo/docs/
+- Local dev on macOS — terminal commands run in zsh
+
+## Directory Structure
+- `content/posts/<slug>/index.md` — published posts
+- `content/drafts/<slug>/index.md` — work-in-progress drafts
+- `content/linkedin/YYYY-MM-<slug>/post.md` — LinkedIn drafts
+- `content/x-threads/YYYY-MM-<slug>/thread.md` — X thread drafts
+- `config/_default/` — Hugo TOML config
+- `themes/congo/` — theme submodule
+
+
+
+## GitHub Integration
+Use `gh` CLI (authenticated as `ksopyla`) for all GitHub operations: PRs, issues, releases, CI checks.
+
+## Run Python Code
+
+**Always use `uv` (installed via Homebrew) to run Python scripts. Never use raw `python3` or `pip3 install`.**
+
+- Run a script with inline dependencies: `uv run --with Pillow script.py`
+- Run a script with multiple deps: `uv run --with Pillow --with requests script.py`
+- One-off commands: `uv run --with Pillow python -c "from PIL import Image; ..."`
+
+`uv run --with` creates an ephemeral virtual environment with the specified packages — no global installs, no permission issues, no cleanup needed.
+
+### Branding / Image Generation
+- Banner build script: `branding/linkedin/build_banner.py` (uses Pillow)
+- Run it: `uv run --with Pillow branding/linkedin/build_banner.py`
+- Character assets with transparency: `branding/linkedin/torchenstein_empty_background.png`
+- Carousel brand assets and fonts: `.cursor/skills/linkedin-carousel/assets/`
+
+
+## Deployment
+Push to `main` triggers `.github/workflows/hugo-deployment.yml` (Hugo Extended + Dart Sass) deploying to GitHub Pages. Only `content/posts/` with `draft: false` goes live.
