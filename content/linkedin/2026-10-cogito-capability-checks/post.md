@@ -4,6 +4,7 @@ date: 2026-10-11
 platform: linkedin
 status: draft
 related_blog_post: "https://ai.ksopyla.com/projects/cogito-capability-datasets/"
+video: video/cogito-capability-checks.mp4
 visual: "Optional. A simple sketch of one test: a short story with a planted fact, a long stretch of filler, one question at the end. Or no image."
 link_strategy: "Hugging Face links go in the first comment (text below the post). Project page in the same comment."
 audience: "Research peers, potential investors, Pearson leaders and colleagues who read silently. Goal: show a serious research bet (small models, done right) and first-principles rigour, with a nerdy wink; no hype."
