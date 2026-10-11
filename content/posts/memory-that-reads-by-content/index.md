@@ -1,6 +1,6 @@
 ---
 title: "A Memory That Reads by Content: Trained on Short Books, Still Finding Facts at 128K Tokens"
-date: 2026-09-27
+date: 2026-09-28
 draft: false
 description: "Three attempts at a compressed memory for long context: an average that cannot hold a key, learned notes that hit a wall, and memory cells that find a planted fact in 128K-token books after training on 16K."
 tags: ["AI", "MrCogito", "Concept Reasoning", "Long Context", "Memory", "Research"]
