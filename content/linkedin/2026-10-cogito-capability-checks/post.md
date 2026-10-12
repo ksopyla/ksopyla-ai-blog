@@ -65,7 +65,14 @@ SECOND COMMENT (optional):
 
 Four papers that shaped these checks:
 
+
 1. TinyStories (Eldan & Li, 2023): simple stories that models of a few million parameters can learn to write. https://arxiv.org/abs/2305.07759
+
+
 2. bAbI (Weston et al., 2015): small templated stories, one reasoning skill per task. https://arxiv.org/abs/1502.05698
+
+
 3. BABILong (Kuratov et al., 2024): the same skills hidden in very long books. https://arxiv.org/abs/2406.10149
+
+
 4. Zoology (Arora et al., 2023): recall gets harder with more keys, and many efficient architectures fail exactly there. https://arxiv.org/abs/2312.04927
