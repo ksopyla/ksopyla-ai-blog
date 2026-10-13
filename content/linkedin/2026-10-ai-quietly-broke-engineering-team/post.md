@@ -3,33 +3,33 @@ title: "What AI quietly broke in my engineering team"
 date: 2026-10-13
 platform: linkedin
 status: draft
-content_score: 4.5
+content_score: 4.6
 related_blog_post: "https://ai.ksopyla.com/posts/what-ai-quietly-broke-in-my-engineering-team/"
-video: "video/ai-quietly-broke-engineering-team.mp4 (4:5 explainer with voiceover; upload video/cover.jpg as the thumbnail)"
+video: "video/ai-quietly-broke-engineering-team.mp4 (4:5 explainer with voiceover; upload video/cover.jpg as the thumbnail). Still follows the first draft; re-cut it to match this text before posting."
 visual: "Fallback if no video: the blog feature image."
+hook_alternatives: "1) This year I burned out trying to make my team 3x faster with AI. 2) The most experienced engineer in the room said \"it depends\". Nobody listened."
 link_strategy: "No link in the post. After the first hour, add the blog link as a comment, or reply with it to someone who asks for details: https://ai.ksopyla.com/posts/what-ai-quietly-broke-in-my-engineering-team/"
 engagement: "Stay online for the first hour and answer every comment with substance (a detail, an example, a follow-up question)."
 ---
 
-Everyone expected AI to triple our velocity this year. To be fair, so did I.
+At the start of this year, I thought something was wrong with my team.
 
-It didn't. I burned out asking what was wrong with my team.
+AI was supposed to make us 3x faster. Everyone expected it, and honestly, so did I. The tools got better every month, but our speed of execution would not triple. I pushed, I burned out, and I kept asking myself what my team was doing wrong.
 
-Wrong question. The better one: what did AI quietly take from it?
+It took me a while to see it. Nothing was wrong with the team. AI was quietly taking things from it that no dashboard tracks.
 
-Three things that used to do part of my job as a lead, for free:
+Code got cheap, and we lost our easiest reason to say no. When building was expensive, we had to choose. Now every idea arrives as a working demo, and the bottleneck moved from the people who build to the people who decide.
 
-→ The cost of building. It forced us to choose. Now every idea arrives as a working demo, and saying no is pure judgment. The bottleneck moved from the people who build to the people who decide.
+I watched experienced engineers lose the room. AI makes less experienced people sound very sure of themselves. Seniors still say "it depends", because they know what usually breaks. Leaders like confidence. Guess who gets heard, and who fixes it later.
 
-→ The ladder of experience. AI lifts juniors the most and devalues the half of senior expertise that was recall. It also makes people feel more capable than they are, and confidence wins meetings. Seniors repair the damage later.
+And people stopped asking each other for help. The SQL question, the broken pipeline, the "can you look at this?" now go to a chat window. It's faster. But those small questions were how we got to know each other. You fixed someone's query and ended up talking about the tennis racket behind their chair.
 
-→ The habit of asking each other. Every "can you look at this?" made someone feel needed, started a real conversation, and was a chance to say "I don't know". Now the question goes to a chat window.
+I still remember my first Stack Overflow badges, and the small pride of helping a stranger. Today that stranger asks a chatbot, and nobody gets the badge.
 
-The part that worries me most for companies:
-a hundred engineers in private chats with the same model are not a hundred perspectives. They may be closer to one.
+None of this shows up in a sprint report. That's what makes it so easy to miss.
 
-None of this shows up on a velocity chart. All of it is now a lead's job.
+I'm still positive about AI, and I think we have to adapt. But it's hard to adapt to something you haven't noticed.
 
-What did AI change in your team that no metric caught?
+What stopped happening in your team this year that no metric would catch?
 
 #AIEngineering #EngineeringManagement #Leadership
