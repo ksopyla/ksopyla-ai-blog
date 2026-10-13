@@ -1,0 +1,45 @@
+{
+  "title": "What AI quietly broke in my engineering team",
+  "size": [
+    1080,
+    1350
+  ],
+  "fps": 30,
+  "scenes": [
+    {
+      "id": "s1_velocity",
+      "visual": "velocity",
+      "narration": "Everyone expected AI to triple our velocity. So did I. It didn't, and I burned out asking what was wrong with my team."
+    },
+    {
+      "id": "s2_three",
+      "visual": "three",
+      "narration": "Wrong question. AI made our code cheap, but it took away three things that held the team together."
+    },
+    {
+      "id": "s3_bottleneck",
+      "visual": "bottleneck",
+      "narration": "First, the cost of building. It forced us to choose. Now every idea arrives as a working demo, and the bottleneck moves to whoever decides."
+    },
+    {
+      "id": "s4_ladder",
+      "visual": "ladder",
+      "narration": "Second, the ladder of experience. AI lifts juniors the most, and confidence starts beating experience. Seniors fix the damage later."
+    },
+    {
+      "id": "s5_asking",
+      "visual": "asking",
+      "narration": "Third, asking each other. Every \"can you look at this?\" made someone feel needed. Now the question goes to a chat window."
+    },
+    {
+      "id": "s6_hundred",
+      "visual": "hundred",
+      "narration": "A hundred engineers chatting with the same model are not a hundred perspectives. They may be closer to one."
+    },
+    {
+      "id": "s7_end",
+      "visual": "end",
+      "narration": "None of this shows up on a velocity chart. The full field notes are on my blog."
+    }
+  ]
+}

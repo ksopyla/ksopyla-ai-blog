@@ -50,6 +50,9 @@ Use this order unless the user asks otherwise:
    - Optimize for repeated exposure and authority building
 4. **Image post**
    - Best when there is a single useful architecture sketch, chart, or result visual
+5. **Text post + short explainer video**
+   - Best when the argument is a sequence of beats (a story, a list of three, a before/after) that a 45-60 s narrated animation can carry
+   - Build it with the `explainer-video` skill; add `video:` to the `post.md` frontmatter
 
 Use link posts sparingly. If reach is the goal, keep the value in the post itself.
 
@@ -183,6 +186,10 @@ Rules:
 - one idea per slide
 - short titles
 - each slide should be understandable in under 5 seconds
+
+## Short Explainer Video
+
+When a post gets a video, the `explainer-video` skill owns it (scene plan, narration, rendering, QA). Keep the post and the video telling the same story in the same order: write the post first, then derive the scenes from it. The post text becomes the video's caption on LinkedIn, and `video/cover.jpg` becomes the thumbnail.
 
 
 ## Two-Week Posting Sequence

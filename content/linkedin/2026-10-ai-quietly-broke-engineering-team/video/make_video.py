@@ -1,0 +1,359 @@
+"""Explainer video (1080x1350, 4:5) for the LinkedIn post "What AI quietly broke in my engineering team".
+
+Narration lives in scenes.json; the engine (captions, voiceover, encoding) in the explainer-video skill.
+From the repo root:
+    uv run --with Pillow content/linkedin/2026-10-ai-quietly-broke-engineering-team/video/make_video.py --stills
+    uv run --with Pillow content/linkedin/2026-10-ai-quietly-broke-engineering-team/video/make_video.py
+"""
+
+import colorsys
+import math
+import random
+import sys
+from pathlib import Path
+
+from PIL import Image, ImageFilter
+
+HERE = Path(__file__).resolve().parent
+ROOT = next(p for p in HERE.parents if (p / ".git").exists())
+sys.path.insert(0, str(ROOT / ".cursor/skills/explainer-video/scripts"))
+
+import video_kit as vk  # noqa: E402
+from video_kit import (BG, BODY, HEAD, LINE, MUTED, ORANGE, PANEL, TEAL, VIOLET, WHITE, H, W,  # noqa: E402
+                       alpha, bottom_shade, cover_fit, cue, ease, ease_out, mix, mono, overlay, paste_emoji, seg,
+                       text_c, top_shade)
+
+FEATURE = Image.open(ROOT / "content/posts/what-ai-quietly-broke-in-my-engineering-team/"
+                            "feature_ai_quietly_broke_engineering_teams.jpg").convert("RGB")
+
+
+def fit(d, text, font_fn, size, max_w):
+    """Largest font size <= size that keeps text within max_w."""
+    while size > 20 and d.textlength(text, font=font_fn(size)) > max_w:
+        size -= 2
+    return font_fn(size)
+
+
+def header(frame, t, icon, title, sub):
+    """Section header shared by the three 'things': emoji, title, one-line subtitle."""
+    a = ease(seg(t, 0.05, 0.45))
+    paste_emoji(frame, icon, W / 2, 105, 84, a)
+
+    def draw(d, _):
+        text_c(d, (W / 2, 200 + 12 * (1 - a)), title, HEAD(60), alpha(WHITE, a))
+        text_c(d, (W / 2, 262), sub, BODY(34), alpha(MUTED, a))
+    overlay(frame, draw)
+
+
+def person(d, x, y, col, a=1.0, s=1.0):
+    """Minimal person icon standing on (x, y)."""
+    d.ellipse([x - 24 * s, y - 112 * s, x + 24 * s, y - 64 * s], fill=alpha(col, a))
+    d.rounded_rectangle([x - 32 * s, y - 56 * s, x + 32 * s, y], 18 * s, fill=alpha(col, a))
+
+
+def bubble(d, x, y, text, f, fg, bg, a, tail_dx=0):
+    w = d.textlength(text, font=f) + 48
+    h = f.size + 34
+    d.rounded_rectangle([x - w / 2, y - h / 2, x + w / 2, y + h / 2], 22, fill=alpha(bg, a))
+    d.polygon([(x + tail_dx - 14, y + h / 2 - 2), (x + tail_dx + 14, y + h / 2 - 2), (x + tail_dx, y + h / 2 + 22)],
+              fill=alpha(bg, a))
+    text_c(d, (x, y), text, f, alpha(fg, a))
+
+
+def dashed(d, pts, fill, width, dash=22, gap=14):
+    for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
+        L = math.hypot(x1 - x0, y1 - y0)
+        u = 0.0
+        while u < L:
+            v = min(u + dash, L)
+            d.line([(x0 + (x1 - x0) * u / L, y0 + (y1 - y0) * u / L), (x0 + (x1 - x0) * v / L, y0 + (y1 - y0) * v / L)],
+                   fill=fill, width=width)
+            u += dash + gap
+
+# ---------------------------------------------------------------- scenes
+
+
+def scene_velocity(frame, t, dur, speech, sc):
+    n = sc["narration"]
+    didnt = cue(n, "It didn't", 0.35) * speech
+    burned = cue(n, "burned out", 0.55) * speech
+    x0, x1, y0, y1 = 150, 950, 360, 930
+
+    def draw(d, _):
+        a0 = ease(seg(t, 0.1, 0.5))
+        text_c(d, (W / 2, 150), "AI will triple", HEAD(76), alpha(WHITE, a0))
+        text_c(d, (W / 2, 240), "our velocity", HEAD(76), alpha(ORANGE, a0))
+        d.line([x0, y0 - 20, x0, y1, x1 + 20, y1], fill=alpha(LINE, a0), width=4)
+        text_c(d, (x0 + 14, y0 - 10), "velocity", BODY(30), alpha(MUTED, a0), anchor="lm")
+        text_c(d, (x1 + 20, y1 + 36), "this year", BODY(30), alpha(MUTED, a0), anchor="rm")
+        # the expectation: a straight dashed line to 3x
+        pe = ease(seg(t, 0.4, max(1.2, didnt - 0.2)))
+        ex = x0 + (x1 - x0) * pe
+        ey = (y1 - 60) + ((y0 + 40) - (y1 - 60)) * pe
+        if pe > 0:
+            dashed(d, [(x0, y1 - 60), (ex, ey)], alpha(ORANGE, 1), 6)
+        text_c(d, (x1 - 40, y0 + 10), "3x expected", HEAD(44), alpha(ORANGE, ease(seg(pe, 0.8, 1))), anchor="rm")
+        # reality: a wobbly line that barely climbs
+        pa = ease_out(seg(t, didnt, didnt + 1.6))
+        pts = []
+        for i in range(int(80 * pa) + 1):
+            u = i / 80
+            v = 0.1 + 0.32 * u + 0.035 * math.sin(u * 23) + 0.02 * math.sin(u * 61)
+            pts.append((x0 + u * (x1 - x0), y1 - 60 - v * (y1 - y0 - 160) * 0.55))
+        if len(pts) > 1:
+            d.line(pts, fill=TEAL, width=7, joint="curve")
+        text_c(d, (x1 - 10, pts[-1][1] - 50 if pts else y1), "what we got", HEAD(40),
+               alpha(TEAL, ease(seg(pa, 0.85, 1))), anchor="rm")
+        ab = ease(seg(t, burned - 0.2, burned + 0.4))
+        text_c(d, (W / 2, 1050), "What's wrong with my team?", HEAD(54), alpha(WHITE, ab))
+    overlay(frame, draw)
+
+
+THINGS = [("💸", "The cost of building", "it forced us to choose"),
+          ("🪜", "The ladder of experience", "it gave people standing"),
+          ("🙋", "Asking each other", "it held the team together")]
+
+
+def scene_three(frame, t, dur, speech, sc):
+    n = sc["narration"]
+    cheap = cue(n, "AI made", 0.2) * speech
+    three = cheap + 0.8
+    cards_y = [520, 720, 920]
+
+    def draw(d, _):
+        text_c(d, (W / 2, 120), "What's wrong with my team?", BODY(40), alpha(MUTED, 1 - 0.5 * ease(seg(t, 0.6, 1))))
+        sw = d.textlength("What's wrong with my team?", font=BODY(40))
+        k = ease(seg(t, 0.1, 0.6))
+        d.line([W / 2 - sw / 2 - 10, 122, W / 2 - sw / 2 - 10 + (sw + 20) * k, 122], fill=ORANGE, width=5)
+        a = ease(seg(t, 0.3, 0.8))
+        text_c(d, (W / 2, 225 + 14 * (1 - a)), "Wrong question.", HEAD(84), alpha(ORANGE, a))
+        ac = ease(seg(t, cheap, cheap + 0.5))
+        text_c(d, (W / 2, 335), "Code got cheap. Three things got lost:", BODY(40), alpha(WHITE, ac))
+        for i, (_, title, sub) in enumerate(THINGS):
+            ai = ease(seg(t, three + i * 0.35, three + i * 0.35 + 0.45))
+            y = cards_y[i] + 30 * (1 - ai)
+            d.rounded_rectangle([110, y - 80, W - 110, y + 80], 26, fill=alpha(PANEL, ai),
+                                outline=alpha(LINE, ai), width=2)
+            text_c(d, (290, y - 20), title, HEAD(46), alpha(WHITE, ai), anchor="lm")
+            text_c(d, (290, y + 32), sub, BODY(32), alpha(MUTED, ai), anchor="lm")
+    overlay(frame, draw)
+    for i, (icon, _, _) in enumerate(THINGS):
+        ai = ease(seg(t, three + i * 0.35, three + i * 0.35 + 0.45))
+        paste_emoji(frame, icon, 200, cards_y[i] + 30 * (1 - ai), 92, ai)
+
+
+def scene_bottleneck(frame, t, dur, speech, sc):
+    n = sc["narration"]
+    now = cue(n, "Now every idea", 0.4) * speech
+    neck = cue(n, "the bottleneck", 0.75) * speech
+    header(frame, t, "💸", "The cost of building", "it forced us to choose")
+    gate_x = 850
+    spawn = [0.7, 1.9] + [now + 0.2 + 0.2 * k for k in range(13)]
+    spawn = [s for s in spawn if s < dur - 0.3]
+
+    def slot(k):
+        col, row = divmod(k, 3)
+        return gate_x - 80 - col * 86, 600 + row * 78
+
+    def draw(d, _):
+        a = ease(seg(t, 0.2, 0.6))
+        # build box and decision gate
+        d.rounded_rectangle([80, 540, 320, 820], 24, outline=alpha(TEAL, a), width=4, fill=alpha(TEAL, 0.08 * a))
+        text_c(d, (200, 500), "build", HEAD(44), alpha(TEAL, a))
+        text_c(d, (200, 862), "days", BODY(36), alpha(TEAL, a))
+        pulse = 0.5 + 0.5 * math.sin(t * 6) if t > neck else 0
+        gw = 4 + 4 * pulse
+        d.rounded_rectangle([gate_x - 6, 520, gate_x + 30, 840], 12, outline=alpha(ORANGE, a), width=int(gw),
+                            fill=alpha(ORANGE, 0.12 * a))
+        text_c(d, (gate_x + 12, 480), "decide", HEAD(44), alpha(ORANGE, a))
+        text_c(d, (gate_x + 12, 882), "weeks", BODY(36), alpha(ORANGE, a))
+        # demo cards fly from build to the queue in front of the gate
+        for k, s in enumerate(spawn):
+            if t < s:
+                continue
+            p = ease_out(seg(t, s, s + 0.55))
+            sx, sy = slot(k)
+            x = 300 + (sx - 300) * p
+            y = 680 + (sy - 680) * p
+            d.rounded_rectangle([x - 34, y - 26, x + 34, y + 26], 8, fill=alpha(mix(PANEL, WHITE, 0.15), 1),
+                                outline=alpha(VIOLET, 0.9), width=2)
+            d.line([x - 22, y - 10, x + 14, y - 10], fill=alpha(VIOLET, 0.9), width=3)
+            d.line([x - 22, y + 4, x + 22, y + 4], fill=alpha(MUTED, 0.8), width=3)
+            d.line([x - 22, y + 14, x + 6, y + 14], fill=alpha(MUTED, 0.8), width=3)
+        if t > now:
+            text_c(d, (590, 950), "every idea, a working demo", BODY(36), alpha(VIOLET, ease(seg(t, now, now + 0.5))))
+        aq = ease(seg(t, neck - 0.1, neck + 0.5))
+        if aq > 0 and len(spawn) > 3:
+            cols = (len(spawn) - 1) // 3
+            left = gate_x - 80 - cols * 86 - 50
+            d.rounded_rectangle([left, 556, gate_x - 30, 802], 20, outline=alpha(ORANGE, aq), width=4)
+            text_c(d, (590, 1040), "waiting for a decision", HEAD(52), alpha(ORANGE, aq))
+    overlay(frame, draw)
+
+
+def scene_ladder(frame, t, dur, speech, sc):
+    n = sc["narration"]
+    lifts = cue(n, "AI lifts", 0.3) * speech
+    conf = cue(n, "confidence", 0.55) * speech
+    fix = cue(n, "Seniors fix", 0.8) * speech
+    header(frame, t, "🪜", "The ladder of experience", "it gave people standing")
+    p = ease(seg(t, lifts, lifts + 1.4))
+    gap = 150 - 114 * p
+    base = 1010
+    rungs = [base - i * gap for i in range(5)]
+    jx, sx = 450, 640
+    jy = rungs[0] + (rungs[2] - rungs[0]) * p  # the junior climbs while the ladder flattens
+    sy = rungs[4]
+
+    def draw(d, _):
+        a = ease(seg(t, 0.2, 0.6))
+        top = rungs[4] - 60
+        d.line([300, top, 300, base + 50], fill=alpha(LINE, a), width=9)
+        d.line([780, top, 780, base + 50], fill=alpha(LINE, a), width=9)
+        for y in rungs:
+            d.line([300, y, 780, y], fill=alpha(LINE, a), width=9)
+        person(d, jx, jy - 5, TEAL, a, 1.1)
+        person(d, sx, sy - 5, VIOLET, a, 1.1)
+        text_c(d, (240, jy - 60), "junior", BODY(32), alpha(TEAL, a), anchor="rm")
+        text_c(d, (840, sy - 60), "senior", BODY(32), alpha(VIOLET, a), anchor="lm")
+        ac = ease(seg(t, conf - 0.1, conf + 0.4))
+        if ac > 0:
+            bubble(d, 310, jy - 250, "Easy. Ship it!", HEAD(50), BG, ORANGE, ac, tail_dx=130)
+            bubble(d, 790, sy - 230, "it depends…", BODY(32), WHITE, LINE, ac, tail_dx=-80)
+    overlay(frame, draw)
+    af = ease(seg(t, fix - 0.1, fix + 0.4))
+    paste_emoji(frame, "🔧", sx + 85, sy - 60, 64, af)
+
+
+def scene_asking(frame, t, dur, speech, sc):
+    n = sc["narration"]
+    ask = cue(n, "Every", 0.3) * speech
+    alone = cue(n, "Now the question", 0.65) * speech
+    header(frame, t, "🙋", "Asking each other", "it held the team together")
+    p = ease(seg(t, alone, alone + 1.2))
+    cx, cy, r = W / 2, 690, 250 + 70 * p
+    nodes = [(cx + r * math.cos(-math.pi / 2 + i * 2 * math.pi / 7), cy + r * math.sin(-math.pi / 2 + i * 2 * math.pi / 7))
+             for i in range(7)]
+    edges = [(i, (i + 1) % 7) for i in range(7)] + [(i, (i + 3) % 7) for i in range(7)]
+
+    def draw(d, _):
+        a = ease(seg(t, 0.2, 0.6))
+        ea = a * (1 - p)
+        for i, j in edges:
+            d.line([nodes[i], nodes[j]], fill=alpha(ORANGE, 0.55 * ea), width=4)
+        # small requests travelling along the links
+        if ea > 0:
+            for k, (i, j) in enumerate(edges[::2]):
+                u = (t * 0.6 + k * 0.37) % 1
+                x = nodes[i][0] + (nodes[j][0] - nodes[i][0]) * u
+                y = nodes[i][1] + (nodes[j][1] - nodes[i][1]) * u
+                d.ellipse([x - 8, y - 8, x + 8, y + 8], fill=alpha(WHITE, 0.9 * ea))
+        for (x, y) in nodes:
+            col = mix(ORANGE, TEAL, p)
+            person(d, x, y + 44, col, a, 0.75)
+            if p > 0:  # each person gets a private screen
+                sxp, syp = x + 52, y + 10
+                for g in range(3, 0, -1):
+                    d.rounded_rectangle([sxp - 26 - g * 6, syp - 20 - g * 6, sxp + 26 + g * 6, syp + 20 + g * 6], 10,
+                                        fill=alpha(TEAL, 0.07 * p))
+                d.rounded_rectangle([sxp - 26, syp - 20, sxp + 26, syp + 20], 8, fill=alpha(mix(TEAL, WHITE, 0.3), p))
+        aa = ease(seg(t, ask, ask + 0.4)) * (1 - ease(seg(t, alone - 0.2, alone + 0.3)))
+        if aa > 0:
+            bx, by = (nodes[0][0] + nodes[1][0]) / 2 + 40, (nodes[0][1] + nodes[1][1]) / 2 - 90
+            bubble(d, bx, by, "can you look at this?", BODY(34), BG, WHITE, aa, tail_dx=-80)
+    overlay(frame, draw)
+
+
+def scene_hundred(frame, t, dur, speech, sc):
+    n = sc["narration"]
+    model = cue(n, "same model", 0.35) * speech
+    one = cue(n, "They may", 0.7) * speech
+    rng = random.Random(11)
+    hues = [i / 100 for i in range(100)]
+    rng.shuffle(hues)
+    p = ease(seg(t, model + 0.2, one + 0.6))
+    cx, cy = W / 2, 680
+
+    def draw(d, _):
+        a = ease(seg(t, 0.1, 0.5))
+        text_c(d, (W / 2, 140), "100 engineers", HEAD(72), alpha(WHITE, a))
+        text_c(d, (W / 2, 220), "private chats with the same model", BODY(36), alpha(MUTED, a))
+        am = ease(seg(t, model - 0.1, model + 0.4))
+        if am > 0:
+            glow = ease(seg(p, 0.7, 1.0))
+            for g in range(4, 0, -1):
+                d.rounded_rectangle([cx - 66 - g * 10, cy - 66 - g * 10, cx + 66 + g * 10, cy + 66 + g * 10], 30 + g * 6,
+                                    fill=alpha(TEAL, 0.06 * glow))
+            d.rounded_rectangle([cx - 66, cy - 66, cx + 66, cy + 66], 26, fill=alpha(mix(PANEL, TEAL, 0.35 * glow), am),
+                                outline=alpha(TEAL, am), width=5)
+        for i in range(100):
+            gx, gy = 195 + (i % 10) * 77, 330 + (i // 10) * 72
+            if am > 0 and abs(gx - cx) < 100 and abs(gy - cy) < 100:
+                continue  # leave room for the model box
+            tx, ty = cx + 40 * math.cos(i * 2.4), cy + 40 * math.sin(i * 2.4)
+            x, y = gx + (tx - gx) * p, gy + (ty - gy) * p
+            col = tuple(int(c * 255) for c in colorsys.hsv_to_rgb(hues[i], 0.65, 1.0))
+            col = mix(col, TEAL, p)
+            rr = 17 - 9 * p
+            d.ellipse([x - rr, y - rr, x + rr, y + rr], fill=alpha(col, a * (1 - ease(seg(p, 0.75, 1.0)))))
+        if am > 0:
+            text_c(d, (cx, cy), "model", HEAD(36), alpha(WHITE if p > 0.7 else TEAL, am))
+        a1 = a * (1 - ease(seg(t, one - 0.4, one)))
+        a2 = ease(seg(t, one + 0.05, one + 0.5))
+        text_c(d, (W / 2, 1060), "100 perspectives?", HEAD(56), alpha(WHITE, a1))
+        text_c(d, (W / 2, 1060), "or closer to one", HEAD(60), alpha(ORANGE, a2))
+    overlay(frame, draw)
+
+
+END_BG = None
+
+
+def scene_end(frame, t, dur, speech, sc):
+    global END_BG
+    if END_BG is None:
+        bg = cover_fit(FEATURE, zoom=1.05).filter(ImageFilter.GaussianBlur(14))
+        END_BG = Image.blend(Image.new("RGB", (W, H), BG), bg, 0.32).convert("RGBA")
+    frame.alpha_composite(END_BG)
+
+    def a(i):
+        return ease(seg(t, 0.2 + i * 0.4, 0.7 + i * 0.4))
+
+    def draw(d, _):
+        text_c(d, (W / 2, 250), "What AI quietly broke", fit(d, "What AI quietly broke", HEAD, 88, W - 120),
+               alpha(WHITE, a(0)))
+        text_c(d, (W / 2, 350), "in my engineering team", fit(d, "in my engineering team", HEAD, 70, W - 140),
+               alpha(ORANGE, a(0)))
+        text_c(d, (W / 2, 450), "field notes from an AI tech lead", BODY(40), alpha(WHITE, a(1)))
+        for i, (_, title, _) in enumerate(THINGS):
+            text_c(d, (W / 2 - 150, 600 + i * 100), title, BODY(40), alpha(WHITE, a(2 + i * 0.5)), anchor="lm")
+        text_c(d, (W / 2, 1000), "ai.ksopyla.com", mono(46), alpha(VIOLET, a(4)))
+    overlay(frame, draw)
+    for i, (icon, _, _) in enumerate(THINGS):
+        paste_emoji(frame, icon, W / 2 - 210, 600 + i * 100, 64, a(2 + i * 0.5))
+
+
+def make_cover():
+    """Title card: the first frame of the video and the custom thumbnail (cover.jpg)."""
+    frame = Image.new("RGBA", (W, H), (*BG, 255))
+    frame.paste(cover_fit(FEATURE, zoom=1.0, fx=0.5, fy=0.55))
+    top_shade(frame, 700, 0.93)
+    bottom_shade(frame, 320, 0.85)
+
+    def draw(d, _):
+        sk = dict(stroke_width=3, stroke_fill=alpha(BG, 0.6))
+        text_c(d, (W / 2, 95), "FIELD NOTES · AI LEADERSHIP", mono(30), TEAL)
+        text_c(d, (W / 2, 210), "What AI quietly broke", fit(d, "What AI quietly broke", HEAD, 96, W - 100), WHITE, **sk)
+        text_c(d, (W / 2, 320), "in my engineering team", fit(d, "in my engineering team", HEAD, 76, W - 120), ORANGE,
+               **sk)
+        text_c(d, (W / 2, 425), "3 things no velocity chart shows", BODY(42), WHITE, stroke_width=2,
+               stroke_fill=alpha(BG, 0.8))
+        text_c(d, (W / 2, 1290), "ai.ksopyla.com", mono(32), alpha(WHITE, 0.85))
+    overlay(frame, draw)
+    return frame.convert("RGB")
+
+
+SCENES = {"velocity": scene_velocity, "three": scene_three, "bottleneck": scene_bottleneck, "ladder": scene_ladder,
+          "asking": scene_asking, "hundred": scene_hundred, "end": scene_end}
+
+if __name__ == "__main__":
+    vk.run(HERE, SCENES, make_cover, "ai-quietly-broke-engineering-team.mp4")

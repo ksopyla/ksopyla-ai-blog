@@ -39,3 +39,9 @@ __pycache__/
 
 # LinkedIn analytics data (local-only)
 data/
+
+# Generated post video builds (rebuild with content/linkedin/<post>/video/make_video.py, see the explainer-video skill)
+content/linkedin/*/video/*.mp4
+content/linkedin/*/video/cover.jpg
+content/linkedin/*/video/audio/
+content/linkedin/*/video/stills/
