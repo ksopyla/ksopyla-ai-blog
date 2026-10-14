@@ -338,8 +338,7 @@ def scene_end(frame, t, dur, speech, sc):
     frame.alpha_composite(END_BG)
 
     n = sc["narration"]
-    ask1 = cue(n, "Who in your team", 0.6) * speech
-    ask2 = cue(n, "And who stopped", 0.85) * speech
+    read = cue(n, "Read the full", 0.65) * speech
 
     def a(i):
         return ease(seg(t, 0.2 + i * 0.4, 0.7 + i * 0.4))
@@ -348,13 +347,18 @@ def scene_end(frame, t, dur, speech, sc):
         text_c(d, (W / 2, 250), TITLE, fit(d, TITLE, HEAD, 88, W - 120), alpha(WHITE, a(0)))
         text_c(d, (W / 2, 350), "in my engineering team", fit(d, "in my engineering team", HEAD, 70, W - 140),
                alpha(ORANGE, a(0)))
-        q1 = ease(seg(t, ask1 - 0.1, ask1 + 0.4))
-        q2 = ease(seg(t, ask2 - 0.1, ask2 + 0.4))
-        text_c(d, (W / 2, 590), "Who stopped being asked?", fit(d, "Who stopped being asked?", HEAD, 66, W - 120),
-               alpha(WHITE, q1))
-        text_c(d, (W / 2, 700), "Who stopped asking?", HEAD(66), alpha(ORANGE, q2))
-        text_c(d, (W / 2, 960), "full field notes", BODY(36), alpha(MUTED, a(1)))
-        text_c(d, (W / 2, 1025), "ai.ksopyla.com", mono(46), alpha(VIOLET, a(1)))
+        # call to action: the blog carries the full story, the research and what I am trying as a lead
+        ar = ease(seg(t, read - 0.2, read + 0.4))
+        text_c(d, (W / 2, 580 + 16 * (1 - ar)), "Read the full story", HEAD(72), alpha(WHITE, ar))
+        sub = "the research behind it, and 4 things I'm trying as a lead"
+        text_c(d, (W / 2, 670), sub, fit(d, sub, BODY, 36, W - 140), alpha(MUTED, ar))
+        au = ease(seg(t, read + 0.3, read + 0.8))
+        if au > 0:
+            url, fu = "ai.ksopyla.com", mono(56)
+            uw = d.textlength(url, font=fu)
+            d.rounded_rectangle([W / 2 - uw / 2 - 44, 800, W / 2 + uw / 2 + 44, 900], 50,
+                                fill=alpha(ORANGE, au), outline=alpha(ORANGE, au), width=3)
+            text_c(d, (W / 2, 850), url, fu, alpha(BG, au))
     overlay(frame, draw)
 
 
