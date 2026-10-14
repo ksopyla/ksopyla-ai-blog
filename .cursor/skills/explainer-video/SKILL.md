@@ -41,7 +41,9 @@ The shared engine is `scripts/video_kit.py` in this skill: palette, fonts, easin
 
 ## Narration Rules
 
-- 6-8 scenes, at most ~25 words each, 120-150 words in total: roughly 45-60 s at ~2.6 words/s.
+- 6-8 scenes, at most ~25 words each, 120-145 words in total. The default voice reads ~2.5 words/s and each scene adds a 0.4 s pause, so 160 words already runs to ~62 s.
+- Every sentence must earn its place: it sets up a later payoff, carries one of the post's points, or lands an emotional beat. No dangling references ("too", "those questions") to things the narration never said.
+- Align the narration with both the post and the blog: reuse their strongest lines (the thesis, the closing question) instead of paraphrasing them.
 - Scene 1 is the hook: tension within the first 3 seconds (a broken expectation, a number, a confession). No "In this video...".
 - Spoken English: short sentences, first person, contractions are fine. No numbers or terms the listener cannot parse without the screen.
 - One idea per scene. Say "First / Second / Third" when the post has a list; it helps listeners who are not watching.

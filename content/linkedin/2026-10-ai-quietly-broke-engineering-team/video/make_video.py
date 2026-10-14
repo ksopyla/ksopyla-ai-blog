@@ -75,7 +75,7 @@ def dashed(d, pts, fill, width, dash=22, gap=14):
 def scene_velocity(frame, t, dur, speech, sc):
     n = sc["narration"]
     swarm = cue(n, "We tried", 0.35) * speech
-    didnt = cue(n, "The speed-up", 0.55) * speech
+    didnt = cue(n, "It didn't help", 0.5) * speech
     burned = cue(n, "burned out", 0.85) * speech
     x0, x1, y0, y1 = 150, 950, 360, 930
 
@@ -126,7 +126,8 @@ THINGS = [("💸", "The cost of building", "it forced us to choose"),
 
 def scene_three(frame, t, dur, speech, sc):
     n = sc["narration"]
-    cheap = cue(n, "looked at", 0.5) * speech
+    notq = cue(n, "Not what", 0.35) * speech
+    cheap = cue(n, "but what AI", 0.6) * speech
     three = cheap + 0.7
     cards_y = [520, 720, 920]
 
@@ -138,7 +139,7 @@ def scene_three(frame, t, dur, speech, sc):
         old = "What's wrong with my team?"
         text_c(d, (W / 2, qy), old, fq, alpha(mix(WHITE, MUTED, mv), 1 - 0.4 * mv))
         sw = d.textlength(old, font=fq)
-        k = ease(seg(t, 0.5, 1.3))
+        k = ease(seg(t, notq, notq + 0.9))
         d.line([W / 2 - sw / 2 - 10, qy + 2, W / 2 - sw / 2 - 10 + (sw + 20) * k, qy + 2], fill=ORANGE,
                width=int(8 - 3 * mv))
         a = ease(seg(t, cheap - 0.3, cheap + 0.2))
@@ -164,7 +165,7 @@ def scene_three(frame, t, dur, speech, sc):
 def scene_bottleneck(frame, t, dur, speech, sc):
     n = sc["narration"]
     now = cue(n, "Now every idea", 0.4) * speech
-    neck = cue(n, "waits for a decision", 0.8) * speech
+    neck = cue(n, "Code was never", 0.7) * speech
     header(frame, t, "💸", "The cost of building", "it forced us to choose")
     gate_x = 850
     spawn = [0.7, 1.9] + [now + 0.2 + 0.2 * k for k in range(13)]
@@ -212,9 +213,9 @@ def scene_bottleneck(frame, t, dur, speech, sc):
 
 def scene_ladder(frame, t, dur, speech, sc):
     n = sc["narration"]
-    lifts = cue(n, "Juniors", 0.3) * speech
+    lifts = cue(n, "With AI", 0.25) * speech
     conf = cue(n, "sound sure", 0.4) * speech
-    hedge = cue(n, "Seniors say", 0.55) * speech
+    hedge = cue(n, "Seniors still", 0.55) * speech
     fix = cue(n, "who fixes", 0.85) * speech
     header(frame, t, "🪜", "The ladder of experience", "it gave people standing")
     p = ease(seg(t, lifts, lifts + 1.4))
@@ -250,7 +251,7 @@ def scene_ladder(frame, t, dur, speech, sc):
 def scene_asking(frame, t, dur, speech, sc):
     n = sc["narration"]
     ask = cue(n, "for help", 0.15) * speech
-    alone = cue(n, "now go", 0.4) * speech
+    alone = cue(n, "we ask a chatbot", 0.3) * speech
     header(frame, t, "🙋", "Asking each other", "it held the team together")
     p = ease(seg(t, alone, alone + 1.2))
     cx, cy, r = W / 2, 690, 250 + 70 * p
@@ -292,7 +293,7 @@ REPORT = ["tasks closed", "PRs merged", "demos shipped"]
 def scene_report(frame, t, dur, speech, sc):
     n = sc["narration"]
     free = cue(n, "It used to", 0.4) * speech
-    built = cue(n, "built on purpose", 0.75) * speech
+    built = cue(n, "Now it has", 0.65) * speech
     rows_y = [760, 870, 980]
     hb = ease(seg(t, built - 0.1, built + 0.5))
 
@@ -336,6 +337,10 @@ def scene_end(frame, t, dur, speech, sc):
         END_BG = Image.blend(Image.new("RGB", (W, H), BG), bg, 0.32).convert("RGBA")
     frame.alpha_composite(END_BG)
 
+    n = sc["narration"]
+    ask1 = cue(n, "Who in your team", 0.6) * speech
+    ask2 = cue(n, "And who stopped", 0.85) * speech
+
     def a(i):
         return ease(seg(t, 0.2 + i * 0.4, 0.7 + i * 0.4))
 
@@ -343,13 +348,14 @@ def scene_end(frame, t, dur, speech, sc):
         text_c(d, (W / 2, 250), TITLE, fit(d, TITLE, HEAD, 88, W - 120), alpha(WHITE, a(0)))
         text_c(d, (W / 2, 350), "in my engineering team", fit(d, "in my engineering team", HEAD, 70, W - 140),
                alpha(ORANGE, a(0)))
-        text_c(d, (W / 2, 450), "field notes from an AI tech lead", BODY(40), alpha(WHITE, a(1)))
-        for i, (_, title, _) in enumerate(THINGS):
-            text_c(d, (W / 2 - 150, 600 + i * 100), title, BODY(40), alpha(WHITE, a(2 + i * 0.5)), anchor="lm")
-        text_c(d, (W / 2, 1000), "ai.ksopyla.com", mono(46), alpha(VIOLET, a(4)))
+        q1 = ease(seg(t, ask1 - 0.1, ask1 + 0.4))
+        q2 = ease(seg(t, ask2 - 0.1, ask2 + 0.4))
+        text_c(d, (W / 2, 590), "Who stopped being asked?", fit(d, "Who stopped being asked?", HEAD, 66, W - 120),
+               alpha(WHITE, q1))
+        text_c(d, (W / 2, 700), "Who stopped asking?", HEAD(66), alpha(ORANGE, q2))
+        text_c(d, (W / 2, 960), "full field notes", BODY(36), alpha(MUTED, a(1)))
+        text_c(d, (W / 2, 1025), "ai.ksopyla.com", mono(46), alpha(VIOLET, a(1)))
     overlay(frame, draw)
-    for i, (icon, _, _) in enumerate(THINGS):
-        paste_emoji(frame, icon, W / 2 - 210, 600 + i * 100, 64, a(2 + i * 0.5))
 
 
 def make_cover():

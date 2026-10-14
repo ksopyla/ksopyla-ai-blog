@@ -41,7 +41,7 @@ CONTENT_BOTTOM = 1140  # visuals stay above this line; captions live below it
 COVER_DUR = 1.0  # title card held at the start, so the first frame (the feed thumbnail) is not black
 DEFAULT_VOICE = "JBFqnCBsd6RMkjVDRZzb"
 TTS_MODEL = "eleven_multilingual_v2"
-WORDS_PER_SEC = 2.6  # --silent / --stills timing estimate
+WORDS_PER_SEC = 2.5  # --silent / --stills timing estimate (the default ElevenLabs voice reads ~2.5 words/s)
 
 
 def find_repo_root(start):

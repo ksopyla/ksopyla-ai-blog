@@ -9,27 +9,27 @@
     {
       "id": "s1_velocity",
       "visual": "velocity",
-      "narration": "Leadership expected AI to make us several times faster. We tried agent swarms too. The speed-up never came, and I burned out."
+      "narration": "Leadership expected AI to make us several times faster. We tried agent swarms. It didn't help. I burned out, asking what was wrong with my team."
     },
     {
       "id": "s2_three",
       "visual": "three",
-      "narration": "Mid-year, I stopped asking what was wrong with my team, and looked at what AI had quietly taken from it."
+      "narration": "Mid-year, I changed the question. Not what's wrong with my team, but what AI had quietly taken from it."
     },
     {
       "id": "s3_bottleneck",
       "visual": "bottleneck",
-      "narration": "First, the cost of building. It forced us to choose. Now every idea arrives as a working demo, and waits for a decision."
+      "narration": "First, the cost of building. It forced us to choose. Now every idea comes as a demo. Code was never the bottleneck. Deciding is."
     },
     {
       "id": "s4_ladder",
       "visual": "ladder",
-      "narration": "Second, the ladder of experience. Juniors sound sure. Seniors say: it depends. Guess who gets heard, and who fixes it later."
+      "narration": "Second, the ladder of experience. With AI, juniors sound sure. Seniors still say: it depends. Guess who gets heard, and who fixes it later."
     },
     {
       "id": "s5_asking",
       "visual": "asking",
-      "narration": "Third, asking each other for help. Those questions now go to a chat window. Faster, but that's how we got to know each other."
+      "narration": "Third, asking each other for help. Now we ask a chatbot. Faster, yes. But those questions made people feel needed, and brought us closer."
     },
     {
       "id": "s6_report",
@@ -39,7 +39,7 @@
     {
       "id": "s7_end",
       "visual": "end",
-      "narration": "I'm still positive about AI. But it's hard to adapt to something you haven't noticed."
+      "narration": "I'm still positive about AI. But it's hard to adapt to what you haven't noticed. Who in your team stopped being asked? And who stopped asking?"
     }
   ]
 }
