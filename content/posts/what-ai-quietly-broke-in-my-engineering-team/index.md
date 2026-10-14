@@ -24,6 +24,10 @@ AI made my team's code cheap and quietly took away three things that held the te
 - What a team loses when nobody needs to ask anyone: relationships, communities, collective creativity, and honesty about mistakes
 - Four things I am trying as a lead to counter it
 
+Prefer to watch? Here is the one-minute version:
+
+{{< youtube-short id="BQU01JP1X1E" title="3 things AI quietly eroded in my engineering team" >}}
+
 The beginning of this year was hard for me. The agentic coding revolution had started, and expectations went through the roof: everyone's, and to be fair, mine too. The metrics did not follow. However hard we pushed, our speed of execution would not triple. I felt burned out, and I kept asking myself what was wrong with my team. Why could we not reach the 3x velocity everyone expected?
 
 Around me, the same question came back in many versions: *if AI writes the code in minutes, why does this still take a quarter?* Trying to answer it changed how I see my job. The code was never what took a quarter. AI made it cheap, but it also removed three things that used to do part of my job as a lead for free:

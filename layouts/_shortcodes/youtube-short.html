@@ -9,7 +9,7 @@
   {{- errorf "youtube-short: missing id in %s" .Position -}}
 {{- end -}}
 {{- $title := .Get "title" | default "YouTube video" -}}
-<div class="youtube-short not-prose" style="max-width: 340px; margin: 1.5rem auto;">
+<div class="youtube-short not-prose" style="max-width: 300px; margin: 1.5rem auto;">
   <div style="position: relative; aspect-ratio: 9 / 16; border-radius: 0.75rem; overflow: hidden;">
     <iframe
       src="https://www.youtube-nocookie.com/embed/{{ $id }}?rel=0"

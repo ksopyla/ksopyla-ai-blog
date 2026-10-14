@@ -85,7 +85,7 @@ The same video also goes to YouTube as a Short (channel https://www.youtube.com/
 - **Turn off YouTube's automatic captions** for the video (YouTube Studio → Subtitles → the automatic track → unpublish). Otherwise viewers with CC on see the text twice: YouTube's at the top, the burned-in captions lower down.
 - **A changed render means a new upload**: YouTube cannot replace a video file, so re-upload and delete the old Short while it is young.
 - **Upload**: the author uploads to YouTube himself (never post to his accounts). Under 3 minutes and vertical, so YouTube files it as a Short. Suggest a title (the post's hook), a description with the blog URL, and 3 hashtags including #Shorts.
-- **Embed**: in the blog post, after the TL;DR: `{{< youtube-short id="VIDEO_ID" title="..." >}}` (`layouts/_shortcodes/youtube-short.html`: 9:16 frame, max 340 px, youtube-nocookie.com, lazy-loaded). Hugo's built-in `youtube` shortcode draws 16:9 and shrinks a vertical Short. Introduce it in one line, for example "Prefer to watch? The 60-second version:".
+- **Embed**: in the blog post, after the TL;DR: `{{< youtube-short id="VIDEO_ID" title="..." >}}` (`layouts/_shortcodes/youtube-short.html`: 9:16 frame, max 300 px, youtube-nocookie.com, lazy-loaded). Hugo's built-in `youtube` shortcode draws 16:9 and shrinks a vertical Short. Introduce it in one line, for example "Prefer to watch? The 60-second version:".
 - **LinkedIn stays native**: upload the 4:5 mp4 to LinkedIn directly; never post the YouTube link there.
 
 ## Revision Loop
