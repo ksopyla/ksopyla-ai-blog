@@ -53,7 +53,7 @@ The shared engine is `scripts/video_kit.py` in this skill: palette, fonts, easin
 ## Visual Rules
 
 - **Format**: 1080x1350 (4:5), 30 fps, H.264 + AAC. The title card is held for 1 s as the first frame, so the feed thumbnail is never black.
-- **Layout**: visuals stay above `CONTENT_BOTTOM` (y=1140); captions live in the bottom band (y~1240). Captions are burned in because LinkedIn autoplays muted.
+- **Layout**: visuals stay above `CONTENT_BOTTOM` (y=1060); captions are centred at `CAPTION_Y` (y=1150). Captions are burned in because LinkedIn autoplays muted. Keep them out of the bottom ~10% of the frame: players (LinkedIn, the Claude app preview) draw their controls bar there and hide anything underneath, which looks like "the subtitles are gone".
 - **One motion per scene** that carries the idea (a line that falls short of a target, cards piling up at a gate, a ladder flattening, links fading). Time its key moment to a phrase with `cue(narration, "phrase", default) * speech`.
 - **On-screen text adds to the captions instead of repeating them**: a header, labels, at most ~8 words of extra text per scene.
 - **Wayfinding**: reuse the post's emoji or icons as scene headers (`paste_emoji`), so the video, the post and the blog look like one system.

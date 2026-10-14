@@ -37,7 +37,8 @@ WHITE = (245, 246, 250)
 MUTED = (150, 160, 185)
 PANEL = (18, 24, 40)
 LINE = (60, 72, 104)
-CONTENT_BOTTOM = 1140  # visuals stay above this line; captions live below it
+CONTENT_BOTTOM = 1060  # visuals stay above this line; captions live below it
+CAPTION_Y = 1150  # caption box centre: clear of the bottom ~10% where players draw their controls bar
 COVER_DUR = 1.0  # title card held at the start, so the first frame (the feed thumbnail) is not black
 DEFAULT_VOICE = "JBFqnCBsd6RMkjVDRZzb"
 TTS_MODEL = "eleven_multilingual_v2"
@@ -277,7 +278,7 @@ def draw_caption(frame, t, speech, chunks):
         lh = 58
         bw = max(d.textlength(s, font=_CAP_FONT) for s in cur) + 70
         bh = lh * len(cur) + 36
-        cy = 1240
+        cy = CAPTION_Y
         d.rounded_rectangle([W / 2 - bw / 2, cy - bh / 2, W / 2 + bw / 2, cy + bh / 2], 20, fill=(0, 0, 0, 165))
         for i, s in enumerate(cur):
             text_c(d, (W / 2, cy - (len(cur) - 1) * lh / 2 + i * lh), s, _CAP_FONT, WHITE)

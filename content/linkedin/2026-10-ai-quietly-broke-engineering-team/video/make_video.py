@@ -127,7 +127,7 @@ def scene_velocity(frame, t, dur, speech, sc):
                 d.ellipse([bx - 6, by - 6, bx + 6, by + 6], fill=alpha(VIOLET, 0.85 * asw))
             text_c(d, (fx, fy - 150), "AI factory", BODY(34), alpha(VIOLET, asw))
         ab = ease(seg(t, burned - 0.2, burned + 0.4))
-        text_c(d, (W / 2, 1050), "anxious, then burned out", BODY(44), alpha(MUTED, ab))
+        text_c(d, (W / 2, 1015), "anxious, then burned out", BODY(44), alpha(MUTED, ab))
     overlay(frame, draw)
 
 
@@ -213,13 +213,13 @@ def scene_bottleneck(frame, t, dur, speech, sc):
             d.line([x - 22, y + 4, x + 22, y + 4], fill=alpha(MUTED, 0.8), width=3)
             d.line([x - 22, y + 14, x + 6, y + 14], fill=alpha(MUTED, 0.8), width=3)
         if t > now:
-            text_c(d, (590, 950), "every idea, a working demo", BODY(36), alpha(VIOLET, ease(seg(t, now, now + 0.5))))
+            text_c(d, (590, 925), "every idea, a working demo", BODY(36), alpha(VIOLET, ease(seg(t, now, now + 0.5))))
         aq = ease(seg(t, neck - 0.1, neck + 0.5))
         if aq > 0 and len(spawn) > 3:
             cols = (len(spawn) - 1) // 3
             left = gate_x - 80 - cols * 86 - 50
             d.rounded_rectangle([left, 556, gate_x - 30, 802], 20, outline=alpha(ORANGE, aq), width=4)
-            text_c(d, (590, 1040), "waiting for a decision", HEAD(52), alpha(ORANGE, aq))
+            text_c(d, (590, 1000), "waiting for a decision", HEAD(52), alpha(ORANGE, aq))
     overlay(frame, draw)
 
 
@@ -306,7 +306,7 @@ def scene_report(frame, t, dur, speech, sc):
     n = sc["narration"]
     free = cue(n, "It used to", 0.4) * speech
     built = cue(n, "Now it has", 0.65) * speech
-    rows_y = [760, 870, 980]
+    rows_y = [730, 830, 930]
     hb = ease(seg(t, built - 0.1, built + 0.5))
 
     def draw(d, _):
@@ -320,7 +320,7 @@ def scene_report(frame, t, dur, speech, sc):
             if ai > 0:
                 check_mark(d, 830, y, 44, alpha(TEAL, ai), 8)
         al = ease(seg(t, 1.0, 1.5))
-        text_c(d, (W / 2, 650), "not on the report", BODY(38), alpha(MUTED, al))
+        text_c(d, (W / 2, 630), "not on the report", BODY(38), alpha(MUTED, al))
         for i, (_, title, _) in enumerate(THINGS):
             ai = ease(seg(t, 1.2 + i * 0.25, 1.6 + i * 0.25))
             if ai <= 0:
@@ -330,8 +330,8 @@ def scene_report(frame, t, dur, speech, sc):
                                 outline=alpha(mix(LINE, ORANGE, hb), ai), width=3)
             text_c(d, (300, y), title, BODY(40), alpha(mix(MUTED, WHITE, hb), ai), anchor="lm")
         af = ease(seg(t, free, free + 0.4)) * (1 - ease(seg(t, built - 0.5, built - 0.1)))
-        text_c(d, (W / 2, 1085), "it used to come for free", BODY(40), alpha(MUTED, af))
-        text_c(d, (W / 2, 1085), "now: built on purpose", HEAD(52), alpha(ORANGE, hb))
+        text_c(d, (W / 2, 1020), "it used to come for free", BODY(40), alpha(MUTED, af))
+        text_c(d, (W / 2, 1020), "now: built on purpose", HEAD(52), alpha(ORANGE, hb))
     overlay(frame, draw)
     for i, (icon, _, _) in enumerate(THINGS):
         ai = ease(seg(t, 1.2 + i * 0.25, 1.6 + i * 0.25))
@@ -350,7 +350,9 @@ def scene_end(frame, t, dur, speech, sc):
     frame.alpha_composite(END_BG)
 
     n = sc["narration"]
-    read = cue(n, "Read the full", 0.65) * speech
+    read = cue(n, "Read the full", 0.75) * speech
+    adapt = cue(n, "we have to adapt", 0.2) * speech
+    watch = cue(n, "watching the costs", 0.45) * speech
 
     def a(i):
         return ease(seg(t, 0.2 + i * 0.4, 0.7 + i * 0.4))
@@ -359,18 +361,33 @@ def scene_end(frame, t, dur, speech, sc):
         text_c(d, (W / 2, 250), TITLE, fit(d, TITLE, HEAD, 88, W - 120), alpha(WHITE, a(0)))
         text_c(d, (W / 2, 350), "in my engineering team", fit(d, "in my engineering team", HEAD, 70, W - 140),
                alpha(ORANGE, a(0)))
+        # adapt, but weigh both sides: a balance that swings and settles level once the costs are watched too
+        ab = ease(seg(t, adapt - 0.2, adapt + 0.4))
+        if ab > 0:
+            settle = ease(seg(t, watch, watch + 1.2))
+            tilt = (1 - settle) * 0.16 * math.sin(t * 2.2) + (1 - ease(seg(t, adapt, watch))) * 0.12
+            cx, by, half = W / 2, 500, 230
+            lx, ly = cx - half * math.cos(tilt), by + half * math.sin(tilt)
+            rx, ry = cx + half * math.cos(tilt), by - half * math.sin(tilt)
+            d.polygon([(cx, by + 6), (cx - 34, by + 90), (cx + 34, by + 90)], fill=alpha(LINE, ab))
+            d.line([(lx, ly), (rx, ry)], fill=alpha(WHITE, ab), width=7)
+            for (px, py), col, label in [((lx, ly), TEAL, "gains"), ((rx, ry), ORANGE, "costs")]:
+                d.line([(px, py), (px - 46, py + 70)], fill=alpha(col, ab), width=3)
+                d.line([(px, py), (px + 46, py + 70)], fill=alpha(col, ab), width=3)
+                d.chord([px - 62, py + 40, px + 62, py + 100], 0, 180, fill=alpha(col, 0.85 * ab))
+                text_c(d, (px, py + 132), label, HEAD(40), alpha(col, ab))
         # call to action: the blog carries the full story, the research and what I am trying as a lead
         ar = ease(seg(t, read - 0.2, read + 0.4))
-        text_c(d, (W / 2, 580 + 16 * (1 - ar)), "Read the full story", HEAD(72), alpha(WHITE, ar))
+        text_c(d, (W / 2, 760 + 16 * (1 - ar)), "Read the full story", HEAD(68), alpha(WHITE, ar))
         sub = "the research behind it, and 4 things I'm trying as a lead"
-        text_c(d, (W / 2, 670), sub, fit(d, sub, BODY, 36, W - 140), alpha(MUTED, ar))
+        text_c(d, (W / 2, 840), sub, fit(d, sub, BODY, 34, W - 140), alpha(MUTED, ar))
         au = ease(seg(t, read + 0.3, read + 0.8))
         if au > 0:
-            url, fu = "ai.ksopyla.com", mono(56)
+            url, fu = "ai.ksopyla.com", mono(54)
             uw = d.textlength(url, font=fu)
-            d.rounded_rectangle([W / 2 - uw / 2 - 44, 800, W / 2 + uw / 2 + 44, 900], 50,
+            d.rounded_rectangle([W / 2 - uw / 2 - 44, 920, W / 2 + uw / 2 + 44, 1012], 46,
                                 fill=alpha(ORANGE, au), outline=alpha(ORANGE, au), width=3)
-            text_c(d, (W / 2, 850), url, fu, alpha(BG, au))
+            text_c(d, (W / 2, 966), url, fu, alpha(BG, au))
     overlay(frame, draw)
 
 
