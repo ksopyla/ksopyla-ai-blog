@@ -25,7 +25,7 @@ When code was expensive, we couldn't build everything. Now every idea arrives as
 AI makes less experienced people sound sure of themselves. Seniors still say "it depends", because they know what usually breaks. Leaders like confidence. Guess who gets heard, and who fixes it later.
 
 3. The habit of asking each other for help, which held the team together.
-The eval that won't stabilize, the agent stuck in a tool-call loop, the "why does retrieval return junk?" now go to a chat window. It's faster. But those small questions were how we got to know each other. You helped someone debug their agent and ended up talking about the tennis racket behind their chair.
+The Python import error, the failing cloud deployment, the "why is this container out of memory?" now go to a chat window. It's faster. But those small questions were how we got to know each other. You helped someone fix their deployment and ended up talking about the tennis racket behind their chair.
 
 None of this shows up in a sprint report. These things used to do part of a lead's job for free. Now they have to be built on purpose.
 
