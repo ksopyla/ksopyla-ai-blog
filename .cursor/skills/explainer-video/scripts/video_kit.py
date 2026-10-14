@@ -359,6 +359,38 @@ def estimate_timing(scenes):
 # ---------------------------------------------------------------- render
 
 
+# ---------------------------------------------------------------- YouTube Shorts (9:16)
+# The 4:5 frame (with its captions) is placed, scaled, on a 1080x1920 canvas whose background is the
+# blurred cover. Shorts draws its title, description and buttons over the bottom ~25% and the right
+# edge, so the frame sits high: its captions end around y=1350, above that overlay.
+SHORTS_W, SHORTS_H = 1080, 1920
+SHORTS_SCALE = 0.9
+SHORTS_TOP = 250
+SHORTS_LABEL = "@ksopyla-ai"  # the YouTube channel handle, shown above the frame
+
+
+def make_shorts_framer(cover):
+    """Return f(rgb_4x5) -> rgb_9x16, with a static background built once from the cover."""
+    from PIL import ImageFilter
+    bg = cover.resize((round(cover.width * SHORTS_H / cover.height), SHORTS_H), Image.LANCZOS)
+    left = (bg.width - SHORTS_W) // 2
+    bg = bg.crop((left, 0, left + SHORTS_W, SHORTS_H)).filter(ImageFilter.GaussianBlur(28))
+    bg = Image.blend(Image.new("RGB", bg.size, BG), bg, 0.35).convert("RGBA")
+    d = ImageDraw.Draw(bg)
+    text_c(d, (SHORTS_W / 2, 150), SHORTS_LABEL, mono(36), TEAL)
+    fw, fh = round(W * SHORTS_SCALE), round(H * SHORTS_SCALE)
+    x0 = (SHORTS_W - fw) // 2
+    mask = Image.new("L", (fw, fh), 0)
+    ImageDraw.Draw(mask).rounded_rectangle([0, 0, fw - 1, fh - 1], 28, fill=255)
+    bg = bg.convert("RGB")
+
+    def frame_it(rgb):
+        out = bg.copy()
+        out.paste(rgb.resize((fw, fh), Image.BICUBIC), (x0, SHORTS_TOP), mask)
+        return out
+    return frame_it
+
+
 def scene_frame(scene_fns, sc, t, chunks):
     frame = Image.new("RGBA", (W, H), (*BG, 255))
     scene_fns[sc["visual"]](frame, t, sc["dur"], sc["speech"], sc)
@@ -366,15 +398,18 @@ def scene_frame(scene_fns, sc, t, chunks):
     return frame
 
 
-def render(scenes, scene_fns, make_cover, out_video, cover_path):
-    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
+def render(scenes, scene_fns, make_cover, out_video, cover_path, shorts=False):
+    cover = make_cover()
+    framer = make_shorts_framer(cover) if shorts else (lambda rgb: rgb)
+    size = (SHORTS_W, SHORTS_H) if shorts else (W, H)
+    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{size[0]}x{size[1]}",
            "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-preset", "medium", "-crf", "20",
            "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(out_video)]
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
-    cover = make_cover()
-    cover.save(cover_path, quality=92)
+    framed_cover = framer(cover)
+    framed_cover.save(cover_path, quality=92)
     for _ in range(int(round(COVER_DUR * FPS))):
-        proc.stdin.write(cover.tobytes())
+        proc.stdin.write(framed_cover.tobytes())
     fade_from = cover  # the first scene cross-fades from the title card, later ones from black
     for sc in scenes:
         chunks = caption_chunks(sc["narration"])
@@ -386,7 +421,7 @@ def render(scenes, scene_fns, make_cover, out_video, cover_path):
             fade = ease(t / 0.3)
             if fade < 1:
                 rgb = Image.blend(fade_from, rgb, fade)
-            proc.stdin.write(rgb.tobytes())
+            proc.stdin.write(framer(rgb).tobytes())
         fade_from = Image.new("RGB", (W, H), (0, 0, 0))
     proc.stdin.close()
     if proc.wait() != 0:
@@ -406,15 +441,17 @@ def mux(scenes, video, out):
     subprocess.run(cmd, check=True)
 
 
-def write_stills(scenes, scene_fns, make_cover, stills_dir, at=(0.35, 0.95)):
+def write_stills(scenes, scene_fns, make_cover, stills_dir, at=(0.35, 0.95), shorts=False):
     """Review mode: the cover plus frames at fractions `at` of each scene, as PNGs. No encoding."""
     stills_dir.mkdir(exist_ok=True)
-    make_cover().save(stills_dir / "00_cover.png")
+    cover = make_cover()
+    framer = make_shorts_framer(cover) if shorts else (lambda rgb: rgb)
+    framer(cover).save(stills_dir / "00_cover.png")
     for k, sc in enumerate(scenes, start=1):
         chunks = caption_chunks(sc["narration"])
         for frac in at:
             t = sc["dur"] * frac
-            scene_frame(scene_fns, sc, t, chunks).convert("RGB").save(stills_dir / f"{k:02d}_{sc['id']}_{int(frac * 100)}.png")
+            framer(scene_frame(scene_fns, sc, t, chunks).convert("RGB")).save(stills_dir / f"{k:02d}_{sc['id']}_{int(frac * 100)}.png")
     print(f"wrote stills to {stills_dir}")
 
 
@@ -425,8 +462,12 @@ def run(here, scene_fns, make_cover, out_name):
     ap.add_argument("--silent", action="store_true", help="no voiceover; timing from word count")
     ap.add_argument("--stills", action="store_true", help="write review PNGs to video/stills/ and stop")
     ap.add_argument("--regen", action="store_true", help="re-generate all TTS clips")
-    ap.add_argument("--out", type=Path, default=here / out_name)
+    ap.add_argument("--shorts", action="store_true", help="9:16 YouTube Shorts version (<name>-shorts.mp4)")
+    ap.add_argument("--out", type=Path, default=None)
     args = ap.parse_args()
+    suffix = "-shorts" if args.shorts else ""
+    if args.out is None:
+        args.out = here / (Path(out_name).stem + suffix + Path(out_name).suffix)
 
     spec = json.loads((here / "scenes.json").read_text())
     assert spec["size"] == [W, H] and spec["fps"] == FPS, "scenes.json size/fps differ from the renderer"
@@ -440,14 +481,14 @@ def run(here, scene_fns, make_cover, out_name):
         prepare_audio(scenes, here / "audio", args.regen)
 
     if args.stills:
-        write_stills(scenes, scene_fns, make_cover, here / "stills")
+        write_stills(scenes, scene_fns, make_cover, here / f"stills{suffix}", shorts=args.shorts)
         return
-    cover_path = here / "cover.jpg"
+    cover_path = here / f"cover{suffix}.jpg"
     if args.silent:
-        render(scenes, scene_fns, make_cover, args.out, cover_path)
+        render(scenes, scene_fns, make_cover, args.out, cover_path, shorts=args.shorts)
     else:
         tmp = args.out.with_suffix(".video.mp4")
-        render(scenes, scene_fns, make_cover, tmp, cover_path)
+        render(scenes, scene_fns, make_cover, tmp, cover_path, shorts=args.shorts)
         mux(scenes, tmp, args.out)
         tmp.unlink()
     total = COVER_DUR + sum(sc["dur"] for sc in scenes)

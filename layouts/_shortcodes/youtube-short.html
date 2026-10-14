@@ -1,0 +1,23 @@
+{{- /*
+  Vertical (9:16) YouTube Short embed, privacy-enhanced (youtube-nocookie.com) and lazy-loaded.
+  Hugo's built-in youtube shortcode draws a 16:9 frame, which shrinks a vertical Short.
+
+  Usage: {{< youtube-short id="VIDEO_ID" title="What the video shows" >}}
+*/ -}}
+{{- $id := .Get "id" | default (.Get 0) -}}
+{{- if not $id -}}
+  {{- errorf "youtube-short: missing id in %s" .Position -}}
+{{- end -}}
+{{- $title := .Get "title" | default "YouTube video" -}}
+<div class="youtube-short not-prose" style="max-width: 340px; margin: 1.5rem auto;">
+  <div style="position: relative; aspect-ratio: 9 / 16; border-radius: 0.75rem; overflow: hidden;">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/{{ $id }}?rel=0"
+      title="{{ $title }}"
+      loading="lazy"
+      style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen></iframe>
+  </div>
+</div>

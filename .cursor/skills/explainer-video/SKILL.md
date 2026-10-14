@@ -76,6 +76,15 @@ The shared engine is `scripts/video_kit.py` in this skill: palette, fonts, easin
 6. **QA the mp4**: `ffprobe` (h264 + aac, 1080x1350); extract frames at the narration cue points (`ffmpeg -ss <t> -i video.mp4 -frames:v 1 f.png`) and check that each visual lands with its words, not at the very end of its line. Scan the caption band to confirm the captions are present throughout.
 7. **Hand over**: send the mp4 (and `cover.jpg`) to the author after every round, and keep `post.md`'s `video:` line current. On LinkedIn: upload the video natively, set `cover.jpg` as the thumbnail, use the post text as the caption, and keep links out of the post.
 
+## YouTube Shorts And The Blog Embed
+
+The same video also goes to YouTube as a Short (channel https://www.youtube.com/@ksopyla-ai) and is embedded in the blog post. Trial since 2026-10.
+
+- **Render**: `make_video.py --shorts` writes `<slug>-shorts.mp4` (1080x1920) and `cover-shorts.jpg`. It reuses the 4:5 scenes: each frame is scaled to 0.9 and placed high on a blurred-cover background, with the channel handle (`SHORTS_LABEL`) above it. The Shorts UI covers the bottom ~22% and a column of buttons on the right; the captions end around y=1350, above that overlay. `--stills --shorts` writes review stills to `stills-shorts/`.
+- **Upload**: the author uploads to YouTube himself (never post to his accounts). Under 3 minutes and vertical, so YouTube files it as a Short. Suggest a title (the post's hook), a description with the blog URL, and 3 hashtags including #Shorts.
+- **Embed**: in the blog post, after the TL;DR: `{{< youtube-short id="VIDEO_ID" title="..." >}}` (`layouts/_shortcodes/youtube-short.html`: 9:16 frame, max 340 px, youtube-nocookie.com, lazy-loaded). Hugo's built-in `youtube` shortcode draws 16:9 and shrinks a vertical Short. Introduce it in one line, for example "Prefer to watch? The 60-second version:".
+- **LinkedIn stays native**: upload the 4:5 mp4 to LinkedIn directly; never post the YouTube link there.
+
 ## Revision Loop
 
 - **Snapshot-commit before every change** (local commit on `drafts`, message "... (snapshot before <change>)"), so each round can be compared or reverted.
