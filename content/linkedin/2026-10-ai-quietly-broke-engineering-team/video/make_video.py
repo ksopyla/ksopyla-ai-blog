@@ -6,7 +6,6 @@ From the repo root:
     uv run --with Pillow content/linkedin/2026-10-ai-quietly-broke-engineering-team/video/make_video.py
 """
 
-import colorsys
 import math
 import random
 import sys
@@ -20,7 +19,7 @@ sys.path.insert(0, str(ROOT / ".cursor/skills/explainer-video/scripts"))
 
 import video_kit as vk  # noqa: E402
 from video_kit import (BG, BODY, HEAD, LINE, MUTED, ORANGE, PANEL, TEAL, VIOLET, WHITE, H, W,  # noqa: E402
-                       alpha, bottom_shade, cover_fit, cue, ease, ease_out, mix, mono, overlay, paste_emoji, seg,
+                       alpha, bottom_shade, check_mark, cover_fit, cue, ease, ease_out, mix, mono, overlay, paste_emoji, seg,
                        text_c, top_shade)
 
 FEATURE = Image.open(ROOT / "content/posts/what-ai-quietly-broke-in-my-engineering-team/"
@@ -75,24 +74,25 @@ def dashed(d, pts, fill, width, dash=22, gap=14):
 
 def scene_velocity(frame, t, dur, speech, sc):
     n = sc["narration"]
-    didnt = cue(n, "It didn't", 0.35) * speech
-    burned = cue(n, "burned out", 0.55) * speech
+    swarm = cue(n, "We tried", 0.35) * speech
+    didnt = cue(n, "The speed-up", 0.55) * speech
+    burned = cue(n, "burned out", 0.85) * speech
     x0, x1, y0, y1 = 150, 950, 360, 930
 
     def draw(d, _):
         a0 = ease(seg(t, 0.1, 0.5))
-        text_c(d, (W / 2, 150), "AI will triple", HEAD(76), alpha(WHITE, a0))
-        text_c(d, (W / 2, 240), "our velocity", HEAD(76), alpha(ORANGE, a0))
+        text_c(d, (W / 2, 150), "AI will make us", HEAD(76), alpha(WHITE, a0))
+        text_c(d, (W / 2, 240), "several times faster", fit(d, "several times faster", HEAD, 76, W - 120), alpha(ORANGE, a0))
         d.line([x0, y0 - 20, x0, y1, x1 + 20, y1], fill=alpha(LINE, a0), width=4)
         text_c(d, (x0 + 14, y0 - 10), "velocity", BODY(30), alpha(MUTED, a0), anchor="lm")
         text_c(d, (x1 + 20, y1 + 36), "this year", BODY(30), alpha(MUTED, a0), anchor="rm")
-        # the expectation: a straight dashed line to 3x
-        pe = ease(seg(t, 0.4, max(1.2, didnt - 0.2)))
+        # the expectation: a straight dashed line, steep
+        pe = ease(seg(t, 0.4, max(1.2, swarm - 0.1)))
         ex = x0 + (x1 - x0) * pe
         ey = (y1 - 60) + ((y0 + 40) - (y1 - 60)) * pe
         if pe > 0:
             dashed(d, [(x0, y1 - 60), (ex, ey)], alpha(ORANGE, 1), 6)
-        text_c(d, (x1 - 40, y0 + 10), "3x expected", HEAD(44), alpha(ORANGE, ease(seg(pe, 0.8, 1))), anchor="rm")
+        text_c(d, (x1 - 40, y0 + 10), "expected", HEAD(44), alpha(ORANGE, ease(seg(pe, 0.8, 1))), anchor="rm")
         # reality: a wobbly line that barely climbs
         pa = ease_out(seg(t, didnt, didnt + 1.6))
         pts = []
@@ -104,6 +104,16 @@ def scene_velocity(frame, t, dur, speech, sc):
             d.line(pts, fill=TEAL, width=7, joint="curve")
         text_c(d, (x1 - 10, pts[-1][1] - 50 if pts else y1), "what we got", HEAD(40),
                alpha(TEAL, ease(seg(pa, 0.85, 1))), anchor="rm")
+        # the agent swarm buzzes at the start of the real line, which still barely climbs
+        asw = ease(seg(t, swarm - 0.1, swarm + 0.4))
+        if asw > 0:
+            rng = random.Random(5)
+            for k in range(26):
+                ang = rng.uniform(0, 2 * math.pi) + t * rng.uniform(1.5, 3.0) * (1 if k % 2 else -1)
+                rad = rng.uniform(25, 95)
+                bx, by = 330 + rad * 1.6 * math.cos(ang), y1 - 150 + rad * math.sin(ang)
+                d.ellipse([bx - 7, by - 7, bx + 7, by + 7], fill=alpha(VIOLET, 0.9 * asw))
+            text_c(d, (330, y1 - 280), "agent swarms", BODY(32), alpha(VIOLET, asw))
         ab = ease(seg(t, burned - 0.2, burned + 0.4))
         text_c(d, (W / 2, 1050), "What's wrong with my team?", HEAD(54), alpha(WHITE, ab))
     overlay(frame, draw)
@@ -116,21 +126,30 @@ THINGS = [("💸", "The cost of building", "it forced us to choose"),
 
 def scene_three(frame, t, dur, speech, sc):
     n = sc["narration"]
-    cheap = cue(n, "AI made", 0.2) * speech
-    three = cheap + 0.8
+    cheap = cue(n, "looked at", 0.5) * speech
+    three = cheap + 0.7
     cards_y = [520, 720, 920]
 
     def draw(d, _):
-        text_c(d, (W / 2, 120), "What's wrong with my team?", BODY(40), alpha(MUTED, 1 - 0.5 * ease(seg(t, 0.6, 1))))
-        sw = d.textlength("What's wrong with my team?", font=BODY(40))
-        k = ease(seg(t, 0.1, 0.6))
-        d.line([W / 2 - sw / 2 - 10, 122, W / 2 - sw / 2 - 10 + (sw + 20) * k, 122], fill=ORANGE, width=5)
-        a = ease(seg(t, 0.3, 0.8))
-        text_c(d, (W / 2, 225 + 14 * (1 - a)), "Wrong question.", HEAD(84), alpha(ORANGE, a))
+        # the old question starts big in the middle, gets crossed out, then moves up out of the way
+        mv = ease(seg(t, cheap - 0.7, cheap))
+        qy = 560 + (120 - 560) * mv
+        fq = HEAD(int(66 - 26 * mv))
+        old = "What's wrong with my team?"
+        text_c(d, (W / 2, qy), old, fq, alpha(mix(WHITE, MUTED, mv), 1 - 0.4 * mv))
+        sw = d.textlength(old, font=fq)
+        k = ease(seg(t, 0.5, 1.3))
+        d.line([W / 2 - sw / 2 - 10, qy + 2, W / 2 - sw / 2 - 10 + (sw + 20) * k, qy + 2], fill=ORANGE,
+               width=int(8 - 3 * mv))
+        a = ease(seg(t, cheap - 0.3, cheap + 0.2))
+        q = "What did AI quietly take?"
+        text_c(d, (W / 2, 225 + 14 * (1 - a)), q, fit(d, q, HEAD, 76, W - 100), alpha(ORANGE, a))
         ac = ease(seg(t, cheap, cheap + 0.5))
-        text_c(d, (W / 2, 335), "Code got cheap. Three things got lost:", BODY(40), alpha(WHITE, ac))
+        text_c(d, (W / 2, 335), "These are my observations:", BODY(40), alpha(WHITE, ac))
         for i, (_, title, sub) in enumerate(THINGS):
             ai = ease(seg(t, three + i * 0.35, three + i * 0.35 + 0.45))
+            if ai <= 0:
+                continue  # an invisible card would erase the old question underneath it
             y = cards_y[i] + 30 * (1 - ai)
             d.rounded_rectangle([110, y - 80, W - 110, y + 80], 26, fill=alpha(PANEL, ai),
                                 outline=alpha(LINE, ai), width=2)
@@ -145,7 +164,7 @@ def scene_three(frame, t, dur, speech, sc):
 def scene_bottleneck(frame, t, dur, speech, sc):
     n = sc["narration"]
     now = cue(n, "Now every idea", 0.4) * speech
-    neck = cue(n, "the bottleneck", 0.75) * speech
+    neck = cue(n, "waits for a decision", 0.8) * speech
     header(frame, t, "💸", "The cost of building", "it forced us to choose")
     gate_x = 850
     spawn = [0.7, 1.9] + [now + 0.2 + 0.2 * k for k in range(13)]
@@ -160,13 +179,13 @@ def scene_bottleneck(frame, t, dur, speech, sc):
         # build box and decision gate
         d.rounded_rectangle([80, 540, 320, 820], 24, outline=alpha(TEAL, a), width=4, fill=alpha(TEAL, 0.08 * a))
         text_c(d, (200, 500), "build", HEAD(44), alpha(TEAL, a))
-        text_c(d, (200, 862), "days", BODY(36), alpha(TEAL, a))
+        text_c(d, (200, 862), "fast", BODY(36), alpha(TEAL, a))
         pulse = 0.5 + 0.5 * math.sin(t * 6) if t > neck else 0
         gw = 4 + 4 * pulse
         d.rounded_rectangle([gate_x - 6, 520, gate_x + 30, 840], 12, outline=alpha(ORANGE, a), width=int(gw),
                             fill=alpha(ORANGE, 0.12 * a))
         text_c(d, (gate_x + 12, 480), "decide", HEAD(44), alpha(ORANGE, a))
-        text_c(d, (gate_x + 12, 882), "weeks", BODY(36), alpha(ORANGE, a))
+        text_c(d, (gate_x + 12, 882), "slow", BODY(36), alpha(ORANGE, a))
         # demo cards fly from build to the queue in front of the gate
         for k, s in enumerate(spawn):
             if t < s:
@@ -193,9 +212,10 @@ def scene_bottleneck(frame, t, dur, speech, sc):
 
 def scene_ladder(frame, t, dur, speech, sc):
     n = sc["narration"]
-    lifts = cue(n, "AI lifts", 0.3) * speech
-    conf = cue(n, "confidence", 0.55) * speech
-    fix = cue(n, "Seniors fix", 0.8) * speech
+    lifts = cue(n, "Juniors", 0.3) * speech
+    conf = cue(n, "sound sure", 0.4) * speech
+    hedge = cue(n, "Seniors say", 0.55) * speech
+    fix = cue(n, "who fixes", 0.85) * speech
     header(frame, t, "🪜", "The ladder of experience", "it gave people standing")
     p = ease(seg(t, lifts, lifts + 1.4))
     gap = 150 - 114 * p
@@ -219,7 +239,9 @@ def scene_ladder(frame, t, dur, speech, sc):
         ac = ease(seg(t, conf - 0.1, conf + 0.4))
         if ac > 0:
             bubble(d, 310, jy - 250, "Easy. Ship it!", HEAD(50), BG, ORANGE, ac, tail_dx=130)
-            bubble(d, 790, sy - 230, "it depends…", BODY(32), WHITE, LINE, ac, tail_dx=-80)
+        ah = ease(seg(t, hedge - 0.1, hedge + 0.4))
+        if ah > 0:
+            bubble(d, 790, sy - 230, "it depends…", BODY(32), WHITE, LINE, ah, tail_dx=-80)
     overlay(frame, draw)
     af = ease(seg(t, fix - 0.1, fix + 0.4))
     paste_emoji(frame, "🔧", sx + 85, sy - 60, 64, af)
@@ -227,8 +249,8 @@ def scene_ladder(frame, t, dur, speech, sc):
 
 def scene_asking(frame, t, dur, speech, sc):
     n = sc["narration"]
-    ask = cue(n, "Every", 0.3) * speech
-    alone = cue(n, "Now the question", 0.65) * speech
+    ask = cue(n, "for help", 0.15) * speech
+    alone = cue(n, "now go", 0.4) * speech
     header(frame, t, "🙋", "Asking each other", "it held the team together")
     p = ease(seg(t, alone, alone + 1.2))
     cx, cy, r = W / 2, 690, 250 + 70 * p
@@ -259,53 +281,52 @@ def scene_asking(frame, t, dur, speech, sc):
                 d.rounded_rectangle([sxp - 26, syp - 20, sxp + 26, syp + 20], 8, fill=alpha(mix(TEAL, WHITE, 0.3), p))
         aa = ease(seg(t, ask, ask + 0.4)) * (1 - ease(seg(t, alone - 0.2, alone + 0.3)))
         if aa > 0:
-            bx, by = (nodes[0][0] + nodes[1][0]) / 2 + 40, (nodes[0][1] + nodes[1][1]) / 2 - 90
-            bubble(d, bx, by, "can you look at this?", BODY(34), BG, WHITE, aa, tail_dx=-80)
+            bx, by = (nodes[0][0] + nodes[1][0]) / 2 - 20, (nodes[0][1] + nodes[1][1]) / 2 - 90
+            bubble(d, bx, by, "why is this container out of memory?", BODY(32), BG, WHITE, aa, tail_dx=-160)
     overlay(frame, draw)
 
 
-def scene_hundred(frame, t, dur, speech, sc):
+REPORT = ["tasks closed", "PRs merged", "demos shipped"]
+
+
+def scene_report(frame, t, dur, speech, sc):
     n = sc["narration"]
-    model = cue(n, "same model", 0.35) * speech
-    one = cue(n, "They may", 0.7) * speech
-    rng = random.Random(11)
-    hues = [i / 100 for i in range(100)]
-    rng.shuffle(hues)
-    p = ease(seg(t, model + 0.2, one + 0.6))
-    cx, cy = W / 2, 680
+    free = cue(n, "It used to", 0.4) * speech
+    built = cue(n, "built on purpose", 0.75) * speech
+    rows_y = [760, 870, 980]
+    hb = ease(seg(t, built - 0.1, built + 0.5))
 
     def draw(d, _):
         a = ease(seg(t, 0.1, 0.5))
-        text_c(d, (W / 2, 140), "100 engineers", HEAD(72), alpha(WHITE, a))
-        text_c(d, (W / 2, 220), "private chats with the same model", BODY(36), alpha(MUTED, a))
-        am = ease(seg(t, model - 0.1, model + 0.4))
-        if am > 0:
-            glow = ease(seg(p, 0.7, 1.0))
-            for g in range(4, 0, -1):
-                d.rounded_rectangle([cx - 66 - g * 10, cy - 66 - g * 10, cx + 66 + g * 10, cy + 66 + g * 10], 30 + g * 6,
-                                    fill=alpha(TEAL, 0.06 * glow))
-            d.rounded_rectangle([cx - 66, cy - 66, cx + 66, cy + 66], 26, fill=alpha(mix(PANEL, TEAL, 0.35 * glow), am),
-                                outline=alpha(TEAL, am), width=5)
-        for i in range(100):
-            gx, gy = 195 + (i % 10) * 77, 330 + (i // 10) * 72
-            if am > 0 and abs(gx - cx) < 100 and abs(gy - cy) < 100:
-                continue  # leave room for the model box
-            tx, ty = cx + 40 * math.cos(i * 2.4), cy + 40 * math.sin(i * 2.4)
-            x, y = gx + (tx - gx) * p, gy + (ty - gy) * p
-            col = tuple(int(c * 255) for c in colorsys.hsv_to_rgb(hues[i], 0.65, 1.0))
-            col = mix(col, TEAL, p)
-            rr = 17 - 9 * p
-            d.ellipse([x - rr, y - rr, x + rr, y + rr], fill=alpha(col, a * (1 - ease(seg(p, 0.75, 1.0)))))
-        if am > 0:
-            text_c(d, (cx, cy), "model", HEAD(36), alpha(WHITE if p > 0.7 else TEAL, am))
-        a1 = a * (1 - ease(seg(t, one - 0.4, one)))
-        a2 = ease(seg(t, one + 0.05, one + 0.5))
-        text_c(d, (W / 2, 1060), "100 perspectives?", HEAD(56), alpha(WHITE, a1))
-        text_c(d, (W / 2, 1060), "or closer to one", HEAD(60), alpha(ORANGE, a2))
+        d.rounded_rectangle([140, 110, W - 140, 560], 28, fill=alpha(PANEL, a), outline=alpha(LINE, a), width=2)
+        text_c(d, (W / 2, 180), "Sprint report", HEAD(54), alpha(WHITE, a))
+        for i, row in enumerate(REPORT):
+            ai = ease(seg(t, 0.4 + i * 0.3, 0.8 + i * 0.3))
+            y = 290 + i * 85
+            text_c(d, (230, y), row, BODY(42), alpha(WHITE, ai), anchor="lm")
+            if ai > 0:
+                check_mark(d, 830, y, 44, alpha(TEAL, ai), 8)
+        al = ease(seg(t, 1.0, 1.5))
+        text_c(d, (W / 2, 650), "not on the report", BODY(38), alpha(MUTED, al))
+        for i, (_, title, _) in enumerate(THINGS):
+            ai = ease(seg(t, 1.2 + i * 0.25, 1.6 + i * 0.25))
+            if ai <= 0:
+                continue
+            y = rows_y[i]
+            d.rounded_rectangle([140, y - 46, W - 140, y + 46], 20, fill=alpha(PANEL, ai * (0.5 + 0.5 * hb)),
+                                outline=alpha(mix(LINE, ORANGE, hb), ai), width=3)
+            text_c(d, (300, y), title, BODY(40), alpha(mix(MUTED, WHITE, hb), ai), anchor="lm")
+        af = ease(seg(t, free, free + 0.4)) * (1 - ease(seg(t, built - 0.5, built - 0.1)))
+        text_c(d, (W / 2, 1085), "it used to come for free", BODY(40), alpha(MUTED, af))
+        text_c(d, (W / 2, 1085), "now: built on purpose", HEAD(52), alpha(ORANGE, hb))
     overlay(frame, draw)
+    for i, (icon, _, _) in enumerate(THINGS):
+        ai = ease(seg(t, 1.2 + i * 0.25, 1.6 + i * 0.25))
+        paste_emoji(frame, icon, 220, rows_y[i], 60, ai * (0.4 + 0.6 * hb))
 
 
 END_BG = None
+TITLE = "3 things AI quietly eroded"
 
 
 def scene_end(frame, t, dur, speech, sc):
@@ -319,8 +340,7 @@ def scene_end(frame, t, dur, speech, sc):
         return ease(seg(t, 0.2 + i * 0.4, 0.7 + i * 0.4))
 
     def draw(d, _):
-        text_c(d, (W / 2, 250), "What AI quietly broke", fit(d, "What AI quietly broke", HEAD, 88, W - 120),
-               alpha(WHITE, a(0)))
+        text_c(d, (W / 2, 250), TITLE, fit(d, TITLE, HEAD, 88, W - 120), alpha(WHITE, a(0)))
         text_c(d, (W / 2, 350), "in my engineering team", fit(d, "in my engineering team", HEAD, 70, W - 140),
                alpha(ORANGE, a(0)))
         text_c(d, (W / 2, 450), "field notes from an AI tech lead", BODY(40), alpha(WHITE, a(1)))
@@ -342,10 +362,10 @@ def make_cover():
     def draw(d, _):
         sk = dict(stroke_width=3, stroke_fill=alpha(BG, 0.6))
         text_c(d, (W / 2, 95), "FIELD NOTES · AI LEADERSHIP", mono(30), TEAL)
-        text_c(d, (W / 2, 210), "What AI quietly broke", fit(d, "What AI quietly broke", HEAD, 96, W - 100), WHITE, **sk)
+        text_c(d, (W / 2, 210), TITLE, fit(d, TITLE, HEAD, 96, W - 100), WHITE, **sk)
         text_c(d, (W / 2, 320), "in my engineering team", fit(d, "in my engineering team", HEAD, 76, W - 120), ORANGE,
                **sk)
-        text_c(d, (W / 2, 425), "3 things no velocity chart shows", BODY(42), WHITE, stroke_width=2,
+        text_c(d, (W / 2, 425), "after an AI speed-up that never came", BODY(42), WHITE, stroke_width=2,
                stroke_fill=alpha(BG, 0.8))
         text_c(d, (W / 2, 1290), "ai.ksopyla.com", mono(32), alpha(WHITE, 0.85))
     overlay(frame, draw)
@@ -353,7 +373,7 @@ def make_cover():
 
 
 SCENES = {"velocity": scene_velocity, "three": scene_three, "bottleneck": scene_bottleneck, "ladder": scene_ladder,
-          "asking": scene_asking, "hundred": scene_hundred, "end": scene_end}
+          "asking": scene_asking, "report": scene_report, "end": scene_end}
 
 if __name__ == "__main__":
     vk.run(HERE, SCENES, make_cover, "ai-quietly-broke-engineering-team.mp4")
