@@ -9,12 +9,12 @@
     {
       "id": "s1_velocity",
       "visual": "velocity",
-      "narration": "Leadership expected AI to make us several times faster. We tried agent swarms. It didn't help. I burned out, asking what was wrong with my team."
+      "narration": "Leadership expected AI to make us several times faster. We tried to build an AI factory, but our velocity barely increased. I burned out, asking why we couldn't ship faster."
     },
     {
       "id": "s2_three",
       "visual": "three",
-      "narration": "Mid-year, I changed the question. Not what's wrong with my team, but what AI had quietly taken from it."
+      "narration": "Mid-year, I changed the question. Not why we can't ship faster, but what AI had quietly taken from our team."
     },
     {
       "id": "s3_bottleneck",

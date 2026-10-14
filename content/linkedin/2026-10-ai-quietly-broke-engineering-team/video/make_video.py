@@ -72,10 +72,14 @@ def dashed(d, pts, fill, width, dash=22, gap=14):
 # ---------------------------------------------------------------- scenes
 
 
+# the question I kept asking: "we", because I am part of the team
+OLD_Q = "Why can't we ship faster?"
+
+
 def scene_velocity(frame, t, dur, speech, sc):
     n = sc["narration"]
     swarm = cue(n, "We tried", 0.35) * speech
-    didnt = cue(n, "It didn't help", 0.5) * speech
+    didnt = cue(n, "but our velocity", 0.45) * speech
     burned = cue(n, "burned out", 0.85) * speech
     x0, x1, y0, y1 = 150, 950, 360, 930
 
@@ -104,18 +108,26 @@ def scene_velocity(frame, t, dur, speech, sc):
             d.line(pts, fill=TEAL, width=7, joint="curve")
         text_c(d, (x1 - 10, pts[-1][1] - 50 if pts else y1), "what we got", HEAD(40),
                alpha(TEAL, ease(seg(pa, 0.85, 1))), anchor="rm")
-        # the agent swarm buzzes at the start of the real line, which still barely climbs
+        # the AI factory: a busy little plant with agents buzzing around it, while the real line barely climbs
         asw = ease(seg(t, swarm - 0.1, swarm + 0.4))
         if asw > 0:
+            fx, fy = 330, 600
+            roof = [(fx - 70, fy - 20)] + [p for k in range(3) for p in
+                                            ((fx - 70 + k * 47 + 47, fy - 62), (fx - 70 + k * 47 + 47, fy - 20))]
+            d.rectangle([fx + 30, fy - 105, fx + 50, fy - 40], fill=alpha(PANEL, asw), outline=alpha(VIOLET, asw), width=3)
+            d.polygon(roof + [(fx + 70, fy + 40), (fx - 70, fy + 40)], fill=alpha(PANEL, asw),
+                      outline=alpha(VIOLET, asw), width=3)
+            for k in range(3):
+                d.rectangle([fx - 52 + k * 40, fy + 2, fx - 30 + k * 40, fy + 22], fill=alpha(ORANGE, 0.8 * asw))
             rng = random.Random(5)
-            for k in range(26):
+            for k in range(22):
                 ang = rng.uniform(0, 2 * math.pi) + t * rng.uniform(1.5, 3.0) * (1 if k % 2 else -1)
-                rad = rng.uniform(25, 95)
-                bx, by = 330 + rad * 1.6 * math.cos(ang), y1 - 150 + rad * math.sin(ang)
-                d.ellipse([bx - 7, by - 7, bx + 7, by + 7], fill=alpha(VIOLET, 0.9 * asw))
-            text_c(d, (330, y1 - 280), "agent swarms", BODY(32), alpha(VIOLET, asw))
+                rad = rng.uniform(95, 125)
+                bx, by = fx + rad * 1.3 * math.cos(ang), fy + rad * 0.75 * math.sin(ang)
+                d.ellipse([bx - 6, by - 6, bx + 6, by + 6], fill=alpha(VIOLET, 0.85 * asw))
+            text_c(d, (fx, fy - 150), "AI factory", BODY(34), alpha(VIOLET, asw))
         ab = ease(seg(t, burned - 0.2, burned + 0.4))
-        text_c(d, (W / 2, 1050), "What's wrong with my team?", HEAD(54), alpha(WHITE, ab))
+        text_c(d, (W / 2, 1050), OLD_Q, HEAD(54), alpha(WHITE, ab))
     overlay(frame, draw)
 
 
@@ -126,7 +138,7 @@ THINGS = [("💸", "The cost of building", "it forced us to choose"),
 
 def scene_three(frame, t, dur, speech, sc):
     n = sc["narration"]
-    notq = cue(n, "Not what", 0.35) * speech
+    notq = cue(n, "Not why", 0.3) * speech
     cheap = cue(n, "but what AI", 0.6) * speech
     three = cheap + 0.7
     cards_y = [520, 720, 920]
@@ -136,7 +148,7 @@ def scene_three(frame, t, dur, speech, sc):
         mv = ease(seg(t, cheap - 0.7, cheap))
         qy = 560 + (120 - 560) * mv
         fq = HEAD(int(66 - 26 * mv))
-        old = "What's wrong with my team?"
+        old = OLD_Q
         text_c(d, (W / 2, qy), old, fq, alpha(mix(WHITE, MUTED, mv), 1 - 0.4 * mv))
         sw = d.textlength(old, font=fq)
         k = ease(seg(t, notq, notq + 0.9))
