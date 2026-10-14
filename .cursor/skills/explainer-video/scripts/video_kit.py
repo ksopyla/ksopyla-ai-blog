@@ -360,13 +360,16 @@ def estimate_timing(scenes):
 
 
 # ---------------------------------------------------------------- YouTube Shorts (9:16)
-# The 4:5 frame (with its captions) is placed, scaled, on a 1080x1920 canvas whose background is the
-# blurred cover. Shorts draws its title, description and buttons over the bottom ~25% and the right
-# edge, so the frame sits high: its captions end around y=1350, above that overlay.
+# The 4:5 frame (with its captions) is placed full width on a 1080x1920 canvas whose background is
+# the blurred cover. Checked on the live Short (2026-10-15): on mobile YouTube draws its header, the
+# mute pill and its own CC captions over the top ~9%, the channel/title rows over the bottom ~12%, and
+# the Like/Comment/Share column on the right from ~70% down. So the top band stays empty (the channel
+# name is already shown at the bottom), and the frame starts just below the header; its captions end
+# around y=1390, left of and above the button column.
 SHORTS_W, SHORTS_H = 1080, 1920
-SHORTS_SCALE = 0.9
-SHORTS_TOP = 250
-SHORTS_LABEL = "@ksopyla-ai"  # the YouTube channel handle, shown above the frame
+SHORTS_SCALE = 1.0
+SHORTS_TOP = 175
+SHORTS_LABEL = ""  # optional text above the frame; empty because YouTube covers that band
 
 
 def make_shorts_framer(cover):
@@ -377,7 +380,8 @@ def make_shorts_framer(cover):
     bg = bg.crop((left, 0, left + SHORTS_W, SHORTS_H)).filter(ImageFilter.GaussianBlur(28))
     bg = Image.blend(Image.new("RGB", bg.size, BG), bg, 0.35).convert("RGBA")
     d = ImageDraw.Draw(bg)
-    text_c(d, (SHORTS_W / 2, 150), SHORTS_LABEL, mono(36), TEAL)
+    if SHORTS_LABEL:
+        text_c(d, (SHORTS_W / 2, 100), SHORTS_LABEL, mono(36), TEAL)
     fw, fh = round(W * SHORTS_SCALE), round(H * SHORTS_SCALE)
     x0 = (SHORTS_W - fw) // 2
     mask = Image.new("L", (fw, fh), 0)
