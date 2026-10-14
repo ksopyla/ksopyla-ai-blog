@@ -83,26 +83,24 @@ def background():
 
 
 def main():
+    """Checked on the live channel (2026-10-15): desktop and mobile both show the full 2560-wide middle
+    strip (2560x423, served as 1138x188), scaled down to the page or phone width. So: two large lines
+    and one topics line, centred in that strip with margins, within ~1800 px for tablet crops. The name
+    and the blog link are shown by YouTube right under the banner, so the banner does not repeat them."""
     img = background().convert("RGBA")
     d = ImageDraw.Draw(img)
-    cx = W / 2
-    # top label, name, motto with the three pillars' colours, topics, address
-    d.text((cx, SY0 + 22), "KRZYSZTOF SOPYŁA · AI TECH LEAD", font=mono(30), fill=TEAL, anchor="mm")
+    cx, cy = W / 2, H / 2
     line1, line2 = "Build agents by day, train models by night,", "publish the mess."
-    size = 84
-    while d.textlength(line1, font=font("Outfit-Bold.ttf", size)) > SAFE_W - 80:
+    size = 112
+    while d.textlength(line1, font=font("Outfit-Bold.ttf", size)) > 1800:
         size -= 2
     head = font("Outfit-Bold.ttf", size)
-    d.text((cx, SY0 + 105), line1, font=head, fill=WHITE, anchor="mm")
-    d.text((cx, SY0 + 190), line2, font=head, fill=ORANGE, anchor="mm")
+    d.text((cx, cy - 95), line1, font=head, fill=WHITE, anchor="mm")
+    d.text((cx, cy + 15), line2, font=head, fill=ORANGE, anchor="mm")
     topics = "Agentic systems   ·   AI research in the open   ·   Leading AI teams"
-    d.text((cx, SY0 + 272), topics, font=font("WorkSans-Regular.ttf", 38), fill=MUTED, anchor="mm")
-    url, fu = "ai.ksopyla.com", mono(40)
-    uw = d.textlength(url, font=fu)
-    d.rounded_rectangle([cx - uw / 2 - 34, SY0 + 335, cx + uw / 2 + 34, SY0 + 405], 35, fill=ORANGE)
-    d.text((cx, SY0 + 370), url, font=fu, fill=BG, anchor="mm")
+    d.text((cx, cy + 118), topics, font=font("WorkSans-Regular.ttf", 50), fill=MUTED, anchor="mm")
     img.convert("RGB").save(OUT, optimize=True)
-    print(f"wrote {OUT} ({OUT.stat().st_size / 1e6:.1f} MB)")
+    print(f"wrote {OUT} ({OUT.stat().st_size / 1e6:.1f} MB), motto at {size}px")
 
 
 if __name__ == "__main__":
