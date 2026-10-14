@@ -177,7 +177,7 @@ def scene_three(frame, t, dur, speech, sc):
 def scene_bottleneck(frame, t, dur, speech, sc):
     n = sc["narration"]
     now = cue(n, "Now every idea", 0.4) * speech
-    neck = cue(n, "Code was never", 0.7) * speech
+    neck = cue(n, "Code is no longer", 0.7) * speech
     header(frame, t, "💸", "The cost of building", "it forced us to choose")
     gate_x = 850
     spawn = [0.7, 1.9] + [now + 0.2 + 0.2 * k for k in range(13)]

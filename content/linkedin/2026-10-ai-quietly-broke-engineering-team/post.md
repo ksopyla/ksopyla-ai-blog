@@ -16,7 +16,7 @@ engagement: "Stay online for the first hour and answer every comment with substa
 
 I spent the first half of the year chasing an AI speed-up that never came. Senior leadership expected development to get several times faster. Other teams spun up swarms of agents and built "AI factories". We tried too. I believed in that speed-up as well, or at least I wanted to. When we couldn't reach it, I got anxious, and then burned out.
 
-Mid-year, I stopped asking what was wrong with my team and started looking at what AI had quietly taken from it. These are my observations:
+Mid-year, while analysing why we couldn't ship faster, I noticed something deeper: what AI had quietly taken from our team. These are my observations:
 
 💸 The cost of building, which forced us to choose.
 When code was expensive, we couldn't build everything. Now every idea arrives as a working demo, and every demo waits for a decision. The bottleneck moved from the people who build to the people who decide.
@@ -29,7 +29,7 @@ The Python import error, the failing cloud deployment, the "why is this containe
 
 None of this shows up in a sprint report. These things used to do part of a lead's job for free. Now they have to be built on purpose.
 
-I'm still positive about AI, and I think we have to adapt. But it's hard to adapt to something you haven't noticed.
+I'm still positive about AI, and we have to adapt. But adapting well means watching the costs as closely as the gains.
 
 What stopped happening in your team this year that no metric would catch?
 
