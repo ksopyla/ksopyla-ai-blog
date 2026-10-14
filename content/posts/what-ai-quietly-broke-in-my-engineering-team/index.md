@@ -36,7 +36,7 @@ None of it shows up on a velocity chart. All of it is now my job.
 
 This post covers only the damage, so it is one-sided on purpose. I am still positive about AI and believe we have to adapt, but it is hard to adapt to something you have not noticed. The practices that keep my team sane with agents are in my [previous post](/posts/what-i-learned-leading-ai-engineering-team/).
 
-## 💸 The code was never the bottleneck {#the-code-was-never-the-bottleneck}
+## 💸 Code is no longer the bottleneck {#code-is-no-longer-the-bottleneck}
 
 The logic behind that question sounds airtight: AI writes code faster, so features ship faster, so the roadmap should shrink. Only the first step is true: typing code was rarely what slowed us down. **The constraint is knowing what to build.**
 
