@@ -136,6 +136,7 @@ The human side: aligning stakeholders, managing expectations, building team cult
 - **LinkedIn**: https://www.linkedin.com/in/ksopyla/ — Professional but personal. "Thoughtful colleague sharing over coffee."
 - **X**: https://x.com/ksopyla — Most concise and punchy. "Researcher at a conference poster session."
 - **GitHub**: https://github.com/ksopyla — Code backing everything written
+- **YouTube**: https://www.youtube.com/@ksopyla-ai — Shorts: ~60 s narrated explainers of blog posts (explainer-video skill). The story spoken at the whiteboard, then a pointer to the blog. Trial since Oct 2026.
 - **Old Polish blog**: https://ksopyla.com — Historical, not active
 
 ---

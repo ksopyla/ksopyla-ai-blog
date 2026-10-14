@@ -45,6 +45,7 @@ What makes Krzysztof's perspective rare:
 - LinkedIn: https://www.linkedin.com/in/ksopyla/ (LinkedIn headline mirrors the blog motto)
 - X: https://x.com/ksopyla
 - GitHub: https://github.com/ksopyla
+- YouTube: https://www.youtube.com/@ksopyla-ai (Shorts: ~60 s narrated explainers of blog posts, made with the explainer-video skill; trial since Oct 2026)
 - Blog: https://ai.ksopyla.com/
 - Current role: AI Tech Lead at Pearson (AI R&D Engineering Manager title internally)
 - Background: CTO in AI startups, Chief AI architect and CEO at own software house Ermlab, PhD in computer science (AI focus, GPU-accelerated SVM and online learning), co-author of one of the first Polish BERT models
@@ -120,6 +121,7 @@ The human side: aligning stakeholders, managing expectations, building team cult
 - **Blog**: Most technical, longest form. The "lab notebook made public."
 - **LinkedIn**: Professional but personal. The "thoughtful colleague sharing over coffee."
 - **X**: Most concise and punchy. The "researcher at a conference poster session."
+- **YouTube Shorts / LinkedIn video**: The post's story spoken in about a minute. The "colleague who explains it at the whiteboard", then points to the blog.
 
 ## Deep Context — Writing Craft
 
