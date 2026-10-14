@@ -127,7 +127,7 @@ def scene_velocity(frame, t, dur, speech, sc):
                 d.ellipse([bx - 6, by - 6, bx + 6, by + 6], fill=alpha(VIOLET, 0.85 * asw))
             text_c(d, (fx, fy - 150), "AI factory", BODY(34), alpha(VIOLET, asw))
         ab = ease(seg(t, burned - 0.2, burned + 0.4))
-        text_c(d, (W / 2, 1050), OLD_Q, HEAD(54), alpha(WHITE, ab))
+        text_c(d, (W / 2, 1050), "anxious, then burned out", BODY(44), alpha(MUTED, ab))
     overlay(frame, draw)
 
 
@@ -138,39 +138,39 @@ THINGS = [("💸", "The cost of building", "it forced us to choose"),
 
 def scene_three(frame, t, dur, speech, sc):
     n = sc["narration"]
-    notq = cue(n, "Not why", 0.3) * speech
-    cheap = cue(n, "but what AI", 0.6) * speech
-    three = cheap + 0.7
+    ask = cue(n, "analysing why", 0.2) * speech
+    deeper = cue(n, "something deeper", 0.55) * speech
+    how = cue(n, "how AI", 0.7) * speech
+    three = how + 0.4
     cards_y = [520, 720, 920]
+    # the shipping question opens big in the middle; while analysing it, something deeper shows up,
+    # so the question steps aside (it stays valid, it is not crossed out)
+    aq = ease(seg(t, ask - 0.2, ask + 0.4))
+    mv = ease(seg(t, deeper - 0.2, deeper + 0.6))
+    qy = 560 + (120 - 560) * mv
 
     def draw(d, _):
-        # the old question starts big in the middle, gets crossed out, then moves up out of the way
-        mv = ease(seg(t, cheap - 0.7, cheap))
-        qy = 560 + (120 - 560) * mv
-        fq = HEAD(int(66 - 26 * mv))
-        old = OLD_Q
-        text_c(d, (W / 2, qy), old, fq, alpha(mix(WHITE, MUTED, mv), 1 - 0.4 * mv))
-        sw = d.textlength(old, font=fq)
-        k = ease(seg(t, notq, notq + 0.9))
-        d.line([W / 2 - sw / 2 - 10, qy + 2, W / 2 - sw / 2 - 10 + (sw + 20) * k, qy + 2], fill=ORANGE,
-               width=int(8 - 3 * mv))
-        a = ease(seg(t, cheap - 0.3, cheap + 0.2))
-        q = "What did AI quietly take?"
-        text_c(d, (W / 2, 225 + 14 * (1 - a)), q, fit(d, q, HEAD, 76, W - 100), alpha(ORANGE, a))
-        ac = ease(seg(t, cheap, cheap + 0.5))
-        text_c(d, (W / 2, 335), "These are my observations:", BODY(40), alpha(WHITE, ac))
+        text_c(d, (W / 2, qy), OLD_Q, HEAD(int(66 - 26 * mv)), alpha(mix(WHITE, MUTED, mv), aq * (1 - 0.3 * mv)))
+        ad = ease(seg(t, deeper - 0.1, deeper + 0.4)) * (1 - ease(seg(t, how - 0.1, how + 0.2)))
+        text_c(d, (W / 2, 660), "…and noticed something deeper", BODY(40), alpha(MUTED, ad))
+        a = ease(seg(t, how - 0.1, how + 0.4))
+        q = "How AI quietly changed our team"
+        text_c(d, (W / 2, 225 + 14 * (1 - a)), q, fit(d, q, HEAD, 72, W - 100), alpha(ORANGE, a))
+        text_c(d, (W / 2, 335), "These are my observations:", BODY(40), alpha(WHITE, a))
         for i, (_, title, sub) in enumerate(THINGS):
-            ai = ease(seg(t, three + i * 0.35, three + i * 0.35 + 0.45))
+            ai = ease(seg(t, three + i * 0.3, three + i * 0.3 + 0.4))
             if ai <= 0:
-                continue  # an invisible card would erase the old question underneath it
+                continue  # an invisible card would erase whatever is underneath it
             y = cards_y[i] + 30 * (1 - ai)
             d.rounded_rectangle([110, y - 80, W - 110, y + 80], 26, fill=alpha(PANEL, ai),
                                 outline=alpha(LINE, ai), width=2)
             text_c(d, (290, y - 20), title, HEAD(46), alpha(WHITE, ai), anchor="lm")
             text_c(d, (290, y + 32), sub, BODY(32), alpha(MUTED, ai), anchor="lm")
     overlay(frame, draw)
+    # a magnifying glass while the question is being analysed
+    paste_emoji(frame, "🔍", W / 2, 440, 96, aq * (1 - mv))
     for i, (icon, _, _) in enumerate(THINGS):
-        ai = ease(seg(t, three + i * 0.35, three + i * 0.35 + 0.45))
+        ai = ease(seg(t, three + i * 0.3, three + i * 0.3 + 0.4))
         paste_emoji(frame, icon, 200, cards_y[i] + 30 * (1 - ai), 92, ai)
 
 
