@@ -30,13 +30,19 @@ After the first summary, 69% of the facts were fully there. By the end of the se
 
 This is five sessions from one person, so it is not a rate for every user. But it matched what I felt every evening.
 
-## The idea: keep every word, look it up when needed
+## The idea: plain search, built with care
 
-Most memory tools ask an AI model to read each message and write down "facts". Cogi does something simpler. It keeps every message word for word, with its date, in one file on my laptop. No AI call, no account, no cost per message.
+Cogi is not a new kind of memory. It is search: keep the text, index it well, and find the right part when asked.
 
-When Claude needs something from the past, it searches. Cogi looks at words and at meaning, picks the best matching messages, and hands Claude a fixed amount of text: 1,000 tokens in the tests below. A token is about three quarters of a word, so that is roughly 750 words, about one page.
+Many memory tools do more. An AI model reads each message, writes down "facts", and sometimes links them into a graph. That is hard to get right, and it costs an AI call for every message. It also decides, at the moment of saving, what will matter later. Nobody knows that yet.
+
+Cogi skips that step. It keeps every message word for word, with its date, in one file on my laptop. It indexes each message twice: by its exact words and by its meaning. Saving needs no AI call, no account and no money.
+
+When Claude needs something, it searches and gets back a fixed amount of text: 1,000 tokens in the tests below. A token is about three quarters of a word, so that is roughly 750 words, about one page.
 
 Why one page is enough: the answer to "what did we decide about X?" usually sits in one or two messages. If search finds those, Claude does not need the other two million tokens. It reads my own words, with their dates, not a summary written by a model.
+
+So my bet is small: careful search over your own words is enough for most of what Claude forgets. A bet is only worth something if you test it, and the rest of this post is that test.
 
 ## How I tested it
 
@@ -69,6 +75,7 @@ Mostly, with limits you should know:
 - **My own test is small.** 72 facts from one researcher, with questions written and judged by AI agents. Treat 79% as "about three out of four", not a precise number.
 - **The public tests are chats, not coding sessions.** People talking about their lives look different from a week of debugging the same model.
 - **We ran the other plugins ourselves.** We used their best published settings, but their authors have not reviewed our runs.
+- **I did not test fact or graph memories.** The four plugins I compared also search plain text. The fair yardstick is rereading everything: one page gets 95% of the way there (91% with the strict grader), so a more complex method has only that gap left to close.
 - **The grader matters.** LoCoMo's usual rules are generous. With stricter rules, Cogi's page scores 83.1% against 90.8% for the whole conversation, a bigger gap.
 - **LoCoMo conversations are short.** At about 19,000 tokens, Claude could reread them in full. The test shows how little a page loses, not that you need memory there.
 - **Cogi works best when Claude searches on purpose.** It also adds a few lines to each prompt automatically, and that part often misses. If something matters, ask Claude to check its memory.
