@@ -44,6 +44,8 @@ Some honest limits:
 • the tests use chats, not coding sessions
 • Cogi works best when you ask Claude to check its memory
 
-How do you keep Claude from forgetting your early decisions?
+Often, the beauty is in a simple idea that just works. I like those.
+
+Does Claude forget in your long sessions too? How do you deal with it? Have you tested or used any memory plugins?
 
 #AIEngineering #AIAgents #ClaudeCode

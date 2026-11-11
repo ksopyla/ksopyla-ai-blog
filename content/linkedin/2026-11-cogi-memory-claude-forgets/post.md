@@ -2,7 +2,7 @@
 title: "Claude forgets. I measured how much, and built a simple memory to bring it back"
 date: 2026-11-11
 platform: linkedin
-status: draft
+status: published
 content_score: 4.4
 related_blog_post: "https://ai.ksopyla.com/posts/cogi-memory-evals/"
 video: "video/cogi-memory-claude-forgets.mp4 (4:5 explainer with voiceover; upload video/cover.jpg as the thumbnail)."
@@ -60,6 +60,8 @@ Some honest limits:
 • the tests use chats, not coding sessions
 • Cogi works best when you ask Claude to check its memory
 
-How do you keep Claude from forgetting your early decisions?
+Often, the beauty is in a simple idea that just works. I like those.
+
+Does Claude forget in your long sessions too? How do you deal with it? Have you tested or used any memory plugins?
 
 #AIEngineering #AIAgents #ClaudeCode
