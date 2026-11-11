@@ -1,7 +1,7 @@
 ---
 title: "Claude forgets. I measured how much, and built a simple memory to bring it back"
-date: 2026-11-08
-draft: true
+date: 2026-11-11
+draft: false
 description: "Notes on Claude Code forgetting what was said early in long sessions, how much survived in my own transcripts, and how Cogi, a local word-for-word memory, was tested on chat histories of up to 1.2 million tokens."
 tags: ["AI", "AI Engineering", "Agent Memory", "Evals", "Claude Code", "MCP"]
 categories: ["AI Engineering"]
@@ -16,7 +16,7 @@ If you work in long Claude Code sessions, you have seen it: Claude no longer kno
 
 - In my long sessions, only 10% of early facts were still fully visible to Claude at the end.
 - Cogi keeps every message and hands Claude one page of the most relevant text when it searches.
-- That page found the right past chat 93% of the time in 1.2 million tokens of history, and answered questions almost as well as rereading the whole conversation.
+- Its search put the right past chat in the top five 93% of the time in 1.2 million tokens of history, and one page answered questions almost as well as rereading the whole conversation.
 
 ## Claude forgets, and I measured it
 

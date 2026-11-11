@@ -1,0 +1,7 @@
+Feature image prompt for "Claude forgets. I measured how much, and built a simple memory to bring it back"
+Save as feature_cogi_memory.png (16:9, 1280x720 or larger), then add to the frontmatter:
+featureImage: "feature_cogi_memory.png"
+featureAlt: "Abstract digital painting: a long river of glowing message fragments fades into darkness, while a warm beam of light lifts a few of them back, intact, into view"
+
+Prompt:
+abstract digital painting visualizing memory lost and recovered in a very long conversation, a vast river of glowing text fragments flowing from left to right and dissolving into blurred mist as it moves away, layered summary-like ripples compressing the stream, a warm beam of orange and gold light reaching back into the stream and lifting a few intact luminous fragments into sharp focus, small glowing index marks along the riverbed, warm oranges and yellows merging with teals, greens and deep blues and purples, organic and geometric forms combined, rich full color spectrum, textured digital art, high detail, no text, no letters, no watermark
