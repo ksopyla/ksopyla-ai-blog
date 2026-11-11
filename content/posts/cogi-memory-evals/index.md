@@ -6,6 +6,8 @@ description: "Notes on Claude Code forgetting what was said early in long sessio
 tags: ["AI", "AI Engineering", "Agent Memory", "Evals", "Claude Code", "MCP"]
 categories: ["AI Engineering"]
 showReadingTime: true
+featureImage: "feature_cogi_memory.jpg"
+featureAlt: "Abstract digital painting at night: Cogi, an orange squirrel, sits in a glowing tree hollow full of stored acorns and lifts bright fragments out of a river of glowing text that fades into mist"
 ---
 
 {{< lead >}}
