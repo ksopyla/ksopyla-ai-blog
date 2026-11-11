@@ -23,7 +23,7 @@ So I built Cogi, and kept the idea simple: keep every message word for word on m
 
 When I asked directly about an early fact, that one page fully answered 79% of the questions.
 
-Then I compared Cogi with four other free memory plugins. The test has 500 questions, and each answer is hidden in about 1.2 million tokens of old chats. Every plugin used its best published setting.
+Then I compared Cogi with four other free memory plugins on LongMemEval_M. It has 500 questions, and each answer is hidden in about 1.2 million tokens of old chats. Every plugin used its best published setting.
 
 How often the right chat was in the top five:
 Cogi 93.0%
@@ -34,7 +34,7 @@ agentmemory 86.6%
 
 Finding the right chat is not enough. Claude needs the right text in what it reads. With the same amount of text, about two and a half pages, and each plugin on its default settings, everything the answer needed was there for 70.6% of questions with Cogi and 61.2% with MemPalace. The other three stayed under 25%, mostly because they return a whole old chat or a few short snippets, not because their search is worse.
 
-On a second test, one page from Cogi was 95% as good as rereading the whole conversation, with 9 times less text to read.
+On a second benchmark, LoCoMo, one page from Cogi was 95% as good as rereading the whole conversation, with 9 times less text to read.
 
 Some honest limits: I ran these tests myself, and the plugins' authors have not checked them. The tests use chats, not coding sessions. And Cogi works best when you ask Claude to check its memory.
 
