@@ -1,0 +1,45 @@
+{
+  "title": "Claude forgets. I measured how much",
+  "size": [
+    1080,
+    1350
+  ],
+  "fps": 30,
+  "scenes": [
+    {
+      "id": "s1_forget",
+      "visual": "forget",
+      "narration": "In my long Claude Code sessions, Claude forgets what I asked for at the start. So I measured how much."
+    },
+    {
+      "id": "s2_decay",
+      "visual": "decay",
+      "narration": "When a session gets too long, Claude Code replaces it with a summary, then summarises the summary. Of seventy-two early facts, only one in ten survived intact."
+    },
+    {
+      "id": "s3_cogi",
+      "visual": "cogi",
+      "narration": "So I built Cogi. It's plain search, not a new kind of memory. It keeps every message word for word on my laptop, with no AI call to save."
+    },
+    {
+      "id": "s4_page",
+      "visual": "page",
+      "narration": "When Claude needs something, it gets back one page of my own words. On my sessions, that page fully answered about three in four questions."
+    },
+    {
+      "id": "s5_needle",
+      "visual": "needle",
+      "narration": "In a public test with over a million tokens of history, it put the right past chat in its top five, ninety-three percent of the time."
+    },
+    {
+      "id": "s6_reread",
+      "visual": "reread",
+      "narration": "And one page answered almost as well as rereading the whole conversation, from nine times less text."
+    },
+    {
+      "id": "s7_end",
+      "visual": "end",
+      "narration": "It works best when Claude searches on purpose. The full story, with every test and its limits, is on my blog."
+    }
+  ]
+}

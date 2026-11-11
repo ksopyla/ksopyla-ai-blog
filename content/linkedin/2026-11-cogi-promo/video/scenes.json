@@ -1,0 +1,40 @@
+{
+  "title": "Claude forgets. Cogi doesn't.",
+  "size": [
+    1080,
+    1350
+  ],
+  "fps": 30,
+  "scenes": [
+    {
+      "id": "p1_acorn",
+      "visual": "acorn",
+      "narration": "Tell Claude the staging server is called acorn. Clear the session, and ask again. Without a memory, it's gone. Claude forgets. Cogi doesn't."
+    },
+    {
+      "id": "p2_keeps",
+      "visual": "keeps",
+      "narration": "Cogi is a free, long-term memory for Claude Code. It keeps every message you and Claude exchange, word for word, with the time it was said."
+    },
+    {
+      "id": "p3_local",
+      "visual": "local",
+      "narration": "It all stays in one folder on your own computer. No account, no API key, and no AI calls to save a message."
+    },
+    {
+      "id": "p4_find",
+      "visual": "find",
+      "narration": "When something has dropped out of the conversation, Claude searches Cogi and gets your exact words back. Here, it answers: acorn."
+    },
+    {
+      "id": "p5_tested",
+      "visual": "tested",
+      "narration": "I tested it on a public benchmark with over a million tokens of history. It found the right past session in its top five, ninety-three percent of the time."
+    },
+    {
+      "id": "p6_install",
+      "visual": "install",
+      "narration": "It's open source and installs with one command. My tip: when it matters, ask Claude to check its memory. Try it, and tell me what it brings back."
+    }
+  ]
+}

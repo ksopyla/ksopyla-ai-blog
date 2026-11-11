@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Cogi the squirrel holding an acorn">
+  <ellipse cx="112" cy="187" rx="62" ry="5" fill="#000" opacity=".08"/>
+  <path d="M100 170 C50 174 16 134 24 88 C30 50 62 20 100 22 C130 24 144 52 128 68 C117 78 99 71 101 57 C102 50 109 47 114 51 C108 44 98 46 96 56 C94 70 104 84 112 98 L114 160 Z" fill="#B85E1C"/>
+  <path d="M96 158 C60 160 36 128 42 92 C47 62 70 38 98 37 C112 37 122 45 121 55 C112 43 92 43 82 56 C70 74 72 112 100 140 Z" fill="#E08A3C"/>
+  <path d="M91 43 C90 74 104 88 116 100 L128 64 C120 54 106 38 91 43 Z" fill="#B85E1C"/>
+  <ellipse cx="118" cy="140" rx="36" ry="42" fill="#D9772B"/>
+  <ellipse cx="131" cy="147" rx="21" ry="30" fill="#FBE7C6"/>
+  <path d="M120 68 L114 38 Q130 44 138 60 Z" fill="#B85E1C"/>
+  <circle cx="138" cy="88" r="30" fill="#D9772B"/>
+  <path d="M130 64 L131 34 Q147 42 150 62 Z" fill="#D9772B"/>
+  <path d="M134 60 L135 43 Q144 48 146 60 Z" fill="#F2A38A"/>
+  <ellipse cx="160" cy="97" rx="15" ry="12" fill="#D9772B"/>
+  <ellipse cx="159" cy="101" rx="12" ry="9" fill="#FBE7C6"/>
+  <ellipse cx="150" cy="83" rx="5" ry="6" fill="#3A2416"/>
+  <circle cx="152" cy="81" r="1.8" fill="#fff"/>
+  <ellipse cx="172" cy="94" rx="3.6" ry="2.8" fill="#3A2416"/>
+  <path d="M164 102 Q168 105 172 101" fill="none" stroke="#3A2416" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="146" cy="99" r="5" fill="#F2A38A" opacity=".6"/>
+  <ellipse cx="151" cy="133" rx="10" ry="12" fill="#B97A3D"/>
+  <path d="M139 127 Q151 111 163 127 Z" fill="#6B4423"/>
+  <rect x="149.5" y="112" width="3" height="6" rx="1.5" fill="#6B4423"/>
+  <ellipse cx="141" cy="134" rx="6.5" ry="5" fill="#D9772B"/>
+  <ellipse cx="161" cy="136" rx="6.5" ry="5" fill="#D9772B"/>
+  <ellipse cx="106" cy="180" rx="15" ry="6" fill="#B85E1C"/>
+  <ellipse cx="140" cy="181" rx="15" ry="6" fill="#B85E1C"/>
+</svg>

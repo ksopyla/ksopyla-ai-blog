@@ -5,6 +5,11 @@ draft: true
 build:
   render: never
   list: never
+# keep every draft below out of the public site and the sitemap
+cascade:
+  build:
+    render: never
+    list: never
 ---
 
 # X Thread Drafts
