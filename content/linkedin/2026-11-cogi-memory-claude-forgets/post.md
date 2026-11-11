@@ -19,7 +19,7 @@ I measured it. My evenings go to a solo research project, and one session can ru
 
 With Claude's help, I picked 72 early facts from five long sessions and checked which ones Claude could still see. After the first summary: 69%. At the end: 10%.
 
-So I built Cogi, and kept the idea simple: keep every message word for word on my laptop, and search it when needed. Saving a message needs no AI call and costs nothing. When Claude asks, it gets back about one page of my own words.
+So I built Cogi, and kept the idea simple: keep every message word for word on my laptop, and search it when needed. Saving a message needs no AI call and costs nothing. When Claude asks, it gets back a 1,000-token budget of my own words, about one page.
 
 When I asked directly about an early fact, that one page fully answered 79% of the questions.
 
@@ -32,9 +32,9 @@ deja-vu 89.0%
 MemPalace 87.8%
 agentmemory 86.6%
 
-Finding the right chat is not enough. Claude needs the right text in what it reads. With the same amount of text, about two and a half pages, and each plugin on its default settings, everything the answer needed was there for 70.6% of questions with Cogi and 61.2% with MemPalace. The other three stayed under 25%, mostly because they return a whole old chat or a few short snippets, not because their search is worse.
+Finding the right chat is not enough. Claude needs the right text in what it reads. With the same 2,500-token budget for every plugin, about two and a half pages, and each on its default settings, everything the answer needed was there for 70.6% of questions with Cogi and 61.2% with MemPalace. The other three stayed under 25%, mostly because they return a whole old chat or a few short snippets, not because their search is worse.
 
-On a second benchmark, LoCoMo, one page from Cogi was 95% as good as rereading the whole conversation, with 9 times less text to read.
+On a second benchmark, LoCoMo, Cogi's 1,000-token page was 95% as good as rereading the whole conversation, with 9 times less text to read.
 
 Some honest limits: I ran these tests myself, and the plugins' authors have not checked them. The tests use chats, not coding sessions. And Cogi works best when you ask Claude to check its memory.
 
