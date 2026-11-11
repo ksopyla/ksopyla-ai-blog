@@ -94,9 +94,23 @@ The engine already handles this load. In a stress test, 16 agents wrote 820 mess
 
 Cogi is open source under MIT and runs on your own machine. If you have noticed Claude forgetting, I would like to hear what Cogi found for you, and what it missed.
 
+{{< info-panel title="Install Cogi in Claude Code" icon="circle-info" >}}
+You need Claude Code and [uv](https://docs.astral.sh/uv/). Then run this in a terminal:
+
 ```sh
 claude plugin install cogito-mem --marketplace meridian21lab/cogito-mem
 ```
+
+Or let your agent do it. Paste this into Claude Code or Codex, and it checks your computer and installs what is missing:
+
+```text
+Install Cogi for me: follow https://meridian21lab.github.io/cogito-mem/install.md
+```
+
+The first start downloads the search model (310 MB, about a minute). To check it works, tell Claude *Let's call the staging server "acorn"*, run `/clear`, then ask what you called it.
+
+Step by step for macOS, Linux and Windows: **[the Cogi install page](https://meridian21lab.github.io/cogito-mem/start.html)**.
+{{< /info-panel >}}
 
 ## References
 

@@ -1,0 +1,25 @@
+{{- /*
+  Info panel in the theme's alert colours that can hold full Markdown, including fenced code blocks
+  (which then get the theme's Copy button). Congo's own alert shortcode wraps its text in a <span>,
+  so a code block inside it breaks.
+
+  Usage:
+    {{< info-panel title="Try Cogi" icon="circle-info" >}}
+    Some **Markdown**, then a code block.
+    {{< /info-panel >}}
+*/ -}}
+{{- $icon := .Get "icon" | default "circle-info" -}}
+{{- $title := .Get "title" -}}
+{{- /* commands wrap instead of scrolling sideways; Copy still copies the original single line */ -}}
+<style>.info-panel pre { white-space: pre-wrap; overflow-wrap: anywhere; }</style>
+<div class="info-panel rounded-md bg-primary-100 px-4 py-3 dark:bg-primary-900" style="margin: 2rem 0;">
+  {{- with $title }}
+  <div class="flex text-lg font-semibold" style="align-items: center; margin-bottom: 0.25rem;">
+    <span class="pe-3 text-primary-400">{{ partial "icon.html" $icon }}</span>
+    <span class="text-neutral-800 dark:text-neutral-100">{{ . }}</span>
+  </div>
+  {{- end }}
+  <div class="dark:text-neutral-300">
+    {{ $.Inner | $.Page.RenderString (dict "display" "block") }}
+  </div>
+</div>
