@@ -25,18 +25,28 @@ They are the systems thinkers: the few who understand the broader context and mo
 
 What is the most important skill for a software engineer today? A few years ago I would have said deep knowledge of one stack. I still value depth, but it is no longer enough, because AI has widened what one engineer can build.
 
-Five years ago a backend engineer did not touch the frontend. A frontend developer did not write the Terraform for their own app: that belonged to the platform team and was usually out of reach. Today, with a coding agent, the backend engineer can change a React component, and the frontend developer can write the Terraform module that deploys it. Elizabeth Stone, Chief Product and Technology Officer at Netflix, sees the same shift: specialists can now pick up a broader set of tools more easily than in the past [1].
+Five years ago a backend engineer did not touch the frontend. A frontend developer did not write the Terraform for their own app: that belonged to the platform team and was usually out of reach. Today, with a coding agent, 
+??for above ^^, I would say more, that you barly touch the code, you do not see the code, you start don't care about it, it is just an expression language, what matters is what to build and support oters according to our standards
+the backend engineer can change a React component, and the frontend developer can write the Terraform module that deploys it. 
+
+Elizabeth Stone, Chief Product and Technology Officer at Netflix, sees the same shift: specialists can now pick up a broader set of tools more easily than in the past [1].
 
 So the role is changing, and two questions follow. How should engineers grow their careers when the borders of their role keep moving? And whom should companies hire, and work hard to keep, to thrive in the AI era? My answer to both: systems thinkers.
 
+
+?? add links to the text, keep the references as well
 I am not the only one saying it. In July, Stone told Lenny Rachitsky what Netflix needs more of: *"We need more systems thinkers in a world with AI"* [1]. In October, Yossi Matias, head of Google Research, described the colleagues he looks for: people who connect disciplines, ask the right questions and judge the trade-offs. The host summed it up in four words: *"that's a systems thinker"* [2].
 
-I have worked with such people on many levels: software engineers, engineering managers, staff and principal engineers, in my own software house, in startups and now in enterprise AI teams at Pearson. Their titles differed. What they shared was a starting point: the company's problem, not their own component.
+?? add only recent evidences, I want it to be connected to AI era and AI coding (last 2 years), those who close work on tech projects, understand the techonolgy, understand the requirements, those are not only developers, those who understand tech and have a context
+I have worked with such people on many levels: software engineers, engineering managers, , in my own software house, in startups and now in enterprise AI teams at Pearson. Their titles differed. What they shared was a starting point: the company's problem, not their own component.
 
 In my [previous post](/posts/what-ai-quietly-broke-in-my-engineering-team/) I argued that code is no longer the bottleneck: AI made writing software cheap, so deciding what to build became almost the whole job. This post is about the people who can take the lead, who make things happen, who move the needle: how to spot them, how to grow them, and how to become one.
 
 ## What I mean by a systems thinker
 
+
+?? add that AI cant replace system thinkers, It never has such a context and tast what and why to build
+?? below is not right angle, with deep experties cite the podcast, those people need to build trust (by their experties) and technology understanding, but at the same time AI allows them to build broder
 AI expands the range of what each of us can do, but a systems thinker still needs one expertise that goes very deep. Without it, the range is shallow: you can generate a Terraform module, but you cannot tell whether it is safe to deploy. Both talks defend depth. Netflix still needs the few people in the world who really understand video encoding or playback, and the head of Google Research says going deep *"is going to be incredibly important"* [1][2]. What Netflix sees trending down is narrow specialization without the will to look beyond it [1].
 
 So a systems thinker is not a generalist who dabbles. It is someone with a deep craft who also knows where their work sits in the whole company, and who uses AI's wider range to build across it.
@@ -71,6 +81,8 @@ These are the signals I look for. The first five show in how people work. The la
 
 ## How leaders can grow them
 
+?? I dont change the role, but I rather observed that my role drifted more toward staff eng, I stared to build more things with AI, where previously I mostly manage and take part in RFC and discussions
+
 This part is personal. This year my role at Pearson moved from engineering manager toward something closer to a staff engineer. With it, I started expecting more from the people on my team: more independence and self-direction, building things end to end, and working directly with other product owners and teams instead of through me. The transition has started, but it also needs changes in my own behavior and more trust from my side.
 
 Systems thinkers are partly found and partly made. Four things help them grow.
@@ -91,6 +103,7 @@ If you are a software engineer who wants to reach the next level, this is a prac
 
 **Step out one click.** The most practical advice from the Netflix talk: *"Each problem you're trying to solve, step out one click"*, and ask what you assume about the broader space [1]. Say you get a ticket to add an MCP tool that reads customer data. One click out: who else needs this data? Who owns it? What will security ask? Does a shared tool already exist? Then build. The same talk warns against staying in the questioning state, and adds a second tip: do your job in a way that helps your manager do theirs, because your manager's seat shows more of the whole.
 
+?? those are not good example, I would say rather more connect with product and busisnes people, more with those who understand user needs, more with those who think in systems, build templates, processes and try to protect them
 **Build relationships on purpose.** Do not wait for an incident to meet the SRE team or the security office. Join a cross-team review, help with a migration, ask the content team how they actually use your feature. Each of those people becomes a shortcut that later lets you see a problem, or an opportunity, early.
 
 **Always carry a why and a plan.** For everything you build, be able to say in one sentence why it matters to a customer or the business, and keep a written plan for your area for the next six months. Tanya Reilly calls this big-picture thinking, and in *The Staff Engineer's Path* she turns it into three maps: where you are in the organization, what the terrain around you looks like, and where the organization is heading [3].
