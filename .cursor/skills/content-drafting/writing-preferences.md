@@ -2,7 +2,7 @@
 
 Single source of truth for how Krzysztof writes and what he expects from AI-generated drafts. The content-drafting skill reads this file before producing any long-form content.
 
-Last updated: 2026-04-12
+Last updated: 2026-11-17
 
 ---
 
@@ -34,6 +34,17 @@ Never use these (or equivalents):
 
 Replace with a specific, concrete statement that only works for this article.
 
+### Kill List — Machine-Like Patterns
+
+Krzysztof spots these as "written by AI" and rejects them:
+
+- **Twist reveals and slogan endings:** "Wrong question.", "It was never about X. It was about Y.", a one-line motto as the last sentence.
+- **Schematic, repeated openings:** sections or paragraphs that all start the same way ("Before AI, …", "In my experience, …"). Start each one from a different side: a scene, a question, a feeling, a number.
+- **Obvious, banal lines:** "They rarely had a special title. They were the people other teams called first." If the sentence states what every reader already assumes, cut it.
+- **Generic section intros:** "None of these signals is a title, and I have seen them in junior engineers too." Open with what the section actually gives the reader.
+- **Data dumps:** several studies or numbers piled into one paragraph ("too much data, and feels not human"). One finding per point, spread across the argument.
+- **Arrow bullets and decorative lists** where a sentence would do.
+
 ---
 
 ## Writing Quality Rules
@@ -62,6 +73,8 @@ If two sections make the same argument from slightly different angles, merge the
 
 When Krzysztof edits code examples, variable names, function signatures, or inline prose, those edits are final. Do not reformat, rename, or "improve" them. His phrasing in edited sections is the target voice.
 
+When he asks to "proof read" his edits, fix grammar, spelling and tense only, and keep his wording ("Before, I mostly managed and lead, now I took part…" → "Before, I mostly managed and led. Now I take part…"). When he gives a line to add ("often beauty is in simple idea that just work, I like those"), use it nearly verbatim with corrected grammar.
+
 ### 6. Use analogies from the sources, not invented ones
 
 If a source uses a good framing or metaphor, use it with attribution. Attributed analogies are more credible and more interesting than generic invented ones.
@@ -88,6 +101,44 @@ This rule applies to: `content/_index.md`, `content/about.md`, `content/posts/_i
 
 It does *not* apply to: long-form blog posts, project pages, LinkedIn posts, X threads, or anywhere the reader has already opted into reading more from Krzysztof.
 
+### 10. The post is Krzysztof's story; sources support it, never frame it
+
+A post built around someone else's talk, paper or podcast reads "as not mine". Do not title sections "What the two talks agree on", do not put other people's quotes in the lead, and do not open with "X told Y that…". Open with Krzysztof's own question or observation, state his view, then bring in sources as proof: "I am not the only one saying it. In July, Netflix's CPTO told…". Sources can be cited heavily, but each one sits inside a paragraph that makes his point.
+
+### 11. Show the path from observation to evidence
+
+When a paragraph moves from Krzysztof's experience to research, show him investigating: he noticed something in his team, wondered whether it was only his team, went looking, and found work that confirms or explains it. An observation paragraph followed by an unconnected evidence paragraph "looks distinct, like written by AI". Smooth transitions between paragraphs matter; "too sharp transition" is a common `??`. Weave each finding into the sentence it supports (see also the memory note on blending evidence into prose).
+
+### 12. Personal evidence must be recent, exact and his
+
+- **Recent:** use experience from the AI era (roughly the last two years) when the argument is about AI. Do not pad with career history ("in my software house, in startups, and now at Pearson") unless it is the point.
+- **Exact:** do not overstate personal facts. "My role changed from EM to staff engineer" was wrong; the truth was "my title did not change, but my role drifted toward staff engineer: I build more things myself with AI, where before I mostly managed and took part in RFCs". When a comment is ambiguous or cut off, write the best reading and flag it in the reply.
+- **His:** do not invent anecdotes or scenes. Use the personal takes he writes into `??` comments. Leave at most one or two `TODO (Krzysztof)` story prompts; he deletes the ones he cannot fill, and too many make the draft feel like a form.
+- **Pearson examples are real but anonymized:** conversational capability refactors, applied AI science with product owners, daily Snyk scans that can block a deployment. One Pearson example per point, not the whole lens.
+
+### 13. Refer to organizations, not to people the reader does not know
+
+"Stone says…" stops readers: "who is Stone?". Introduce a person once with name and role ("Elizabeth Stone, Chief Product and Technology Officer at Netflix"), then refer to the organization or the source: "Netflix found…", "the Netflix talk", "Google Research expects…". Hosts and interviewers rarely need a name at all.
+
+### 14. Links in the text and in the References
+
+Link sources inline where they are first used (on the verb phrase, e.g. "[told Lenny Rachitsky](url)"), and keep the numbered `[n]` markers and the `## References` list as well. Do not choose one or the other.
+
+### 15. Simple language, precise terms
+
+"Could you simplify the language" is the most frequent request. Use short sentences, everyday words and one idea per sentence. Replace phrases like "a generalist who dabbles" or "a deep craft who uses AI's wider range to build across it" with "someone who knows a little about everything" and "they know one area deeply and use AI to build beyond it".
+
+Simplifying never means dropping the precise identifiers technical readers need. On the Cogi LinkedIn post he asked to bring back the benchmark names (`LongMemEval_M`, `LoCoMo`) and the token budgets after they were simplified away. Keep the term and add the plain explanation next to it: "a 1,000-token budget, about one page"; "LongMemEval_M: 500 questions, each answer hidden in about 1.2 million tokens of old chats".
+
+### 16. Examples: technical, simple, close to the point
+
+- Prefer small, concrete technical examples readers have lived: a Python import error, a failing cloud deployment, a container out of memory, a backend engineer editing a React component, a frontend developer writing Terraform.
+- An example must illustrate the exact claim. "Join a cross-team review, meet the SRE team" was rejected for a point about relationships; what he meant was product and business people, people who understand user needs, and the people who build templates and processes and protect them. When an example is marked "weak", find one closer to the claim rather than polishing the old one.
+
+### 17. Don't oversell Krzysztof's work
+
+For his own projects (Cogi, MrCogito, Agent Patterns Lab) the bet is usually a simple idea done carefully, not an invention. Say plainly what it is before a critic does ("this is plain search over chat logs, built with care"), compare fairly against what was actually tested, and let the evals carry the claim. "Often, the beauty is in a simple idea that just works" is his framing.
+
 ---
 
 ## Content-Specific Preferences
@@ -96,11 +147,13 @@ It does *not* apply to: long-form blog posts, project pages, LinkedIn posts, X t
 - **Never overstate or exaggerate claims.** If a number or timeline isn't verified, don't use it. "Seconds of delay" is wrong if streaming pipelines achieve sub-1s. Hedge with "can range from X to Y depending on..." rather than picking the worst case to make a point.
 - **Seek truth, be blunt and honest.** Don't believe marketing materials. Find supporting evidence, compare, verify numbers against benchmarks and papers, not blog announcements.
 - **If unsure about a date or fact, say so and try to find the evidence.** Don't fabricate timelines like "until late 2025" without evidence.
+- **Evidence must match the current state of AI.** Early AI-coding studies that assume humans write or review every diff (Faros PR review times, the METR slowdown RCT, CodeRabbit defect counts) are outdated for his arguments: agents write and review code now, and people guide. Prefer sources from the last year or two, or timeless ones (Brooks, DORA).
 
 ### Balanced Analysis
 - **Never push a single winner.** Present pros and cons of each approach honestly. Open source vs closed source is not a clear fight — both have strengths. Present the trade-offs and let the reader decide.
 - **Consider what the reader might already know.** Don't write as though everyone is unaware of streaming ASR pipelines — the audience is technical.
 - **Include counter-arguments proactively.** If an approach has a clear weakness, mention it. If the competing approach has a clear strength, acknowledge it.
+- **Size the limits to the post type.** In research, benchmark and tool posts, a fairness or limits section earns its place (the Cogi post kept "Is this a fair test?"). In leadership and column posts, Krzysztof removed standalone "Limits and counterpoints" sections twice: put the caveat in one or two sentences inside the argument or in the takeaway ("Going too far in the other direction isn't good; what matters most is that these people deliver results"), and leave the rest for the comments.
 
 ### Tone & Framing
 - **Don't center the article around one narrow use case.** Krzysztof's experience (e.g., conversational tutoring at Pearson) adds credibility but should be mentioned as one example among several, not as the sole lens. Show breadth.
@@ -116,6 +169,10 @@ It does *not* apply to: long-form blog posts, project pages, LinkedIn posts, X t
 - **Length.** Every blog post stays under 2,500 words. Ideal is under 10 minutes of reading (Hugo shows it next to the date); 11 minutes is fine. One post tells one story; if there are two, split them.
 - **Conclusions matter.** Don't end with a summary. End with implications, predictions, and actionable insights. What should the reader do differently after reading this?
 - **Technical deep-dives earn trust.** The audience values understanding the mechanism, not just the result.
+- **Trust the reader with "how-to" sections.** If the body already shows what to do, a long advice section repeats it. Keep the three most important items, not five or seven.
+- **Merge and dedupe across rounds.** After adding his notes, check that no idea now appears twice; "this is similar to the previous paragraph, maybe concat" is a frequent `??`. Merging is better than a fourth point.
+- **Grow what he marks as valuable.** "This is valuable, elaborate" means add a concrete example and a source, not more abstract sentences.
+- **Make the core claim stand out.** One key idea per post can go in a Congo callout (`{{< alert "lightbulb" >}}…{{< /alert >}}`). Emojis on section headings, subheadings that split long sections, and one pull quote per main section work well (the "What AI quietly broke" post layout). When a LinkedIn post accompanies the blog, reuse the same emojis so the two correlate.
 
 ---
 
@@ -149,7 +206,50 @@ Example:
 
 ---
 
+## Review Rounds With `??` Comments
+
+Krzysztof reviews drafts in the file. Each round:
+
+1. **Snapshot first.** Commit the draft with his comments before changing anything, so every round can be compared.
+2. **Read the comment's position.** A `??` line usually refers to the text right below it; `^^` or "above" points up; a `??` inside a sentence refers to that sentence. A bare `??` means "this point needs work": rewrite it or merge it, do not leave it as is.
+3. **Classify each comment:**
+   - *Content he supplies* (his experience, a new angle, a line to add): build the paragraph around his words.
+   - *Keep signals* ("good one, I like it", "really good summary", "keep"): do not touch that text.
+   - *Rejections* ("I don't like this", "sounds not mine", "too obvious"): replace the idea, not just the wording.
+   - *Structure* ("too long", "concat", "shrink to three", "move to takeaway"): restructure, then check for duplicates.
+4. **Remove every `??` marker** and every `TODO` he has answered or made obsolete.
+5. **Report per comment** in the reply: what changed, quoted where useful, and flag any comment that was cut off or ambiguous along with the reading you chose.
+6. **Check length** against the 2,500-word limit and name what to cut when his additions push it over.
+7. **When his feedback contradicts this guide, his feedback wins.** Update this file in the same session (rule 7 changed this way).
+
+---
+
 ## Article-Specific Feedback Log
+
+### Systems Thinkers Draft (2026-11-15 to 2026-11-17)
+
+Three `??` rounds on `content/drafts/systems-thinkers/`, a column built on a Netflix podcast and a Google Research talk.
+
+- **Round 1:** the draft was framed around the two talks ("What the two talks agree on", talk quotes in the lead). Rejected as "not mine". Rebuilt to open with his question (the most important skill for a software engineer when AI widens what one person can build) and to use the talks as proof. Readers did not know who "Stone" was, so the text now refers to Netflix and Google Research. The seven signals became six, the how-to section shrank to three habits, and the Limits section moved into two sentences of the takeaway.
+- **Round 2:** only recent evidence (the last two years, AI era), and people with context are not only developers. Inline links plus References. His role "drifted", it did not "change". The example of relationships with SRE and security was replaced by product, business and systems people. New claims he added: AI cannot replace systems thinkers because it lacks their context and taste for what to build; depth earns trust and technology understanding while AI widens the range.
+- **Round 3:** no "My opinion:" labels (it is his blog). The core claim went into a callout. Why depth matters: time spent on hard problems in one area (technology, finance, methodology of learning) lets people decompose problems and connect components at a deeper level. Two context paragraphs merged. Context for agents means business, user needs, strategy and roadmaps, not only what sits between teams; documentation is written for agents, not humans. "Simplify the language" again.
+
+### What AI Quietly Broke In My Engineering Team (2026-10-12 to 2026-10-14)
+
+- Research presented as a list of studies "reads hard": blend each into the paragraph it supports.
+- Early AI-coding productivity studies cut as outdated.
+- "Find a good transition from my observation to the evidence… I would like readers to see that I tried to understand this phenomenon": show him investigating (rule 11).
+- "The same opening, too schematic and repetition, start differently, start with psychology": vary section openings.
+- He added personal passages (Stack Overflow badges, solving algorithm puzzles at university as a group, local meetups) and asked to extend the collective-creativity point: the human details became the emotional peak of the post and the LinkedIn version.
+- Limits section and unfillable `??STORY` prompts removed.
+- LinkedIn version: technical but simple examples ("something related to the cloud or Python code"), emojis matching the blog, no twist reveal, no arrow bullets, no slogan ending.
+
+### Cogi Memory Evals Post (2026-11-01 to 2026-11-11)
+
+- First draft centered on a benchmark finding. Rejected: "this is not what I wanted to write". The post he wanted told why he built Cogi, what it is and where it is strong, then the evals, with an honest note that benchmarks do not match real usage.
+- Then simplified for a general audience: about 1,100 words, token budgets explained in pages.
+- "I don't want to sound like I invented something big": the idea section became "plain search, built with care", with a fair comparison of what was actually tested (rule 17).
+- LinkedIn: "simplify the language", then "keep the benchmark names, those are important" and "and token budget also" (rule 15). His closing line was kept nearly verbatim.
 
 ### Voice-to-Voice Models 2026 Review (2026-02-27)
 

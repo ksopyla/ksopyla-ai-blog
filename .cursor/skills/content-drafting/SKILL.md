@@ -297,12 +297,15 @@ Typical refinement responses:
 
 ### Writing Quality Rules
 
-Follow all 9 writing quality rules documented in `writing-preferences.md` (in this skill's folder). These were extracted from real drafting sessions and are non-negotiable. The most commonly violated:
+Follow all the writing quality rules documented in `writing-preferences.md` (in this skill's folder). These were extracted from real drafting sessions and are non-negotiable. The most commonly violated:
 
-1. Never write shallow summaries — extract specific details from actual sources
-2. Every factual claim needs a linked reference with specific numbers
-3. Kill AI-sounding filler phrases (see kill list in writing-preferences)
-4. Research notes are a starting point, not a sufficient source — re-read originals
+1. The post is Krzysztof's story: sources support his view, they never frame the post
+2. Simple language, but keep precise terms (benchmark names, token budgets) with a plain explanation
+3. Kill AI-sounding filler phrases and machine-like patterns (see both kill lists)
+4. Every factual claim needs a linked reference, inline and in `## References`
+5. Never write shallow summaries: extract specific details from the actual sources, not from notes
+
+For `??` review rounds, follow the "Review Rounds" section of `writing-preferences.md`.
 
 ## Handoff To Publishing
 
