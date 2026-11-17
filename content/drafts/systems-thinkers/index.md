@@ -40,37 +40,27 @@ In my [previous post](/posts/what-ai-quietly-broke-in-my-engineering-team/) I ar
 
 ## What I mean by a systems thinker
 
+{{< alert "lightbulb" >}}
+**AI cannot replace systems thinkers.** An agent never has their context, and it has no taste for what to build and why. It can build almost anything you describe, but someone still has to know what is worth describing.
+{{< /alert >}}
 
-?? make this stand out, add the emoji or so, this is good  
-AI cannot replace systems thinkers. An agent never has their context, and it has no taste for what to build and why. It can build almost anything you describe, but someone still has to know what is worth describing.
+Systems thinkers still need deep expertise, but its job has changed. Depth is how they earn trust: people follow the person who connects the dots only if they trust that person in at least one area.
 
-Systems thinkers still need deep expertise, but its job has changed. Depth is how they earn trust: people follow the person who connects the dots only if they trust that person in at least one area.  
-??  I wnat to explain why depth is valuable, why you need to understand and spent some time on a problem, this is still valuable  
-Depth in one area like: technology, finance, methodology of learning, the really deep understanding of the domain allows the to decompose the problem and connet components on a deeper level .  
-  
+Depth is also how they see the problem. Deep knowledge of one area, whether technology, finance or the methodology of learning, comes only from spending real time on hard problems in it. That time is what lets them decompose a new problem and connect the components at a deeper level. An agent gives you a plausible design in seconds. Someone who has lived with the domain can tell which part of it will hurt in a year.
+
 The Netflix talk draws this line for engineers: you may write fewer lines of code, but you still need to understand how code and systems work, or you cannot tell whether what the agents built is good, or fix it when it breaks [1]. Netflix still needs the few people in the world who really understand video encoding or playback, and the head of Google Research says going deep *"is going to be incredibly important"* [1][2]. What Netflix sees trending down is narrow specialization without the will to look beyond it [1]. At the same time, AI lets these people build far beyond their own area.
 
-?? could you simplify the language
-So a systems thinker is not a generalist who dabbles. It is someone with a deep craft who also knows where their work sits in the whole company, and who uses AI's wider range to build across it.
+So a systems thinker is not someone who knows a little about everything. They know one area deeply, they see how their work fits into the company, and they use AI to build beyond their own area.
 
 ## Why they matter more now
-  
-?? please do not use "My opinion" this is my blog, everything is my opinion
-My opinion: four things changed with AI, and each one raises the value of the person who sees the whole.
 
-**Code is cheap, coherence is not.** When every team can build its own stack in a week, every team will. Agents write the services, but nobody writes the agreement on how those services share identity, data and on-call.  
-?? could you elaborate on this this is valuaable  
-The cost of building used to limit how much incoherence a company could produce. That limit is gone.
-  
-?? to long, the context not only live between teams, but rather busisnes, user needs, company strategy, future plans and roadmaps, some components could be a fundaments of future larger picture, good context becomse more valuable, good documentation for agents not for humans 
+Three things changed with AI, and each one raises the value of the person who sees the whole.
 
-**Agents need context that lives between teams.** An agent has no hallway. It cannot ask the SRE who got burned by this pattern last year, or the security team why a data source is off limits. It gets only what we write down: good documentation, documented processes, source-of-truth data and a clear alignment on what we build and why. That is the input for our agents, and it limits the quality of what they produce. Netflix learned this from its own history. For years, local teams moved fast by building whatever stack their problem needed, off the central paved path. That stops working once agents are *"operating across multiple systems, wanting source of truth data"* [1], so Netflix now hires more people *"who can look across all the business domains"* and turn what they see into shared building blocks. The people we need are the ones who understand this and build that context, not only the features on top of it.
+**Code is cheap, coherence is not.** When every team can build its own stack in a week, every team will. Agents write the services, but nobody writes the agreement on how those services share identity, data and on-call. Picture three teams that each build an agent over the same course content. Each one has its own retrieval, its own access rules and its own logging. Each demo works. Together they are three bills, three security reviews, three on-call rotations, and a learner who gets different answers from the same company. Netflix saw the same risk in design: its designers now spend more time on design systems, so that people who are not designers can build products that still feel like one Netflix instead of *"shipping Frankensteins"* [1]. The cost of building used to limit how much incoherence a company could produce. That limit is gone. Now the limit is a person who notices the second copy before it gets built.
 
-?? this is similar to the previous paragraph, maybe it is worth to concat
-**When building is cheap, the question is the scarce part.** At Pearson we do applied AI science, and I see a simple pattern: the more context we get from the product owner, the better the result. A vision, a long-term roadmap and real user research let a systems thinker build something that works across domains and has value, instead of a clever prototype for one team. Google Research expects the same shift in science: with an AI collaborator that reads across fields, every researcher will work more like the head of a lab, choosing the right questions instead of doing the heavy lifting [2]. Asking the right questions comes first on its list of skills to hire for, together with spotting the opportunity, communicating and listening: *"Sometimes we call them soft skills, but they're skills"* [2].
+**Agents build only as well as the context we give them.** An agent has no hallway. It cannot ask the product owner where the roadmap goes next year, or the SRE who got burned by this pattern last time. It knows only what we write down, and the context it needs goes far beyond team boundaries: business goals, user needs, company strategy, future plans and roadmaps. Some of today's small components will become the foundation of a larger picture, and only someone who knows that picture builds them that way. At Pearson we do applied AI science, and I see a simple pattern: the more context we get from the product owner, from the vision to the long-term roadmap and user research, the better the result. Good context becomes more valuable every month, and so does good documentation written for agents, not for humans. Netflix hires more people *"who can look across all the business domains"* for the same reason: agents are now *"operating across multiple systems, wanting source of truth data"* [1]. With the context in place, the scarce skill is asking the right question. Google Research expects every researcher to work more like the head of a lab, choosing the right questions while an AI collaborator does the heavy lifting [2].
 
-?? the system thinker nows about all of possible limitations and problems, he/she experiencced it in the past, knows company policies, 
-**The hard problems sit at team boundaries, and so do other teams' goals.** In the agent systems I build, code rarely delays a launch. Other teams' rules do. Daily Snyk security scans can block a deployment, content rules decide what an agent may show to a learner, and SRE teams need to hear about a new workload long before go-live. None of this is red tape: each rule protects another team's goal. A systems thinker knows those goals before the project starts and designs with them from day one, so the security scan is a check that passes, not a surprise a week before launch. I covered the architecture side in [If You Want to Build Agent Systems, You Need to Lose Your REST-Style Intuitions](/posts/enterprise-agents-new-systems-mindset/).
+**The hard problems sit at team boundaries.** In the agent systems I build, code rarely delays a launch. Other teams' rules do. Daily Snyk security scans can block a deployment, content rules decide what an agent may show to a learner, and SRE teams need to hear about a new workload long before go-live. None of this is red tape: each rule protects another team's goal. A systems thinker knows these limits before the project starts, because they have hit most of them before. They know the company policies, remember what blocked the last launch, and design with all of it from day one, so the security scan is a check that passes, not a surprise a week before launch. I covered the architecture side in [If You Want to Build Agent Systems, You Need to Lose Your REST-Style Intuitions](/posts/enterprise-agents-new-systems-mindset/).
 
 ## How I spot a systems thinker
 
@@ -90,8 +80,7 @@ These are the signals I look for. The first five show in how people work. The la
 
 ## How leaders can grow them
 
-?? I've edited some parts, proof read it
-This part is personal. My title at Pearson did not change, but this year I noticed my role drifting from engineering manager toward staff engineer. Before, I mostly managed and lead, now I took part in RFCs and design discussions and starting to to build more things myself, with AI. With that drift, I started expecting more from the people on my team: more independence and self-direction, building things end to end, and working directly with other product owners and teams instead of through me. The transition has started, but it also needs changes in my own behavior and more trust from my side.
+This part is personal. My title at Pearson did not change, but this year I noticed my role drifting from engineering manager toward staff engineer. Before, I mostly managed and led. Now I take part in RFCs and design discussions, and I have started to build more things myself, with AI. With that drift, I started expecting more from the people on my team: more independence and self-direction, building things end to end, and working directly with other product owners and teams instead of through me. The transition has started, but it also needs changes in my own behavior and more trust from my side.
 
 Systems thinkers are partly found and partly made. Four things help them grow.
 
@@ -103,7 +92,7 @@ Systems thinkers are partly found and partly made. Four things help them grow.
 
 **Give them a talented team.** They want peers who think in a similar way and challenge them. In my experience they lose motivation faster around mediocrity than around hard problems. Netflix calls talent density *"the non-negotiable"*, because without it you cannot trust decisions made deep in the organization [1].
 
-What drives them away is answering every failure with a new process. Netflix found that each time it added process to hard problems like planning or leveling, *"we spent more time without getting better outcomes"* [1]. My opinion: systems thinkers feel this first, because a new gate replaces exactly the judgment they bring.
+What drives them away is answering every failure with a new process. Netflix found that each time it added process to hard problems like planning or leveling, *"we spent more time without getting better outcomes"* [1]. Systems thinkers feel this first, because a new gate replaces exactly the judgment they bring.
 
 ## How an engineer becomes one
 

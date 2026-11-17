@@ -66,9 +66,9 @@ When Krzysztof edits code examples, variable names, function signatures, or inli
 
 If a source uses a good framing or metaphor, use it with attribution. Attributed analogies are more credible and more interesting than generic invented ones.
 
-### 7. Opinionated claims need to be labeled as opinions
+### 7. Keep opinions in first person, without "My opinion:" labels
 
-"A great MCP server has 2-4 tools, max" is an opinion. Label it: "My controversial take:" or "My opinion:". This keeps the article honest and signals that it's a judgment call, not a rule.
+It is Krzysztof's blog, so everything in it is his opinion. Do not prefix claims with "My opinion:" or "My controversial take:" (rejected in the systems-thinkers draft, Nov 2026). Keep judgment calls honest through the voice instead: state them in first person ("I see", "in my teams", "my test"), and keep them visibly separate from claims attributed to a source. "A great MCP server has 2-4 tools, max" can stand as Krzysztof's claim, as long as it is not dressed up as a cited fact.
 
 ### 8. Research notes are a starting point, not a sufficient source
 
