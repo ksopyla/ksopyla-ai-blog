@@ -106,7 +106,7 @@ Keep all assets inside the content bundle.
 ### 7. Generate Feature Image If Missing
 
 1. Prefer real visuals: charts, screenshots, diagrams, architecture art.
-2. If none exist, use the `image-generation` skill.
+2. If none exist, use the `image-generation` skill. With the Canva connector, follow its "Generating With The Canva Connector" steps to save the full-size file yourself. Don't hand the download to the author.
 3. Save in the bundle and update `featureImage` and `featureAlt`.
 
 ### 8. Move Draft To Published
